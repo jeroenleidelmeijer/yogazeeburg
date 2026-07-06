@@ -407,10 +407,10 @@ function RegularMemberships() {
             4-week memberships
           </span>
           <h2 className="mt-5 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-            Prefer less commitment? Choose a 4-week membership.
+            Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Same simple routine, less commitment. These memberships continue every 4 weeks after the minimum period until cancelled.
+            Start with the membership that fits your week. If you already know you want yoga to become part of your year, the Annual Routine Builder below gives you better first-year value.
           </p>
         </div>
 
