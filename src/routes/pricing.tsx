@@ -313,7 +313,7 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       {recommended && (
         <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
           <Sparkles className="h-3 w-3" />
-          Recommended best value
+          Recommended annual routine
         </span>
       )}
 
@@ -328,7 +328,7 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       </div>
 
       <div className="mt-3 space-y-1 text-sm text-muted-foreground">
-        <p>First 8 weeks free</p>
+        <p>First 4 weeks free</p>
         <p>{plan.firstYear}</p>
         {plan.perClass.map((pc) => (
           <p key={pc.label}>
