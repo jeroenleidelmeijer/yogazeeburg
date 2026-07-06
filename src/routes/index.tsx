@@ -73,75 +73,61 @@ function HomePage() {
 }
 
 /* ============================================================
-   HERO — editorial, single strong promise
+   HERO — editorial, typography-led. No stock image.
    ============================================================ */
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* soft warm glow backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-sage)_18%,transparent),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[80%] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-sage)_18%,transparent),transparent_70%)]"
       />
-      <div className="mx-auto grid max-w-6xl gap-14 px-4 pb-24 pt-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:gap-16 md:pb-32 md:pt-24 lg:px-8">
-        <div className="flex flex-col justify-center">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-clay" />
-            Yoga Zeeburg · Amsterdam East
-          </span>
-          <h1 className="mt-7 font-display text-[2.75rem] leading-[1.03] tracking-tight text-foreground sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem]">
-            Too busy for yoga?{" "}
-            <span className="text-primary italic">That's probably why you need it.</span>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            For weeks that feel too full, shoulders that won't unclench, and a
-            head that won't switch off. A calm, down-to-earth yoga studio in
-            Amsterdam East — by the water in Zeeburg and Cruquius — where you
-            move, breathe, release tension and land back in your body.
-          </p>
-          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <a
-              href={INTRO_URL}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
-            >
-              Start with 14 days unlimited
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <Link
-              to="/pricing"
-              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-medium text-foreground underline-offset-4 hover:underline"
-            >
-              View pricing
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <p className="mt-5 text-sm text-muted-foreground">
-            14-Day Unlimited Intro Pass · stops automatically · new students only
-          </p>
+      <div className="mx-auto max-w-4xl px-4 pb-20 pt-12 text-center sm:px-6 md:pb-28 md:pt-20 lg:px-8">
+        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground backdrop-blur">
+          <span className="h-1.5 w-1.5 rounded-full bg-clay" />
+          Yoga Zeeburg · Amsterdam East
+        </span>
+        <h1 className="mx-auto mt-7 max-w-4xl font-display text-[2.5rem] leading-[1.05] tracking-tight text-foreground sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem]">
+          Too busy for yoga?{" "}
+          <span className="text-primary italic">That's probably why you need it.</span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
+          For weeks that feel too full, shoulders that won't unclench, and a
+          head that won't switch off. A calm, down-to-earth yoga studio in
+          Amsterdam East where you move, breathe and land back in your body.
+        </p>
+        <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
+          <a
+            href={INTRO_URL}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+          >
+            Start with 14 days unlimited
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <Link
+            to="/pricing"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            View pricing
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
-
-        {/* Hero image — softer, more integrated frame */}
-        <div className="relative">
-          <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-sage/15 blur-2xl" aria-hidden />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/50 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)]">
-            <img
-              src="/hero.jpg"
-              alt="Warm morning light on the water — Yoga Zeeburg in Amsterdam East"
-              className="h-full w-full object-cover"
-              width={1600}
-              height={1008}
-            />
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/25 to-transparent" aria-hidden />
-            <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-background/85 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur">
-              <MapPin className="h-3.5 w-3.5 text-primary" />
-              Cruquiusweg 96F · by the water
-            </div>
-          </div>
+        <p className="mt-5 text-sm text-muted-foreground">
+          14-Day Unlimited Intro Pass · stops automatically · new students only
+        </p>
+        <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5">
+            <MapPin className="h-3.5 w-3.5 text-primary" />
+            Cruquiusweg 96F · by the water
+          </span>
+          <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+          <span>Small, personal studio · beginner-friendly</span>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ============================================================
    BENEFITS — editorial numbered list, not tiny cards
