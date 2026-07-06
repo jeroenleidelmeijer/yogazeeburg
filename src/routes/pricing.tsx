@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Check, Sparkles, Mail } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
@@ -19,6 +19,8 @@ const SPORTBIT_10_CLASS_PASS_URL = "# TODO";
 const SPORTBIT_SINGLE_CLASS_URL = "# TODO";
 
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
+const PAY_IN_FULL_PRICE = "€699";
+const SPORTBIT_PAY_IN_FULL_URL = "# TODO";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -410,7 +412,7 @@ const REGULAR_PLANS: RegularPlan[] = [
 
 function RegularMemberships() {
   return (
-    <section className="px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+    <section id="four-week-memberships" className="px-4 py-24 sm:px-6 md:py-32 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
