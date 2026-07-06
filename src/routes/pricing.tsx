@@ -467,7 +467,7 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       {plan.extraPerClass && (
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
-      <p className="mt-3 text-xs font-medium uppercase tracking-wide text-foreground/70">
+      <p className="mt-4 rounded-lg border border-border/40 bg-secondary/50 px-3 py-2 text-sm font-medium text-foreground/80">
         Minimum commitment: 3 × 4-week periods
       </p>
 
