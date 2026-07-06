@@ -55,8 +55,8 @@ function PricingPage() {
         <Hero />
         <IntroPass />
         <RegularMemberships />
-        <PayInFullNote />
         <AnnualRoutineBuilder />
+        <PayInFullNote />
         <FlexibleOptions />
         <PlanChooser />
         <FAQ />
@@ -211,21 +211,21 @@ const ANNUAL_PLANS: AnnualPlan[] = [
     badge: "For one steady weekly reset",
     price: "€49",
     priceSuffix: "every 4 weeks",
-    perClass: [{ label: "per class", value: "€10.37" }],
+    perClass: [{ label: "per class", value: "€11.31" }],
     routine: "Best for one steady weekly reset.",
-    firstYear: "€539 first-year value",
+    firstYear: "€588 first-year total",
     usage: "52 classes/year",
     cta: "Choose Weekly Annual",
     href: SPORTBIT_WEEKLY_ANNUAL_URL,
   },
   {
     name: "Yoga Plus Annual",
-    badge: "Recommended best value",
+    badge: "Recommended annual routine",
     price: "€69",
     priceSuffix: "every 4 weeks",
-    perClass: [{ label: "per class", value: "€7.30" }],
-    routine: "The best-value upgrade if you want yoga to become part of your week.",
-    firstYear: "€759 first-year value",
+    perClass: [{ label: "per class", value: "€7.96" }],
+    routine: "The better-value upgrade if you want yoga to become part of your week.",
+    firstYear: "€828 first-year total",
     usage: "104 classes/year",
     cta: "Choose Yoga Plus Annual",
     href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
@@ -237,11 +237,11 @@ const ANNUAL_PLANS: AnnualPlan[] = [
     price: "€89",
     priceSuffix: "every 4 weeks",
     perClass: [
-      { label: "per class at 3×/week", value: "€6.28" },
-      { label: "per class at 4×/week", value: "€4.71" },
+      { label: "per class at 3×/week", value: "€6.85" },
+      { label: "per class at 4×/week", value: "€5.13" },
     ],
     routine: "Best for 3+ times per week.",
-    firstYear: "€979 first-year value",
+    firstYear: "€1068 first-year total",
     usage: "156 classes/year at 3×/week",
     cta: "Choose Unlimited Annual",
     href: SPORTBIT_UNLIMITED_ANNUAL_URL,
@@ -249,8 +249,9 @@ const ANNUAL_PLANS: AnnualPlan[] = [
 ];
 
 const ANNUAL_TERMS = [
+  "Minimum commitment: 13 × 4-week periods",
   "Paid every 4 weeks",
-  "First 8 weeks free",
+  "First 4 weeks free",
   "One 4-week pause included",
   "Switch plan once in the first 8 weeks",
   "Continues every 4 weeks after the minimum commitment until cancelled",
@@ -266,13 +267,13 @@ function AnnualRoutineBuilder() {
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-clay">
             <Sparkles className="h-3.5 w-3.5" />
-            Annual Routine Builder · Best value
+            Annual Routine Builder · Paid every 4 weeks
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
             Want annual value, but keep paying every 4 weeks?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you want yoga to become part of your year but do not want to pay everything upfront, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for the year, get the first 8 weeks free, and keep a little flexibility with one included pause and one early plan switch.
+            If you know you want yoga to become part of your year, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for one year, get the first 4 weeks free, and keep a little flexibility with one included pause and one early plan switch.
           </p>
         </div>
 
@@ -312,7 +313,7 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       {recommended && (
         <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
           <Sparkles className="h-3 w-3" />
-          Recommended best value
+          Recommended annual routine
         </span>
       )}
 
@@ -327,7 +328,7 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       </div>
 
       <div className="mt-3 space-y-1 text-sm text-muted-foreground">
-        <p>First 8 weeks free</p>
+        <p>First 4 weeks free</p>
         <p>{plan.firstYear}</p>
         {plan.perClass.map((pc) => (
           <p key={pc.label}>
@@ -422,7 +423,7 @@ function RegularMemberships() {
             Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Start with the membership that fits your week. If you already know you want yoga to become part of your year, the Annual Routine Builder below gives you better first-year value.
+            Start with the membership that fits your week. These memberships are paid every 4 weeks, with a minimum commitment of 3 periods of 4 weeks. They are the most flexible membership route, without the annual discount.
           </p>
         </div>
 
@@ -466,6 +467,9 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       {plan.extraPerClass && (
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
+      <p className="mt-3 text-xs font-medium uppercase tracking-wide text-foreground/70">
+        Minimum commitment: 3 × 4-week periods
+      </p>
 
       <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">
         {plan.bestFor}
@@ -641,9 +645,9 @@ function FlexibleOptions() {
    ------------------------------------------------------------------ */
 const CHOOSER = [
   { q: "New here?", a: "Start with the Intro Pass." },
-  { q: "Want a simple weekly routine?", a: "Choose Yoga Plus." },
-  { q: "Want the best one-payment annual value?", a: "Choose Yoga Plus Annual Pay-in-Full." },
+  { q: "Want a simple flexible routine?", a: "Choose Yoga Plus." },
   { q: "Want annual value but prefer paying every 4 weeks?", a: "Choose Yoga Plus Annual Routine Builder." },
+  { q: "Want the best one-payment annual value?", a: "Choose Yoga Plus Annual Pay-in-Full." },
   { q: "Coming 3+ times per week?", a: "Choose Unlimited Yoga." },
   { q: "Need maximum flexibility?", a: "Choose the 10-Class Pass." },
 ];
@@ -701,13 +705,18 @@ const FAQ_ITEMS = [
     a: "Yes. Check the class name and description before booking, and start with a class that fits how you feel today.",
   },
   {
-    q: "Do memberships continue automatically?",
-    a: "Yes. All memberships continue automatically after the minimum period until cancelled.",
+    q: "What is the minimum commitment for regular 4-week memberships?",
+    a: "Regular 4-week memberships have a minimum commitment of 3 periods of 4 weeks. After that, they continue every 4 weeks until cancelled.",
     highlight: true,
   },
   {
-    q: "What is the difference between Pay-in-Full and Annual Routine Builder?",
-    a: "Pay-in-Full is one upfront payment for Yoga Plus Annual. Annual Routine Builder is a yearly commitment where you keep paying every 4 weeks.",
+    q: "Do memberships continue automatically?",
+    a: "Yes. Regular memberships and Annual Routine Builder continue automatically after the minimum period until cancelled.",
+    highlight: true,
+  },
+  {
+    q: "What is the difference between Annual Routine Builder and Pay-in-Full?",
+    a: "Annual Routine Builder is a one-year commitment where you keep paying every 4 weeks and get the first 4 weeks free. Pay-in-Full is one upfront yearly payment for Yoga Plus Annual.",
     highlight: true,
   },
   {
