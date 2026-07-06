@@ -399,20 +399,13 @@ function ClassDirections() {
 
         <ul className="mt-14 divide-y divide-border/70 border-y border-border/70">
           {DIRECTIONS.map((d) => (
-            <li key={d.q} className="group grid grid-cols-1 items-baseline gap-3 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_auto] md:gap-10">
+            <li key={d.q} className="grid grid-cols-1 items-baseline gap-3 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-14">
               <h3 className="font-display text-2xl text-foreground md:text-3xl">
                 {d.q}
               </h3>
               <p className="text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
                 {d.a}
               </p>
-              <Link
-                to="/classes"
-                className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5"
-              >
-                Explore
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
             </li>
           ))}
         </ul>
@@ -477,7 +470,7 @@ function Location() {
             Find us
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            A calm room, five minutes from the noise.
+            A calm room, just away from the noise.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
             Yoga Zeeburg sits above CrossFit Zeeburg on Cruquiusweg — a quiet
@@ -519,34 +512,83 @@ function Location() {
           href={MAPS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative block overflow-hidden rounded-[2rem] border border-border/60 bg-gradient-to-br from-sage/30 via-background to-primary/15 shadow-sm"
+          className="group relative block overflow-hidden rounded-[2rem] border border-border/60 shadow-sm"
           aria-label="Open directions to Cruquiusweg 96F, Amsterdam"
+          style={{ backgroundColor: "#eef1e8" }}
         >
           <div className="aspect-[4/5] w-full md:aspect-[5/6]">
-            <svg viewBox="0 0 400 480" className="h-full w-full" aria-hidden>
-              <defs>
-                <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
-                  <path d="M 44 0 L 0 0 0 44" fill="none" stroke="currentColor" strokeOpacity="0.08" strokeWidth="1" />
-                </pattern>
-              </defs>
-              <rect width="400" height="480" fill="url(#grid)" className="text-foreground" />
-              {/* water */}
-              <path d="M0 320 Q 100 300 200 315 T 400 310 L 400 480 L 0 480 Z" className="fill-primary/25" />
-              {/* subtle roads */}
-              <path d="M-10 180 L 410 200" stroke="currentColor" strokeOpacity="0.22" strokeWidth="6" className="text-foreground" />
-              <path d="M 130 -10 L 150 490" stroke="currentColor" strokeOpacity="0.18" strokeWidth="4" className="text-foreground" />
-              <path d="M 270 -10 L 290 490" stroke="currentColor" strokeOpacity="0.14" strokeWidth="3" className="text-foreground" />
+            <svg viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+              {/* Land base (warm off-white) */}
+              <rect width="400" height="480" fill="#efeee6" />
+
+              {/* Water — IJ / Buiten-IJ across the top, harbour basins,
+                  Nieuwevaart canal beside the pin, and pockets to the SE */}
+              <g fill="#cfe2e6">
+                {/* Top: IJ / Buiten-IJ */}
+                <path d="M0,0 L400,0 L400,150 C 330,165 260,120 190,140 C 120,158 60,120 0,140 Z" />
+                {/* Harbour inlet dipping south (Oostelijk Havengebied basin) */}
+                <path d="M60,140 C 80,190 130,200 150,235 C 165,260 130,260 100,255 C 70,250 55,220 55,190 Z" />
+                {/* Nieuwevaart canal — runs east-west just above the pin */}
+                <path d="M0,258 C 90,246 180,254 260,250 C 320,247 360,252 400,248 L400,268 C 360,272 320,266 260,270 C 180,274 90,266 0,278 Z" />
+                {/* Small basin north-east of pin (near Camping Zeeburg) */}
+                <path d="M300,205 C 335,205 355,225 350,250 C 345,270 315,270 300,255 C 290,240 285,215 300,205 Z" />
+                {/* South-east water pocket (Amsterdam-Rijnkanaal hint) */}
+                <path d="M330,360 C 370,355 400,370 400,410 L400,480 L320,480 C 310,440 300,395 330,360 Z" />
+                {/* Small pond bottom-left (Flevopark waters) */}
+                <path d="M85,405 C 115,400 135,420 130,438 C 122,455 95,455 85,440 C 78,428 78,412 85,405 Z" />
+              </g>
+
+              {/* Parks — subtle sage patches (Flevopark, Diemerpark hints) */}
+              <g fill="#d7e1c9" opacity="0.85">
+                <path d="M40,370 C 80,360 130,370 150,395 C 165,420 130,455 90,460 C 55,462 30,435 40,370 Z" />
+                <path d="M260,390 C 300,385 335,395 340,420 C 342,445 305,465 275,460 C 250,455 245,420 260,390 Z" />
+              </g>
+
+              {/* A10 ring road — soft curve on the right */}
+              <path d="M300,20 C 330,90 345,170 335,260 C 325,340 335,410 370,480"
+                fill="none" stroke="#e8c98a" strokeWidth="7" strokeLinecap="round" />
+              <path d="M300,20 C 330,90 345,170 335,260 C 325,340 335,410 370,480"
+                fill="none" stroke="#f2d9a5" strokeWidth="3" strokeLinecap="round" />
+
+              {/* Local roads — Cruquiusweg / Zeeburgerdijk / cross streets */}
+              <g fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round">
+                {/* Zeeburgerdijk — horizontal, south of pin */}
+                <path d="M0,315 C 90,310 180,318 260,312 C 310,308 360,316 400,312" />
+                {/* Cruquiusweg — the street of the pin */}
+                <path d="M0,295 C 90,285 180,292 260,286 C 310,283 360,290 400,286" />
+                {/* Cross street heading south */}
+                <path d="M175,286 L 190,470" />
+                {/* Cross street east */}
+                <path d="M230,283 L 250,470" />
+              </g>
+              <g fill="none" stroke="#e5e2d4" strokeWidth="1.5">
+                <path d="M0,315 C 90,310 180,318 260,312 C 310,308 360,316 400,312" />
+                <path d="M0,295 C 90,285 180,292 260,286 C 310,283 360,290 400,286" />
+                <path d="M175,286 L 190,470" />
+                <path d="M230,283 L 250,470" />
+              </g>
+
+              {/* Neighbourhood label */}
+              <text x="70" y="360" fill="#9a9585" fontSize="10" letterSpacing="2" fontFamily="ui-sans-serif, system-ui">
+                ZEEBURG
+              </text>
+              <text x="230" y="200" fill="#9a9585" fontSize="10" letterSpacing="2" fontFamily="ui-sans-serif, system-ui">
+                EASTERN DOCKLANDS
+              </text>
             </svg>
           </div>
-          <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3">
-            <span className="grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg">
-              <MapPin className="h-6 w-6" />
+
+          {/* Pin overlay — positioned near where Cruquiusweg 96F would sit */}
+          <div className="pointer-events-none absolute left-[46%] top-[54%] flex -translate-x-1/2 -translate-y-full flex-col items-center gap-2">
+            <span className="rounded-full bg-background/95 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
+              Yoga Zeeburg
             </span>
-            <span className="rounded-full bg-background/90 px-4 py-1.5 text-sm font-medium text-foreground shadow-sm backdrop-blur">
-              Cruquiusweg 96F
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg ring-4 ring-background/70">
+              <MapPin className="h-5 w-5" />
             </span>
           </div>
-          <span className="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-background/90 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur transition-transform group-hover:translate-x-0.5">
+
+          <span className="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-background/95 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur transition-transform group-hover:translate-x-0.5">
             Open in Maps
             <ArrowRight className="h-3.5 w-3.5" />
           </span>
