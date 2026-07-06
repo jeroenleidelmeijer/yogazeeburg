@@ -399,20 +399,13 @@ function ClassDirections() {
 
         <ul className="mt-14 divide-y divide-border/70 border-y border-border/70">
           {DIRECTIONS.map((d) => (
-            <li key={d.q} className="group grid grid-cols-1 items-baseline gap-3 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_auto] md:gap-10">
+            <li key={d.q} className="grid grid-cols-1 items-baseline gap-3 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-14">
               <h3 className="font-display text-2xl text-foreground md:text-3xl">
                 {d.q}
               </h3>
               <p className="text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
                 {d.a}
               </p>
-              <Link
-                to="/classes"
-                className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5"
-              >
-                Explore
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
             </li>
           ))}
         </ul>
