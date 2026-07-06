@@ -267,13 +267,13 @@ function AnnualRoutineBuilder() {
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-clay">
             <Sparkles className="h-3.5 w-3.5" />
-            Annual Routine Builder · Best value
+            Annual Routine Builder · Paid every 4 weeks
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
             Want annual value, but keep paying every 4 weeks?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you want yoga to become part of your year but do not want to pay everything upfront, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for the year, get the first 8 weeks free, and keep a little flexibility with one included pause and one early plan switch.
+            If you know you want yoga to become part of your year, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for one year, get the first 4 weeks free, and keep a little flexibility with one included pause and one early plan switch.
           </p>
         </div>
 
