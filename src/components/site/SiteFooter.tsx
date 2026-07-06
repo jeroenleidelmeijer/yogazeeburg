@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 const INTRO_URL = "https://trial.yogazeeburg.com/";
+const CONTACT_EMAIL = "hello@yogazeeburg.com";
 
 export function SiteFooter() {
   return (
@@ -9,13 +10,22 @@ export function SiteFooter() {
         <div>
           <div className="font-display text-xl text-foreground">Yoga Zeeburg</div>
           <p className="mt-3 text-sm text-muted-foreground">
-            A calm, down-to-earth yoga studio in Amsterdam East.
+            Down-to-earth yoga studio in Amsterdam East.
           </p>
           <address className="mt-4 text-sm not-italic text-muted-foreground">
             Cruquiusweg 96F<br />
             1019 AH Amsterdam<br />
             Above CrossFit Zeeburg
           </address>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Amsterdam East · Zeeburg · Cruquius
+          </p>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="mt-3 inline-block text-sm text-foreground/85 hover:text-foreground"
+          >
+            {CONTACT_EMAIL}
+          </a>
         </div>
 
         <div>
