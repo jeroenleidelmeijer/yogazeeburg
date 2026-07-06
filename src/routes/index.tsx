@@ -122,10 +122,10 @@ function Hero() {
           </p>
         </div>
 
-        {/* Hero image with warm frame */}
+        {/* Hero image — softer, more integrated frame */}
         <div className="relative">
-          <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-clay/10 blur-3xl" aria-hidden />
-          <div className="relative overflow-hidden rounded-[2rem] border border-border/60 shadow-2xl">
+          <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-sage/15 blur-2xl" aria-hidden />
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/50 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)]">
             <img
               src="/hero.jpg"
               alt="Warm morning light on the water — Yoga Zeeburg in Amsterdam East"
@@ -133,9 +133,8 @@ function Hero() {
               width={1600}
               height={1008}
             />
-            {/* Subtle bottom fade for legibility of overlay chip */}
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/25 to-transparent" aria-hidden />
-            <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-background/85 px-3.5 py-1.5 text-xs font-medium text-foreground shadow backdrop-blur">
+            <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-background/85 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur">
               <MapPin className="h-3.5 w-3.5 text-primary" />
               Cruquiusweg 96F · by the water
             </div>
