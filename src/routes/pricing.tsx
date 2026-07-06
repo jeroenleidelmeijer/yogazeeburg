@@ -55,8 +55,8 @@ function PricingPage() {
         <Hero />
         <IntroPass />
         <RegularMemberships />
-        <AnnualRoutineBuilder />
         <PayInFullNote />
+        <AnnualRoutineBuilder />
         <FlexibleOptions />
         <PlanChooser />
         <FAQ />
