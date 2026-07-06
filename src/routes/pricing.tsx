@@ -317,23 +317,26 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
       <p className="mt-1 text-sm font-medium text-clay">{plan.badge}</p>
 
-      <div className="mt-5">
+      <div className="mt-5 flex items-baseline gap-2">
+        <span className="font-display text-[2.5rem] leading-none text-foreground">
+          {plan.price}
+        </span>
+        <span className="text-base text-muted-foreground">{plan.priceSuffix}</span>
+      </div>
+
+      <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+        <p>First 8 weeks free</p>
+        <p>{plan.firstYear}</p>
         {plan.perClass.map((pc) => (
-          <div key={pc.label} className="flex items-baseline gap-2">
-            <span className="font-display text-[2.5rem] leading-none text-foreground">
-              {pc.value}
-            </span>
-            <span className="text-sm text-muted-foreground">{pc.label}</span>
-          </div>
+          <p key={pc.label}>
+            {pc.value} {pc.label}
+          </p>
         ))}
+        <p>{plan.usage}</p>
       </div>
 
       <p className="mt-5 text-[15.5px] leading-relaxed text-foreground/85">
         {plan.routine}
-      </p>
-
-      <p className="mt-4 text-sm text-muted-foreground">
-        {plan.firstYear} · {plan.usage}
       </p>
 
       <div className="mt-auto pt-7">
