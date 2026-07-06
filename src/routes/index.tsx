@@ -101,17 +101,17 @@ function Hero() {
             Amsterdam East — by the water in Zeeburg and Cruquius — where you
             move, breathe, release tension and land back in your body.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
+          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href={INTRO_URL}
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
             >
               Start with 14 days unlimited
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
               to="/pricing"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-4 text-base font-medium text-foreground underline-offset-4 hover:underline"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-medium text-foreground underline-offset-4 hover:underline"
             >
               View pricing
               <ArrowUpRight className="h-4 w-4" />
