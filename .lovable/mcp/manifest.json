@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "yoga-zeeburg-mcp",
+      "version": "0.1.0",
+      "title": "Yoga Zeeburg MCP"
+    },
+    "tools": [
+      {
+        "name": "get_studio_info",
+        "title": "Get studio info",
+        "description": "Return core information about Yoga Zeeburg: name, address, neighbourhood, positioning, and intro pass details.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "suggest_class_direction",
+        "title": "Suggest a class direction",
+        "description": "Suggest which type of Yoga Zeeburg class fits how someone feels today (slow down, move, stiff, new to yoga). Does not return real class names or a live schedule.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "mood": {
+              "type": "string",
+              "description": "Free-text description of how the person feels, what they want, or their experience level."
+            }
+          },
+          "required": [
+            "mood"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_directions_link",
+        "title": "Get directions to studio",
+        "description": "Return a Google Maps directions link to Yoga Zeeburg (Cruquiusweg 96F, Amsterdam), optionally from a given starting address.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "from": {
+              "description": "Optional starting address or place name.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
