@@ -96,21 +96,22 @@ function Hero() {
             <span className="text-primary italic">That's probably why you need it.</span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Down-to-earth yoga in Amsterdam East, by the water in Zeeburg and
-            Cruquius. Move, breathe, release tension — and build a simple
-            routine that actually fits your life.
+            For weeks that feel too full, shoulders that won't unclench, and a
+            head that won't switch off. A calm, down-to-earth yoga studio in
+            Amsterdam East — by the water in Zeeburg and Cruquius — where you
+            move, breathe, release tension and land back in your body.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
+          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href={INTRO_URL}
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
             >
               Start with 14 days unlimited
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
               to="/pricing"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-4 text-base font-medium text-foreground underline-offset-4 hover:underline"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-medium text-foreground underline-offset-4 hover:underline"
             >
               View pricing
               <ArrowUpRight className="h-4 w-4" />
@@ -121,10 +122,10 @@ function Hero() {
           </p>
         </div>
 
-        {/* Hero image with warm frame */}
+        {/* Hero image — softer, more integrated frame */}
         <div className="relative">
-          <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-clay/10 blur-3xl" aria-hidden />
-          <div className="relative overflow-hidden rounded-[2rem] border border-border/60 shadow-2xl">
+          <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-sage/15 blur-2xl" aria-hidden />
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/50 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)]">
             <img
               src="/hero.jpg"
               alt="Warm morning light on the water — Yoga Zeeburg in Amsterdam East"
@@ -132,9 +133,8 @@ function Hero() {
               width={1600}
               height={1008}
             />
-            {/* Subtle bottom fade for legibility of overlay chip */}
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/25 to-transparent" aria-hidden />
-            <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-background/85 px-3.5 py-1.5 text-xs font-medium text-foreground shadow backdrop-blur">
+            <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-background/85 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur">
               <MapPin className="h-3.5 w-3.5 text-primary" />
               Cruquiusweg 96F · by the water
             </div>
@@ -332,8 +332,15 @@ function WhyUs() {
         <div className="relative">
           <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-sage/25 blur-3xl" aria-hidden />
           <div className="rounded-[2rem] border border-border/60 bg-background/80 p-8 shadow-sm backdrop-blur sm:p-10">
-            <div className="text-sm font-medium text-foreground">What that looks like</div>
-            <ul className="mt-5 flex flex-wrap gap-2">
+            <div className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
+              In the neighbourhood
+            </div>
+            <p className="mt-3 text-[15.5px] leading-relaxed text-foreground/85">
+              A small studio you'll get to know quickly — familiar faces at the
+              door, calm teachers on the mat, and a room that feels like a
+              little exhale from the city.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
               {WHY_POINTS.map((p) => (
                 <li
                   key={p}
@@ -608,17 +615,17 @@ function Location() {
 function FinalCTA() {
   return (
     <section className="px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-primary px-8 py-20 text-center text-primary-foreground shadow-xl sm:px-12 md:py-24">
+      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-border/50 bg-primary/95 px-8 py-16 text-center text-primary-foreground shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)] sm:px-12 md:py-20">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-clay/25 blur-3xl"
+          className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-clay/15 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-sage/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-sage/15 blur-3xl"
         />
         <div className="relative">
-          <h2 className="mx-auto max-w-3xl font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-[3.5rem]">
+          <h2 className="mx-auto max-w-3xl font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-[3.25rem]">
             Start where you are.
             <br />
             <span className="italic text-primary-foreground/90">
@@ -628,19 +635,19 @@ function FinalCTA() {
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
             Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different
             classes, find what fits your week, and take the first step toward
-            feeling calmer, stronger and more at home in your body.
+            feeling calmer, more confident and more at home in your body.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={INTRO_URL}
-              className="inline-flex items-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 sm:w-auto"
             >
               Start with 14 days unlimited
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
               to="/pricing"
-              className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-4 text-base font-medium text-primary-foreground hover:bg-primary-foreground/10"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-4 text-base font-medium text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto"
             >
               View pricing
             </Link>
