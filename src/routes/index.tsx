@@ -23,11 +23,11 @@ export const Route = createFileRoute("/")({
         content:
           "Calm, down-to-earth yoga in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga.",
       },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: "/hero.jpg" },
-      { name: "twitter:image", content: "/hero.jpg" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/" },
+      { property: "og:image", content: "https://www.yogazeeburg.com/hero.jpg" },
+      { name: "twitter:image", content: "https://www.yogazeeburg.com/hero.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -45,8 +45,9 @@ export const Route = createFileRoute("/")({
             addressCountry: "NL",
           },
           areaServed: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
-          url: "/",
-          image: "/hero.jpg",
+          url: "https://www.yogazeeburg.com/",
+          image: "https://www.yogazeeburg.com/hero.jpg",
+          email: "hello@yogazeeburg.com",
         }),
       },
     ],
@@ -212,8 +213,8 @@ const INTRO_STEPS = [
   },
   {
     label: "Step 3",
-    title: "Discover what fits your week",
-    body: "See when yoga slots naturally into your rhythm — mornings, evenings, mid-week reset.",
+    title: "Discover what fits your routine",
+    body: "After 14 days, choose the rhythm that makes sense for your life.",
   },
 ];
 
@@ -269,7 +270,7 @@ function IntroPass() {
                 <ArrowRight className="h-4 w-4" />
               </a>
               <p className="text-sm text-muted-foreground">
-                Easy way to start · stops automatically · no hidden subscription
+                Easy first step · stops automatically · no hidden subscription
               </p>
             </div>
           </div>
@@ -364,19 +365,19 @@ function WhyUs() {
 const DIRECTIONS = [
   {
     q: "Need to slow down?",
-    a: "Gentle, grounding classes to unwind your nervous system and downshift after work.",
+    a: "Gentle, grounding classes for when your head is full and your body needs to exhale.",
   },
   {
     q: "Want to move?",
-    a: "Stronger, flowing classes to build energy, focus and a bit of healthy sweat.",
+    a: "More active classes for energy, focus and a healthy sweat.",
   },
   {
     q: "Feeling stiff?",
-    a: "Targeted mobility and release for tight hips, shoulders and lower back.",
+    a: "Slower sessions to release tension and create more space in your body.",
   },
   {
     q: "New to yoga?",
-    a: "Beginner-friendly classes with clear guidance — a soft place to begin.",
+    a: "Beginner-friendly guidance, clear descriptions and no pressure to perform.",
   },
 ];
 
@@ -439,6 +440,9 @@ function PricingTeaser() {
             <h2 className="mt-4 font-display text-[2rem] leading-[1.08] text-foreground sm:text-4xl md:text-[2.75rem]">
               The more yoga becomes part of your week, the better the value gets.
             </h2>
+            <p className="mt-6 max-w-2xl font-display text-2xl italic leading-snug text-primary sm:text-[1.75rem]">
+              A single class can help for a day. A routine can change your week.
+            </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Start with the Intro Pass, then choose the routine that fits your
               life. Regular memberships are designed for people who want yoga
