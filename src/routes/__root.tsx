@@ -90,8 +90,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Yoga Zeeburg | Down-to-Earth Yoga in Amsterdam East" },
       { property: "og:description", content: "Yoga Zeeburg is a calm, down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga and build a routine that fits your life." },
       { name: "twitter:description", content: "Yoga Zeeburg is a calm, down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga and build a routine that fits your life." },
-      { property: "og:image", content: "/hero.jpg" },
-      { name: "twitter:image", content: "/hero.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
