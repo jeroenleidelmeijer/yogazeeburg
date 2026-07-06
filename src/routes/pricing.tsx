@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Check, Sparkles, Mail } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
@@ -19,6 +19,8 @@ const SPORTBIT_10_CLASS_PASS_URL = "# TODO";
 const SPORTBIT_SINGLE_CLASS_URL = "# TODO";
 
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
+const PAY_IN_FULL_PRICE = "€699";
+const SPORTBIT_PAY_IN_FULL_URL = "# TODO";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -410,7 +412,7 @@ const REGULAR_PLANS: RegularPlan[] = [
 
 function RegularMemberships() {
   return (
-    <section className="px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+    <section id="four-week-memberships" className="px-4 py-24 sm:px-6 md:py-32 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
@@ -492,24 +494,56 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
    ------------------------------------------------------------------ */
 function PayInFullNote() {
   return (
-    <section className="px-4 pb-16 sm:px-6 md:pb-24 lg:px-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="flex flex-col gap-3 rounded-2xl border border-dashed border-border/60 bg-secondary/30 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+    <section className="bg-primary px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
           <div>
-            <h3 className="font-display text-base text-foreground">
-              Prefer to pay once and be done?
-            </h3>
-            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              Annual Pay-in-Full options are being finalised. They will be useful if you already know you want a full year of yoga and prefer one clean payment instead of four-weekly payments.
+            <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
+              Best annual value
+            </span>
+            <h2 className="mt-4 font-display text-[2rem] leading-[1.05] text-primary-foreground sm:text-4xl md:text-[2.75rem]">
+              Pay once. Practice all year.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/85">
+              Make Yoga Zeeburg part of your week without thinking about 4-week payments. Yoga Plus Annual Pay-in-Full is built for a steady twice-a-week rhythm: enough to feel the difference, simple enough to keep up.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-primary-foreground/70">
+              A clear commitment to your routine — and the best value if you know you want to keep showing up.
             </p>
           </div>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
-          >
-            <Mail className="h-4 w-4" />
-            Ask about Pay-in-Full
-          </a>
+
+          <div className="rounded-[1.75rem] border border-primary-foreground/15 bg-primary-foreground/10 p-7 sm:p-8">
+            <h3 className="font-display text-xl text-primary-foreground">Yoga Plus Annual</h3>
+            <div className="mt-5 flex items-baseline gap-2">
+              <span className="font-display text-[2.5rem] leading-none text-primary-foreground">
+                {PAY_IN_FULL_PRICE}
+              </span>
+              <span className="text-base text-primary-foreground/80">/ year</span>
+            </div>
+            <div className="mt-3 space-y-1 text-sm text-primary-foreground/75">
+              <p>One upfront payment</p>
+              <p>Ideal for 2 classes per week</p>
+              <p>Around €6.72 per class when coming twice per week</p>
+            </div>
+            <div className="mt-7 flex flex-col gap-3">
+              <a
+                href={SPORTBIT_PAY_IN_FULL_URL}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-clay px-6 py-3.5 text-[15px] font-medium text-clay-foreground shadow-sm transition-colors hover:bg-clay/90"
+              >
+                Choose Pay-in-Full
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#four-week-memberships"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+              >
+                Compare all memberships
+              </a>
+            </div>
+            <p className="mt-5 text-xs leading-relaxed text-primary-foreground/60">
+              For direct Yoga Zeeburg members. New students can start with the Intro Pass first. Terms and pause options are shown before checkout.
+            </p>
+          </div>
         </div>
       </div>
     </section>
