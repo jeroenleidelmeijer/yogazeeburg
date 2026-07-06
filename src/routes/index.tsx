@@ -615,17 +615,17 @@ function Location() {
 function FinalCTA() {
   return (
     <section className="px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-primary px-8 py-20 text-center text-primary-foreground shadow-xl sm:px-12 md:py-24">
+      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-border/50 bg-primary/95 px-8 py-16 text-center text-primary-foreground shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)] sm:px-12 md:py-20">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-clay/25 blur-3xl"
+          className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-clay/15 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-sage/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-sage/15 blur-3xl"
         />
         <div className="relative">
-          <h2 className="mx-auto max-w-3xl font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-[3.5rem]">
+          <h2 className="mx-auto max-w-3xl font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-[3.25rem]">
             Start where you are.
             <br />
             <span className="italic text-primary-foreground/90">
@@ -635,19 +635,19 @@ function FinalCTA() {
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
             Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different
             classes, find what fits your week, and take the first step toward
-            feeling calmer, stronger and more at home in your body.
+            feeling calmer, more confident and more at home in your body.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={INTRO_URL}
-              className="inline-flex items-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 sm:w-auto"
             >
               Start with 14 days unlimited
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
               to="/pricing"
-              className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-4 text-base font-medium text-primary-foreground hover:bg-primary-foreground/10"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-4 text-base font-medium text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto"
             >
               View pricing
             </Link>
