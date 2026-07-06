@@ -213,7 +213,7 @@ const ANNUAL_PLANS: AnnualPlan[] = [
     priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€11.31" }],
     routine: "Best for one steady weekly reset.",
-    firstYear: "€588 first-year total",
+    firstYear: "€588 first-year total after free period",
     usage: "52 classes/year",
     cta: "Choose Weekly Annual",
     href: SPORTBIT_WEEKLY_ANNUAL_URL,
@@ -225,7 +225,7 @@ const ANNUAL_PLANS: AnnualPlan[] = [
     priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€7.96" }],
     routine: "The better-value upgrade if you want yoga to become part of your week.",
-    firstYear: "€828 first-year total",
+    firstYear: "€828 first-year total after free period",
     usage: "104 classes/year",
     cta: "Choose Yoga Plus Annual",
     href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
@@ -241,7 +241,7 @@ const ANNUAL_PLANS: AnnualPlan[] = [
       { label: "per class at 4×/week", value: "€5.13" },
     ],
     routine: "Best for 3+ times per week.",
-    firstYear: "€1068 first-year total",
+    firstYear: "€1068 first-year total after free period",
     usage: "156 classes/year at 3×/week",
     cta: "Choose Unlimited Annual",
     href: SPORTBIT_UNLIMITED_ANNUAL_URL,
@@ -590,7 +590,7 @@ const FLEX_PLANS: FlexPlan[] = [
 
 function FlexibleOptions() {
   return (
-    <section className="px-4 pb-24 sm:px-6 md:pb-32 lg:px-8">
+    <section className="px-4 pt-12 pb-24 sm:px-6 md:pt-16 md:pb-32 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
