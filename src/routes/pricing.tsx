@@ -239,8 +239,8 @@ const ANNUAL_PLANS: AnnualPlan[] = [
 ];
 
 const ANNUAL_TERMS = [
+  "Paid every 4 weeks",
   "First 8 weeks free",
-  "Pay every 4 weeks",
   "One 4-week pause included",
   "Switch plan once in the first 8 weeks",
   "Continues every 4 weeks after the minimum commitment until cancelled",
