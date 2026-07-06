@@ -192,6 +192,8 @@ function IntroPass() {
 type AnnualPlan = {
   name: string;
   badge: string;
+  price: string;
+  priceSuffix: string;
   perClass: { label: string; value: string }[];
   routine: string;
   firstYear: string;
@@ -205,9 +207,11 @@ const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Weekly Annual",
     badge: "For one steady weekly reset",
+    price: "€49",
+    priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€10.37" }],
-    routine: "A simple rhythm if you want one calm reset every week.",
-    firstYear: "€539 first year",
+    routine: "Best for one steady weekly reset.",
+    firstYear: "€539 first-year value",
     usage: "52 classes/year",
     cta: "Choose Weekly Annual",
     href: SPORTBIT_WEEKLY_ANNUAL_URL,
@@ -215,9 +219,11 @@ const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Yoga Plus Annual",
     badge: "Recommended best value",
+    price: "€69",
+    priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€7.30" }],
-    routine: "The best place to land if you want yoga to become part of your week.",
-    firstYear: "€759 first year",
+    routine: "The best-value upgrade if you want yoga to become part of your week.",
+    firstYear: "€759 first-year value",
     usage: "104 classes/year",
     cta: "Choose Yoga Plus Annual",
     href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
@@ -226,12 +232,14 @@ const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Unlimited Annual",
     badge: "For 3+ times per week",
+    price: "€89",
+    priceSuffix: "every 4 weeks",
     perClass: [
       { label: "per class at 3×/week", value: "€6.28" },
       { label: "per class at 4×/week", value: "€4.71" },
     ],
-    routine: "For people who want yoga several times per week.",
-    firstYear: "€979 first year",
+    routine: "Best for 3+ times per week.",
+    firstYear: "€979 first-year value",
     usage: "156 classes/year at 3×/week",
     cta: "Choose Unlimited Annual",
     href: SPORTBIT_UNLIMITED_ANNUAL_URL,
