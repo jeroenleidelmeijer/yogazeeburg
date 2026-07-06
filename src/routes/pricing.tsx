@@ -301,7 +301,7 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       }
     >
       {recommended && (
-        <span className="absolute -top-3 left-7 inline-flex items-center gap-1.1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
+        <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
           <Sparkles className="h-3 w-3" />
           Recommended best value
         </span>
