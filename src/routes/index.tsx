@@ -96,9 +96,10 @@ function Hero() {
             <span className="text-primary italic">That's probably why you need it.</span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Down-to-earth yoga in Amsterdam East, by the water in Zeeburg and
-            Cruquius. Move, breathe, release tension — and build a simple
-            routine that actually fits your life.
+            For weeks that feel too full, shoulders that won't unclench, and a
+            head that won't switch off. A calm, down-to-earth yoga studio in
+            Amsterdam East — by the water in Zeeburg and Cruquius — where you
+            move, breathe, release tension and land back in your body.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
