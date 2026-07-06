@@ -24,8 +24,6 @@ export const Route = createFileRoute("/")({
           "Calm, down-to-earth yoga in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga.",
       },
       { property: "og:url", content: "https://www.yogazeeburg.com/" },
-      { property: "og:image", content: "https://www.yogazeeburg.com/hero.jpg" },
-      { name: "twitter:image", content: "https://www.yogazeeburg.com/hero.jpg" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/" }],
     scripts: [
@@ -46,7 +44,6 @@ export const Route = createFileRoute("/")({
           },
           areaServed: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
           url: "https://www.yogazeeburg.com/",
-          image: "https://www.yogazeeburg.com/hero.jpg",
           email: "hello@yogazeeburg.com",
         }),
       },
@@ -54,6 +51,7 @@ export const Route = createFileRoute("/")({
   }),
   component: HomePage,
 });
+
 
 function HomePage() {
   return (
@@ -75,75 +73,61 @@ function HomePage() {
 }
 
 /* ============================================================
-   HERO — editorial, single strong promise
+   HERO — editorial, typography-led. No stock image.
    ============================================================ */
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* soft warm glow backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-sage)_18%,transparent),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[80%] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-sage)_18%,transparent),transparent_70%)]"
       />
-      <div className="mx-auto grid max-w-6xl gap-14 px-4 pb-24 pt-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:gap-16 md:pb-32 md:pt-24 lg:px-8">
-        <div className="flex flex-col justify-center">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-clay" />
-            Yoga Zeeburg · Amsterdam East
-          </span>
-          <h1 className="mt-7 font-display text-[2.75rem] leading-[1.03] tracking-tight text-foreground sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem]">
-            Too busy for yoga?{" "}
-            <span className="text-primary italic">That's probably why you need it.</span>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            For weeks that feel too full, shoulders that won't unclench, and a
-            head that won't switch off. A calm, down-to-earth yoga studio in
-            Amsterdam East — by the water in Zeeburg and Cruquius — where you
-            move, breathe, release tension and land back in your body.
-          </p>
-          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <a
-              href={INTRO_URL}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
-            >
-              Start with 14 days unlimited
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <Link
-              to="/pricing"
-              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-medium text-foreground underline-offset-4 hover:underline"
-            >
-              View pricing
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <p className="mt-5 text-sm text-muted-foreground">
-            14-Day Unlimited Intro Pass · stops automatically · new students only
-          </p>
+      <div className="mx-auto max-w-4xl px-4 pb-20 pt-12 text-center sm:px-6 md:pb-28 md:pt-20 lg:px-8">
+        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground backdrop-blur">
+          <span className="h-1.5 w-1.5 rounded-full bg-clay" />
+          Yoga Zeeburg · Amsterdam East
+        </span>
+        <h1 className="mx-auto mt-7 max-w-4xl font-display text-[2.5rem] leading-[1.05] tracking-tight text-foreground sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem]">
+          Too busy for yoga?{" "}
+          <span className="text-primary italic">That's probably why you need it.</span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
+          For weeks that feel too full, shoulders that won't unclench, and a
+          head that won't switch off. A calm, down-to-earth yoga studio in
+          Amsterdam East where you move, breathe and land back in your body.
+        </p>
+        <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
+          <a
+            href={INTRO_URL}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+          >
+            Start with 14 days unlimited
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <Link
+            to="/pricing"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            View pricing
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
-
-        {/* Hero image — softer, more integrated frame */}
-        <div className="relative">
-          <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-sage/15 blur-2xl" aria-hidden />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/50 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)]">
-            <img
-              src="/hero.jpg"
-              alt="Warm morning light on the water — Yoga Zeeburg in Amsterdam East"
-              className="h-full w-full object-cover"
-              width={1600}
-              height={1008}
-            />
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/25 to-transparent" aria-hidden />
-            <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-background/85 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur">
-              <MapPin className="h-3.5 w-3.5 text-primary" />
-              Cruquiusweg 96F · by the water
-            </div>
-          </div>
+        <p className="mt-5 text-sm text-muted-foreground">
+          14-Day Unlimited Intro Pass · stops automatically · new students only
+        </p>
+        <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5">
+            <MapPin className="h-3.5 w-3.5 text-primary" />
+            Cruquiusweg 96F · by the water
+          </span>
+          <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+          <span>Small, personal studio · beginner-friendly</span>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ============================================================
    BENEFITS — editorial numbered list, not tiny cards
@@ -470,12 +454,12 @@ function PricingTeaser() {
 }
 
 /* ============================================================
-   LOCATION — warm local advantage, image + stylized map
+   LOCATION — clean, trustworthy location card. No fake map.
    ============================================================ */
 function Location() {
   return (
     <section className="bg-[color-mix(in_oklab,var(--color-sage)_10%,var(--color-background))] px-4 py-24 sm:px-6 md:py-32 lg:px-8">
-      <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-2 md:gap-20">
+      <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-[1fr_1fr] md:items-center md:gap-20">
         <div>
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
             Find us
@@ -489,21 +473,30 @@ function Location() {
             the water in the Eastern Docklands. Easy to reach, easy to leave
             the day behind.
           </p>
-          <address className="mt-8 text-base not-italic">
-            <div className="font-display text-2xl text-foreground">Yoga Zeeburg</div>
-            <div className="mt-1 text-foreground/85">Cruquiusweg 96F</div>
-            <div className="text-foreground/85">1019 AH Amsterdam</div>
+        </div>
+
+        <div className="rounded-[2rem] border border-border/60 bg-background/90 p-8 shadow-sm backdrop-blur sm:p-10">
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-clay">
+            <MapPin className="h-3.5 w-3.5" />
+            Studio address
+          </div>
+          <address className="mt-5 not-italic">
+            <div className="font-display text-[1.75rem] leading-tight text-foreground">
+              Yoga Zeeburg
+            </div>
+            <div className="mt-3 text-lg text-foreground/90">Cruquiusweg 96F</div>
+            <div className="text-lg text-foreground/90">1019 AH Amsterdam</div>
           </address>
+          <div className="mt-6 space-y-1.5 text-[15px] text-muted-foreground">
+            <div>Above CrossFit Zeeburg</div>
+            <div>By the water in Cruquius</div>
+          </div>
           <ul className="mt-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
-            {[
-              "Amsterdam East",
-              "Zeeburg",
-              "Cruquius",
-              "Eastern Docklands",
-              "Above CrossFit Zeeburg",
-              "By the water",
-            ].map((t) => (
-              <li key={t} className="rounded-full border border-border bg-background px-3 py-1">
+            {["Amsterdam East", "Zeeburg", "Eastern Docklands"].map((t) => (
+              <li
+                key={t}
+                className="rounded-full border border-border bg-background px-3 py-1"
+              >
                 {t}
               </li>
             ))}
@@ -512,102 +505,17 @@ function Location() {
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 sm:w-auto"
           >
-            Get directions
-            <ArrowRight className="h-4 w-4" />
+            Open in Google Maps
+            <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
-
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative block overflow-hidden rounded-[2rem] border border-border/60 shadow-sm"
-          aria-label="Open directions to Cruquiusweg 96F, Amsterdam"
-          style={{ backgroundColor: "#eef1e8" }}
-        >
-          <div className="aspect-[4/5] w-full md:aspect-[5/6]">
-            <svg viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
-              {/* Land base (warm off-white) */}
-              <rect width="400" height="480" fill="#efeee6" />
-
-              {/* Water — IJ / Buiten-IJ across the top, harbour basins,
-                  Nieuwevaart canal beside the pin, and pockets to the SE */}
-              <g fill="#cfe2e6">
-                {/* Top: IJ / Buiten-IJ */}
-                <path d="M0,0 L400,0 L400,150 C 330,165 260,120 190,140 C 120,158 60,120 0,140 Z" />
-                {/* Harbour inlet dipping south (Oostelijk Havengebied basin) */}
-                <path d="M60,140 C 80,190 130,200 150,235 C 165,260 130,260 100,255 C 70,250 55,220 55,190 Z" />
-                {/* Nieuwevaart canal — runs east-west just above the pin */}
-                <path d="M0,258 C 90,246 180,254 260,250 C 320,247 360,252 400,248 L400,268 C 360,272 320,266 260,270 C 180,274 90,266 0,278 Z" />
-                {/* Small basin north-east of pin (near Camping Zeeburg) */}
-                <path d="M300,205 C 335,205 355,225 350,250 C 345,270 315,270 300,255 C 290,240 285,215 300,205 Z" />
-                {/* South-east water pocket (Amsterdam-Rijnkanaal hint) */}
-                <path d="M330,360 C 370,355 400,370 400,410 L400,480 L320,480 C 310,440 300,395 330,360 Z" />
-                {/* Small pond bottom-left (Flevopark waters) */}
-                <path d="M85,405 C 115,400 135,420 130,438 C 122,455 95,455 85,440 C 78,428 78,412 85,405 Z" />
-              </g>
-
-              {/* Parks — subtle sage patches (Flevopark, Diemerpark hints) */}
-              <g fill="#d7e1c9" opacity="0.85">
-                <path d="M40,370 C 80,360 130,370 150,395 C 165,420 130,455 90,460 C 55,462 30,435 40,370 Z" />
-                <path d="M260,390 C 300,385 335,395 340,420 C 342,445 305,465 275,460 C 250,455 245,420 260,390 Z" />
-              </g>
-
-              {/* A10 ring road — soft curve on the right */}
-              <path d="M300,20 C 330,90 345,170 335,260 C 325,340 335,410 370,480"
-                fill="none" stroke="#e8c98a" strokeWidth="7" strokeLinecap="round" />
-              <path d="M300,20 C 330,90 345,170 335,260 C 325,340 335,410 370,480"
-                fill="none" stroke="#f2d9a5" strokeWidth="3" strokeLinecap="round" />
-
-              {/* Local roads — Cruquiusweg / Zeeburgerdijk / cross streets */}
-              <g fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round">
-                {/* Zeeburgerdijk — horizontal, south of pin */}
-                <path d="M0,315 C 90,310 180,318 260,312 C 310,308 360,316 400,312" />
-                {/* Cruquiusweg — the street of the pin */}
-                <path d="M0,295 C 90,285 180,292 260,286 C 310,283 360,290 400,286" />
-                {/* Cross street heading south */}
-                <path d="M175,286 L 190,470" />
-                {/* Cross street east */}
-                <path d="M230,283 L 250,470" />
-              </g>
-              <g fill="none" stroke="#e5e2d4" strokeWidth="1.5">
-                <path d="M0,315 C 90,310 180,318 260,312 C 310,308 360,316 400,312" />
-                <path d="M0,295 C 90,285 180,292 260,286 C 310,283 360,290 400,286" />
-                <path d="M175,286 L 190,470" />
-                <path d="M230,283 L 250,470" />
-              </g>
-
-              {/* Neighbourhood label */}
-              <text x="70" y="360" fill="#9a9585" fontSize="10" letterSpacing="2" fontFamily="ui-sans-serif, system-ui">
-                ZEEBURG
-              </text>
-              <text x="230" y="200" fill="#9a9585" fontSize="10" letterSpacing="2" fontFamily="ui-sans-serif, system-ui">
-                EASTERN DOCKLANDS
-              </text>
-            </svg>
-          </div>
-
-          {/* Pin overlay — positioned near where Cruquiusweg 96F would sit */}
-          <div className="pointer-events-none absolute left-[46%] top-[54%] flex -translate-x-1/2 -translate-y-full flex-col items-center gap-2">
-            <span className="rounded-full bg-background/95 px-3 py-1 text-xs font-medium text-foreground shadow-sm backdrop-blur">
-              Yoga Zeeburg
-            </span>
-            <span className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg ring-4 ring-background/70">
-              <MapPin className="h-5 w-5" />
-            </span>
-          </div>
-
-          <span className="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-background/95 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur transition-transform group-hover:translate-x-0.5">
-            Open in Maps
-            <ArrowRight className="h-3.5 w-3.5" />
-          </span>
-        </a>
       </div>
     </section>
   );
 }
+
 
 /* ============================================================
    FINAL CTA — warm invitation, not a loud banner
