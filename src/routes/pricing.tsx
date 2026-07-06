@@ -192,6 +192,8 @@ function IntroPass() {
 type AnnualPlan = {
   name: string;
   badge: string;
+  price: string;
+  priceSuffix: string;
   perClass: { label: string; value: string }[];
   routine: string;
   firstYear: string;
@@ -205,9 +207,11 @@ const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Weekly Annual",
     badge: "For one steady weekly reset",
+    price: "€49",
+    priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€10.37" }],
-    routine: "A simple rhythm if you want one calm reset every week.",
-    firstYear: "€539 first year",
+    routine: "Best for one steady weekly reset.",
+    firstYear: "€539 first-year value",
     usage: "52 classes/year",
     cta: "Choose Weekly Annual",
     href: SPORTBIT_WEEKLY_ANNUAL_URL,
@@ -215,9 +219,11 @@ const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Yoga Plus Annual",
     badge: "Recommended best value",
+    price: "€69",
+    priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€7.30" }],
-    routine: "The best place to land if you want yoga to become part of your week.",
-    firstYear: "€759 first year",
+    routine: "The best-value upgrade if you want yoga to become part of your week.",
+    firstYear: "€759 first-year value",
     usage: "104 classes/year",
     cta: "Choose Yoga Plus Annual",
     href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
@@ -226,12 +232,14 @@ const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Unlimited Annual",
     badge: "For 3+ times per week",
+    price: "€89",
+    priceSuffix: "every 4 weeks",
     perClass: [
       { label: "per class at 3×/week", value: "€6.28" },
       { label: "per class at 4×/week", value: "€4.71" },
     ],
-    routine: "For people who want yoga several times per week.",
-    firstYear: "€979 first year",
+    routine: "Best for 3+ times per week.",
+    firstYear: "€979 first-year value",
     usage: "156 classes/year at 3×/week",
     cta: "Choose Unlimited Annual",
     href: SPORTBIT_UNLIMITED_ANNUAL_URL,
@@ -239,8 +247,8 @@ const ANNUAL_PLANS: AnnualPlan[] = [
 ];
 
 const ANNUAL_TERMS = [
+  "Paid every 4 weeks",
   "First 8 weeks free",
-  "Pay every 4 weeks",
   "One 4-week pause included",
   "Switch plan once in the first 8 weeks",
   "Continues every 4 weeks after the minimum commitment until cancelled",
@@ -259,11 +267,10 @@ function AnnualRoutineBuilder() {
             Annual Routine Builder · Best value
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            The best value if you want yoga to become{" "}
-            <span className="text-primary italic">part of your week.</span>
+            Want the best first-year value? Choose Annual Routine Builder.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Commit to your routine for the year, keep paying every 4 weeks, and get the first 8 weeks free. You also get one included pause and one early plan switch, so the commitment stays clear without feeling rigid.
+            If you already know you want yoga to become part of your week, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for the year, get the first 8 weeks free, and keep a little flexibility with one included pause and one early plan switch.
           </p>
         </div>
 
@@ -310,23 +317,26 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
       <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
       <p className="mt-1 text-sm font-medium text-clay">{plan.badge}</p>
 
-      <div className="mt-5">
+      <div className="mt-5 flex items-baseline gap-2">
+        <span className="font-display text-[2.5rem] leading-none text-foreground">
+          {plan.price}
+        </span>
+        <span className="text-base text-muted-foreground">{plan.priceSuffix}</span>
+      </div>
+
+      <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+        <p>First 8 weeks free</p>
+        <p>{plan.firstYear}</p>
         {plan.perClass.map((pc) => (
-          <div key={pc.label} className="flex items-baseline gap-2">
-            <span className="font-display text-[2.5rem] leading-none text-foreground">
-              {pc.value}
-            </span>
-            <span className="text-sm text-muted-foreground">{pc.label}</span>
-          </div>
+          <p key={pc.label}>
+            {pc.value} {pc.label}
+          </p>
         ))}
+        <p>{plan.usage}</p>
       </div>
 
       <p className="mt-5 text-[15.5px] leading-relaxed text-foreground/85">
         {plan.routine}
-      </p>
-
-      <p className="mt-4 text-sm text-muted-foreground">
-        {plan.firstYear} · {plan.usage}
       </p>
 
       <div className="mt-auto pt-7">
@@ -387,11 +397,11 @@ const REGULAR_PLANS: RegularPlan[] = [
   },
   {
     name: "Unlimited Yoga",
-    perClass: "From €7.42 per class",
+    perClass: "€7.42 per class at 3×/week",
     price: "€89",
     priceSuffix: "every 4 weeks",
     classes: "Unlimited classes",
-    extraPerClass: "€7.42 at 3×/week · €5.56 at 4×/week",
+    extraPerClass: "€5.56 per class at 4×/week",
     bestFor: "Best for 3+ times per week.",
     cta: "Choose Unlimited Yoga",
     href: SPORTBIT_UNLIMITED_YOGA_URL,
@@ -407,10 +417,10 @@ function RegularMemberships() {
             4-week memberships
           </span>
           <h2 className="mt-5 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-            Prefer less commitment? Choose a 4-week membership.
+            Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Same simple routine, less commitment. These memberships continue every 4 weeks after the minimum period until cancelled.
+            Start with the membership that fits your week. If you already know you want yoga to become part of your year, the Annual Routine Builder below gives you better first-year value.
           </p>
         </div>
 
@@ -442,17 +452,15 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       )}
       <h3 className="font-display text-xl text-foreground">{plan.name}</h3>
 
-      <div className="mt-4">
+      <div className="mt-4 flex items-baseline gap-2">
         <span className="font-display text-[2.25rem] leading-none text-foreground">
-          {plan.perClass}
+          {plan.price}
         </span>
+        <span className="text-base text-muted-foreground">{plan.priceSuffix}</span>
       </div>
 
-      <div className="mt-4 flex items-baseline gap-2">
-        <span className="font-display text-2xl text-foreground">{plan.price}</span>
-        <span className="text-sm text-muted-foreground">{plan.priceSuffix}</span>
-      </div>
-      <p className="mt-1 text-sm text-muted-foreground">{plan.classes}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{plan.classes}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{plan.perClass}</p>
       {plan.extraPerClass && (
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
