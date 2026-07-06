@@ -442,17 +442,15 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       )}
       <h3 className="font-display text-xl text-foreground">{plan.name}</h3>
 
-      <div className="mt-4">
+      <div className="mt-4 flex items-baseline gap-2">
         <span className="font-display text-[2.25rem] leading-none text-foreground">
-          {plan.perClass}
+          {plan.price}
         </span>
+        <span className="text-base text-muted-foreground">{plan.priceSuffix}</span>
       </div>
 
-      <div className="mt-4 flex items-baseline gap-2">
-        <span className="font-display text-2xl text-foreground">{plan.price}</span>
-        <span className="text-sm text-muted-foreground">{plan.priceSuffix}</span>
-      </div>
-      <p className="mt-1 text-sm text-muted-foreground">{plan.classes}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{plan.classes}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{plan.perClass}</p>
       {plan.extraPerClass && (
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
