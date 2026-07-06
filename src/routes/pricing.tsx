@@ -423,7 +423,7 @@ function RegularMemberships() {
             Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Start with the membership that fits your week. If you already know you want yoga to become part of your year, the Annual Routine Builder below gives you better first-year value.
+            Start with the membership that fits your week. These memberships are paid every 4 weeks, with a minimum commitment of 3 periods of 4 weeks. They are the most flexible membership route, without the annual discount.
           </p>
         </div>
 
