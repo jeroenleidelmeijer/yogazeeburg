@@ -440,6 +440,9 @@ function PricingTeaser() {
             <h2 className="mt-4 font-display text-[2rem] leading-[1.08] text-foreground sm:text-4xl md:text-[2.75rem]">
               The more yoga becomes part of your week, the better the value gets.
             </h2>
+            <p className="mt-6 max-w-2xl font-display text-2xl italic leading-snug text-primary sm:text-[1.75rem]">
+              A single class can help for a day. A routine can change your week.
+            </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Start with the Intro Pass, then choose the routine that fits your
               life. Regular memberships are designed for people who want yoga
