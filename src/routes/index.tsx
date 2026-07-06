@@ -332,8 +332,15 @@ function WhyUs() {
         <div className="relative">
           <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-sage/25 blur-3xl" aria-hidden />
           <div className="rounded-[2rem] border border-border/60 bg-background/80 p-8 shadow-sm backdrop-blur sm:p-10">
-            <div className="text-sm font-medium text-foreground">What that looks like</div>
-            <ul className="mt-5 flex flex-wrap gap-2">
+            <div className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
+              In the neighbourhood
+            </div>
+            <p className="mt-3 text-[15.5px] leading-relaxed text-foreground/85">
+              A small studio you'll get to know quickly — familiar faces at the
+              door, calm teachers on the mat, and a room that feels like a
+              little exhale from the city.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
               {WHY_POINTS.map((p) => (
                 <li
                   key={p}
