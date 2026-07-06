@@ -55,8 +55,8 @@ function PricingPage() {
         <Hero />
         <IntroPass />
         <RegularMemberships />
-        <AnnualRoutineBuilder />
         <PayInFullNote />
+        <AnnualRoutineBuilder />
         <FlexibleOptions />
         <PlanChooser />
         <FAQ />
@@ -269,10 +269,10 @@ function AnnualRoutineBuilder() {
             Annual Routine Builder · Best value
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            Want the best first-year value? Choose Annual Routine Builder.
+            Want annual value, but keep paying every 4 weeks?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you already know you want yoga to become part of your week, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for the year, get the first 8 weeks free, and keep a little flexibility with one included pause and one early plan switch.
+            If you want yoga to become part of your year but do not want to pay everything upfront, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for the year, get the first 8 weeks free, and keep a little flexibility with one included pause and one early plan switch.
           </p>
         </div>
 
@@ -508,12 +508,12 @@ function PayInFullNote() {
               Make Yoga Zeeburg part of your week without thinking about 4-week payments. Yoga Plus Annual Pay-in-Full is built for a steady twice-a-week rhythm: enough to feel the difference, simple enough to keep up.
             </p>
             <p className="mt-4 text-base leading-relaxed text-primary-foreground/70">
-              A clear commitment to your routine — and the best value if you know you want to keep showing up.
+              A clear commitment to your routine — and the best value if you know you want to keep showing up twice a week.
             </p>
           </div>
 
           <div className="rounded-[1.75rem] border border-primary-foreground/15 bg-primary-foreground/10 p-7 sm:p-8">
-            <h3 className="font-display text-xl text-primary-foreground">Yoga Plus Annual</h3>
+            <h3 className="font-display text-xl text-primary-foreground">Yoga Plus Annual Pay-in-Full</h3>
             <div className="mt-5 flex items-baseline gap-2">
               <span className="font-display text-[2.5rem] leading-none text-primary-foreground">
                 {PAY_IN_FULL_PRICE}
@@ -641,11 +641,11 @@ function FlexibleOptions() {
    ------------------------------------------------------------------ */
 const CHOOSER = [
   { q: "New here?", a: "Start with the Intro Pass." },
-  { q: "Want the best first-year value?", a: "Choose Yoga Plus Annual." },
-  { q: "Want one steady reset each week?", a: "Choose Weekly Yoga." },
-  { q: "Want yoga to become part of your routine?", a: "Choose Yoga Plus." },
+  { q: "Want a simple weekly routine?", a: "Choose Yoga Plus." },
+  { q: "Want the best one-payment annual value?", a: "Choose Yoga Plus Annual Pay-in-Full." },
+  { q: "Want annual value but prefer paying every 4 weeks?", a: "Choose Yoga Plus Annual Routine Builder." },
   { q: "Coming 3+ times per week?", a: "Choose Unlimited Yoga." },
-  { q: "Need flexibility?", a: "Choose the 10-Class Pass." },
+  { q: "Need maximum flexibility?", a: "Choose the 10-Class Pass." },
 ];
 
 function PlanChooser() {
@@ -703,6 +703,11 @@ const FAQ_ITEMS = [
   {
     q: "Do memberships continue automatically?",
     a: "Yes. All memberships continue automatically after the minimum period until cancelled.",
+    highlight: true,
+  },
+  {
+    q: "What is the difference between Pay-in-Full and Annual Routine Builder?",
+    a: "Pay-in-Full is one upfront payment for Yoga Plus Annual. Annual Routine Builder is a yearly commitment where you keep paying every 4 weeks.",
     highlight: true,
   },
   {
