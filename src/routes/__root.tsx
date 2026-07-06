@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Yoga Zeeburg — Down-to-earth yoga studio in Amsterdam East" },
+      { title: "Yoga Zeeburg | Down-to-Earth Yoga in Amsterdam East" },
       {
         name: "description",
         content:
-          "A calm, down-to-earth yoga studio in Amsterdam East by the water. Start with 14 days unlimited yoga for €30.",
+          "Yoga Zeeburg is a calm, down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga and build a routine that fits your life.",
       },
       { property: "og:site_name", content: "Yoga Zeeburg" },
       { property: "og:type", content: "website" },

@@ -32,7 +32,7 @@ export function SiteFooter() {
         <div>
           <div className="text-sm font-medium text-foreground">Start</div>
           <p className="mt-3 text-sm text-muted-foreground">
-            14 days unlimited yoga for €30. Stops automatically.
+            Try 14 days of unlimited yoga. Stops automatically. New students only.
           </p>
           <a
             href={INTRO_URL}
