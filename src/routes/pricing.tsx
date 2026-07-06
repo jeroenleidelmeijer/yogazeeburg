@@ -706,6 +706,11 @@ const FAQ_ITEMS = [
     highlight: true,
   },
   {
+    q: "What is the difference between Pay-in-Full and Annual Routine Builder?",
+    a: "Pay-in-Full is one upfront payment for Yoga Plus Annual. Annual Routine Builder is a yearly commitment where you keep paying every 4 weeks.",
+    highlight: true,
+  },
+  {
     q: "Can I pause my annual membership?",
     a: "The Annual Routine Builder includes one 4-week pause.",
   },
