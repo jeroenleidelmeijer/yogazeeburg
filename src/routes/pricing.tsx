@@ -641,11 +641,11 @@ function FlexibleOptions() {
    ------------------------------------------------------------------ */
 const CHOOSER = [
   { q: "New here?", a: "Start with the Intro Pass." },
-  { q: "Want the best first-year value?", a: "Choose Yoga Plus Annual." },
-  { q: "Want one steady reset each week?", a: "Choose Weekly Yoga." },
-  { q: "Want yoga to become part of your routine?", a: "Choose Yoga Plus." },
+  { q: "Want a simple weekly routine?", a: "Choose Yoga Plus." },
+  { q: "Want the best one-payment annual value?", a: "Choose Yoga Plus Annual Pay-in-Full." },
+  { q: "Want annual value but prefer paying every 4 weeks?", a: "Choose Yoga Plus Annual Routine Builder." },
   { q: "Coming 3+ times per week?", a: "Choose Unlimited Yoga." },
-  { q: "Need flexibility?", a: "Choose the 10-Class Pass." },
+  { q: "Need maximum flexibility?", a: "Choose the 10-Class Pass." },
 ];
 
 function PlanChooser() {
