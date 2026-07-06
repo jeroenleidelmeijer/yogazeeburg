@@ -705,13 +705,18 @@ const FAQ_ITEMS = [
     a: "Yes. Check the class name and description before booking, and start with a class that fits how you feel today.",
   },
   {
-    q: "Do memberships continue automatically?",
-    a: "Yes. All memberships continue automatically after the minimum period until cancelled.",
+    q: "What is the minimum commitment for regular 4-week memberships?",
+    a: "Regular 4-week memberships have a minimum commitment of 3 periods of 4 weeks. After that, they continue every 4 weeks until cancelled.",
     highlight: true,
   },
   {
-    q: "What is the difference between Pay-in-Full and Annual Routine Builder?",
-    a: "Pay-in-Full is one upfront payment for Yoga Plus Annual. Annual Routine Builder is a yearly commitment where you keep paying every 4 weeks.",
+    q: "Do memberships continue automatically?",
+    a: "Yes. Regular memberships and Annual Routine Builder continue automatically after the minimum period until cancelled.",
+    highlight: true,
+  },
+  {
+    q: "What is the difference between Annual Routine Builder and Pay-in-Full?",
+    a: "Annual Routine Builder is a one-year commitment where you keep paying every 4 weeks and get the first 4 weeks free. Pay-in-Full is one upfront yearly payment for Yoga Plus Annual.",
     highlight: true,
   },
   {
