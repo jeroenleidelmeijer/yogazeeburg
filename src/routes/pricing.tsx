@@ -191,11 +191,11 @@ function IntroPass() {
    ------------------------------------------------------------------ */
 type AnnualPlan = {
   name: string;
-  price: string;
-  priceSuffix: string;
-  classes: string;
+  badge: string;
   perClass: { label: string; value: string }[];
-  bestFor: string;
+  routine: string;
+  firstYear: string;
+  usage: string;
   cta: string;
   href: string;
   recommended?: boolean;
@@ -204,35 +204,35 @@ type AnnualPlan = {
 const ANNUAL_PLANS: AnnualPlan[] = [
   {
     name: "Weekly Annual",
-    price: "€539",
-    priceSuffix: "first year",
-    classes: "52 classes / year",
+    badge: "For one steady weekly reset",
     perClass: [{ label: "per class", value: "€10.37" }],
-    bestFor: "Best for one steady weekly reset.",
+    routine: "A simple rhythm if you want one calm reset every week.",
+    firstYear: "€539 first year",
+    usage: "52 classes/year",
     cta: "Choose Weekly Annual",
     href: SPORTBIT_WEEKLY_ANNUAL_URL,
   },
   {
     name: "Yoga Plus Annual",
-    price: "€759",
-    priceSuffix: "first year",
-    classes: "104 classes / year",
+    badge: "Recommended best value",
     perClass: [{ label: "per class", value: "€7.30" }],
-    bestFor: "Best for two classes per week.",
+    routine: "The best place to land if you want yoga to become part of your week.",
+    firstYear: "€759 first year",
+    usage: "104 classes/year",
     cta: "Choose Yoga Plus Annual",
     href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
     recommended: true,
   },
   {
     name: "Unlimited Annual",
-    price: "€979",
-    priceSuffix: "first year",
-    classes: "156+ classes / year",
+    badge: "For 3+ times per week",
     perClass: [
       { label: "per class at 3×/week", value: "€6.28" },
       { label: "per class at 4×/week", value: "€4.71" },
     ],
-    bestFor: "Best for 3+ times per week.",
+    routine: "For people who want yoga several times per week.",
+    firstYear: "€979 first year",
+    usage: "156 classes/year at 3×/week",
     cta: "Choose Unlimited Annual",
     href: SPORTBIT_UNLIMITED_ANNUAL_URL,
   },
@@ -240,9 +240,9 @@ const ANNUAL_PLANS: AnnualPlan[] = [
 
 const ANNUAL_TERMS = [
   "First 8 weeks free",
+  "Pay every 4 weeks",
   "One 4-week pause included",
   "Switch plan once in the first 8 weeks",
-  "Best first-year value",
   "Continues every 4 weeks after the minimum commitment until cancelled",
 ];
 
@@ -263,10 +263,7 @@ function AnnualRoutineBuilder() {
             <span className="text-primary italic">part of your week.</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Commit for the year, get the first 8 weeks free, and keep a little
-            flexibility with one included pause and one early plan switch. The
-            more consistently you practice, the lower your effective price per
-            class becomes.
+            Commit to your routine for the year, keep paying every 4 weeks, and get the first 8 weeks free. You also get one included pause and one early plan switch, so the commitment stays clear without feeling rigid.
           </p>
         </div>
 
@@ -297,45 +294,39 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
   return (
     <div
       className={
-        "relative flex flex-col rounded-[1.75rem] border p-8 shadow-sm transition-colors " +
+        "relative flex flex-col rounded-[1.75rem] border p-7 shadow-sm transition-colors " +
         (recommended
-          ? "border-primary/40 bg-background md:-my-4 md:scale-[1.02]"
+          ? "border-primary/40 bg-background md:-my-3 md:scale-[1.02]"
           : "border-border/60 bg-background/80")
       }
     >
       {recommended && (
-        <span className="absolute -top-3 left-8 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
+        <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
           <Sparkles className="h-3 w-3" />
           Recommended best value
         </span>
       )}
-      <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
-      <div className="mt-4 flex items-baseline gap-2">
-        <span className="font-display text-4xl text-foreground">
-          {plan.price}
-        </span>
-        <span className="text-sm text-muted-foreground">
-          {plan.priceSuffix}
-        </span>
-      </div>
-      <p className="mt-1 text-sm text-muted-foreground">{plan.classes}</p>
 
-      <div className="mt-5 space-y-1.5 rounded-xl border border-border/70 bg-secondary/50 px-4 py-3">
+      <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
+      <p className="mt-1 text-sm font-medium text-clay">{plan.badge}</p>
+
+      <div className="mt-5">
         {plan.perClass.map((pc) => (
-          <div
-            key={pc.label}
-            className="flex items-baseline justify-between gap-3 text-[15px]"
-          >
-            <span className="text-muted-foreground">{pc.label}</span>
-            <span className="font-display text-lg text-foreground">
+          <div key={pc.label} className="flex items-baseline gap-2">
+            <span className="font-display text-[2.5rem] leading-none text-foreground">
               {pc.value}
             </span>
+            <span className="text-sm text-muted-foreground">{pc.label}</span>
           </div>
         ))}
       </div>
 
-      <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">
-        {plan.bestFor}
+      <p className="mt-5 text-[15.5px] leading-relaxed text-foreground/85">
+        {plan.routine}
+      </p>
+
+      <p className="mt-4 text-sm text-muted-foreground">
+        {plan.firstYear} · {plan.usage}
       </p>
 
       <div className="mt-auto pt-7">
@@ -361,10 +352,11 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
    ------------------------------------------------------------------ */
 type RegularPlan = {
   name: string;
+  perClass: string;
   price: string;
   priceSuffix: string;
   classes: string;
-  perClass: { label: string; value: string }[];
+  extraPerClass?: string;
   bestFor: string;
   cta: string;
   href: string;
@@ -374,34 +366,32 @@ type RegularPlan = {
 const REGULAR_PLANS: RegularPlan[] = [
   {
     name: "Weekly Yoga",
+    perClass: "€12.25 per class",
     price: "€49",
     priceSuffix: "every 4 weeks",
     classes: "4 classes every 4 weeks",
-    perClass: [{ label: "per class", value: "€12.25" }],
     bestFor: "Best for one steady weekly reset.",
     cta: "Choose Weekly Yoga",
     href: SPORTBIT_WEEKLY_YOGA_URL,
   },
   {
     name: "Yoga Plus",
+    perClass: "€8.63 per class",
     price: "€69",
     priceSuffix: "every 4 weeks",
     classes: "8 classes every 4 weeks",
-    perClass: [{ label: "per class", value: "€8.63" }],
-    bestFor: "Best value for most regular students. Recommended for building a routine.",
+    bestFor: "Recommended for building a routine.",
     cta: "Choose Yoga Plus",
     href: SPORTBIT_YOGA_PLUS_URL,
     recommended: true,
   },
   {
     name: "Unlimited Yoga",
+    perClass: "From €7.42 per class",
     price: "€89",
     priceSuffix: "every 4 weeks",
     classes: "Unlimited classes",
-    perClass: [
-      { label: "per class at 3×/week", value: "€7.42" },
-      { label: "per class at 4×/week", value: "€5.56" },
-    ],
+    extraPerClass: "€7.42 at 3×/week · €5.56 at 4×/week",
     bestFor: "Best for 3+ times per week.",
     cta: "Choose Unlimited Yoga",
     href: SPORTBIT_UNLIMITED_YOGA_URL,
@@ -417,12 +407,10 @@ function RegularMemberships() {
             4-week memberships
           </span>
           <h2 className="mt-5 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-            Prefer more flexibility? Choose a 4-week membership.
+            Prefer less commitment? Choose a 4-week membership.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Recurring memberships give you a simple rhythm without the annual
-            commitment. All memberships continue every 4 weeks after the
-            minimum period until cancelled.
+            Same simple routine, less commitment. These memberships continue every 4 weeks after the minimum period until cancelled.
           </p>
         </div>
 
@@ -453,31 +441,23 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
         </span>
       )}
       <h3 className="font-display text-xl text-foreground">{plan.name}</h3>
-      <div className="mt-3 flex items-baseline gap-2">
-        <span className="font-display text-3xl text-foreground">
-          {plan.price}
+
+      <div className="mt-4">
+        <span className="font-display text-[2.25rem] leading-none text-foreground">
+          {plan.perClass}
         </span>
-        <span className="text-sm text-muted-foreground">
-          {plan.priceSuffix}
-        </span>
+      </div>
+
+      <div className="mt-4 flex items-baseline gap-2">
+        <span className="font-display text-2xl text-foreground">{plan.price}</span>
+        <span className="text-sm text-muted-foreground">{plan.priceSuffix}</span>
       </div>
       <p className="mt-1 text-sm text-muted-foreground">{plan.classes}</p>
+      {plan.extraPerClass && (
+        <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
+      )}
 
-      <div className="mt-4 space-y-1.5">
-        {plan.perClass.map((pc) => (
-          <div
-            key={pc.label}
-            className="flex items-baseline justify-between gap-3 text-[14.5px]"
-          >
-            <span className="text-muted-foreground">{pc.label}</span>
-            <span className="font-display text-base text-foreground">
-              {pc.value}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <p className="mt-5 text-[14.5px] leading-relaxed text-foreground/85">
+      <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">
         {plan.bestFor}
       </p>
 
@@ -504,25 +484,25 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
    ------------------------------------------------------------------ */
 function PayInFullNote() {
   return (
-    <section className="px-4 pb-20 sm:px-6 md:pb-24 lg:px-8">
-      <div className="mx-auto flex max-w-4xl flex-col gap-4 rounded-2xl border border-dashed border-border/70 bg-secondary/40 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <div>
-          <h3 className="font-display text-lg text-foreground">
-            Prefer to pay once and be done?
-          </h3>
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-            Annual Pay-in-Full options are being finalised. They will be the
-            cleanest option if you want a full year of yoga without four-weekly
-            payments.
-          </p>
+    <section className="px-4 pb-16 sm:px-6 md:pb-24 lg:px-8">
+      <div className="mx-auto max-w-4xl">
+        <div className="flex flex-col gap-3 rounded-2xl border border-dashed border-border/60 bg-secondary/30 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <div>
+            <h3 className="font-display text-base text-foreground">
+              Prefer to pay once and be done?
+            </h3>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Annual Pay-in-Full options are being finalised. They will be useful if you already know you want a full year of yoga and prefer one clean payment instead of four-weekly payments.
+            </p>
+          </div>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
+          >
+            <Mail className="h-4 w-4" />
+            Ask about Pay-in-Full
+          </a>
         </div>
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
-        >
-          <Mail className="h-4 w-4" />
-          Ask about Pay-in-Full
-        </a>
       </div>
     </section>
   );
@@ -533,9 +513,9 @@ function PayInFullNote() {
    ------------------------------------------------------------------ */
 type FlexPlan = {
   name: string;
+  perClass: string;
   price: string;
   meta: string;
-  perClass: string;
   bestFor: string;
   cta: string;
   href: string;
@@ -544,18 +524,18 @@ type FlexPlan = {
 const FLEX_PLANS: FlexPlan[] = [
   {
     name: "10-Class Pass",
+    perClass: "€18 per class",
     price: "€180",
     meta: "10 classes · valid 3 months",
-    perClass: "€18 per class",
     bestFor: "Good if your schedule changes a lot.",
     cta: "Choose 10-Class Pass",
     href: SPORTBIT_10_CLASS_PASS_URL,
   },
   {
     name: "Single Class",
-    price: "€25",
-    meta: "One class · maximum flexibility",
     perClass: "€25 per class",
+    price: "€25",
+    meta: "One class",
     bestFor: "Good for one-off visits.",
     cta: "Book single class",
     href: SPORTBIT_SINGLE_CLASS_URL,
@@ -591,13 +571,12 @@ function FlexibleOptions() {
                 </h3>
                 <div className="mt-1 flex flex-wrap items-baseline gap-x-3">
                   <span className="font-display text-2xl text-foreground">
-                    {p.price}
-                  </span>
-                  <span className="text-sm text-muted-foreground">
                     {p.perClass}
                   </span>
                 </div>
-                <p className="mt-1 text-sm text-muted-foreground">{p.meta}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {p.price} · {p.meta}
+                </p>
                 <p className="mt-2 text-sm text-foreground/85">{p.bestFor}</p>
               </div>
               <a
@@ -616,7 +595,7 @@ function FlexibleOptions() {
 }
 
 /* ------------------------------------------------------------------
-   PLAN CHOOSER
+    PLAN CHOOSER
    ------------------------------------------------------------------ */
 const CHOOSER = [
   { q: "New here?", a: "Start with the Intro Pass." },
@@ -636,10 +615,10 @@ function PlanChooser() {
             Not sure?
           </span>
           <h2 className="mt-5 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-            Not sure what to choose?
+            Still unsure? Here’s the simple version.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            A simple map from where you are today to the plan that fits.
+            Most people do not need every option. They need the next right step.
           </p>
         </div>
 
@@ -682,6 +661,7 @@ const FAQ_ITEMS = [
   {
     q: "Do memberships continue automatically?",
     a: "Yes. All memberships continue automatically after the minimum period until cancelled.",
+    highlight: true,
   },
   {
     q: "Can I pause my annual membership?",
@@ -714,13 +694,24 @@ function FAQ() {
           </h2>
         </div>
 
-        <dl className="mt-12 divide-y divide-border/70 border-y border-border/70">
-          {FAQ_ITEMS.map((f) => (
-            <div key={f.q} className="py-6">
-              <dt className="font-display text-lg text-foreground md:text-xl">
+        <dl className="mt-14 space-y-0">
+          {FAQ_ITEMS.map((f, i) => (
+            <div
+              key={f.q}
+              className={
+                "border-t border-border/70 py-8 " +
+                (i === FAQ_ITEMS.length - 1 ? "border-b" : "")
+              }
+            >
+              <dt className="font-display text-xl text-foreground md:text-2xl">
                 {f.q}
               </dt>
-              <dd className="mt-2 text-[15.5px] leading-relaxed text-muted-foreground">
+              <dd className={
+                "mt-3 text-base leading-relaxed " +
+                (f.highlight
+                  ? "rounded-xl bg-secondary/60 px-5 py-4 text-foreground/90"
+                  : "text-muted-foreground")
+              }>
                 {f.a}
               </dd>
             </div>
