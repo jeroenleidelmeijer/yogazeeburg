@@ -397,11 +397,11 @@ const REGULAR_PLANS: RegularPlan[] = [
   },
   {
     name: "Unlimited Yoga",
-    perClass: "From €7.42 per class",
+    perClass: "€7.42 per class at 3×/week",
     price: "€89",
     priceSuffix: "every 4 weeks",
     classes: "Unlimited classes",
-    extraPerClass: "€7.42 at 3×/week · €5.56 at 4×/week",
+    extraPerClass: "€5.56 per class at 4×/week",
     bestFor: "Best for 3+ times per week.",
     cta: "Choose Unlimited Yoga",
     href: SPORTBIT_UNLIMITED_YOGA_URL,
