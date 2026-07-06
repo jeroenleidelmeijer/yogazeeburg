@@ -259,11 +259,10 @@ function AnnualRoutineBuilder() {
             Annual Routine Builder · Best value
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            The best value if you want yoga to become{" "}
-            <span className="text-primary italic">part of your week.</span>
+            Want the best first-year value? Choose Annual Routine Builder.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Commit to your routine for the year, keep paying every 4 weeks, and get the first 8 weeks free. You also get one included pause and one early plan switch, so the commitment stays clear without feeling rigid.
+            If you already know you want yoga to become part of your week, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for the year, get the first 8 weeks free, and keep a little flexibility with one included pause and one early plan switch.
           </p>
         </div>
 
