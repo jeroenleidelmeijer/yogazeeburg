@@ -23,11 +23,11 @@ export const Route = createFileRoute("/")({
         content:
           "Calm, down-to-earth yoga in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga.",
       },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: "/hero.jpg" },
-      { name: "twitter:image", content: "/hero.jpg" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/" },
+      { property: "og:image", content: "https://www.yogazeeburg.com/hero.jpg" },
+      { name: "twitter:image", content: "https://www.yogazeeburg.com/hero.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/" }],
     scripts: [
       {
         type: "application/ld+json",
