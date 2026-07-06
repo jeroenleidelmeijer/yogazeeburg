@@ -17,12 +17,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
-      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary font-display text-lg text-primary-foreground">
+      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-5 sm:px-6 md:py-6 lg:px-8">
+        <Link to="/" className="flex min-w-0 items-center gap-3">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary font-display text-xl text-primary-foreground">
             y
           </span>
-          <span className="truncate font-display text-lg font-medium tracking-tight text-foreground">
+          <span className="truncate font-display text-xl font-medium tracking-tight text-foreground md:text-[1.375rem]">
             Yoga Zeeburg
           </span>
         </Link>
@@ -32,7 +32,7 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              className="rounded-md px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-md px-3.5 py-2 text-[15px] text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
               activeProps={{ className: "text-foreground font-medium" }}
             >
               {item.label}
@@ -40,7 +40,7 @@ export function SiteHeader() {
           ))}
           <a
             href={INTRO_URL}
-            className="ml-2 inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            className="ml-3 inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-[15px] font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start Intro Pass
           </a>
