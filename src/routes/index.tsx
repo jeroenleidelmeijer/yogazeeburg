@@ -213,8 +213,8 @@ const INTRO_STEPS = [
   },
   {
     label: "Step 3",
-    title: "Discover what fits your week",
-    body: "See when yoga slots naturally into your rhythm — mornings, evenings, mid-week reset.",
+    title: "Discover what fits your routine",
+    body: "After 14 days, choose the rhythm that makes sense for your life.",
   },
 ];
 
