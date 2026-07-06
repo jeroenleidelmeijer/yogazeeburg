@@ -762,12 +762,7 @@ function FAQ() {
               <dt className="font-display text-xl text-foreground md:text-2xl">
                 {f.q}
               </dt>
-              <dd className={
-                "mt-3 text-base leading-relaxed " +
-                (f.highlight
-                  ? "rounded-xl bg-secondary/60 px-5 py-4 text-foreground/90"
-                  : "text-muted-foreground")
-              }>
+              <dd className="mt-3 text-base leading-relaxed text-foreground">
                 {f.a}
               </dd>
             </div>
