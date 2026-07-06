@@ -365,19 +365,19 @@ function WhyUs() {
 const DIRECTIONS = [
   {
     q: "Need to slow down?",
-    a: "Gentle, grounding classes to unwind your nervous system and downshift after work.",
+    a: "Gentle, grounding classes for when your head is full and your body needs to exhale.",
   },
   {
     q: "Want to move?",
-    a: "Stronger, flowing classes to build energy, focus and a bit of healthy sweat.",
+    a: "More active classes for energy, focus and a healthy sweat.",
   },
   {
     q: "Feeling stiff?",
-    a: "Targeted mobility and release for tight hips, shoulders and lower back.",
+    a: "Slower sessions to release tension and create more space in your body.",
   },
   {
     q: "New to yoga?",
-    a: "Beginner-friendly classes with clear guidance — a soft place to begin.",
+    a: "Beginner-friendly guidance, clear descriptions and no pressure to perform.",
   },
 ];
 
