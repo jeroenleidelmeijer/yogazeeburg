@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as IndexRouteImport } from './routes/index'
@@ -16,6 +17,11 @@ import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } fr
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/schedule': typeof ScheduleRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/schedule': typeof ScheduleRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/schedule': typeof ScheduleRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/'
     | '/mcp'
     | '/pricing'
+    | '/schedule'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/'
     | '/mcp'
     | '/pricing'
+    | '/schedule'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/'
     | '/mcp'
     | '/pricing'
+    | '/schedule'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   McpRoute: typeof McpRoute
   PricingRoute: typeof PricingRoute
+  ScheduleRoute: typeof ScheduleRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -113,6 +126,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   McpRoute: McpRoute,
   PricingRoute: PricingRoute,
+  ScheduleRoute: ScheduleRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
