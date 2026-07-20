@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -30,6 +31,11 @@ const PricingRoute = PricingRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesRoute = ClassesRouteImport.update({
+  id: '/classes',
+  path: '/classes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -58,6 +64,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/classes': typeof ClassesRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/schedule': typeof ScheduleRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/classes': typeof ClassesRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/schedule': typeof ScheduleRoute
@@ -77,6 +85,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/classes': typeof ClassesRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/schedule': typeof ScheduleRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/classes'
     | '/mcp'
     | '/pricing'
     | '/schedule'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/classes'
     | '/mcp'
     | '/pricing'
     | '/schedule'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/classes'
     | '/mcp'
     | '/pricing'
     | '/schedule'
@@ -116,6 +128,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClassesRoute: typeof ClassesRoute
   McpRoute: typeof McpRoute
   PricingRoute: typeof PricingRoute
   ScheduleRoute: typeof ScheduleRoute
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes': {
+      id: '/classes'
+      path: '/classes'
+      fullPath: '/classes'
+      preLoaderRoute: typeof ClassesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -180,6 +200,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClassesRoute: ClassesRoute,
   McpRoute: McpRoute,
   PricingRoute: PricingRoute,
   ScheduleRoute: ScheduleRoute,
