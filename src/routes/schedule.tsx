@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-
-const INTRO_URL = "https://trial.yogazeeburg.com/";
+import { IntroPassCTA } from "@/components/site/IntroPassCTA";
 
 type Lesson = { time: string; name: string; teacher: string };
 type Day = { day: string; lessons: Lesson[] };
