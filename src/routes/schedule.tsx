@@ -12,42 +12,42 @@ const SCHEDULE: Day[] = [
   {
     day: "Monday",
     lessons: [
-      { time: "18:45–20:00", name: "Vinyasa & Aroma", teacher: "Csenge van der Heijden" },
-      { time: "20:15–21:30", name: "Slow Flow into Stillness", teacher: "Csenge van der Heijden" },
+      { time: "18:00–19:15", name: "Vinyasa & Aroma", teacher: "Csenge van der Heijden" },
+      { time: "19:30–20:45", name: "Slow Flow & Soundbath", teacher: "Csenge van der Heijden" },
     ],
   },
   {
     day: "Tuesday",
     lessons: [
-      { time: "18:45–20:00", name: "Energizing Vinyasa Flow", teacher: "Csenge van der Heijden" },
-      { time: "20:15–21:30", name: "Slow Flow with Reiki & Aroma", teacher: "Csenge van der Heijden" },
+      { time: "18:45–20:00", name: "Strong Flow", teacher: "Csenge van der Heijden" },
+      { time: "20:15–21:30", name: "Restorative & Reiki & Aroma", teacher: "Csenge van der Heijden" },
     ],
   },
   {
     day: "Wednesday",
     lessons: [
       { time: "17:30–18:45", name: "Stress Release (Yin style)", teacher: "Nicky Leidelmeijer" },
-      { time: "19:00–20:30", name: "Relax Yin & Nidra", teacher: "Nicky Leidelmeijer" },
+      { time: "19:00–20:30", name: "Relax Yin & Nidra (1,5 hour class)", teacher: "Nicky Leidelmeijer" },
     ],
   },
   {
     day: "Thursday",
     lessons: [
-      { time: "08:00–09:15", name: "Pilates Fusion", teacher: "Mila Vasina" },
-      { time: "18:00–19:15", name: "Strength & Stretch Yoga", teacher: "Mila Vasina" },
+      { time: "08:00–09:15", name: "Pilates Fusion", teacher: "Kelsey van Os" },
+      { time: "18:00–19:15", name: "Strength & Stretch Yoga", teacher: "Veronica Torri" },
     ],
   },
   {
     day: "Friday",
     lessons: [
-      { time: "10:00–11:15", name: "Stress Release Yoga (Yin style)", teacher: "Nicky Leidelmeijer" },
+      { time: "10:00–11:15", name: "Stress Release (Yin style)", teacher: "Nicky Leidelmeijer" },
     ],
   },
   {
     day: "Saturday",
     lessons: [
-      { time: "09:00–10:15", name: "Weekend Warm-up Flow", teacher: "Vero Torri" },
-      { time: "10:30–11:45", name: "Yin Yang Yoga", teacher: "Vero Torri" },
+      { time: "09:00–10:15", name: "Weekend Warm-up Flow", teacher: "Veronica Torri" },
+      { time: "10:30–11:45", name: "Yin Yang Yoga", teacher: "Veronica Torri" },
     ],
   },
   {
