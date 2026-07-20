@@ -105,7 +105,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
           "X-Connection-Api-Key": RESEND_API_KEY,
         },
         body: JSON.stringify({
-          from: "Yoga Zeeburg website <website@yogazeeburg.com>",
+          from: "Yoga Zeeburg <hello@yogazeeburg.com>",
           to: ["hello@yogazeeburg.com"],
           reply_to: cleaned.email,
           subject: subjectLine,
