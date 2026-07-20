@@ -26,8 +26,8 @@ const SCHEDULE: Day[] = [
   {
     day: "Wednesday",
     lessons: [
-      { time: "17:30–18:45", name: "Stress Release (Yin style)", teacher: "Nicky Leidelmeijer" },
-      { time: "19:00–20:30", name: "Relax Yin & Nidra (1,5 hour class)", teacher: "Nicky Leidelmeijer" },
+      { time: "17:30–18:45", name: "Stress Release (Yin style)", teacher: "Nicky Kuiper" },
+      { time: "19:00–20:30", name: "Relax Yin & Nidra (1,5 hour class)", teacher: "Nicky Kuiper" },
     ],
   },
   {
@@ -40,7 +40,7 @@ const SCHEDULE: Day[] = [
   {
     day: "Friday",
     lessons: [
-      { time: "10:00–11:15", name: "Stress Release (Yin style)", teacher: "Nicky Leidelmeijer" },
+      { time: "10:00–11:15", name: "Stress Release (Yin style)", teacher: "Nicky Kuiper" },
     ],
   },
   {
