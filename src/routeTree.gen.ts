@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YogaStylesRouteImport } from './routes/yoga-styles'
+import { Route as TrialRouteImport } from './routes/trial'
 import { Route as SportbitRouteImport } from './routes/sportbit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScheduleRouteImport } from './routes/schedule'
@@ -23,13 +24,20 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as NlKennisbankRouteImport } from './routes/nl.kennisbank'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as NlKennisbankIndexRouteImport } from './routes/nl.kennisbank.index'
 import { Route as NlKennisbankAlleArtikelenRouteImport } from './routes/nl.kennisbank.alle-artikelen'
+import { Route as NlKennisbankSlugRouteImport } from './routes/nl.kennisbank.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as NlKennisbankCategorieSlugRouteImport } from './routes/nl.kennisbank.categorie.$slug'
 
 const YogaStylesRoute = YogaStylesRouteImport.update({
   id: '/yoga-styles',
   path: '/yoga-styles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrialRoute = TrialRouteImport.update({
+  id: '/trial',
+  path: '/trial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SportbitRoute = SportbitRouteImport.update({
@@ -99,12 +107,22 @@ const Char91DotmcpChar93ListToolsRoute =
     path: '/.mcp/list-tools',
     getParentRoute: () => rootRouteImport,
   } as any)
+const NlKennisbankIndexRoute = NlKennisbankIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => NlKennisbankRoute,
+} as any)
 const NlKennisbankAlleArtikelenRoute =
   NlKennisbankAlleArtikelenRouteImport.update({
     id: '/alle-artikelen',
     path: '/alle-artikelen',
     getParentRoute: () => NlKennisbankRoute,
   } as any)
+const NlKennisbankSlugRoute = NlKennisbankSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NlKennisbankRoute,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
@@ -129,12 +147,15 @@ export interface FileRoutesByFullPath {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
+  '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
 }
 export interface FileRoutesByTo {
@@ -148,12 +169,14 @@ export interface FileRoutesByTo {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
+  '/nl/kennisbank': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
 }
 export interface FileRoutesById {
@@ -168,12 +191,15 @@ export interface FileRoutesById {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
+  '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
 }
 export interface FileRouteTypes {
@@ -189,12 +215,15 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/sportbit'
+    | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
+    | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
+    | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -208,12 +237,14 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/sportbit'
+    | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
-    | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
+    | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
+    | '/nl/kennisbank'
     | '/nl/kennisbank/categorie/$slug'
   id:
     | '__root__'
@@ -227,12 +258,15 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/sportbit'
+    | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
+    | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
+    | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -247,6 +281,7 @@ export interface RootRouteChildren {
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportbitRoute: typeof SportbitRoute
+  TrialRoute: typeof TrialRoute
   YogaStylesRoute: typeof YogaStylesRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -261,6 +296,13 @@ declare module '@tanstack/react-router' {
       path: '/yoga-styles'
       fullPath: '/yoga-styles'
       preLoaderRoute: typeof YogaStylesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trial': {
+      id: '/trial'
+      path: '/trial'
+      fullPath: '/trial'
+      preLoaderRoute: typeof TrialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sportbit': {
@@ -354,11 +396,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nl/kennisbank/': {
+      id: '/nl/kennisbank/'
+      path: '/'
+      fullPath: '/nl/kennisbank/'
+      preLoaderRoute: typeof NlKennisbankIndexRouteImport
+      parentRoute: typeof NlKennisbankRoute
+    }
     '/nl/kennisbank/alle-artikelen': {
       id: '/nl/kennisbank/alle-artikelen'
       path: '/alle-artikelen'
       fullPath: '/nl/kennisbank/alle-artikelen'
       preLoaderRoute: typeof NlKennisbankAlleArtikelenRouteImport
+      parentRoute: typeof NlKennisbankRoute
+    }
+    '/nl/kennisbank/$slug': {
+      id: '/nl/kennisbank/$slug'
+      path: '/$slug'
+      fullPath: '/nl/kennisbank/$slug'
+      preLoaderRoute: typeof NlKennisbankSlugRouteImport
       parentRoute: typeof NlKennisbankRoute
     }
     '/.mcp/invoke-tool/$tool': {
@@ -379,12 +435,16 @@ declare module '@tanstack/react-router' {
 }
 
 interface NlKennisbankRouteChildren {
+  NlKennisbankSlugRoute: typeof NlKennisbankSlugRoute
   NlKennisbankAlleArtikelenRoute: typeof NlKennisbankAlleArtikelenRoute
+  NlKennisbankIndexRoute: typeof NlKennisbankIndexRoute
   NlKennisbankCategorieSlugRoute: typeof NlKennisbankCategorieSlugRoute
 }
 
 const NlKennisbankRouteChildren: NlKennisbankRouteChildren = {
+  NlKennisbankSlugRoute: NlKennisbankSlugRoute,
   NlKennisbankAlleArtikelenRoute: NlKennisbankAlleArtikelenRoute,
+  NlKennisbankIndexRoute: NlKennisbankIndexRoute,
   NlKennisbankCategorieSlugRoute: NlKennisbankCategorieSlugRoute,
 }
 
@@ -403,6 +463,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportbitRoute: SportbitRoute,
+  TrialRoute: TrialRoute,
   YogaStylesRoute: YogaStylesRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
