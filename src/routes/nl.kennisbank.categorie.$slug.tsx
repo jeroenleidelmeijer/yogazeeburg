@@ -17,7 +17,6 @@ export const Route = createFileRoute("/nl/kennisbank/categorie/$slug")({
 });
 
 function ComingSoon() {
-  const { slug } = Route.useParams();
   return (
     <div lang="nl" className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
@@ -30,8 +29,8 @@ function ComingSoon() {
             Deze categorie komt eraan
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-            We werken aan de artikelen voor deze categorie
-            {slug ? ` (${slug})` : ""}. Kom binnenkort terug of bekijk de andere onderwerpen in de Yoga Gids.
+            We werken aan de artikelen voor deze categorie. Kom binnenkort
+            terug of bekijk de andere onderwerpen in de Yoga Gids.
           </p>
           <div className="mt-8">
             <Link

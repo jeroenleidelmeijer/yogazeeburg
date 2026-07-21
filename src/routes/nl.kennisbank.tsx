@@ -355,7 +355,7 @@ function KennisbankPage() {
                           {c.description}
                         </p>
                         <span className="mt-5 text-sm font-medium text-primary group-hover:underline">
-                          Bekijk categorie →
+                          Bekijk alle artikelen →
                         </span>
                       </Link>
                     </li>
@@ -433,7 +433,7 @@ function KennisbankPage() {
               id="nieuwste-heading"
               className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
             >
-              Nieuwste artikelen
+              Nieuw in de Yoga Gids
             </h2>
             <div className="mt-5 rounded-2xl border border-dashed border-border bg-card/70 p-8 text-center">
               <p className="text-foreground">
