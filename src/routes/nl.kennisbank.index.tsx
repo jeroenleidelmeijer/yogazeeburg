@@ -113,8 +113,12 @@ const CATEGORIES: Category[] = [
       "ijburg",
       "indische buurt",
       "buurt",
+      "beginner",
+      "beginners",
+      "starten",
+      "eerste yogales",
     ],
-    filters: [],
+    filters: ["beginner"],
   },
 ];
 
