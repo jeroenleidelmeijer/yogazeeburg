@@ -14,6 +14,13 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { ArticleCard } from "@/components/kennisbank/ArticleCard";
+import {
+  ARTICLES,
+  getRecommendedArticles,
+  getArticlesSortedByNewest,
+  getArticlesByCategory,
+} from "@/lib/kennisbank/articles";
 
 const INTRO_URL =
   "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
