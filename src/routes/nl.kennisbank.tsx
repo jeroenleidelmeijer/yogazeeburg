@@ -199,12 +199,20 @@ function KennisbankPage() {
   );
   const searchId = useId();
 
+  const recommended = useMemo(() => getRecommendedArticles(3), []);
+  const newest = useMemo(() => getArticlesSortedByNewest().slice(0, 3), []);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return CATEGORIES.filter((c) => {
       if (activeFilter && !c.filters.includes(activeFilter)) return false;
       if (!q) return true;
-      const hay = [c.title, c.description, ...c.keywords].join(" ").toLowerCase();
+      const catArticles = getArticlesByCategory(c.slug)
+        .map((a) => `${a.title} ${a.description}`)
+        .join(" ");
+      const hay = [c.title, c.description, ...c.keywords, catArticles]
+        .join(" ")
+        .toLowerCase();
       return hay.includes(q);
     });
   }, [query, activeFilter]);
