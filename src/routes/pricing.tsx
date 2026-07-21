@@ -46,7 +46,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "View Yoga Zeeburg pricing for the 14-Day Unlimited Intro Pass, memberships, class passes and single classes. Down-to-earth yoga in Amsterdam East, by the water in Zeeburg/Cruquius.",
+          "Yoga Zeeburg pricing in Amsterdam East: 14-Day Unlimited Intro Pass, memberships, class passes and single classes. Simple, transparent pricing.",
       },
       {
         property: "og:title",

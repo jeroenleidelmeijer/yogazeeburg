@@ -196,7 +196,7 @@ function ContactForm() {
   }
 
   const inputBase =
-    "w-full min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-base text-foreground shadow-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary focus:ring-2 focus:ring-primary/20";
+    "w-full min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-base text-foreground shadow-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20";
   const labelCls = "block text-sm font-medium text-foreground";
   const errorCls = "mt-1.5 text-sm text-destructive";
 
@@ -287,7 +287,7 @@ function ContactForm() {
             onChange={(e) => setValues((v) => ({ ...v, subject: e.target.value }))}
             aria-invalid={!!errors.subject}
             aria-describedby={errors.subject ? "c-subject-err" : undefined}
-            className={`${inputBase} mt-1.5 ${values.subject ? "" : "text-muted-foreground/70"}`}
+            className={`${inputBase} mt-1.5 ${values.subject ? "" : "text-muted-foreground"}`}
           >
             <option value="" disabled>Choose a subject</option>
             {SUBJECTS.map((s) => (
