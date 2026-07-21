@@ -109,9 +109,8 @@ function Steps() {
             bookings — check it every time.
           </p>
           <div className="mt-5 rounded-lg border-l-2 border-accent bg-secondary/60 px-5 py-4 text-sm text-foreground/90">
-            Tip: if you see WODs or CrossFit classes, you are still on the
-            wrong schedule. Tap the schedule name at the top and choose Yoga
-            Zeeburg.
+            Tip: if you see CrossFit classes, you are still on the wrong
+            schedule. Tap the schedule name at the top and choose Yoga Zeeburg.
           </div>
         </>
       ),
