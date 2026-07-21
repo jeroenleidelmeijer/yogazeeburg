@@ -705,6 +705,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      _debug_recovery: { Args: never; Returns: Json }
       _pub_lock_run: {
         Args: { p_article_id: string; p_lock_token: string; p_run_id: string }
         Returns: {
