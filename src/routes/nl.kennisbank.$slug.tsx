@@ -311,6 +311,23 @@ function ArticlePage() {
                 </div>
               </section>
 
+              {/* Related */}
+              {a.template.showRelated && related.length > 0 && (
+                <section aria-labelledby="gerelateerd-heading" className="mt-14">
+                  <h2
+                    id="gerelateerd-heading"
+                    className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
+                  >
+                    Gerelateerde artikelen
+                  </h2>
+                  <ul className="mt-6 grid gap-5 sm:grid-cols-2">
+                    {related.map((r) => (
+                      <ArticleCard key={r.slug} article={r} />
+                    ))}
+                  </ul>
+                </section>
+              )}
+
               {/* Sources */}
               {a.template.showSources && a.sources && a.sources.length > 0 && (
                 <section aria-labelledby="bronnen-heading" className="mt-14">
