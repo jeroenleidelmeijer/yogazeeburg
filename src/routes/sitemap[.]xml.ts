@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const BASE_URL = "https://www.yogazeeburg.com";
 
-const PATHS = ["/", "/pricing", "/classes", "/schedule", "/contact", "/sportbit"];
+const PATHS = ["/", "/pricing", "/classes", "/schedule", "/contact", "/sportbit", "/nl/kennisbank"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
