@@ -118,7 +118,7 @@ export const adminReleaseLock = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase.rpc("admin_release_stale_lock", {
       p_article_id: data.articleId,
-      p_reason: data.reason ?? null,
+      p_reason: data.reason ?? undefined,
     });
     if (error) throw new Error(error.message);
     return { ok: true };
@@ -133,7 +133,7 @@ export const adminMarkArticle = createServerFn({ method: "POST" })
     const { error } = await context.supabase.rpc("admin_mark_article", {
       p_article_id: data.articleId,
       p_new_status: data.newStatus,
-      p_reason: data.reason ?? null,
+      p_reason: data.reason ?? undefined,
     });
     if (error) throw new Error(error.message);
     return { ok: true };
@@ -146,7 +146,7 @@ export const adminSetAutomation = createServerFn({ method: "POST" })
     const { error } = await context.supabase.rpc("admin_set_automation", {
       p_project_key: PROJECT_KEY,
       p_enabled: data.enabled,
-      p_reason: data.reason ?? null,
+      p_reason: data.reason ?? undefined,
     });
     if (error) throw new Error(error.message);
     return { ok: true };
