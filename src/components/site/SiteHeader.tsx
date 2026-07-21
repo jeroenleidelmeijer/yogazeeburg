@@ -40,6 +40,8 @@ export function SiteHeader() {
           ))}
           <a
             href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-3 inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-[15px] font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start Intro Pass
@@ -72,6 +74,8 @@ export function SiteHeader() {
             ))}
             <a
               href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
               className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
             >
               Start Intro Pass

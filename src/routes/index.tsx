@@ -99,6 +99,8 @@ function Hero() {
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
             href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start with 14 days unlimited
@@ -248,6 +250,8 @@ function IntroPass() {
             <div className="mt-12 flex flex-wrap items-center gap-6">
               <a
                 href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
                 Start with 14 days unlimited
@@ -305,6 +309,8 @@ function WhyUs() {
           <div className="mt-8">
             <a
               href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-base font-medium text-primary hover:underline"
             >
               Come try a class
@@ -548,6 +554,8 @@ function FinalCTA() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 sm:w-auto"
             >
               Start with 14 days unlimited
