@@ -1,26 +1,43 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Copy, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
 /* ------------------------------------------------------------------
-   Easy-to-edit constants
+   Sportbit checkout links
    ------------------------------------------------------------------ */
-const INTRO_PASS_URL = "https://trial.yogazeeburg.com/";
+const INTRO_PASS_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
 
-// TODO: replace with real Sportbit product URLs when available
-const SPORTBIT_WEEKLY_YOGA_URL = "# TODO";
-const SPORTBIT_YOGA_PLUS_URL = "# TODO";
-const SPORTBIT_UNLIMITED_YOGA_URL = "# TODO";
-const SPORTBIT_WEEKLY_ANNUAL_URL = "# TODO";
-const SPORTBIT_YOGA_PLUS_ANNUAL_URL = "# TODO";
-const SPORTBIT_UNLIMITED_ANNUAL_URL = "# TODO";
-const SPORTBIT_10_CLASS_PASS_URL = "# TODO";
-const SPORTBIT_SINGLE_CLASS_URL = "# TODO";
+const SPORTBIT_WEEKLY_YOGA_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=45";
+const SPORTBIT_YOGA_PLUS_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=46";
+const SPORTBIT_UNLIMITED_YOGA_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=47";
 
-const CONTACT_EMAIL = "hello@yogazeeburg.com";
+const SPORTBIT_WEEKLY_ANNUAL_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=48";
+const SPORTBIT_YOGA_PLUS_ANNUAL_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=49";
+const SPORTBIT_UNLIMITED_ANNUAL_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=50";
+
+const SPORTBIT_PAY_IN_FULL_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=43";
+
+const SPORTBIT_10_CLASS_PASS_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=12";
+const SPORTBIT_SINGLE_CLASS_URL =
+  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=11";
+
 const PAY_IN_FULL_PRICE = "€699";
-const SPORTBIT_PAY_IN_FULL_URL = "# TODO";
+const DISCOUNT_CODE = "YOGA4WEEKS";
+const REGULAR_TERMS =
+  "Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.";
+const SPORTBIT_NOTICE =
+  "You’ll continue to Sportbit, our current booking system. Log in or create an account, select Yoga Zeeburg, then choose the membership shown here.";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -68,6 +85,30 @@ function PricingPage() {
 }
 
 /* ------------------------------------------------------------------
+   Shared: external Sportbit link
+   ------------------------------------------------------------------ */
+function sportbitLinkProps(href: string) {
+  return {
+    href,
+    target: "_blank" as const,
+    rel: "noopener noreferrer",
+  };
+}
+
+function SportbitNotice({ className = "" }: { className?: string }) {
+  return (
+    <p
+      className={
+        "rounded-2xl border border-border/60 bg-secondary/40 px-4 py-3 text-sm leading-relaxed text-foreground/80 " +
+        className
+      }
+    >
+      {SPORTBIT_NOTICE}
+    </p>
+  );
+}
+
+/* ------------------------------------------------------------------
    HERO
    ------------------------------------------------------------------ */
 function Hero() {
@@ -93,7 +134,7 @@ function Hero() {
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
-            href={INTRO_PASS_URL}
+            {...sportbitLinkProps(INTRO_PASS_URL)}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start Intro Pass
@@ -147,7 +188,7 @@ function IntroPass() {
                 Step 1 · The easiest first step
               </span>
               <h2 className="mt-4 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-                Start with the 14-Day Unlimited Intro Pass
+                14-Day Unlimited Intro Pass
               </h2>
               <div className="mt-6 flex items-baseline gap-3">
                 <span className="font-display text-5xl text-foreground md:text-6xl">
@@ -158,19 +199,21 @@ function IntroPass() {
                 </span>
               </div>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                New to Yoga Zeeburg? Start with 14 days of unlimited yoga. Try
-                different classes, teachers and times, then choose the routine
-                that fits your body, energy and schedule.
+                Unlimited yoga for 14 consecutive days. New students only.
+                Stops automatically. Try different classes, teachers and times,
+                then choose the routine that fits your body, energy and
+                schedule.
               </p>
               <div className="mt-8">
                 <a
-                  href={INTRO_PASS_URL}
+                  {...sportbitLinkProps(INTRO_PASS_URL)}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
                 >
                   Start with 14 days unlimited
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
+              <SportbitNotice className="mt-6 max-w-xl" />
             </div>
 
             <ul className="space-y-3 rounded-2xl border border-border/70 bg-background/70 p-6 backdrop-blur sm:p-8">
@@ -185,178 +228,6 @@ function IntroPass() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* ------------------------------------------------------------------
-   ANNUAL ROUTINE BUILDER — dominant section
-   ------------------------------------------------------------------ */
-type AnnualPlan = {
-  name: string;
-  badge: string;
-  price: string;
-  priceSuffix: string;
-  perClass: { label: string; value: string }[];
-  routine: string;
-  firstYear: string;
-  usage: string;
-  cta: string;
-  href: string;
-  recommended?: boolean;
-};
-
-const ANNUAL_PLANS: AnnualPlan[] = [
-  {
-    name: "Weekly Annual",
-    badge: "For one steady weekly reset",
-    price: "€49",
-    priceSuffix: "every 4 weeks",
-    perClass: [{ label: "per class", value: "€11.31" }],
-    routine: "Best for one steady weekly reset.",
-    firstYear: "€588 first-year total after free period",
-    usage: "52 classes/year",
-    cta: "Choose Weekly Annual",
-    href: SPORTBIT_WEEKLY_ANNUAL_URL,
-  },
-  {
-    name: "Yoga Plus Annual",
-    badge: "Recommended annual routine",
-    price: "€69",
-    priceSuffix: "every 4 weeks",
-    perClass: [{ label: "per class", value: "€7.96" }],
-    routine: "The better-value upgrade if you want yoga to become part of your week.",
-    firstYear: "€828 first-year total after free period",
-    usage: "104 classes/year",
-    cta: "Choose Yoga Plus Annual",
-    href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
-    recommended: true,
-  },
-  {
-    name: "Unlimited Annual",
-    badge: "For 3+ times per week",
-    price: "€89",
-    priceSuffix: "every 4 weeks",
-    perClass: [
-      { label: "per class at 3×/week", value: "€6.85" },
-      { label: "per class at 4×/week", value: "€5.13" },
-    ],
-    routine: "Best for 3+ times per week.",
-    firstYear: "€1068 first-year total after free period",
-    usage: "156 classes/year at 3×/week",
-    cta: "Choose Unlimited Annual",
-    href: SPORTBIT_UNLIMITED_ANNUAL_URL,
-  },
-];
-
-const ANNUAL_TERMS = [
-  "Minimum commitment: 13 × 4-week periods",
-  "Paid every 4 weeks",
-  "First 4 weeks free",
-  "One 4-week pause included",
-  "Switch plan once in the first 8 weeks",
-  "Continues every 4 weeks after the minimum commitment until cancelled",
-];
-
-function AnnualRoutineBuilder() {
-  return (
-    <section
-      id="annual-routine-builder"
-      className="relative bg-[color-mix(in_oklab,var(--color-clay)_5%,var(--color-background))] px-4 py-24 sm:px-6 md:py-32 lg:px-8"
-    >
-      <div className="mx-auto max-w-6xl">
-        <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-clay">
-            <Sparkles className="h-3.5 w-3.5" />
-            Annual Routine Builder · Paid every 4 weeks
-          </span>
-          <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            Want annual value, but keep paying every 4 weeks?
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you know you want yoga to become part of your year, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. You commit to your routine for one year, get the first 4 weeks free, and keep a little flexibility with one included pause and one early plan switch.
-          </p>
-        </div>
-
-        <ul className="mt-10 grid gap-3 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur sm:grid-cols-2 sm:p-8 md:grid-cols-3">
-          {ANNUAL_TERMS.map((t) => (
-            <li
-              key={t}
-              className="flex items-start gap-3 text-[15px] text-foreground/90"
-            >
-              <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3 md:items-stretch">
-          {ANNUAL_PLANS.map((p) => (
-            <AnnualCard key={p.name} plan={p} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function AnnualCard({ plan }: { plan: AnnualPlan }) {
-  const recommended = plan.recommended;
-  return (
-    <div
-      className={
-        "relative flex flex-col rounded-[1.75rem] border p-7 shadow-sm transition-colors " +
-        (recommended
-          ? "border-primary/40 bg-background md:-my-3 md:scale-[1.02]"
-          : "border-border/60 bg-background/80")
-      }
-    >
-      {recommended && (
-        <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
-          <Sparkles className="h-3 w-3" />
-          Recommended annual routine
-        </span>
-      )}
-
-      <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
-      <p className="mt-1 text-sm font-medium text-clay">{plan.badge}</p>
-
-      <div className="mt-5 flex items-baseline gap-2">
-        <span className="font-display text-[2.5rem] leading-none text-foreground">
-          {plan.price}
-        </span>
-        <span className="text-base text-muted-foreground">{plan.priceSuffix}</span>
-      </div>
-
-      <div className="mt-3 space-y-1 text-sm text-muted-foreground">
-        <p>First 4 weeks free</p>
-        <p>{plan.firstYear}</p>
-        {plan.perClass.map((pc) => (
-          <p key={pc.label}>
-            {pc.value} {pc.label}
-          </p>
-        ))}
-        <p>{plan.usage}</p>
-      </div>
-
-      <p className="mt-5 text-[15.5px] leading-relaxed text-foreground/85">
-        {plan.routine}
-      </p>
-
-      <div className="mt-auto pt-7">
-        <a
-          href={plan.href}
-          className={
-            "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors " +
-            (recommended
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "border border-border bg-background text-foreground hover:bg-muted")
-          }
-        >
-          {plan.cta}
-          <ArrowRight className="h-4 w-4" />
-        </a>
-      </div>
-    </div>
   );
 }
 
@@ -423,9 +294,11 @@ function RegularMemberships() {
             Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Start with the membership that fits your week. These memberships are paid every 4 weeks, with a minimum commitment of 3 periods of 4 weeks. They are the most flexible membership route, without the annual discount.
+            Start with the membership that fits your week. {REGULAR_TERMS} They are the most flexible membership route, without the annual discount.
           </p>
         </div>
+
+        <SportbitNotice className="mt-8 max-w-3xl" />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3 md:items-stretch">
           {REGULAR_PLANS.map((p) => (
@@ -455,7 +328,7 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       )}
       <h3 className="font-display text-xl text-foreground">{plan.name}</h3>
 
-      <div className="mt-4 flex items-baseline gap-2">
+      <div className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <span className="font-display text-[2.25rem] leading-none text-foreground">
           {plan.price}
         </span>
@@ -468,7 +341,7 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
       <p className="mt-4 rounded-lg border border-border/40 bg-secondary/50 px-3 py-2 text-sm font-medium text-foreground/80">
-        Minimum commitment: 3 × 4-week periods
+        Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.
       </p>
 
       <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">
@@ -477,7 +350,7 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
 
       <div className="mt-auto pt-6">
         <a
-          href={plan.href}
+          {...sportbitLinkProps(plan.href)}
           className={
             "inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors " +
             (recommended
@@ -494,7 +367,271 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
 }
 
 /* ------------------------------------------------------------------
-   PAY-IN-FULL NOTE
+   ANNUAL ROUTINE BUILDER
+   ------------------------------------------------------------------ */
+type AnnualPlan = {
+  name: string;
+  badge: string;
+  price: string;
+  priceSuffix: string;
+  perClass: { label: string; value: string }[];
+  routine: string;
+  firstYear: string;
+  usage: string;
+  cta: string;
+  href: string;
+  recommended?: boolean;
+};
+
+const ANNUAL_PLANS: AnnualPlan[] = [
+  {
+    name: "Weekly Yoga Annual",
+    badge: "For one steady weekly reset",
+    price: "€49",
+    priceSuffix: "every 4 weeks",
+    perClass: [{ label: "per class", value: "€11.31" }],
+    routine: "Best for one steady weekly reset.",
+    firstYear: "€588 first-year total after free period",
+    usage: "52 classes/year",
+    cta: "Choose Weekly Yoga Annual",
+    href: SPORTBIT_WEEKLY_ANNUAL_URL,
+  },
+  {
+    name: "Yoga Plus Annual",
+    badge: "Recommended annual routine",
+    price: "€69",
+    priceSuffix: "every 4 weeks",
+    perClass: [{ label: "per class", value: "€7.96" }],
+    routine: "The better-value upgrade if you want yoga to become part of your week.",
+    firstYear: "€828 first-year total after free period",
+    usage: "104 classes/year",
+    cta: "Choose Yoga Plus Annual",
+    href: SPORTBIT_YOGA_PLUS_ANNUAL_URL,
+    recommended: true,
+  },
+  {
+    name: "Unlimited Yoga Annual",
+    badge: "For 3+ times per week",
+    price: "€89",
+    priceSuffix: "every 4 weeks",
+    perClass: [
+      { label: "per class at 3×/week", value: "€6.85" },
+      { label: "per class at 4×/week", value: "€5.13" },
+    ],
+    routine: "Best for 3+ times per week.",
+    firstYear: "€1068 first-year total after free period",
+    usage: "156 classes/year at 3×/week",
+    cta: "Choose Unlimited Yoga Annual",
+    href: SPORTBIT_UNLIMITED_ANNUAL_URL,
+  },
+];
+
+const ANNUAL_TERMS = [
+  "12-month commitment",
+  "Paid every 4 weeks",
+  "First 4 weeks free with code YOGA4WEEKS",
+  "One 4-week pause included",
+  "Switch plan once in the first 8 weeks",
+  "Continues every 4 weeks after the commitment until cancelled",
+];
+
+const DISCOUNT_STEPS = [
+  "Open your chosen Annual membership.",
+  "Log in to Sportbit and select Yoga Zeeburg.",
+  "Choose the matching Annual plan.",
+  `Enter discount code ${DISCOUNT_CODE} and tap Apply.`,
+  "Check that the first payment shows €0 before continuing.",
+];
+
+function DiscountCodePanel() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(DISCOUNT_CODE);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard blocked — fail silently, code is still visible
+    }
+  };
+
+  return (
+    <div className="mt-10 overflow-hidden rounded-[1.75rem] border-2 border-clay/40 bg-background shadow-sm">
+      <div className="grid gap-8 p-7 md:grid-cols-[1.1fr_1fr] md:items-start md:gap-10 md:p-10">
+        <div>
+          <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-clay">
+            <Sparkles className="h-3.5 w-3.5" />
+            Important · Don’t miss this
+          </span>
+          <h3 className="mt-4 font-display text-[1.75rem] leading-[1.1] text-foreground sm:text-3xl md:text-[2.25rem]">
+            How to claim your first 4 weeks free
+          </h3>
+          <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
+            The first 4 weeks are not applied automatically. You must enter the
+            discount code during Sportbit checkout.
+          </p>
+          <ol className="mt-6 space-y-3">
+            {DISCOUNT_STEPS.map((step, i) => (
+              <li key={step} className="flex items-start gap-3 text-[15px] text-foreground/90">
+                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clay/15 text-xs font-semibold text-clay">
+                  {i + 1}
+                </span>
+                <span className="leading-relaxed">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="rounded-2xl border border-border/60 bg-secondary/40 p-6 sm:p-7">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            Discount code
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <code className="rounded-xl border border-clay/40 bg-background px-4 py-3 font-display text-2xl tracking-[0.15em] text-foreground sm:text-3xl">
+              {DISCOUNT_CODE}
+            </code>
+            <button
+              type="button"
+              onClick={handleCopy}
+              aria-live="polite"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              <Copy className="h-4 w-4" />
+              {copied ? "Copied" : "Copy code"}
+            </button>
+          </div>
+          <p className="mt-5 text-sm leading-relaxed text-foreground/80">
+            Enter {DISCOUNT_CODE} during Sportbit checkout and tap Apply. Your
+            first four-week period will be €0; the regular four-weekly fee
+            applies afterwards.
+          </p>
+          <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+            The code is only valid for the three Annual four-weekly
+            memberships. It does not apply to regular memberships or
+            Pay-in-Full.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AnnualRoutineBuilder() {
+  return (
+    <section
+      id="annual-routine-builder"
+      className="relative bg-[color-mix(in_oklab,var(--color-clay)_5%,var(--color-background))] px-4 py-24 sm:px-6 md:py-32 lg:px-8"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-clay">
+            <Sparkles className="h-3.5 w-3.5" />
+            Annual Routine Builder · Paid every 4 weeks
+          </span>
+          <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
+            Want annual value, but keep paying every 4 weeks?
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            If you know you want yoga to become part of your year, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. 12-month commitment. Paid every 4 weeks. First 4 weeks free when you enter code {DISCOUNT_CODE} during checkout. One included pause and one early plan switch.
+          </p>
+        </div>
+
+        <ul className="mt-10 grid gap-3 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur sm:grid-cols-2 sm:p-8 md:grid-cols-3">
+          {ANNUAL_TERMS.map((t) => (
+            <li
+              key={t}
+              className="flex items-start gap-3 text-[15px] text-foreground/90"
+            >
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+
+        <DiscountCodePanel />
+
+        <SportbitNotice className="mt-8" />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
+          {ANNUAL_PLANS.map((p) => (
+            <AnnualCard key={p.name} plan={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AnnualCard({ plan }: { plan: AnnualPlan }) {
+  const recommended = plan.recommended;
+  return (
+    <div
+      className={
+        "relative flex flex-col rounded-[1.75rem] border p-7 shadow-sm transition-colors " +
+        (recommended
+          ? "border-primary/40 bg-background md:-my-3 md:scale-[1.02]"
+          : "border-border/60 bg-background/80")
+      }
+    >
+      {recommended && (
+        <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-sm">
+          <Sparkles className="h-3 w-3" />
+          Recommended annual routine
+        </span>
+      )}
+
+      <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
+      <p className="mt-1 text-sm font-medium text-clay">{plan.badge}</p>
+
+      <div className="mt-5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <span className="font-display text-[2.5rem] leading-none text-foreground">
+          {plan.price}
+        </span>
+        <span className="text-base text-muted-foreground">{plan.priceSuffix}</span>
+      </div>
+
+      <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+        <p>12-month commitment</p>
+        <p>{plan.firstYear}</p>
+        {plan.perClass.map((pc) => (
+          <p key={pc.label}>
+            {pc.value} {pc.label}
+          </p>
+        ))}
+        <p>{plan.usage}</p>
+      </div>
+
+      <div className="mt-5 rounded-xl border border-clay/30 bg-clay/5 px-4 py-3 text-sm leading-relaxed text-foreground/85">
+        <span className="font-medium text-foreground">Enter {DISCOUNT_CODE} during checkout.</span>{" "}
+        Your first four-week period will be €0; the regular four-weekly fee
+        applies afterwards.
+      </div>
+
+      <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">
+        {plan.routine}
+      </p>
+
+      <div className="mt-auto pt-7">
+        <a
+          {...sportbitLinkProps(plan.href)}
+          className={
+            "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors " +
+            (recommended
+              ? "bg-primary text-primary-foreground hover:bg-primary/90"
+              : "border border-border bg-background text-foreground hover:bg-muted")
+          }
+        >
+          {plan.cta}
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------
+   PAY-IN-FULL
    ------------------------------------------------------------------ */
 function PayInFullNote() {
   return (
@@ -509,7 +646,7 @@ function PayInFullNote() {
               Pay once. Practice all year.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-primary-foreground/85">
-              Make Yoga Zeeburg part of your week without thinking about 4-week payments. Yoga Plus Annual Pay-in-Full is built for a steady twice-a-week rhythm: enough to feel the difference, simple enough to keep up.
+              Yoga Plus Annual Pay-in-Full is one upfront payment for a full year — 104 classes, valid for 52 weeks. Built for a steady twice-a-week rhythm: enough to feel the difference, simple enough to keep up.
             </p>
             <p className="mt-4 text-base leading-relaxed text-primary-foreground/70">
               A clear commitment to your routine — and the best value if you know you want to keep showing up twice a week.
@@ -518,20 +655,20 @@ function PayInFullNote() {
 
           <div className="rounded-[1.75rem] border border-primary-foreground/15 bg-primary-foreground/10 p-7 sm:p-8">
             <h3 className="font-display text-xl text-primary-foreground">Yoga Plus Annual Pay-in-Full</h3>
-            <div className="mt-5 flex items-baseline gap-2">
+            <div className="mt-5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="font-display text-[2.5rem] leading-none text-primary-foreground">
                 {PAY_IN_FULL_PRICE}
               </span>
-              <span className="text-base text-primary-foreground/80">/ year</span>
+              <span className="text-base text-primary-foreground/80">once</span>
             </div>
             <div className="mt-3 space-y-1 text-sm text-primary-foreground/75">
-              <p>One upfront payment</p>
-              <p>Ideal for 2 classes per week</p>
-              <p>Around €6.72 per class when coming twice per week</p>
+              <p>104 classes</p>
+              <p>Valid for 52 weeks</p>
+              <p>Around €6.72 per class at 2×/week</p>
             </div>
             <div className="mt-7 flex flex-col gap-3">
               <a
-                href={SPORTBIT_PAY_IN_FULL_URL}
+                {...sportbitLinkProps(SPORTBIT_PAY_IN_FULL_URL)}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-clay px-6 py-3.5 text-[15px] font-medium text-clay-foreground shadow-sm transition-colors hover:bg-clay/90"
               >
                 Choose Pay-in-Full
@@ -545,7 +682,7 @@ function PayInFullNote() {
               </a>
             </div>
             <p className="mt-5 text-xs leading-relaxed text-primary-foreground/60">
-              For direct Yoga Zeeburg members. New students can start with the Intro Pass first. Terms and pause options are shown before checkout.
+              The {DISCOUNT_CODE} discount code does not apply to Pay-in-Full. New students can start with the Intro Pass first.
             </p>
           </div>
         </div>
@@ -581,7 +718,7 @@ const FLEX_PLANS: FlexPlan[] = [
     name: "Single Class",
     perClass: "€25 per class",
     price: "€25",
-    meta: "One class",
+    meta: "1 class · valid 1 month",
     bestFor: "Good for one-off visits.",
     cta: "Book single class",
     href: SPORTBIT_SINGLE_CLASS_URL,
@@ -626,7 +763,7 @@ function FlexibleOptions() {
                 <p className="mt-2 text-sm text-foreground/85">{p.bestFor}</p>
               </div>
               <a
-                href={p.href}
+                {...sportbitLinkProps(p.href)}
                 className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
               >
                 {p.cta}
@@ -646,7 +783,7 @@ function FlexibleOptions() {
 const CHOOSER = [
   { q: "New here?", a: "Start with the Intro Pass." },
   { q: "Want a simple flexible routine?", a: "Choose Yoga Plus." },
-  { q: "Want annual value but prefer paying every 4 weeks?", a: "Choose Yoga Plus Annual Routine Builder." },
+  { q: "Want annual value but prefer paying every 4 weeks?", a: "Choose Yoga Plus Annual — enter YOGA4WEEKS at checkout for the first 4 weeks free." },
   { q: "Want the best one-payment annual value?", a: "Choose Yoga Plus Annual Pay-in-Full." },
   { q: "Coming 3+ times per week?", a: "Choose Unlimited Yoga." },
   { q: "Need maximum flexibility?", a: "Choose the 10-Class Pass." },
@@ -694,7 +831,7 @@ function PlanChooser() {
 const FAQ_ITEMS = [
   {
     q: "Does the Intro Pass renew automatically?",
-    a: "No. The 14-Day Unlimited Intro Pass stops automatically.",
+    a: "No. The 14-Day Unlimited Intro Pass stops automatically after 14 days.",
   },
   {
     q: "Can I try different classes?",
@@ -706,18 +843,23 @@ const FAQ_ITEMS = [
   },
   {
     q: "What is the minimum commitment for regular 4-week memberships?",
-    a: "Regular 4-week memberships have a minimum commitment of 3 periods of 4 weeks. After that, they continue every 4 weeks until cancelled.",
-    highlight: true,
+    a: "Regular memberships are paid every 4 weeks with a minimum commitment of 3 months. After that, they are monthly cancellable and continue every 4 weeks until you cancel.",
+  },
+  {
+    q: "How do I claim the first 4 weeks free on Annual plans?",
+    a: "The first 4 weeks free are not automatic. During Sportbit checkout for one of the three Annual four-weekly memberships, enter the discount code YOGA4WEEKS and press Apply. Check that the first payment shows €0 before continuing.",
+  },
+  {
+    q: "Does the YOGA4WEEKS code work on every plan?",
+    a: "No. The code is valid only on the three Annual four-weekly memberships (Weekly Yoga Annual, Yoga Plus Annual, Unlimited Yoga Annual). It does not apply to regular 4-week memberships, the 10-Class Pass, single classes, the Intro Pass or Pay-in-Full.",
   },
   {
     q: "Do memberships continue automatically?",
-    a: "Yes. Regular memberships and Annual Routine Builder continue automatically after the minimum period until cancelled.",
-    highlight: true,
+    a: "Yes. Regular memberships continue every 4 weeks after the 3-month minimum until you cancel. Annual Routine Builder plans have a 12-month commitment and continue every 4 weeks afterwards according to the existing cancellation terms.",
   },
   {
     q: "What is the difference between Annual Routine Builder and Pay-in-Full?",
-    a: "Annual Routine Builder is a one-year commitment where you keep paying every 4 weeks and get the first 4 weeks free. Pay-in-Full is one upfront yearly payment for Yoga Plus Annual.",
-    highlight: true,
+    a: "Annual Routine Builder is a 12-month commitment where you keep paying every 4 weeks and can claim the first 4 weeks free with code YOGA4WEEKS. Pay-in-Full is one upfront yearly payment of €699 for Yoga Plus Annual (104 classes, valid 52 weeks).",
   },
   {
     q: "Can I pause my annual membership?",
@@ -726,10 +868,6 @@ const FAQ_ITEMS = [
   {
     q: "Can I switch plans?",
     a: "The Annual Routine Builder includes one plan switch in the first 8 weeks.",
-  },
-  {
-    q: "What happens after the annual commitment?",
-    a: "After the minimum commitment period, your membership continues every 4 weeks until cancelled.",
   },
   {
     q: "What if I am pregnant, injured or unsure?",
@@ -791,7 +929,7 @@ function FinalCTA() {
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
-            href={INTRO_PASS_URL}
+            {...sportbitLinkProps(INTRO_PASS_URL)}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start with 14 days unlimited
