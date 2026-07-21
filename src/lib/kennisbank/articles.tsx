@@ -311,15 +311,7 @@ function ProeflesBody() {
         Voor de meeste mensen werkt het daarom beter om binnen een korte
         periode meerdere lessen te proberen: verschillende docenten,
         verschillende tijden en één rustige en één dynamischere stijl. Dat is
-        precies waarom een intro pass zoals de{" "}
-        <a
-          href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-primary underline underline-offset-4 hover:no-underline"
-        >
-          14 dagen onbeperkt intro pass
-        </a>{" "}
+        precies waarom een intro pass zoals de 14 dagen onbeperkt intro pass{" "}
         bestaat: niet als korting, maar als kader om rustig te ontdekken welke
         vorm van yoga bij jouw week past.
       </p>
@@ -622,7 +614,9 @@ function WelkeStudioBody() {
         eerlijk door voordat je kiest — en houd rekening met opzegtermijnen
         of minimumtermijnen. Yoga Zeeburg biedt een{" "}
         <a
-          href="/trial"
+          href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
+          target="_blank"
+          rel="noopener noreferrer"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           14 dagen onbeperkt intro pass
