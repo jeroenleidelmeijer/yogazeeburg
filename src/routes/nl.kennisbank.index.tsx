@@ -199,7 +199,12 @@ function KennisbankPage() {
   const searchId = useId();
 
   const recommended = useMemo(() => getRecommendedArticles(3), []);
-  const newest = useMemo(() => getArticlesSortedByNewest().slice(0, 3), []);
+  const newest = useMemo(() => {
+    const recSlugs = new Set(recommended.map((a) => a.slug));
+    return getArticlesSortedByNewest()
+      .filter((a) => !recSlugs.has(a.slug))
+      .slice(0, 3);
+  }, [recommended]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
