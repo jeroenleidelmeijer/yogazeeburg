@@ -4,6 +4,71 @@ import planning from "./planning.json";
 
 const PROJECT_KEY = "yoga-zeeburg-kennisbank";
 
+export type PublicationArticleRow = {
+  id: string;
+  planning_number: number;
+  phase: string;
+  original_title: string;
+  final_title: string | null;
+  slug: string | null;
+  cluster: string | null;
+  cta_variant: string | null;
+  status: string;
+  published_at: string | null;
+  live_url: string | null;
+  retry_count: number;
+  last_error_summary: string | null;
+  lock_expires_at: string | null;
+  updated_at: string;
+};
+export type PublicationRunRow = {
+  id: string;
+  article_id: string | null;
+  trigger_type: string;
+  phase: string | null;
+  current_step: string;
+  final_status: string;
+  error_summary: string | null;
+  started_at: string;
+  finished_at: string | null;
+};
+export type PublicationEventRow = {
+  id: number;
+  event_type: string;
+  actor_type: string;
+  reason: string | null;
+  created_at: string;
+  article_id: string | null;
+};
+
+export type PublicationOverview = {
+  isAdmin: boolean;
+  project:
+    | null
+    | {
+        id: string;
+        name: string;
+        automation_enabled: boolean;
+        publication_stopped: boolean;
+        stopped_reason: string | null;
+        timezone: string;
+        knowledge_base_path: string;
+      };
+  canBootstrap: boolean;
+  summary: null | {
+    total: number;
+    published: number;
+    planned: number;
+    failed: number;
+    blocked: number;
+    locked: number;
+    inProgress: number;
+  };
+  articles: PublicationArticleRow[];
+  recentRuns: PublicationRunRow[];
+  recentEvents: PublicationEventRow[];
+};
+
 export const getPublicationOverview = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
