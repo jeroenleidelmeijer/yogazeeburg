@@ -614,7 +614,9 @@ function WelkeStudioBody() {
         eerlijk door voordat je kiest — en houd rekening met opzegtermijnen
         of minimumtermijnen. Yoga Zeeburg biedt een{" "}
         <a
-          href="/trial"
+          href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
+          target="_blank"
+          rel="noopener noreferrer"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           14 dagen onbeperkt intro pass
