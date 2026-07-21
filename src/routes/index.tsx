@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const INTRO_URL = "https://trial.yogazeeburg.com/";
+const INTRO_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
 const MAPS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=Cruquiusweg+96F+Amsterdam";
 

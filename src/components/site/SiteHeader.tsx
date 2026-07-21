@@ -10,7 +10,7 @@ const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-const INTRO_URL = "https://trial.yogazeeburg.com/";
+const INTRO_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);

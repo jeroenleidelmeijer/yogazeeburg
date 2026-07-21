@@ -31,7 +31,7 @@ export default defineTool({
         name: "14-Day Unlimited Intro Pass",
         description:
           "14 days of unlimited yoga. Try different classes, teachers and times. Stops automatically. New students only.",
-        signup_url: "https://trial.yogazeeburg.com/",
+        signup_url: "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42",
       },
       website: "https://yogazeeburg.com",
     };

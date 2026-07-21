@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-const INTRO_URL = "https://trial.yogazeeburg.com/";
+const INTRO_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 
 export function SiteFooter() {
