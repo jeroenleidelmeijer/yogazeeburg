@@ -619,9 +619,9 @@ function WelkeStudioBody() {
           rel="noopener noreferrer"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
-          14 dagen onbeperkt intro pass
-        </a>{" "}
-        waarmee je in twee weken meerdere lessen kunt proberen voordat je
+        Bekijk onze 14-daagse Intro Pass
+      </a>{" "}
+      waarmee je in twee weken meerdere lessen kunt proberen voordat je
         beslist of een lidmaatschap past.
       </p>
 
