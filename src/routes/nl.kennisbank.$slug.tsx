@@ -17,7 +17,7 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
   loader: ({ params }) => {
     const article = getArticleBySlug(params.slug);
     if (!article) throw notFound();
-    return { article };
+    return { slug: article.slug };
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) {
@@ -28,7 +28,16 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
         ],
       };
     }
-    const a = loaderData.article;
+    const a = getArticleBySlug(loaderData.slug);
+    if (!a) {
+      return {
+        meta: [
+          { title: "Artikel niet gevonden — Yoga Gids | Yoga Zeeburg" },
+          { name: "robots", content: "noindex, follow" },
+        ],
+      };
+    }
+
     const canonical = `${BASE}/nl/kennisbank/${params.slug}`;
     return {
       meta: [
