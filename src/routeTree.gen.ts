@@ -20,8 +20,10 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ClassScheduleRouteImport } from './routes/class-schedule'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as NlKennisbankRouteImport } from './routes/nl.kennisbank'
+import { Route as AdminKennisbankPublicatiesRouteImport } from './routes/admin.kennisbank-publicaties'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as NlKennisbankIndexRouteImport } from './routes/nl.kennisbank.index'
@@ -85,6 +87,11 @@ const ClassScheduleRoute = ClassScheduleRouteImport.update({
   path: '/class-schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -95,6 +102,12 @@ const NlKennisbankRoute = NlKennisbankRouteImport.update({
   path: '/nl/kennisbank',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminKennisbankPublicatiesRoute =
+  AdminKennisbankPublicatiesRouteImport.update({
+    id: '/admin/kennisbank-publicaties',
+    path: '/admin/kennisbank-publicaties',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
     id: '/.well-known/oauth-protected-resource',
@@ -138,6 +151,7 @@ const NlKennisbankCategorieSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
@@ -151,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/kennisbank-publicaties': typeof AdminKennisbankPublicatiesRoute
   '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
@@ -160,6 +175,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
@@ -173,6 +189,7 @@ export interface FileRoutesByTo {
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/kennisbank-publicaties': typeof AdminKennisbankPublicatiesRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
@@ -182,6 +199,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
@@ -195,6 +213,7 @@ export interface FileRoutesById {
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/admin/kennisbank-publicaties': typeof AdminKennisbankPublicatiesRoute
   '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
@@ -206,6 +225,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/class-schedule'
     | '/classes'
     | '/contact'
@@ -219,6 +239,7 @@ export interface FileRouteTypes {
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/kennisbank-publicaties'
     | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
     | '/nl/kennisbank/$slug'
@@ -228,6 +249,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/class-schedule'
     | '/classes'
     | '/contact'
@@ -241,6 +263,7 @@ export interface FileRouteTypes {
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/kennisbank-publicaties'
     | '/.mcp/invoke-tool/$tool'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
@@ -249,6 +272,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/auth'
     | '/class-schedule'
     | '/classes'
     | '/contact'
@@ -262,6 +286,7 @@ export interface FileRouteTypes {
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/admin/kennisbank-publicaties'
     | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
     | '/nl/kennisbank/$slug'
@@ -272,6 +297,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   ClassScheduleRoute: typeof ClassScheduleRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
@@ -285,6 +311,7 @@ export interface RootRouteChildren {
   YogaStylesRoute: typeof YogaStylesRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  AdminKennisbankPublicatiesRoute: typeof AdminKennisbankPublicatiesRoute
   NlKennisbankRoute: typeof NlKennisbankRouteWithChildren
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -368,6 +395,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -380,6 +414,13 @@ declare module '@tanstack/react-router' {
       path: '/nl/kennisbank'
       fullPath: '/nl/kennisbank'
       preLoaderRoute: typeof NlKennisbankRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/kennisbank-publicaties': {
+      id: '/admin/kennisbank-publicaties'
+      path: '/admin/kennisbank-publicaties'
+      fullPath: '/admin/kennisbank-publicaties'
+      preLoaderRoute: typeof AdminKennisbankPublicatiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.well-known/oauth-protected-resource': {
@@ -454,6 +495,7 @@ const NlKennisbankRouteWithChildren = NlKennisbankRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   ClassScheduleRoute: ClassScheduleRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
@@ -468,6 +510,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  AdminKennisbankPublicatiesRoute: AdminKennisbankPublicatiesRoute,
   NlKennisbankRoute: NlKennisbankRouteWithChildren,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
