@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-const INTRO_URL = "https://trial.yogazeeburg.com/";
+const INTRO_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 
 export function SiteFooter() {
@@ -46,6 +46,8 @@ export function SiteFooter() {
           </p>
           <a
             href={INTRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-4 inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
             Start with 14 days unlimited

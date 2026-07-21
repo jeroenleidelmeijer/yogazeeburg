@@ -148,8 +148,8 @@ function Hero() {
           </a>
         </div>
         <p className="mt-5 text-sm text-muted-foreground">
-          14-Day Unlimited Intro Pass · memberships every 4 weeks · no fake
-          urgency
+          14-Day Unlimited Intro Pass · memberships every 4 weeks · simple,
+          transparent pricing
         </p>
       </div>
     </section>
@@ -390,7 +390,7 @@ const ANNUAL_PLANS: AnnualPlan[] = [
     price: "€49",
     priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€11.31" }],
-    routine: "Best for one steady weekly reset.",
+    routine: "",
     firstYear: "€588 first-year total after free period",
     usage: "52 classes/year",
     cta: "Choose Weekly Yoga Annual",
@@ -608,9 +608,11 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
         applies afterwards.
       </div>
 
-      <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">
-        {plan.routine}
-      </p>
+      {plan.routine && (
+        <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">
+          {plan.routine}
+        </p>
+      )}
 
       <div className="mt-auto pt-7">
         <a
@@ -664,7 +666,9 @@ function PayInFullNote() {
             <div className="mt-3 space-y-1 text-sm text-primary-foreground/75">
               <p>104 classes</p>
               <p>Valid for 52 weeks</p>
-              <p>Around €6.72 per class at 2×/week</p>
+              <p>€6.72 per class</p>
+              <p>Unused classes expire after 52 weeks.</p>
+              <p>Does not renew automatically.</p>
             </div>
             <div className="mt-7 flex flex-col gap-3">
               <a

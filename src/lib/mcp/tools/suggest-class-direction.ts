@@ -49,7 +49,7 @@ export default defineTool({
           "For pregnancy, injuries, pain or any medical uncertainty, please tell the teacher before class and check with a qualified medical professional if needed. We can't give medical advice through this tool.",
         next_step:
           "Contact the studio or arrive early so the teacher knows what's going on before you start.",
-        signup_url: "https://trial.yogazeeburg.com/",
+        signup_url: "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42",
       };
       return {
         content: [{ type: "text", text: safety.suggestion }],
@@ -72,7 +72,7 @@ export default defineTool({
       suggestion: pick.a,
       next_step:
         "Start with the 14-Day Unlimited Intro Pass and try a few different classes.",
-      signup_url: "https://trial.yogazeeburg.com/",
+      signup_url: "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42",
       note: "General guidance only — not medical advice. If you have pregnancy, injury, pain or any medical uncertainty, tell the teacher and check with a medical professional.",
     };
     return {
