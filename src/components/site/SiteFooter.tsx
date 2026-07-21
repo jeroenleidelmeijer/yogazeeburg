@@ -35,6 +35,7 @@ export function SiteFooter() {
             <li><Link to="/pricing" className="text-muted-foreground hover:text-foreground">Pricing</Link></li>
             <li><Link to="/classes" className="text-muted-foreground hover:text-foreground">Classes</Link></li>
             <li><Link to="/schedule" className="text-muted-foreground hover:text-foreground">Schedule</Link></li>
+            <li><Link to="/sportbit" className="text-muted-foreground hover:text-foreground">Sportbit guide</Link></li>
             <li><Link to="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
           </ul>
         </div>
