@@ -100,7 +100,7 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
                 children: JSON.stringify({
                   "@context": "https://schema.org",
                   "@type": "FAQPage",
-                  mainEntity: a.faqs.map((f) => ({
+                  mainEntity: a.faqs.map((f: ArticleFAQ) => ({
                     "@type": "Question",
                     name: f.question,
                     acceptedAnswer: {
@@ -229,7 +229,7 @@ function ArticlePage() {
                     Inhoud
                   </h2>
                   <ol className="mt-3 space-y-1.5 text-sm">
-                    {a.toc.map((item, i) => (
+                    {a.toc.map((item: ArticleTOCItem, i: number) => (
                       <li key={item.id} className="flex gap-2">
                         <span
                           aria-hidden="true"
@@ -265,7 +265,7 @@ function ArticlePage() {
                     Veelgestelde vragen
                   </h2>
                   <dl className="mt-6 divide-y divide-border rounded-2xl border border-border bg-card">
-                    {a.faqs.map((f) => (
+                    {a.faqs.map((f: ArticleFAQ) => (
                       <div key={f.question} className="p-6">
                         <dt className="font-display text-lg font-medium text-foreground">
                           {f.question}
@@ -317,7 +317,7 @@ function ArticlePage() {
                     Bronnen
                   </h2>
                   <ul className="mt-3 space-y-2 text-sm">
-                    {a.sources.map((s) => (
+                    {a.sources.map((s: { title: string; url: string }) => (
                       <li key={s.url}>
                         <a
                           href={s.url}
