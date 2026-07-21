@@ -436,45 +436,34 @@ function KennisbankPage() {
         </section>
 
         {/* Newest */}
-        <section
-          aria-labelledby="nieuwste-heading"
-          className="border-t border-border/60 bg-secondary/30"
-        >
-          <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
-            <h2
-              id="nieuwste-heading"
-              className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
-            >
-              Nieuw in de Yoga Gids
-            </h2>
-            {newest.length > 0 ? (
+        {newest.length > 0 && (
+          <section
+            aria-labelledby="nieuwste-heading"
+            className="border-t border-border/60 bg-secondary/30"
+          >
+            <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
+              <h2
+                id="nieuwste-heading"
+                className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
+              >
+                Nieuw in de Yoga Gids
+              </h2>
               <ul className="mt-6 grid gap-5 sm:grid-cols-2">
                 {newest.map((a) => (
                   <ArticleCard key={a.slug} article={a} />
                 ))}
               </ul>
-            ) : (
-              <div className="mt-5 rounded-2xl border border-dashed border-border bg-card/70 p-8 text-center">
-                <p className="text-foreground">
-                  Nog geen artikelen gepubliceerd.
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  De redactie werkt aan de eerste reeks praktische stukken.
-                  Kom binnenkort terug.
-                </p>
+              <div className="mt-8 text-center">
+                <Link
+                  to="/nl/kennisbank/alle-artikelen"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  Bekijk alle artikelen
+                </Link>
               </div>
-            )}
-
-            <div className="mt-8 text-center">
-              <Link
-                to="/nl/kennisbank/alle-artikelen"
-                className="inline-flex min-h-[44px] items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                Bekijk alle artikelen
-              </Link>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
       <SiteFooter />
     </div>
