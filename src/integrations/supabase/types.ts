@@ -583,6 +583,9 @@ export type Database = {
           created_at: string
           created_by: string | null
           current_step: string
+          disposition:
+            | Database["public"]["Enums"]["publication_run_disposition"]
+            | null
           error_category: string | null
           error_details: Json
           error_summary: string | null
@@ -592,6 +595,7 @@ export type Database = {
           parent_run_id: string | null
           phase: Database["public"]["Enums"]["publication_phase"] | null
           project_id: string
+          reason_code: string | null
           scheduled_for: string | null
           scheduler_slot:
             | Database["public"]["Enums"]["publication_scheduler_slot"]
@@ -607,6 +611,9 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           current_step?: string
+          disposition?:
+            | Database["public"]["Enums"]["publication_run_disposition"]
+            | null
           error_category?: string | null
           error_details?: Json
           error_summary?: string | null
@@ -616,6 +623,7 @@ export type Database = {
           parent_run_id?: string | null
           phase?: Database["public"]["Enums"]["publication_phase"] | null
           project_id: string
+          reason_code?: string | null
           scheduled_for?: string | null
           scheduler_slot?:
             | Database["public"]["Enums"]["publication_scheduler_slot"]
@@ -631,6 +639,9 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           current_step?: string
+          disposition?:
+            | Database["public"]["Enums"]["publication_run_disposition"]
+            | null
           error_category?: string | null
           error_details?: Json
           error_summary?: string | null
@@ -640,6 +651,7 @@ export type Database = {
           parent_run_id?: string | null
           phase?: Database["public"]["Enums"]["publication_phase"] | null
           project_id?: string
+          reason_code?: string | null
           scheduled_for?: string | null
           scheduler_slot?:
             | Database["public"]["Enums"]["publication_scheduler_slot"]
@@ -659,6 +671,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "publication_runs_error_category_fkey"
+            columns: ["error_category"]
+            isOneToOne: false
+            referencedRelation: "publication_error_categories"
+            referencedColumns: ["key"]
+          },
+          {
             foreignKeyName: "publication_runs_parent_run_id_fkey"
             columns: ["parent_run_id"]
             isOneToOne: false
@@ -672,6 +691,13 @@ export type Database = {
             referencedRelation: "publication_projects"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "publication_runs_reason_code_fkey"
+            columns: ["reason_code"]
+            isOneToOne: false
+            referencedRelation: "publication_run_reason_codes"
+            referencedColumns: ["code"]
+          },
         ]
       }
     }
@@ -679,6 +705,51 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      _debug_recovery: { Args: never; Returns: Json }
+      _debug_runs: { Args: never; Returns: Json }
+      _pub_lock_run: {
+        Args: { p_article_id: string; p_lock_token: string; p_run_id: string }
+        Returns: {
+          active_run_id: string | null
+          category: string | null
+          cluster: string | null
+          content_hash: string | null
+          created_at: string
+          cta_variant: string | null
+          deployment_id: string | null
+          final_title: string | null
+          id: string
+          last_error_category: string | null
+          last_error_summary: string | null
+          live_url: string | null
+          lock_expires_at: string | null
+          lock_token: string | null
+          locked_at: string | null
+          locked_by: string | null
+          notification_status: Database["public"]["Enums"]["publication_notification_status"]
+          original_title: string
+          phase: Database["public"]["Enums"]["publication_phase"] | null
+          planning_number: number
+          primary_keyword: string | null
+          project_id: string
+          published_at: string | null
+          retry_count: number
+          scheduled_at: string | null
+          slug: string | null
+          source_metadata: Json
+          started_at: string | null
+          status: Database["public"]["Enums"]["publication_article_status"]
+          updated_at: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "publication_articles"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      _pub_require_admin: { Args: { p_project_id: string }; Returns: undefined }
+      _run_migb_tests: { Args: never; Returns: Json }
       admin_mark_article: {
         Args: {
           p_article_id: string
@@ -699,6 +770,18 @@ export type Database = {
         Args: { p_project_key: string; p_reason: string }
         Returns: undefined
       }
+      advance_publication_run: {
+        Args: {
+          p_article_id: string
+          p_evidence?: Json
+          p_from_status: Database["public"]["Enums"]["publication_article_status"]
+          p_lock_token: string
+          p_run_id: string
+          p_step_key: string
+          p_to_status: Database["public"]["Enums"]["publication_article_status"]
+        }
+        Returns: undefined
+      }
       backfill_pilot_articles: { Args: never; Returns: undefined }
       bootstrap_first_admin: {
         Args: { p_project_key?: string }
@@ -707,7 +790,54 @@ export type Database = {
           user_id: string
         }[]
       }
+      claim_next_publication_run: {
+        Args: {
+          p_lock_ttl_seconds?: number
+          p_project_key: string
+          p_scheduler_slot?: Database["public"]["Enums"]["publication_scheduler_slot"]
+          p_trigger: Database["public"]["Enums"]["publication_trigger_type"]
+        }
+        Returns: Json
+      }
+      complete_publication_failure: {
+        Args: {
+          p_article_id: string
+          p_backoff_seconds?: number
+          p_disposition: string
+          p_error_category: string
+          p_error_details?: Json
+          p_error_summary: string
+          p_lock_token: string
+          p_reason_code: string
+          p_run_id: string
+          p_step_key: string
+        }
+        Returns: Json
+      }
+      complete_publication_success: {
+        Args: {
+          p_article_id: string
+          p_content_hash: string
+          p_deployment_id: string
+          p_final_title: string
+          p_live_url: string
+          p_lock_token: string
+          p_published_at: string
+          p_run_id: string
+          p_slug: string
+        }
+        Returns: undefined
+      }
       current_user_is_any_publication_admin: { Args: never; Returns: boolean }
+      heartbeat_publication_run: {
+        Args: {
+          p_article_id: string
+          p_extend_seconds?: number
+          p_lock_token: string
+          p_run_id: string
+        }
+        Returns: string
+      }
       import_publication_planning: {
         Args: { p_dry_run?: boolean; p_project_key: string; p_rows: Json }
         Returns: {
@@ -717,6 +847,16 @@ export type Database = {
         }[]
       }
       is_publication_admin: { Args: { p_project_id: string }; Returns: boolean }
+      mark_notification_result: {
+        Args: {
+          p_error?: string
+          p_external_message_id?: string
+          p_idempotency_key: string
+          p_new_status: Database["public"]["Enums"]["publication_notification_status"]
+          p_notification_id: string
+        }
+        Returns: Json
+      }
     }
     Enums: {
       publication_article_status:
