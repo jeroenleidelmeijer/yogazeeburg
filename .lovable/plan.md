@@ -1,42 +1,51 @@
-# Launch Readiness Audit — Yoga Zeeburg
+# Yoga Zeeburg — Launch SEO & GEO audit (read-only)
 
-**Verdict: PUBLISH AFTER SMALL FIXES.** Safe to publish to `yogazeeburg.lovable.app` for smoke testing now, but the items in "Blockers before DNS switch" must land before pointing `www.yogazeeburg.com` at the site.
+Scope inspected: all files in `src/routes/`, `public/`, `__root.tsx` head, per-route `head()`, JSON-LD, `robots.txt`, `sitemap[.]xml.ts`, redirect routes, canonical hosts.
 
-## What's already good
-- All six routes exist and are reachable: `/`, `/pricing`, `/classes`, `/schedule`, `/contact`, `/sportbit`. Exactly one route each.
-- `bunx tsgo --noEmit` → exit 0. `bun run build` → exit 0.
-- `bun audit` → no high/critical vulnerabilities.
-- Header + footer nav wired to real routes; footer has Sportbit guide between Schedule and Contact.
-- No `trial.yogazeeburg.com`, `Studio Rent`/`Sudio Rent`, or stray `WOD` occurrences anywhere in `src/` or `public/`.
-- Contact form: server function with honeypot, Zod validation, Resend delivery via connector; keys read server-side only, no secrets in the client bundle.
-- Per-route `head()` sets title, description, og:title, og:description, and canonical on every page.
-- MCP tools reviewed (`get-studio-info`, `suggest-class-direction`, `get-directions-link`) — return only public studio info, no DB/user data.
+## ✅ Already good (no action needed)
 
-## Blockers before DNS switch to www.yogazeeburg.com
+- **Canonical host** unified on `https://www.yogazeeburg.com` across every route's `<link rel="canonical">` and `og:url`.
+- **robots.txt** (`public/robots.txt`) allows all crawlers and references the sitemap at the canonical host.
+- **sitemap.xml** served as a TSS server route at `/sitemap.xml` with correct `Content-Type: application/xml`, valid XML, and the six intended URLs (`/`, `/pricing`, `/classes`, `/schedule`, `/contact`, `/sportbit`) — no preview/lovable URLs.
+- **Legacy 301 redirects** implemented as real server handlers returning HTTP 301 (`/class-schedule → /schedule`, `/prices → /pricing`, `/yoga-styles → /classes`) — true permanent redirects, not client navigation.
+- **Per-route metadata**: each of the six public routes has its own `title`, `description`, `og:title`, `og:description`, `og:url`, and self-referencing `canonical`. No accidental "Lovable App" defaults.
+- **Sitewide defaults** in `__root.tsx`: charset, viewport, `og:site_name`, `og:type: website`, `twitter:card: summary_large_image`, `lang="en"` on `<html>`.
+- **Structured data** on home: `ExerciseGym` JSON-LD with `name`, `description`, `PostalAddress` (Cruquiusweg 96F, 1019 AH Amsterdam, NL), `areaServed`, `url`, `email`.
+- **No noindex** leaked anywhere; no sitewide `Disallow: /`.
+- **Router shell** correct (`__root.tsx` renders `<Outlet/>`, no duplicate `/` routes).
 
-1. **Canonicals point to a domain that doesn't serve the site yet.** Every route hardcodes `https://www.yogazeeburg.com/...` in `<link rel="canonical">` and `og:url`. Fine once DNS is switched; if we publish to the Lovable domain first and Google crawls it, canonicals still point to www — acceptable, but do not leave this misaligned long-term. Verify DNS + SSL are active before announcing the www URL.
-2. **No `robots.txt`.** Crawlers get no directive; on the Lovable preview subdomain this risks indexing a non-canonical host. Add `public/robots.txt` with `User-agent: *` + `Allow: /`, and a `Sitemap:` line once the sitemap exists.
-3. **No `sitemap.xml`.** No static file, no `src/routes/sitemap[.]xml.ts`, no plugin config. Add a server route listing `/`, `/pricing`, `/classes`, `/schedule`, `/sportbit`, `/contact` with the www base URL.
-4. **Legacy redirects missing.** `/class-schedule → /schedule`, `/prices → /pricing`, `/yoga-styles → /classes` are not implemented anywhere (no route files, no config). If the old site had these URLs indexed, they will 404. Implement as small route files that `throw redirect({ to: ..., statusCode: 301 })` in `beforeLoad`.
-5. **Public MCP server exposed.** `src/lib/mcp/index.ts` has no `auth` block and mounts at `/mcp`. Tools only return public info so it is not a data leak, but this is an intentional public endpoint — confirm this is desired before switching DNS, and either keep it public deliberately (documented) or remove `mcpPlugin()` from `vite.config.ts` for launch.
+## 🚨 Launch-critical before DNS switch
 
-## Post-launch improvements (non-blocking)
+1. **`www` vs apex resolution.** Everything (canonicals, sitemap, robots) points at `www.yogazeeburg.com`. Before flipping DNS, confirm the apex `yogazeeburg.com` will 301 → `www` at the DNS/hosting layer, otherwise crawlers will find duplicate hosts.
+2. **`/mcp` endpoint is publicly reachable and not disallowed** in `robots.txt`. Crawlers can hit it and consume budget on non-content responses. Either add `Disallow: /mcp` + `Disallow: /.mcp/` + `Disallow: /.well-known/` to robots, or gate `mcpPlugin()`. Decision belongs to launch, not later.
+3. **No `og:image` anywhere.** With no image and no external default image, WhatsApp / iMessage / LinkedIn / X previews will fall back to hosting's screenshot on `lovable.app` — but on the custom domain there is no such fallback, so shares from `www.yogazeeburg.com` will render as text-only cards. Add one absolute-URL `og:image` per leaf route (or at minimum a shared studio hero for `/`).
+4. **`ExerciseGym` schema is missing high-signal fields** that AI answer engines (Google AIO, Perplexity, ChatGPT search, Gemini) and Google's local pack read: `telephone`, `openingHoursSpecification`, `geo` (lat/lng), `priceRange`, `image`, `sameAs` (Instagram, Facebook, Google Maps CID), `hasMap`. Address alone is not enough for local ranking.
 
-- **No `og:image` anywhere.** Hosting injects a fallback screenshot, but a real OG image would meaningfully improve share previews (WhatsApp, Instagram DMs, Google Business). Add one per leaf route once studio photography is available.
-- **Root `__root.tsx` duplicates page-level title/og:title as a default** — harmless (leaf overrides win), but worth trimming to just charset/viewport/site-wide defaults.
-- **Accessibility spot-checks** (not fully audited this pass): confirm color contrast of muted-foreground on cream backgrounds meets WCAG AA, verify visible focus rings on all interactive elements, and re-run a keyboard tab pass on `/pricing` (many CTAs) and `/contact` (form). Semantic heading order was previously verified on `/sportbit`; re-check `/pricing` and `/classes` where sections are dense.
-- **Mobile overflow**: previously verified on `/schedule`, `/pricing`, `/sportbit`. Re-check `/classes` (Interactive Class Finder has the most horizontal content) at 320–375 px.
-- **JSON-LD**: `ExerciseGym` exists on `/`. Consider adding `BreadcrumbList` on leaf routes and `FAQPage` on `/pricing`.
-- **Analytics**: none detected — add before or shortly after DNS switch if measurement matters.
+## 🟡 Immediately after launch (first week)
 
-## What I did not verify (would need runtime browser or user input)
-- Actual click-through on every Sportbit checkout URL (10 links on `/pricing`, plus site-wide Intro Pass `r=42`). Static grep confirms URLs are consistent; only a real click confirms Sportbit still honours them.
-- Live email delivery of the contact form (requires posting the form against the deployed function).
-- Whether the canonical host will be `www.yogazeeburg.com` or apex `yogazeeburg.com`; canonicals currently assume www.
+5. **Add `llms.txt`** at `public/llms.txt` (and optionally `llms-full.txt`) — the emerging convention for GEO / AI-answer engines. Currently absent. A short llms.txt naming the studio, location, class types, intro pass URL, contact email, and canonical links is a fast GEO win.
+6. **FAQPage JSON-LD** on `/pricing` and `/sportbit`. Both pages already render Q&A visually; wrapping the existing content in `FAQPage` schema is a direct rich-result opportunity with no copy changes.
+7. **Sitemap `<lastmod>`** — currently omitted. Adding `lastmod` (build-time ISO date is fine) speeds re-crawl after edits.
+8. **Twitter/X card completeness.** Root sets generic `twitter:title` / `twitter:description`; leaf routes only override `og:*`. Per-route `twitter:title` / `twitter:description` will keep X shares route-specific.
+9. **Favicon set.** Only `favicon.ico` is present. Add `apple-touch-icon-180x180.png` and a 32×32 PNG so iOS/Android home-screen icons and modern browser tabs render the studio mark.
+10. **Google Search Console + Bing Webmaster** verification (meta tag or DNS TXT) and manual sitemap submission the moment DNS is live.
 
-## Recommended order of operations
-1. Add `robots.txt`, `sitemap.xml`, and the three legacy redirect routes.
-2. Decide on MCP: keep public and documented, or disable for launch.
-3. Publish to `yogazeeburg.lovable.app` and smoke-test all CTAs + contact form.
-4. Point `www.yogazeeburg.com` DNS, verify SSL, test canonical alignment.
-5. Post-launch: og:image, analytics, extra JSON-LD.
+## 🟢 Later improvements
+
+11. **BreadcrumbList JSON-LD** on non-home routes (Yoga Zeeburg › Schedule, etc.) — small SERP polish.
+12. **`Organization` / `LocalBusiness` sameAs** — link Instagram / Facebook / Google Business Profile in JSON-LD so entities merge in the Google Knowledge Graph and are surfaced by AI answer engines.
+13. **Dutch-language landing pages** (e.g. `/nl/`, `/nl/rooster`, `/nl/prijzen`) with `hreflang` — Amsterdam East market is bilingual, and Dutch queries ("yogastudio Amsterdam Oost", "yoga proefles") are being missed entirely by an English-only site.
+14. **Individual class pages** under `/classes/<slug>` (Slow Flow & Soundbath, Restorative & Reiki & Aroma, Stress Release Yin, etc.) — each ranks for a long-tail class-type query and gets its own head/JSON-LD. Currently `/classes` is one big finder page.
+15. **Teacher pages** with `Person` schema — small studios rank surprisingly well on teacher-name queries.
+16. **Blog / journal** for cornerstone content ("beginner's first yoga class", "yoga for desk-work shoulders", "how often should I do yoga to feel a difference") — the routine-focused positioning is a natural content brief.
+17. **Analytics + Search Console rank monitoring** wired into the app (Semrush data service is available for ongoing rank tracking and competitor visibility once launched).
+18. **Image alt-text pass** once real studio photography replaces the current typography-led layout.
+19. **Speed budget**: preconnects to fonts.googleapis are in place; consider self-hosting the Fraunces + Inter subsets to eliminate the extra DNS/TLS hop and improve LCP on mobile.
+
+## Notes / uncertainties
+
+- I did not run a live crawler; findings are strictly from the source in this repo.
+- Whether the apex `yogazeeburg.com` already redirects to `www` is a hosting/DNS question I can't verify from the codebase.
+- The `og:image` gap is the single biggest visible-to-humans launch issue and the cheapest to fix (one image + one meta tag per route).
+
+Ready to convert any of the launch-critical items into a fix plan when you say go.
