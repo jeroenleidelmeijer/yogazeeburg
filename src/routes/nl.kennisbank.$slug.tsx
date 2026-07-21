@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import {
   getArticleBySlug,
   getRelatedArticles,
-  type Article,
   type ArticleTOCItem,
   type ArticleFAQ,
 } from "@/lib/kennisbank/articles";
+
 import { ArticleCard } from "@/components/kennisbank/ArticleCard";
 
 const BASE = "https://www.yogazeeburg.com";
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
   loader: ({ params }) => {
     const article = getArticleBySlug(params.slug);
     if (!article) throw notFound();
-    return { article };
+    return { slug: article.slug };
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) {
@@ -28,7 +28,16 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
         ],
       };
     }
-    const a = loaderData.article;
+    const a = getArticleBySlug(loaderData.slug);
+    if (!a) {
+      return {
+        meta: [
+          { title: "Artikel niet gevonden — Yoga Gids | Yoga Zeeburg" },
+          { name: "robots", content: "noindex, follow" },
+        ],
+      };
+    }
+
     const canonical = `${BASE}/nl/kennisbank/${params.slug}`;
     return {
       meta: [
@@ -133,9 +142,12 @@ function formatDateNL(iso: string): string {
 }
 
 function ArticlePage() {
-  const { article: a } = Route.useLoaderData() as { article: Article };
+  const { slug } = Route.useLoaderData();
+  const a = getArticleBySlug(slug);
+  if (!a) throw notFound();
   const Body = a.body;
   const related = a.template.showRelated ? getRelatedArticles(a.slug, 2) : [];
+
 
 
   return (
