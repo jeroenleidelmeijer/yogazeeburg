@@ -16,7 +16,6 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { ArticleCard } from "@/components/kennisbank/ArticleCard";
 import {
-  ARTICLES,
   getRecommendedArticles,
   getArticlesSortedByNewest,
   getArticlesByCategory,
