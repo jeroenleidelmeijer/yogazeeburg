@@ -95,7 +95,7 @@ const proeflesArticle: Article = {
     showTOC: true,
     showFAQ: true,
     showSources: false,
-    showRelated: false,
+    showRelated: true,
   },
   body: () => <ProeflesBody />,
 };
