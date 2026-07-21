@@ -458,15 +458,23 @@ function KennisbankPage() {
             >
               Nieuw in de Yoga Gids
             </h2>
-            <div className="mt-5 rounded-2xl border border-dashed border-border bg-card/70 p-8 text-center">
-              <p className="text-foreground">
-                Nog geen artikelen gepubliceerd.
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                De redactie werkt aan de eerste reeks praktische stukken.
-                Kom binnenkort terug.
-              </p>
-            </div>
+            {newest.length > 0 ? (
+              <ul className="mt-6 grid gap-5 sm:grid-cols-2">
+                {newest.map((a) => (
+                  <ArticleCard key={a.slug} article={a} />
+                ))}
+              </ul>
+            ) : (
+              <div className="mt-5 rounded-2xl border border-dashed border-border bg-card/70 p-8 text-center">
+                <p className="text-foreground">
+                  Nog geen artikelen gepubliceerd.
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  De redactie werkt aan de eerste reeks praktische stukken.
+                  Kom binnenkort terug.
+                </p>
+              </div>
+            )}
 
             <div className="mt-8 text-center">
               <Link
