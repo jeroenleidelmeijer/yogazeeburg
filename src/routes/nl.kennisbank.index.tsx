@@ -9,7 +9,6 @@ import {
   MapPin,
   Search,
   X,
-  BookOpen,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
