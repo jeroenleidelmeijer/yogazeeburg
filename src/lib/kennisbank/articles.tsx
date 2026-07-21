@@ -731,8 +731,8 @@ const beginnersArticle: Article = {
   category: CATEGORY_AMSTERDAM_OOST,
   type: "how-to",
   pillar: false,
-  publishedAt: "2026-07-22",
-  updatedAt: "2026-07-22",
+  publishedAt: "2026-07-21",
+  updatedAt: "2026-07-21",
   readingTimeMin: 10,
   toc: [
     { id: "kort-antwoord", label: "Kort antwoord" },
@@ -740,7 +740,7 @@ const beginnersArticle: Article = {
     { id: "welke-les", label: "Welke yogales past bij jou als beginner?" },
     { id: "voorbereiden", label: "Wat heb je nodig — en wat juist niet?" },
     { id: "frequentie", label: "Hoe vaak in de week is realistisch?" },
-    { id: "opbouwen", label: "Rustig opbouwen zonder blessures" },
+    { id: "opbouwen", label: "Rustig en verantwoord opbouwen" },
     { id: "onzekerheden", label: "Veelvoorkomende onzekerheden bij starters" },
     { id: "eerste-stappen", label: "Concrete eerste stappen deze week" },
     { id: "yoga-zeeburg", label: "Zo begin je bij Yoga Zeeburg" },
@@ -969,7 +969,7 @@ function BeginnersBody() {
         id="opbouwen"
         className="mt-14 font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
       >
-        Rustig opbouwen zonder blessures
+        Rustig en verantwoord opbouwen
       </h2>
       <p className="mt-4">
         Yoga hoort geen pijn te doen. Rekken kan intens voelen en spieren
