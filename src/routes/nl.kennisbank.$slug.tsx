@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import {
   getArticleBySlug,
   getRelatedArticles,
-  type Article,
   type ArticleTOCItem,
   type ArticleFAQ,
 } from "@/lib/kennisbank/articles";
+
 import { ArticleCard } from "@/components/kennisbank/ArticleCard";
 
 const BASE = "https://www.yogazeeburg.com";
