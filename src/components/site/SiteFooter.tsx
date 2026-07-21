@@ -36,6 +36,7 @@ export function SiteFooter() {
             <li><Link to="/classes" className="text-muted-foreground hover:text-foreground">Classes</Link></li>
             <li><Link to="/schedule" className="text-muted-foreground hover:text-foreground">Schedule</Link></li>
             <li><Link to="/sportbit" className="text-muted-foreground hover:text-foreground">Sportbit guide</Link></li>
+            <li><Link to="/nl/kennisbank" className="text-muted-foreground hover:text-foreground">Yoga Gids</Link></li>
             <li><Link to="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
           </ul>
         </div>
