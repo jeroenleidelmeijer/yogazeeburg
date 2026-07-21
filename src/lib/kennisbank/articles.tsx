@@ -137,7 +137,7 @@ function ProeflesBody() {
               rel="noopener noreferrer"
               className="font-medium text-primary underline underline-offset-4 hover:no-underline"
             >
-              14 dagen onbeperkt intro pass
+              14-daagse Intro Pass
             </a>{" "}
             rustig verschillende lessen, docenten en tijden proberen voordat je
             een keuze maakt.
@@ -311,7 +311,7 @@ function ProeflesBody() {
         Voor de meeste mensen werkt het daarom beter om binnen een korte
         periode meerdere lessen te proberen: verschillende docenten,
         verschillende tijden en één rustige en één dynamischere stijl. Dat is
-        precies waarom een intro pass zoals de 14 dagen onbeperkt intro pass{" "}
+        precies waarom een intro pass zoals de 14-daagse Intro Pass{" "}
         bestaat: niet als korting, maar als kader om rustig te ontdekken welke
         vorm van yoga bij jouw week past.
       </p>

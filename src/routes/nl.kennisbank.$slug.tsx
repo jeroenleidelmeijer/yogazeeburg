@@ -315,7 +315,7 @@ function ArticlePage() {
                     rel="noopener noreferrer"
                     className="mt-7 inline-flex min-h-[44px] items-center rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
                   >
-                    Start je 14 dagen onbeperkt
+                    Bekijk de 14-daagse Intro Pass
                   </a>
                   <p className="mt-3 text-sm text-primary-foreground/75">
                     Voor nieuwe studenten. Stopt automatisch.
