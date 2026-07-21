@@ -390,7 +390,7 @@ const ANNUAL_PLANS: AnnualPlan[] = [
     price: "€49",
     priceSuffix: "every 4 weeks",
     perClass: [{ label: "per class", value: "€11.31" }],
-    routine: "Best for one steady weekly reset.",
+    routine: "",
     firstYear: "€588 first-year total after free period",
     usage: "52 classes/year",
     cta: "Choose Weekly Yoga Annual",
