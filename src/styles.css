@@ -79,11 +79,11 @@
   --muted: oklch(0.93 0.02 85);
   --muted-foreground: oklch(0.45 0.03 70);
 
-  --accent: oklch(0.68 0.12 45);
+  --accent: oklch(0.52 0.13 45);
   --accent-foreground: oklch(0.99 0.01 85);
 
   --sand: oklch(0.94 0.02 85);
-  --clay: oklch(0.68 0.12 45);
+  --clay: oklch(0.52 0.13 45);
   --clay-foreground: oklch(0.99 0.01 85);
   --sage: oklch(0.75 0.05 145);
   --sage-foreground: oklch(0.22 0.02 60);
