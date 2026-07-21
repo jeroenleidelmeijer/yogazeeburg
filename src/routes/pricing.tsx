@@ -60,6 +60,20 @@ export const Route = createFileRoute("/pricing")({
       { property: "og:url", content: "https://www.yogazeeburg.com/pricing" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/pricing" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: PricingPage,
 });
@@ -641,16 +655,16 @@ function PayInFullNote() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
           <div>
-            <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
+            <span className="text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground/90">
               Best annual value
             </span>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.05] text-primary-foreground sm:text-4xl md:text-[2.75rem]">
               Pay once. Practice all year.
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/85">
+            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/95">
               Yoga Plus Annual Pay-in-Full is one upfront payment for a full year — 104 classes, valid for 52 weeks. Built for a steady twice-a-week rhythm: enough to feel the difference, simple enough to keep up.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-primary-foreground/70">
+            <p className="mt-4 text-base leading-relaxed text-primary-foreground/90">
               A clear commitment to your routine — and the best value if you know you want to keep showing up twice a week.
             </p>
           </div>
@@ -661,9 +675,9 @@ function PayInFullNote() {
               <span className="font-display text-[2.5rem] leading-none text-primary-foreground">
                 {PAY_IN_FULL_PRICE}
               </span>
-              <span className="text-base text-primary-foreground/80">once</span>
+              <span className="text-base text-primary-foreground/90">once</span>
             </div>
-            <div className="mt-3 space-y-1 text-sm text-primary-foreground/75">
+            <div className="mt-3 space-y-1 text-sm text-primary-foreground/90">
               <p>104 classes</p>
               <p>Valid for 52 weeks</p>
               <p>€6.72 per class</p>
@@ -685,7 +699,7 @@ function PayInFullNote() {
                 Compare all memberships
               </a>
             </div>
-            <p className="mt-5 text-xs leading-relaxed text-primary-foreground/60">
+            <p className="mt-5 text-xs leading-relaxed text-primary-foreground/85">
               The {DISCOUNT_CODE} discount code does not apply to Pay-in-Full. New students can start with the Intro Pass first.
             </p>
           </div>
