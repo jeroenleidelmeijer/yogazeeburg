@@ -1102,7 +1102,10 @@ function BeginnersBody() {
         prestatiedruk, geen zweverigheid, wel persoonlijke aandacht.
       </p>
       <p className="mt-4">
-        Voor beginners werkt de{" "}
+        Voor beginners werkt een intro pass prettig: in twee weken kun je
+        meerdere toegankelijke lessen op verschillende tijden en bij
+        verschillende docenten proberen, zodat je zonder haast een routine
+        kunt uitzoeken die daadwerkelijk in je week past.{" "}
         <a
           href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
           target="_blank"
@@ -1110,11 +1113,8 @@ function BeginnersBody() {
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Bekijk onze 14-daagse Intro Pass
-        </a>{" "}
-        prettig: in twee weken kun je meerdere toegankelijke lessen op
-        verschillende tijden en bij verschillende docenten proberen, zodat
-        je zonder haast een routine kunt uitzoeken die daadwerkelijk in je
-        week past.
+        </a>
+        .
       </p>
       <p className="mt-4">
         Meer achtergrond over yoga in de buurt? Blader door de{" "}
