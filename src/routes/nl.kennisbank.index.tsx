@@ -386,40 +386,26 @@ function KennisbankPage() {
         </section>
 
         {/* Recommended */}
-        <section
-          aria-labelledby="aanbevolen-heading"
-          className="border-t border-border/60 bg-secondary/30"
-        >
-          <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
-            <h2
-              id="aanbevolen-heading"
-              className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
-            >
-              Aanbevolen artikelen
-            </h2>
-            {recommended.length > 0 ? (
+        {recommended.length > 0 && (
+          <section
+            aria-labelledby="aanbevolen-heading"
+            className="border-t border-border/60 bg-secondary/30"
+          >
+            <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
+              <h2
+                id="aanbevolen-heading"
+                className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
+              >
+                Aanbevolen artikelen
+              </h2>
               <ul className="mt-6 grid gap-5 sm:grid-cols-2">
                 {recommended.map((a) => (
                   <ArticleCard key={a.slug} article={a} />
                 ))}
               </ul>
-            ) : (
-              <div className="mt-5 rounded-2xl border border-dashed border-border bg-card/70 p-8 text-center">
-                <BookOpen
-                  aria-hidden="true"
-                  className="mx-auto h-8 w-8 text-primary"
-                />
-                <p className="mt-4 text-foreground">
-                  We werken aan de eerste praktische gidsen.
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Binnenkort verschijnen hier zorgvuldig geschreven artikelen om
-                  je op weg te helpen.
-                </p>
-              </div>
-            )}
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
 
         {/* Intro Pass CTA */}
         <section aria-labelledby="cta-heading" className="bg-background">
