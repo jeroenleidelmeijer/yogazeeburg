@@ -2,7 +2,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { getArticleBySlug } from "@/lib/kennisbank/articles";
+import {
+  getArticleBySlug,
+  type Article,
+  type ArticleTOCItem,
+  type ArticleFAQ,
+} from "@/lib/kennisbank/articles";
 
 const BASE = "https://www.yogazeeburg.com";
 
