@@ -135,6 +135,8 @@ function formatDateNL(iso: string): string {
 function ArticlePage() {
   const { article: a } = Route.useLoaderData() as { article: Article };
   const Body = a.body;
+  const related = a.template.showRelated ? getRelatedArticles(a.slug, 2) : [];
+
 
   return (
     <div lang="nl" className="flex min-h-screen flex-col bg-background">
