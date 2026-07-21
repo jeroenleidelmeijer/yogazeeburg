@@ -21,9 +21,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ClassScheduleRouteImport } from './routes/class-schedule'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as NlKennisbankRouteImport } from './routes/nl.kennisbank'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as NlKennisbankIndexRouteImport } from './routes/nl.kennisbank.index'
 import { Route as NlKennisbankAlleArtikelenRouteImport } from './routes/nl.kennisbank.alle-artikelen'
 import { Route as NlKennisbankSlugRouteImport } from './routes/nl.kennisbank.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
@@ -89,11 +89,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NlKennisbankRoute = NlKennisbankRouteImport.update({
-  id: '/nl/kennisbank',
-  path: '/nl/kennisbank',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
     id: '/.well-known/oauth-protected-resource',
@@ -106,16 +101,21 @@ const Char91DotmcpChar93ListToolsRoute =
     path: '/.mcp/list-tools',
     getParentRoute: () => rootRouteImport,
   } as any)
+const NlKennisbankIndexRoute = NlKennisbankIndexRouteImport.update({
+  id: '/nl/kennisbank/',
+  path: '/nl/kennisbank/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NlKennisbankAlleArtikelenRoute =
   NlKennisbankAlleArtikelenRouteImport.update({
-    id: '/alle-artikelen',
-    path: '/alle-artikelen',
-    getParentRoute: () => NlKennisbankRoute,
+    id: '/nl/kennisbank/alle-artikelen',
+    path: '/nl/kennisbank/alle-artikelen',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const NlKennisbankSlugRoute = NlKennisbankSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => NlKennisbankRoute,
+  id: '/nl/kennisbank/$slug',
+  path: '/nl/kennisbank/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
@@ -125,9 +125,9 @@ const Char91DotmcpChar93InvokeToolToolRoute =
   } as any)
 const NlKennisbankCategorieSlugRoute =
   NlKennisbankCategorieSlugRouteImport.update({
-    id: '/categorie/$slug',
-    path: '/categorie/$slug',
-    getParentRoute: () => NlKennisbankRoute,
+    id: '/nl/kennisbank/categorie/$slug',
+    path: '/nl/kennisbank/categorie/$slug',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -145,10 +145,10 @@ export interface FileRoutesByFullPath {
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
+  '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
 }
 export interface FileRoutesByTo {
@@ -166,10 +166,10 @@ export interface FileRoutesByTo {
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
+  '/nl/kennisbank': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
 }
 export interface FileRoutesById {
@@ -188,10 +188,10 @@ export interface FileRoutesById {
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
+  '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
 }
 export interface FileRouteTypes {
@@ -211,10 +211,10 @@ export interface FileRouteTypes {
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
-    | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
+    | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -232,10 +232,10 @@ export interface FileRouteTypes {
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
-    | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
+    | '/nl/kennisbank'
     | '/nl/kennisbank/categorie/$slug'
   id:
     | '__root__'
@@ -253,10 +253,10 @@ export interface FileRouteTypes {
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
-    | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
+    | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -275,8 +275,11 @@ export interface RootRouteChildren {
   YogaStylesRoute: typeof YogaStylesRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  NlKennisbankRoute: typeof NlKennisbankRouteWithChildren
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  NlKennisbankSlugRoute: typeof NlKennisbankSlugRoute
+  NlKennisbankAlleArtikelenRoute: typeof NlKennisbankAlleArtikelenRoute
+  NlKennisbankIndexRoute: typeof NlKennisbankIndexRoute
+  NlKennisbankCategorieSlugRoute: typeof NlKennisbankCategorieSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -365,13 +368,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/nl/kennisbank': {
-      id: '/nl/kennisbank'
-      path: '/nl/kennisbank'
-      fullPath: '/nl/kennisbank'
-      preLoaderRoute: typeof NlKennisbankRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
       path: '/.well-known/oauth-protected-resource'
@@ -386,19 +382,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nl/kennisbank/': {
+      id: '/nl/kennisbank/'
+      path: '/nl/kennisbank'
+      fullPath: '/nl/kennisbank/'
+      preLoaderRoute: typeof NlKennisbankIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nl/kennisbank/alle-artikelen': {
       id: '/nl/kennisbank/alle-artikelen'
-      path: '/alle-artikelen'
+      path: '/nl/kennisbank/alle-artikelen'
       fullPath: '/nl/kennisbank/alle-artikelen'
       preLoaderRoute: typeof NlKennisbankAlleArtikelenRouteImport
-      parentRoute: typeof NlKennisbankRoute
+      parentRoute: typeof rootRouteImport
     }
     '/nl/kennisbank/$slug': {
       id: '/nl/kennisbank/$slug'
-      path: '/$slug'
+      path: '/nl/kennisbank/$slug'
       fullPath: '/nl/kennisbank/$slug'
       preLoaderRoute: typeof NlKennisbankSlugRouteImport
-      parentRoute: typeof NlKennisbankRoute
+      parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
@@ -409,29 +412,13 @@ declare module '@tanstack/react-router' {
     }
     '/nl/kennisbank/categorie/$slug': {
       id: '/nl/kennisbank/categorie/$slug'
-      path: '/categorie/$slug'
+      path: '/nl/kennisbank/categorie/$slug'
       fullPath: '/nl/kennisbank/categorie/$slug'
       preLoaderRoute: typeof NlKennisbankCategorieSlugRouteImport
-      parentRoute: typeof NlKennisbankRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface NlKennisbankRouteChildren {
-  NlKennisbankSlugRoute: typeof NlKennisbankSlugRoute
-  NlKennisbankAlleArtikelenRoute: typeof NlKennisbankAlleArtikelenRoute
-  NlKennisbankCategorieSlugRoute: typeof NlKennisbankCategorieSlugRoute
-}
-
-const NlKennisbankRouteChildren: NlKennisbankRouteChildren = {
-  NlKennisbankSlugRoute: NlKennisbankSlugRoute,
-  NlKennisbankAlleArtikelenRoute: NlKennisbankAlleArtikelenRoute,
-  NlKennisbankCategorieSlugRoute: NlKennisbankCategorieSlugRoute,
-}
-
-const NlKennisbankRouteWithChildren = NlKennisbankRoute._addFileChildren(
-  NlKennisbankRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -449,8 +436,11 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
-  NlKennisbankRoute: NlKennisbankRouteWithChildren,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  NlKennisbankSlugRoute: NlKennisbankSlugRoute,
+  NlKennisbankAlleArtikelenRoute: NlKennisbankAlleArtikelenRoute,
+  NlKennisbankIndexRoute: NlKennisbankIndexRoute,
+  NlKennisbankCategorieSlugRoute: NlKennisbankCategorieSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

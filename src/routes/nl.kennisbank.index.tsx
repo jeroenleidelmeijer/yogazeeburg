@@ -119,7 +119,7 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-export const Route = createFileRoute("/nl/kennisbank")({
+export const Route = createFileRoute("/nl/kennisbank/")({
   head: () => ({
     meta: [
       {
