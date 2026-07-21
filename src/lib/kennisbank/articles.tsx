@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 
 export type ArticleCategory = {
   slug: string;
