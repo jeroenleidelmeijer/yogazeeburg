@@ -7,9 +7,9 @@ const NAV = [
   { to: "/pricing", label: "Pricing" },
   { to: "/classes", label: "Classes" },
   { to: "/schedule", label: "Schedule" },
-  { to: "/nl/kennisbank", label: "Yoga Gids" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
 
 const INTRO_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
 
