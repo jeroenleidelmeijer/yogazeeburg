@@ -31,7 +31,7 @@ export const Route = createFileRoute("/nl/kennisbank/alle-artikelen")({
 });
 
 function AllArticlesPage() {
-  const { articles } = Route.useLoaderData();
+  const { articles } = Route.useLoaderData() as { articles: import("@/lib/kennisbank/articles").Article[] };
 
   return (
     <div lang="nl" className="flex min-h-screen flex-col bg-background">

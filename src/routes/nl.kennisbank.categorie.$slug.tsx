@@ -48,7 +48,7 @@ export const Route = createFileRoute("/nl/kennisbank/categorie/$slug")({
 });
 
 function CategoryPage() {
-  const { title, articles } = Route.useLoaderData();
+  const { title, articles } = Route.useLoaderData() as { title: string | null; articles: import("@/lib/kennisbank/articles").Article[] };
 
   return (
     <div lang="nl" className="flex min-h-screen flex-col bg-background">
