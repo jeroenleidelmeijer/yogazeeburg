@@ -249,8 +249,6 @@ function ProeflesBody() {
         expliciet aan en zal je niet in een houding duwen die niet past.
       </p>
 
-      <InlineIntroCTA />
-
       <h2
         id="houding-niet-lukt"
         className="mt-14 font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
