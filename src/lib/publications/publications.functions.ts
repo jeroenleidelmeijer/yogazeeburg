@@ -87,7 +87,7 @@ export const getPublicationOverview = createServerFn({ method: "GET" })
       const { data: proj } = await supabase.from("publication_projects").select("id").maybeSingle();
       return {
         isAdmin: false,
-        project: null as null | { id: string; automation_enabled: boolean; publication_stopped: boolean; name: string },
+        project: null,
         canBootstrap: !proj,
         summary: null,
         articles: [] as PublicationArticleRow[],
