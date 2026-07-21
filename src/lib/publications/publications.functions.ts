@@ -71,7 +71,7 @@ export type PublicationOverview = {
 
 export const getPublicationOverview = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
+  .handler(async ({ context }): Promise<PublicationOverview> => {
     const { supabase } = context;
 
     const { data: adminRows } = await supabase
