@@ -142,9 +142,12 @@ function formatDateNL(iso: string): string {
 }
 
 function ArticlePage() {
-  const { article: a } = Route.useLoaderData() as { article: Article };
+  const { slug } = Route.useLoaderData();
+  const a = getArticleBySlug(slug);
+  if (!a) throw notFound();
   const Body = a.body;
   const related = a.template.showRelated ? getRelatedArticles(a.slug, 2) : [];
+
 
 
   return (
