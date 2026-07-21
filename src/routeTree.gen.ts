@@ -9,20 +9,34 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YogaStylesRouteImport } from './routes/yoga-styles'
 import { Route as SportbitRouteImport } from './routes/sportbit'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PricesRouteImport } from './routes/prices'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
+import { Route as ClassScheduleRouteImport } from './routes/class-schedule'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
+const YogaStylesRoute = YogaStylesRouteImport.update({
+  id: '/yoga-styles',
+  path: '/yoga-styles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportbitRoute = SportbitRouteImport.update({
   id: '/sportbit',
   path: '/sportbit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScheduleRoute = ScheduleRouteImport.update({
@@ -33,6 +47,11 @@ const ScheduleRoute = ScheduleRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricesRoute = PricesRouteImport.update({
+  id: '/prices',
+  path: '/prices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -48,6 +67,11 @@ const ContactRoute = ContactRouteImport.update({
 const ClassesRoute = ClassesRouteImport.update({
   id: '/classes',
   path: '/classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassScheduleRoute = ClassScheduleRouteImport.update({
+  id: '/class-schedule',
+  path: '/class-schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -76,24 +100,32 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
   '/schedule': typeof ScheduleRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
   '/schedule': typeof ScheduleRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -101,12 +133,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
   '/schedule': typeof ScheduleRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -115,36 +151,48 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/class-schedule'
     | '/classes'
     | '/contact'
     | '/mcp'
+    | '/prices'
     | '/pricing'
     | '/schedule'
+    | '/sitemap.xml'
     | '/sportbit'
+    | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/class-schedule'
     | '/classes'
     | '/contact'
     | '/mcp'
+    | '/prices'
     | '/pricing'
     | '/schedule'
+    | '/sitemap.xml'
     | '/sportbit'
+    | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
+    | '/class-schedule'
     | '/classes'
     | '/contact'
     | '/mcp'
+    | '/prices'
     | '/pricing'
     | '/schedule'
+    | '/sitemap.xml'
     | '/sportbit'
+    | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -152,12 +200,16 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClassScheduleRoute: typeof ClassScheduleRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
   McpRoute: typeof McpRoute
+  PricesRoute: typeof PricesRoute
   PricingRoute: typeof PricingRoute
   ScheduleRoute: typeof ScheduleRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportbitRoute: typeof SportbitRoute
+  YogaStylesRoute: typeof YogaStylesRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -165,11 +217,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yoga-styles': {
+      id: '/yoga-styles'
+      path: '/yoga-styles'
+      fullPath: '/yoga-styles'
+      preLoaderRoute: typeof YogaStylesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sportbit': {
       id: '/sportbit'
       path: '/sportbit'
       fullPath: '/sportbit'
       preLoaderRoute: typeof SportbitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/schedule': {
@@ -184,6 +250,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prices': {
+      id: '/prices'
+      path: '/prices'
+      fullPath: '/prices'
+      preLoaderRoute: typeof PricesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -205,6 +278,13 @@ declare module '@tanstack/react-router' {
       path: '/classes'
       fullPath: '/classes'
       preLoaderRoute: typeof ClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/class-schedule': {
+      id: '/class-schedule'
+      path: '/class-schedule'
+      fullPath: '/class-schedule'
+      preLoaderRoute: typeof ClassScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -240,12 +320,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClassScheduleRoute: ClassScheduleRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
   McpRoute: McpRoute,
+  PricesRoute: PricesRoute,
   PricingRoute: PricingRoute,
   ScheduleRoute: ScheduleRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportbitRoute: SportbitRoute,
+  YogaStylesRoute: YogaStylesRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
