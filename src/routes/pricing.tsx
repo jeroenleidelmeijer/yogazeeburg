@@ -666,7 +666,9 @@ function PayInFullNote() {
             <div className="mt-3 space-y-1 text-sm text-primary-foreground/75">
               <p>104 classes</p>
               <p>Valid for 52 weeks</p>
-              <p>Around €6.72 per class at 2×/week</p>
+              <p>€6.72 per class</p>
+              <p>Unused classes expire after 52 weeks.</p>
+              <p>Does not renew automatically.</p>
             </div>
             <div className="mt-7 flex flex-col gap-3">
               <a
