@@ -131,7 +131,7 @@ function formatDateNL(iso: string): string {
 }
 
 function ArticlePage() {
-  const { article: a } = Route.useLoaderData();
+  const { article: a } = Route.useLoaderData() as { article: Article };
   const Body = a.body;
 
   return (
