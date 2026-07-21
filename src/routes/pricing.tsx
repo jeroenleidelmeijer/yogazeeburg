@@ -60,6 +60,20 @@ export const Route = createFileRoute("/pricing")({
       { property: "og:url", content: "https://www.yogazeeburg.com/pricing" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/pricing" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: PricingPage,
 });
