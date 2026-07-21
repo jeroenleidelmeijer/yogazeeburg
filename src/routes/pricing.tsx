@@ -608,9 +608,11 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
         applies afterwards.
       </div>
 
-      <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">
-        {plan.routine}
-      </p>
+      {plan.routine && (
+        <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">
+          {plan.routine}
+        </p>
+      )}
 
       <div className="mt-auto pt-7">
         <a
