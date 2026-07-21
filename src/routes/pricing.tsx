@@ -148,8 +148,8 @@ function Hero() {
           </a>
         </div>
         <p className="mt-5 text-sm text-muted-foreground">
-          14-Day Unlimited Intro Pass · memberships every 4 weeks · no fake
-          urgency
+          14-Day Unlimited Intro Pass · memberships every 4 weeks · simple,
+          transparent pricing
         </p>
       </div>
     </section>
