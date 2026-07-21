@@ -154,6 +154,30 @@ export type Database = {
           },
         ]
       }
+      publication_error_categories: {
+        Row: {
+          created_at: string
+          description: string
+          key: string
+          retry_allowed: boolean
+          source_reference: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          key: string
+          retry_allowed?: boolean
+          source_reference: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          key?: string
+          retry_allowed?: boolean
+          source_reference?: string
+        }
+        Relationships: []
+      }
       publication_events: {
         Row: {
           actor_id: string | null
@@ -421,21 +445,137 @@ export type Database = {
       }
       publication_required_qa_checks: {
         Row: {
+          applicability: string
+          blocking: boolean
           check_key: string
           description: string
+          evidence_schema: Json
+          produced_by_step: string | null
+          source_reference: string | null
           stage: Database["public"]["Enums"]["publication_qa_stage"]
+          when_not_applicable: string | null
         }
         Insert: {
+          applicability?: string
+          blocking?: boolean
           check_key: string
           description: string
+          evidence_schema?: Json
+          produced_by_step?: string | null
+          source_reference?: string | null
           stage: Database["public"]["Enums"]["publication_qa_stage"]
+          when_not_applicable?: string | null
         }
         Update: {
+          applicability?: string
+          blocking?: boolean
           check_key?: string
           description?: string
+          evidence_schema?: Json
+          produced_by_step?: string | null
+          source_reference?: string | null
           stage?: Database["public"]["Enums"]["publication_qa_stage"]
+          when_not_applicable?: string | null
         }
         Relationships: []
+      }
+      publication_run_reason_codes: {
+        Row: {
+          code: string
+          created_at: string
+          description: string
+          source_reference: string | null
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          description: string
+          source_reference?: string | null
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          description?: string
+          source_reference?: string | null
+        }
+        Relationships: []
+      }
+      publication_run_step_attempts: {
+        Row: {
+          article_id: string
+          attempt_number: number
+          backoff_hint_seconds: number | null
+          created_at: string
+          error_category: string | null
+          error_summary: string | null
+          finished_at: string | null
+          id: string
+          project_id: string
+          result: string
+          run_id: string
+          started_at: string
+          step_key: string
+        }
+        Insert: {
+          article_id: string
+          attempt_number: number
+          backoff_hint_seconds?: number | null
+          created_at?: string
+          error_category?: string | null
+          error_summary?: string | null
+          finished_at?: string | null
+          id?: string
+          project_id: string
+          result: string
+          run_id: string
+          started_at?: string
+          step_key: string
+        }
+        Update: {
+          article_id?: string
+          attempt_number?: number
+          backoff_hint_seconds?: number | null
+          created_at?: string
+          error_category?: string | null
+          error_summary?: string | null
+          finished_at?: string | null
+          id?: string
+          project_id?: string
+          result?: string
+          run_id?: string
+          started_at?: string
+          step_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publication_run_step_attempts_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "publication_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "publication_run_step_attempts_error_category_fkey"
+            columns: ["error_category"]
+            isOneToOne: false
+            referencedRelation: "publication_error_categories"
+            referencedColumns: ["key"]
+          },
+          {
+            foreignKeyName: "publication_run_step_attempts_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "publication_projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "publication_run_step_attempts_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "publication_runs"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       publication_runs: {
         Row: {
@@ -603,6 +743,14 @@ export type Database = {
       publication_notification_type: "success" | "failure" | "end_of_series"
       publication_phase: "phase_1_36" | "phase_37_60" | "phase_61_180"
       publication_qa_stage: "content" | "preview" | "live"
+      publication_run_disposition:
+        | "claimed"
+        | "scheduled_noop"
+        | "stopped_noop"
+        | "configuration_blocked"
+        | "sequence_blocked"
+        | "lock_conflict"
+        | "recovery_blocked"
       publication_run_status:
         | "running"
         | "published"
@@ -768,6 +916,15 @@ export const Constants = {
       publication_notification_type: ["success", "failure", "end_of_series"],
       publication_phase: ["phase_1_36", "phase_37_60", "phase_61_180"],
       publication_qa_stage: ["content", "preview", "live"],
+      publication_run_disposition: [
+        "claimed",
+        "scheduled_noop",
+        "stopped_noop",
+        "configuration_blocked",
+        "sequence_blocked",
+        "lock_conflict",
+        "recovery_blocked",
+      ],
       publication_run_status: [
         "running",
         "published",
