@@ -661,9 +661,9 @@ function PayInFullNote() {
               <span className="font-display text-[2.5rem] leading-none text-primary-foreground">
                 {PAY_IN_FULL_PRICE}
               </span>
-              <span className="text-base text-primary-foreground/80">once</span>
+              <span className="text-base text-primary-foreground/90">once</span>
             </div>
-            <div className="mt-3 space-y-1 text-sm text-primary-foreground/75">
+            <div className="mt-3 space-y-1 text-sm text-primary-foreground/90">
               <p>104 classes</p>
               <p>Valid for 52 weeks</p>
               <p>€6.72 per class</p>
@@ -685,7 +685,7 @@ function PayInFullNote() {
                 Compare all memberships
               </a>
             </div>
-            <p className="mt-5 text-xs leading-relaxed text-primary-foreground/60">
+            <p className="mt-5 text-xs leading-relaxed text-primary-foreground/85">
               The {DISCOUNT_CODE} discount code does not apply to Pay-in-Full. New students can start with the Intro Pass first.
             </p>
           </div>
