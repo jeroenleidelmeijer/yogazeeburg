@@ -14,21 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      _migb_test_results: {
-        Row: {
-          result: string | null
-          run_at: string | null
-        }
-        Insert: {
-          result?: string | null
-          run_at?: string | null
-        }
-        Update: {
-          result?: string | null
-          run_at?: string | null
-        }
-        Relationships: []
-      }
       publication_admins: {
         Row: {
           created_at: string
@@ -765,7 +750,6 @@ export type Database = {
       }
       _pub_require_admin: { Args: { p_project_id: string }; Returns: undefined }
       _run_migb_tests: { Args: never; Returns: Json }
-      _run_migb_tests_capture: { Args: never; Returns: string }
       admin_mark_article: {
         Args: {
           p_article_id: string
