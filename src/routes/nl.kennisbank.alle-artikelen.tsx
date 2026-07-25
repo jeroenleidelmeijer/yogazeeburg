@@ -20,7 +20,7 @@ export const Route = createFileRoute("/nl/kennisbank/alle-artikelen")({
         {
           name: "description",
           content: hasArticles
-            ? "Alle artikelen uit de Yoga Gids van Yoga Zeeburg: praktische, Nederlandstalige uitleg over yoga in Amsterdam Oost."
+            ? "Bekijk alle artikelen uit de Yoga Gids van Yoga Zeeburg: praktische informatie over beginnen met yoga, yogastijlen, ontspanning en yoga in Amsterdam Oost."
             : "Overzicht van alle artikelen in de Yoga Gids. Deze pagina wordt binnenkort gevuld.",
         },
       ],

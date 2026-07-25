@@ -21,7 +21,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes, the schedule or practical questions.",
+          "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes or Sportbit. We’ll help you find the right next step.",
       },
       { property: "og:title", content: "Contact Yoga Zeeburg | Amsterdam East" },
       {
