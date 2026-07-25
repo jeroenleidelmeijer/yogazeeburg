@@ -25,6 +25,39 @@ export const Route = createFileRoute("/nl/kennisbank/alle-artikelen")({
         },
       ],
       links: hasArticles ? [{ rel: "canonical", href: CANONICAL }] : [],
+      scripts: hasArticles
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                name: "Alle artikelen — Yoga Gids",
+                url: CANONICAL,
+                inLanguage: "nl-NL",
+                description:
+                  "Bekijk alle artikelen uit de Yoga Gids van Yoga Zeeburg: praktische informatie over beginnen met yoga, yogastijlen, ontspanning en yoga in Amsterdam Oost.",
+                isPartOf: {
+                  "@type": "WebSite",
+                  name: "Yoga Zeeburg",
+                  url: "https://www.yogazeeburg.com/",
+                },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
+                  { "@type": "ListItem", position: 2, name: "Yoga Gids", item: "https://www.yogazeeburg.com/nl/kennisbank" },
+                  { "@type": "ListItem", position: 3, name: "Alle artikelen", item: CANONICAL },
+                ],
+              }),
+            },
+          ]
+        : [],
     };
   },
   component: AllArticlesPage,
