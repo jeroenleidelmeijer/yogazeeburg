@@ -65,7 +65,7 @@ export const Route = createFileRoute("/schedule")({
       {
         name: "description",
         content:
-          "View the weekly Yoga Zeeburg schedule in Amsterdam East, with Vinyasa, Yin, Nidra, Pilates Fusion and more.",
+          "View the weekly Yoga Zeeburg schedule in Amsterdam East. Explore Vinyasa, Yin, Pilates Fusion and more, then choose the class that fits your week.",
       },
       { property: "og:title", content: "Yoga Class Schedule Amsterdam East | Yoga Zeeburg" },
       {
