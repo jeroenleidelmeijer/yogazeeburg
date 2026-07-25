@@ -302,6 +302,37 @@ export const Route = createFileRoute("/classes")({
       { property: "og:url", content: "https://www.yogazeeburg.com/classes" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/classes" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Yoga Classes Amsterdam East",
+          url: "https://www.yogazeeburg.com/classes",
+          inLanguage: "en",
+          description:
+            "Explore Yoga Zeeburg classes in Amsterdam East and find the right fit, from relaxing Yin and Nidra to Vinyasa, Pilates and stronger flows.",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Yoga Zeeburg",
+            url: "https://www.yogazeeburg.com/",
+          },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
+            { "@type": "ListItem", position: 2, name: "Classes", item: "https://www.yogazeeburg.com/classes" },
+          ],
+        }),
+      },
+    ],
   }),
   component: ClassesPage,
 });
