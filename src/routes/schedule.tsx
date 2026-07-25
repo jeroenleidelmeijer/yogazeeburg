@@ -76,6 +76,37 @@ export const Route = createFileRoute("/schedule")({
       { property: "og:url", content: "https://www.yogazeeburg.com/schedule" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/schedule" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Yoga Class Schedule Amsterdam East",
+          url: "https://www.yogazeeburg.com/schedule",
+          inLanguage: "en",
+          description:
+            "View the weekly Yoga Zeeburg schedule in Amsterdam East. Explore Vinyasa, Yin, Pilates Fusion and more, then choose the class that fits your week.",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Yoga Zeeburg",
+            url: "https://www.yogazeeburg.com/",
+          },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
+            { "@type": "ListItem", position: 2, name: "Schedule", item: "https://www.yogazeeburg.com/schedule" },
+          ],
+        }),
+      },
+    ],
   }),
   component: SchedulePage,
 });
