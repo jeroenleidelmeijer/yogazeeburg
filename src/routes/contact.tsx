@@ -32,6 +32,37 @@ export const Route = createFileRoute("/contact")({
       { property: "og:url", content: "https://www.yogazeeburg.com/contact" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Yoga Zeeburg",
+          url: "https://www.yogazeeburg.com/contact",
+          inLanguage: "en",
+          description:
+            "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes or Sportbit. We’ll help you find the right next step.",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Yoga Zeeburg",
+            url: "https://www.yogazeeburg.com/",
+          },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.yogazeeburg.com/contact" },
+          ],
+        }),
+      },
+    ],
   }),
   component: ContactPage,
 });
