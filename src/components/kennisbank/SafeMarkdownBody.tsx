@@ -27,8 +27,7 @@ import type { ReactNode } from "react";
 import { Fragment } from "react";
 import { Link } from "@tanstack/react-router";
 
-const INTERNAL_SAME_SITE = "https://www.yogazeeburg.com";
-const INTRO_HOST = "https://crossfitzeeburg.sportbitapp.nl";
+// Reserved: hostnames used for the strict allowlist below (see classifyLink).
 
 function slugifyHeading(s: string): string {
   return s
