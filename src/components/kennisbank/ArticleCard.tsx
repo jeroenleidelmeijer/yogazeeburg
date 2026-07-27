@@ -1,8 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { Clock } from "lucide-react";
-import type { Article } from "@/lib/kennisbank/articles";
+import type { ArticleRef } from "@/lib/kennisbank/types";
 
-export function ArticleCard({ article: a }: { article: Article }) {
+/**
+ * Card used everywhere in the Yoga Gids (hub, category pages, alle-artikelen,
+ * related). Consumes the fully-serializable `ArticleRef` so it can be fed
+ * from a loader's DB read without dragging Lucide icons or JSX bodies
+ * through the wire.
+ */
+export function ArticleCard({ article: a }: { article: ArticleRef }) {
   return (
     <li>
       <Link
