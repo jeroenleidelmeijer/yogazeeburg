@@ -242,21 +242,18 @@ describe("placementFromArtifacts contract", () => {
 
   it("fails when content_ready evidence disagrees with run/article/package", async () => {
     const { records } = goodRecords();
-    const bad = records.map((r) =>
-      r.stepKey === "content_ready"
-        ? {
-            ...r,
-            payload: {
-              articleId: ARTICLE_ID,
-              runId: RUN_ID,
-              packageHash: "sha256:other",
-              reviews: REVIEW_ORDER.map((rd) => ({ round: rd, pass: true })),
-              schemaVersion: SCHEMA_VERSION,
-              promptVersion: PROMPT_VERSION,
-            },
-          }
-        : r,
-    );
+    const bad = records.map((r) => {
+      if (r.stepKey !== "content_ready") return r;
+      const badEv = {
+        articleId: ARTICLE_ID,
+        runId: RUN_ID,
+        packageHash: "sha256:other",
+        reviews: REVIEW_ORDER.map((rd) => ({ round: rd, pass: true })),
+        schemaVersion: SCHEMA_VERSION,
+        promptVersion: PROMPT_VERSION,
+      };
+      return { ...r, payload: badEv, contentHash: contentHashOf(badEv) };
+    });
     await expect(placementFromArtifacts(input, baseDeps(bad))).rejects.toThrow(
       /content_ready evidence disagrees/,
     );
