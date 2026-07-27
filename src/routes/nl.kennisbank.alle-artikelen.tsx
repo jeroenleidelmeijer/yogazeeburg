@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { ArticleCard } from "@/components/kennisbank/ArticleCard";
 import { listPublishedArticlesFn } from "@/lib/kennisbank/data.functions";
 import { sortByNewest } from "@/lib/kennisbank/compose";
+import type { ArticleRef } from "@/lib/kennisbank/types";
 
 const CANONICAL = "https://www.yogazeeburg.com/nl/kennisbank/alle-artikelen";
 
