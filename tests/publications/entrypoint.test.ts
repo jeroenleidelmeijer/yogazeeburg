@@ -262,6 +262,54 @@ describe("placementFromArtifacts contract", () => {
     );
   });
 
+  it("fails when content_ready artifact.contentHash disagrees with recomputed evidence hash", async () => {
+    const { records } = goodRecords();
+    const bad = records.map((r) =>
+      r.stepKey === "content_ready" ? { ...r, contentHash: "sha256:tampered-evidence" } : r,
+    );
+    await expect(placementFromArtifacts(input, baseDeps(bad))).rejects.toThrow(
+      /content_ready artifact\.contentHash/,
+    );
+  });
+
+  it("fails when content_ready evidence schemaVersion differs from run input", async () => {
+    const { pkg, records } = goodRecords();
+    const bad = records.map((r) => {
+      if (r.stepKey !== "content_ready") return r;
+      const badEv = {
+        articleId: ARTICLE_ID,
+        runId: RUN_ID,
+        packageHash: pkg.contentHash,
+        reviews: REVIEW_ORDER.map((rd) => ({ round: rd, pass: true })),
+        schemaVersion: "2",
+        promptVersion: PROMPT_VERSION,
+      };
+      return { ...r, payload: badEv, contentHash: contentHashOf(badEv) };
+    });
+    await expect(placementFromArtifacts(input, baseDeps(bad))).rejects.toThrow(
+      /content_ready evidence schemaVersion/,
+    );
+  });
+
+  it("fails when content_ready evidence promptVersion differs from run input", async () => {
+    const { pkg, records } = goodRecords();
+    const bad = records.map((r) => {
+      if (r.stepKey !== "content_ready") return r;
+      const badEv = {
+        articleId: ARTICLE_ID,
+        runId: RUN_ID,
+        packageHash: pkg.contentHash,
+        reviews: REVIEW_ORDER.map((rd) => ({ round: rd, pass: true })),
+        schemaVersion: SCHEMA_VERSION,
+        promptVersion: "runner.v2",
+      };
+      return { ...r, payload: badEv, contentHash: contentHashOf(badEv) };
+    });
+    await expect(placementFromArtifacts(input, baseDeps(bad))).rejects.toThrow(
+      /content_ready evidence promptVersion/,
+    );
+  });
+
   it("fails when source_validation is blocked", async () => {
     const { records } = goodRecords();
     const bad = records.map((r) => {
