@@ -131,8 +131,6 @@ describe("runner: review gates and repair regression", () => {
       }),
     });
     const res = await runPipeline({ projectKey: TEST_PROJECT_KEY }, deps);
-    // eslint-disable-next-line no-console
-    console.log("DBG blocked review:", res.disposition, res.errors);
     expect(res.disposition).toBe("blocked");
     expect(res.reviews).toHaveLength(1);
   });
