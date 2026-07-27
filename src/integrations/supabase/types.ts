@@ -488,6 +488,48 @@ export type Database = {
         }
         Relationships: []
       }
+      publication_run_artifacts: {
+        Row: {
+          article_id: string
+          content_hash: string
+          created_at: string
+          id: string
+          payload: Json
+          project_id: string
+          prompt_version: string
+          run_id: string
+          schema_version: string
+          step_key: string
+          updated_at: string
+        }
+        Insert: {
+          article_id: string
+          content_hash: string
+          created_at?: string
+          id?: string
+          payload?: Json
+          project_id: string
+          prompt_version: string
+          run_id: string
+          schema_version: string
+          step_key: string
+          updated_at?: string
+        }
+        Update: {
+          article_id?: string
+          content_hash?: string
+          created_at?: string
+          id?: string
+          payload?: Json
+          project_id?: string
+          prompt_version?: string
+          run_id?: string
+          schema_version?: string
+          step_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       publication_run_reason_codes: {
         Row: {
           code: string
@@ -884,6 +926,17 @@ export type Database = {
         }[]
       }
       is_publication_admin: { Args: { p_project_id: string }; Returns: boolean }
+      list_publication_run_artifacts: {
+        Args: { p_article_id: string; p_lock_token: string; p_run_id: string }
+        Returns: {
+          content_hash: string
+          payload: Json
+          prompt_version: string
+          schema_version: string
+          step_key: string
+          updated_at: string
+        }[]
+      }
       mark_notification_result: {
         Args: {
           p_error?: string
@@ -906,6 +959,19 @@ export type Database = {
           p_summary: string
         }
         Returns: Json
+      }
+      upsert_publication_run_artifact: {
+        Args: {
+          p_article_id: string
+          p_content_hash: string
+          p_lock_token: string
+          p_payload: Json
+          p_prompt_version: string
+          p_run_id: string
+          p_schema_version: string
+          p_step_key: string
+        }
+        Returns: string
       }
     }
     Enums: {
