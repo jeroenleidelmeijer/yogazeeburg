@@ -1,0 +1,230 @@
+// Fake providers & fixture builders for runner tests. No real network, no
+// real Supabase calls. Production article rows (planning 1-180) are never
+// touched — tests operate purely in memory.
+import type {
+  AiProviders,
+  ClaimedRun,
+  ConfigProvider,
+  ProjectConfig,
+  RunControl,
+  RunnerDeps,
+} from "@/lib/publications/runner/providers";
+import { FIXED_CTA } from "@/lib/publications/runner/cta";
+import type {
+  ArticleBrief,
+  GeneratedArticlePackage,
+  ReviewOutput,
+  ReviewRoundKind,
+  ValidatedSourcePack,
+} from "@/lib/publications/runner/schemas";
+
+export const TEST_PROJECT_KEY = "TEST-runner";
+
+export function buildBrief(over: Partial<ArticleBrief> = {}): ArticleBrief {
+  return {
+    articleId: "art_test_1",
+    planningNumber: 999 as unknown as number, // schema max 180; tests never send this
+    primaryQuestion: "Wat is yin yoga?",
+    originalTitle: "Yin Yoga voor drukke mensen",
+    finalTitle: "Yin Yoga voor drukke mensen in Amsterdam Oost",
+    primaryKeyword: "yin yoga amsterdam oost",
+    secondaryKeywords: ["yin yoga beginners", "yoga voor stress"],
+    category: "stijlen",
+    cluster: "stijlen-yin",
+    differentiation: "focus op werkende volwassenen; geen fitness-hype",
+    cannibalisationNotes: "onderscheidend van slow flow artikel",
+    riskFlags: [],
+    sourceFlags: [],
+    allowedStudioFacts: ["studio in Cruquius", "14-daagse intro pass 30 euro"],
+    validatedLinkTargets: [
+      { url: "https://www.yogazeeburg.com/pricing", rationale: "intro pass detailpagina" },
+    ],
+    relatedPublishedArticles: [{ slug: "wat-is-yoga", title: "Wat is yoga?" }],
+    ctaRule: "fixed-intro-pass",
+    publicationDateEuropeAmsterdam: "2026-08-03",
+    expectedStructure: ["direct antwoord", "hoofdstuk 1", "faq"],
+    schemaVersion: "1",
+    ...over,
+    // planning number must be inside range for schema validation
+    ...(over.planningNumber === undefined ? { planningNumber: 4 } : {}),
+  };
+}
+
+export function buildSources(over: Partial<ValidatedSourcePack> = {}): ValidatedSourcePack {
+  return {
+    articleId: "art_test_1",
+    firstPartyFacts: [
+      {
+        fact: "Intro pass kost 30 euro voor 14 dagen onbeperkt.",
+        url: "https://www.yogazeeburg.com/pricing",
+        capturedAt: "2026-07-27T09:00:00.000Z",
+      },
+    ],
+    externalSources: [],
+    claimSourceMap: [
+      {
+        claim: "Intro pass kost 30 euro.",
+        supportingUrls: ["https://www.yogazeeburg.com/pricing"],
+      },
+    ],
+    conflicts: [],
+    missingSubstantiation: [],
+    blocked: false,
+    blockedReason: null,
+    schemaVersion: "1",
+    ...over,
+  };
+}
+
+export function buildPackage(over: Partial<GeneratedArticlePackage> = {}): GeneratedArticlePackage {
+  return {
+    articleId: "art_test_1",
+    finalTitle: "Yin Yoga voor drukke mensen in Amsterdam Oost",
+    slug: "yin-yoga-drukke-mensen-amsterdam-oost",
+    metaTitle: "Yin Yoga voor drukke mensen — Yoga Zeeburg",
+    metaDescription:
+      "Rustige yin yoga in Amsterdam Oost voor werkende volwassenen die stress willen loslaten. Beginners welkom.",
+    directAnswer:
+      "Yin yoga is een rustige stijl waarin je houdingen langer vasthoudt, ideaal voor drukke mensen.",
+    bodyMarkdown:
+      "# Yin yoga\n\nEen rustige stijl waarin je houdingen langer vasthoudt. ".repeat(20),
+    commercialLinkCount: 1,
+    hasAbsoluteMedicalClaim: false,
+    faq: [
+      { question: "Voor wie is yin yoga?", answer: "Iedereen die wil onthaasten." },
+    ],
+    internalLinks: [{ slug: "wat-is-yoga", anchor: "wat is yoga" }],
+    seoIntents: ["primary-keyword-in-title"],
+    geoIntents: ["mentions-amsterdam-oost"],
+    structuredDataIntents: ["FAQPage"],
+    cta: { ...FIXED_CTA },
+    language: "nl",
+    contentHash: "h_deadbeef",
+    promptVersion: "p1",
+    schemaVersion: "1",
+    ...over,
+  };
+}
+
+export function passingReview(round: ReviewRoundKind): ReviewOutput {
+  return {
+    round,
+    pass: true,
+    blocked: false,
+    findings: [],
+    repairedPackage: null,
+    schemaVersion: "1",
+  };
+}
+
+export interface FakeConfig extends ConfigProvider {
+  cfg: ProjectConfig;
+}
+export function fakeConfig(over: Partial<ProjectConfig> = {}): FakeConfig {
+  const cfg: ProjectConfig = {
+    projectId: "proj_test",
+    projectKey: TEST_PROJECT_KEY,
+    automationEnabled: true,
+    publicationStopped: false,
+    timezone: "Europe/Amsterdam",
+    ...over,
+  };
+  return { cfg, loadProjectConfig: async () => cfg };
+}
+
+export interface RunControlSpy extends RunControl {
+  claims: number;
+  heartbeats: number;
+  advances: number;
+  failures: Array<{ category: string; summary: string; stepKey: string }>;
+  previews: number;
+  claim_out: ClaimedRun | null;
+}
+export function fakeRunControl(claim: ClaimedRun | null = defaultClaim()): RunControlSpy {
+  const spy: RunControlSpy = {
+    claims: 0,
+    heartbeats: 0,
+    advances: 0,
+    failures: [],
+    previews: 0,
+    claim_out: claim,
+    async claim() {
+      spy.claims += 1;
+      return spy.claim_out;
+    },
+    async heartbeat() {
+      spy.heartbeats += 1;
+    },
+    async advance() {
+      spy.advances += 1;
+    },
+    async recordFailure(input) {
+      spy.failures.push({ category: input.category, summary: input.summary, stepKey: input.stepKey });
+    },
+    async completePreview() {
+      spy.previews += 1;
+    },
+  };
+  return spy;
+}
+
+export function defaultClaim(): ClaimedRun {
+  return {
+    runId: "run_test",
+    articleId: "art_test_1",
+    planningNumber: 4,
+    lockToken: "lock_test",
+    phase: "phase_1_36",
+    originalTitle: "Yin Yoga voor drukke mensen",
+  };
+}
+
+export interface AiSpy extends AiProviders {
+  calls: string[];
+}
+export function fakeAi(over: Partial<AiProviders> = {}): AiSpy {
+  const calls: string[] = [];
+  const spy: AiSpy = {
+    calls,
+    async generateBrief(input) {
+      calls.push("brief");
+      if (over.generateBrief) return over.generateBrief(input);
+      return buildBrief();
+    },
+    async validateSources(input) {
+      calls.push("sources");
+      if (over.validateSources) return over.validateSources(input);
+      return buildSources();
+    },
+    async generateArticle(input) {
+      calls.push("generate");
+      if (over.generateArticle) return over.generateArticle(input);
+      return buildPackage();
+    },
+    async reviewRound(input) {
+      calls.push(`review:${input.round}`);
+      if (over.reviewRound) return over.reviewRound(input);
+      return passingReview(input.round);
+    },
+  };
+  return spy;
+}
+
+export function buildDeps(over: Partial<RunnerDeps> = {}): RunnerDeps & {
+  config: FakeConfig;
+  runControl: RunControlSpy;
+  ai: AiSpy;
+} {
+  const config = (over.config as FakeConfig) ?? fakeConfig();
+  const runControl = (over.runControl as RunControlSpy) ?? fakeRunControl();
+  const ai = (over.ai as AiSpy) ?? fakeAi();
+  return {
+    config,
+    runControl,
+    ai,
+    now: over.now ?? (() => new Date("2026-08-03T09:00:00Z")),
+    heartbeatIntervalMs: over.heartbeatIntervalMs ?? 60_000,
+    promptVersion: over.promptVersion ?? "p1",
+    schemaVersion: over.schemaVersion ?? "1",
+  };
+}
