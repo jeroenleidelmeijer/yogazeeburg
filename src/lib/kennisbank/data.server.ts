@@ -14,22 +14,14 @@
 // row so the legacy pillar articles stay pinned even if a placement ever
 // happens to collide.
 
-import { ARTICLES, type Article } from "./articles";
+import { ARTICLES } from "./articles";
+import { CATEGORY_META, legacyArticleToRef, listLegacyRefs } from "./registry";
 import type {
   ArticleRef,
   DbArticleViewModel,
 } from "./types";
 
-// Category slug → filter tokens used by the hub's QuickChoice filter.
-// Mirrors CATEGORIES in nl.kennisbank.index.tsx (single source: this file).
-export const CATEGORY_META: Record<string, { title: string; filters: string[] }> = {
-  "beginnen-met-yoga": { title: "Beginnen met yoga", filters: ["beginner"] },
-  yogastijlen: { title: "Yogastijlen uitgelegd", filters: ["yogastijlen"] },
-  "stress-ontspanning-slaap": { title: "Stress, ontspanning en slaap", filters: ["ontspanning"] },
-  "flexibiliteit-kracht-houding": { title: "Flexibiliteit, kracht en houding", filters: ["flexibiliteit"] },
-  "klachten-en-levensfasen": { title: "Yoga bij klachten en levensfasen", filters: [] },
-  "yoga-amsterdam-oost": { title: "Yoga in Amsterdam Oost", filters: ["beginner"] },
-};
+export { CATEGORY_META, legacyArticleToRef, listLegacyRefs };
 
 const CANONICAL_BASE = "https://www.yogazeeburg.com";
 
