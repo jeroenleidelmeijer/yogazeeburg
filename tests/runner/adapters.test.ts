@@ -83,12 +83,24 @@ describe("adapters: argument mapping", () => {
     expect(c?.args.p_error_category).toBe("content_safety_error");
   });
 
-  it("createDefaultRunnerDeps composes a runtime dep set with schema/prompt versions", async () => {
+  it("createDefaultRunnerDeps composes a runtime dep set with real AI provider + schema/prompt versions", async () => {
     const mod = await import("@/lib/publications/runner/adapters.server");
     const deps = mod.createDefaultRunnerDeps();
     expect(deps.promptVersion).toBeTruthy();
     expect(deps.schemaVersion).toBeTruthy();
-    // AI stub throws by design.
-    await expect(deps.ai.generateBrief({ claim: { runId: "", articleId: "", planningNumber: 1, lockToken: "", phase: "", originalTitle: "" }, context: {} })).rejects.toThrow(/not wired/);
+    // Real Lovable AI Gateway provider is wired; without LOVABLE_API_KEY it
+    // must fail as non-retryable configuration_error rather than a stub.
+    const prevKey = process.env.LOVABLE_API_KEY;
+    delete process.env.LOVABLE_API_KEY;
+    try {
+      await expect(
+        deps.ai.generateBrief({
+          claim: { runId: "", articleId: "", planningNumber: 1, lockToken: "", phase: "", originalTitle: "" },
+          context: {},
+        }),
+      ).rejects.toMatchObject({ category: "configuration_error", retryable: false });
+    } finally {
+      if (prevKey !== undefined) process.env.LOVABLE_API_KEY = prevKey;
+    }
   });
 });

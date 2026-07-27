@@ -1,12 +1,12 @@
 // Server-only runner adapters. This module wires the pure pipeline to the
-// production Supabase RPC surface + AI Gateway. It MUST NOT be imported from
-// any client-graph module (routes, *.functions.ts). Import protection blocks
-// it by the `.server.ts` suffix.
+// production Supabase RPC surface + Lovable AI Gateway. It MUST NOT be
+// imported from any client-graph module (routes, *.functions.ts). Import
+// protection blocks it by the `.server.ts` suffix.
 //
-// IMPORTANT SAFETY: this file exports factories. No top-level side effects,
-// no network calls at import time. The AI provider is intentionally a stub
-// that throws — step 2 does not perform real AI calls. Wiring a real
-// provider (LOVABLE_API_KEY / model config) is left for step 3.
+// SAFETY: this file exports factories. No top-level side effects, no network
+// calls at import time. LOVABLE_API_KEY is read lazily inside the AI provider
+// only when a method actually runs — the pipeline never invokes AI while
+// automation is disabled, so importing this module has zero cost.
 
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import type {
@@ -19,6 +19,7 @@ import type {
   RunnerDeps,
 } from "./providers";
 import { PROMPT_VERSION, SCHEMA_VERSION } from "./prompts";
+import { createLovableAiProviders } from "./ai-provider.server";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AdminRpc = (name: string, args: Record<string, unknown>) => Promise<{ data: any; error: any }>;
@@ -142,45 +143,18 @@ export function createSupabaseArtifactStore(): ArtifactStore {
 }
 
 /**
- * AI provider stub. Deliberately throws configuration_error so no real AI
- * traffic can happen in step 2. Step 3 replaces this with a Lovable AI
- * Gateway implementation.
- */
-export function createStubAiProviders(): AiProviders {
-  const notImplemented = (kind: string) => {
-    throw Object.assign(new Error(`AI provider '${kind}' not wired in step 2`), {
-      category: "configuration_error",
-    });
-  };
-  return {
-    async generateBrief() {
-      return notImplemented("generateBrief");
-    },
-    async validateSources() {
-      return notImplemented("validateSources");
-    },
-    async generateArticle() {
-      return notImplemented("generateArticle");
-    },
-    async reviewRound() {
-      return notImplemented("reviewRound");
-    },
-  };
-}
-
-/**
  * Compose default production RunnerDeps. Callers can override individual
- * fields — in particular the AI providers for future step-3 wiring.
+ * fields — for tests, a fake AI provider is typically injected.
  *
  * SAFETY: this function does not read secrets at module scope; env vars are
- * read only when a wrapped RPC actually runs (inside supabaseAdmin proxy).
+ * read only when a wrapped RPC or AI call actually runs.
  */
 export function createDefaultRunnerDeps(overrides: Partial<RunnerDeps> = {}): RunnerDeps {
   return {
     config: overrides.config ?? createSupabaseConfigProvider(),
     runControl: overrides.runControl ?? createSupabaseRunControl(),
     artifacts: overrides.artifacts ?? createSupabaseArtifactStore(),
-    ai: overrides.ai ?? createStubAiProviders(),
+    ai: overrides.ai ?? createLovableAiProviders(),
     now: overrides.now,
     heartbeatIntervalMs: overrides.heartbeatIntervalMs,
     promptVersion: overrides.promptVersion ?? PROMPT_VERSION,
