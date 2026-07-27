@@ -196,17 +196,9 @@ describe("SafeMarkdownBody — untrusted content safety", () => {
   });
 });
 
-describe("Preview server-function guard (introspection)", () => {
-  it("getPreviewByArticleIdFn is defined with a middleware chain", async () => {
-    // We only assert the export exists and is a callable server-function
-    // wrapper. Anonymous, non-admin, and token-only calls fail at the
-    // requireSupabaseAuth middleware which throws a 401 Response; that
-    // path is exercised by the deployed environment, not by these unit
-    // tests. What we prevent here is a regression where the preview fn
-    // stops being a server-function (e.g. becomes a plain export).
-    const mod = await import("@/lib/kennisbank/data.functions");
-    expect(typeof mod.getPreviewByArticleIdFn).toBe("function");
-    expect(typeof mod.listPublishedArticlesFn).toBe("function");
-    expect(typeof mod.resolveArticleBySlugFn).toBe("function");
-  });
-});
+// Preview server-fn auth is covered by real behavior tests in
+// tests/kennisbank/preview-auth.test.ts (assertCallerIsAdminForArticle +
+// fetchPreviewByArticleId with a mocked supabase admin client), and the
+// published-only registry + sitemap guarantee is covered by
+// tests/kennisbank/published-only.test.ts. Introspection-only stubs have
+// been removed.
