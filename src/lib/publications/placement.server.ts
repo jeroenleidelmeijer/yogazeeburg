@@ -40,6 +40,7 @@ import {
   REVIEW_ORDER,
   type GeneratedArticlePackage,
   type ReviewOutput,
+  type ValidatedSourcePack,
 } from "./runner/schemas";
 import { FIXED_CTA } from "./runner/cta";
 import { packageContentHash } from "./runner/hash";
@@ -52,7 +53,8 @@ export type PlacementRow = {
   slug: string;
   contentHash: string;
   placementStatus: PlacementStatus;
-  package: GeneratedArticlePackage;
+  /** JSONB blob: the schema-validated package plus optional `_sourcesPack`. */
+  package: Record<string, unknown>;
   previewUrl: string | null;
   previewToken: string | null;
   publishedAt: string | null;
@@ -104,7 +106,13 @@ export interface PlacementStore {
     slug: string;
     contentHash: string;
     placementStatus: PlacementStatus;
-    package: GeneratedArticlePackage;
+    /**
+     * JSONB payload persisted in the `package` column. This is the schema-
+     * validated GeneratedArticlePackage, optionally enriched with a
+     * namespaced `_sourcesPack` key holding the runner's ValidatedSourcePack.
+     * The canonical `content_hash` is always computed over the pkg alone.
+     */
+    package: Record<string, unknown>;
     previewUrl: string | null;
     previewToken: string | null;
     publishedAt: string | null;
@@ -123,6 +131,13 @@ export type PlacementInput = {
   articleId: string;
   package: GeneratedArticlePackage;
   reviews: ReviewOutput[];
+  /**
+   * When supplied, the runner's ValidatedSourcePack is persisted alongside
+   * the package in the `package` JSONB column under `_sourcesPack`. It does
+   * NOT change the canonical content hash (which stays over the pkg only)
+   * and is used by the detail viewmodel to render a Bronnen block.
+   */
+  sourcesPack?: ValidatedSourcePack | null;
   /** ISO date (YYYY-MM-DD) in Europe/Amsterdam. Optional; when omitted the row
    *  is placed without a published date and step 4 will fill it in. */
   publishedAt?: string | null;
@@ -297,12 +312,17 @@ export async function placeArticle(
     return { disposition: "noop", row: existing };
   }
 
+  const enrichedPackage: Record<string, unknown> =
+    input.sourcesPack != null
+      ? { ...(pkg as unknown as Record<string, unknown>), _sourcesPack: input.sourcesPack }
+      : { ...(pkg as unknown as Record<string, unknown>) };
+
   const row = await deps.store.upsert({
     articleId,
     slug: pkg.slug,
     contentHash: pkg.contentHash,
     placementStatus: desiredStatus,
-    package: pkg,
+    package: enrichedPackage,
     previewUrl: desiredPreviewUrl,
     previewToken: desiredPreviewToken,
     // Placement never sets `published_at`; step 4 owns that column.

@@ -41,6 +41,7 @@ interface PlacementRowDb {
   updated_at: string;
   publication_articles?: {
     id: string;
+    project_id: string | null;
     category: string | null;
     cluster: string | null;
     primary_keyword: string | null;
@@ -48,6 +49,11 @@ interface PlacementRowDb {
     final_title: string | null;
   } | null;
 }
+
+const ARTICLE_SELECT =
+  "id, project_id, category, cluster, primary_keyword, original_title, final_title";
+const ROW_SELECT =
+  `id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(${ARTICLE_SELECT})`;
 
 /**
  * Read every published placement joined with its publication_articles row
@@ -58,9 +64,7 @@ async function fetchPublishedRows(): Promise<PlacementRowDb[]> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabaseAdmin as any)
     .from("kennisbank_placements")
-    .select(
-      "id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(id, category, cluster, primary_keyword, original_title, final_title)",
-    )
+    .select(ROW_SELECT)
     .eq("placement_status", "published");
   if (error) throw new Error(`kennisbank_placements read failed: ${error.message}`);
   return (data ?? []) as PlacementRowDb[];
@@ -76,9 +80,7 @@ export async function fetchPreviewByArticleId(articleId: string): Promise<Placem
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabaseAdmin as any)
     .from("kennisbank_placements")
-    .select(
-      "id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(id, category, cluster, primary_keyword, original_title, final_title)",
-    )
+    .select(ROW_SELECT)
     .eq("article_id", articleId)
     .eq("placement_status", "preview")
     .maybeSingle();
@@ -87,20 +89,35 @@ export async function fetchPreviewByArticleId(articleId: string): Promise<Placem
 }
 
 /**
- * Verify that the caller (auth.uid()) is registered as a publication admin
- * on ANY project. This is the ONLY authorization gate for the preview route;
- * a query token by itself is never sufficient.
+ * Verify that the caller (auth.uid()) is a publication admin for the SAME
+ * project as the given article. Admin membership on a different project is
+ * NOT sufficient. The query token in the preview route is defence-in-depth
+ * only; the primary gate is this authenticated project-scoped check.
  */
-export async function assertCallerIsPublicationAdmin(userId: string): Promise<void> {
+export async function assertCallerIsAdminForArticle(
+  userId: string,
+  articleId: string,
+): Promise<void> {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data, error } = await (supabaseAdmin as any)
+  const client = supabaseAdmin as any;
+  const { data: art, error: artErr } = await client
+    .from("publication_articles")
+    .select("project_id")
+    .eq("id", articleId)
+    .maybeSingle();
+  if (artErr) throw new Error(`article lookup failed: ${artErr.message}`);
+  if (!art?.project_id) throw new Error("Forbidden: unknown article");
+  const { data: adminRow, error: aErr } = await client
     .from("publication_admins")
     .select("user_id")
     .eq("user_id", userId)
+    .eq("project_id", art.project_id)
     .maybeSingle();
-  if (error) throw new Error(`admin check failed: ${error.message}`);
-  if (!data) throw new Error("Forbidden: caller is not a publication admin");
+  if (aErr) throw new Error(`admin check failed: ${aErr.message}`);
+  if (!adminRow) {
+    throw new Error("Forbidden: caller is not a publication admin for this project");
+  }
 }
 
 // -- Row → viewmodel mapping ---------------------------------------------
@@ -167,6 +184,24 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
   const bodyMarkdown = pkg.bodyMarkdown as string;
   const readingTimeMin = Math.max(3, Math.round(bodyMarkdown.trim().split(/\s+/).length / 220));
 
+  // Sources come from the runner's ValidatedSourcePack, persisted alongside
+  // the package under a namespaced `_sourcesPack` key by placeArticle. The
+  // canonical content hash is over the pkg only, so this JSONB enrichment
+  // never affects hash-based idempotency.
+  const sourcesPack = pkg._sourcesPack as
+    | { sources?: { title?: unknown; url?: unknown; type?: unknown }[] }
+    | undefined;
+  const sources: { title: string; url: string }[] = Array.isArray(sourcesPack?.sources)
+    ? sourcesPack!.sources!
+        .filter(
+          (s) =>
+            typeof s?.title === "string" &&
+            typeof s?.url === "string" &&
+            (s.url as string).startsWith("https://"),
+        )
+        .map((s) => ({ title: String(s.title), url: String(s.url) }))
+    : [];
+
   const publishedAt = (row.published_at ?? row.created_at).slice(0, 10);
   const updatedAt = row.updated_at.slice(0, 10);
 
@@ -187,7 +222,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     bodyMarkdown,
     toc: extractTocFromMarkdown(bodyMarkdown),
     faqs: faq,
-    sources: [],
+    sources,
     internalLinks,
     tags,
     primaryKeyword:
@@ -200,7 +235,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     template: {
       showTOC: true,
       showFAQ: faq.length > 0,
-      showSources: false,
+      showSources: sources.length > 0,
       showRelated: true,
     },
   };

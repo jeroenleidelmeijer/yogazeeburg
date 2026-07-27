@@ -27,8 +27,7 @@ import type { ReactNode } from "react";
 import { Fragment } from "react";
 import { Link } from "@tanstack/react-router";
 
-const INTERNAL_SAME_SITE = "https://www.yogazeeburg.com";
-const INTRO_HOST = "https://crossfitzeeburg.sportbitapp.nl";
+// Reserved: hostnames used for the strict allowlist below (see classifyLink).
 
 function slugifyHeading(s: string): string {
   return s
@@ -99,31 +98,46 @@ function tokenizeInline(s: string): InlineToken[] {
   return tokens;
 }
 
-/** Classify a link URL against the allowlist. Returns `null` when disallowed. */
-function classifyLink(
+const INTERNAL_HOST = "www.yogazeeburg.com";
+const INTRO_HOSTNAME = "crossfitzeeburg.sportbitapp.nl";
+const ALLOWED_INTERNAL_PATH_PREFIXES = [
+  "/nl/kennisbank",
+  "/pricing",
+  "/classes",
+  "/schedule",
+  "/contact",
+  "/sportbit",
+];
+
+/** Classify a link URL against the allowlist. Returns `null` when disallowed.
+ *  Uses strict URL parsing + exact host equality to defeat suffix-based
+ *  spoofing like `www.yogazeeburg.com.evil.example` or `//evil.example`. */
+export function classifyLink(
   url: string,
 ): { kind: "internal"; to: string } | { kind: "same-site"; href: string } | { kind: "intro"; href: string } | null {
+  if (typeof url !== "string" || url.length === 0) return null;
+  // Protocol-relative URLs (`//host/...`) are never internal — reject.
+  if (url.startsWith("//")) return null;
+  // Relative internal path: must start with "/" but not "//".
   if (url.startsWith("/")) {
-    // Same-origin internal path. Must start with a known kennisbank/site prefix.
-    if (
-      url === "/" ||
-      url.startsWith("/nl/kennisbank") ||
-      url.startsWith("/pricing") ||
-      url.startsWith("/classes") ||
-      url.startsWith("/schedule") ||
-      url.startsWith("/contact") ||
-      url.startsWith("/sportbit")
-    ) {
-      return { kind: "internal", to: url };
-    }
+    if (url === "/") return { kind: "internal", to: "/" };
+    // Require an allowlisted prefix, followed by "/" or end-of-string, so
+    // "/pricingx" cannot ride in on "/pricing".
+    const matched = ALLOWED_INTERNAL_PATH_PREFIXES.some(
+      (p) => url === p || url.startsWith(p + "/") || url.startsWith(p + "?") || url.startsWith(p + "#"),
+    );
+    return matched ? { kind: "internal", to: url } : null;
+  }
+  // Absolute: must parse and use https with exact hostname match.
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
     return null;
   }
-  if (url.startsWith(INTERNAL_SAME_SITE)) {
-    return { kind: "same-site", href: url };
-  }
-  if (url.startsWith(INTRO_HOST)) {
-    return { kind: "intro", href: url };
-  }
+  if (parsed.protocol !== "https:") return null;
+  if (parsed.hostname === INTERNAL_HOST) return { kind: "same-site", href: parsed.toString() };
+  if (parsed.hostname === INTRO_HOSTNAME) return { kind: "intro", href: parsed.toString() };
   return null;
 }
 
