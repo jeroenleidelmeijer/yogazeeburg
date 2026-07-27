@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { listAllPublishedArticleRefs } from "@/lib/kennisbank/registry";
 
 const BASE_URL = "https://www.yogazeeburg.com";
 
@@ -27,7 +26,8 @@ export const Route = createFileRoute("/sitemap.xml")({
         // Combined published list: legacy static + DB placements with
         // placement_status='published'. Draft/preview rows are excluded.
         // Category pages remain intentionally absent (noindex archives).
-        const published = await listAllPublishedArticleRefs();
+        const { listPublishedRefs } = await import("@/lib/kennisbank/data.server");
+        const published = await listPublishedRefs();
         for (const a of published) {
           entries.push(
             `  <url>\n    <loc>${BASE_URL}/nl/kennisbank/${a.slug}</loc>\n    <lastmod>${a.updatedAt}</lastmod>\n  </url>`,
