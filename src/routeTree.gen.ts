@@ -31,6 +31,7 @@ import { Route as NlKennisbankAlleArtikelenRouteImport } from './routes/nl.kenni
 import { Route as NlKennisbankSlugRouteImport } from './routes/nl.kennisbank.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as NlKennisbankCategorieIndexRouteImport } from './routes/nl.kennisbank.categorie.index'
+import { Route as NlKennisbankPreviewArticleIdRouteImport } from './routes/nl.kennisbank.preview.$articleId'
 import { Route as NlKennisbankCategorieSlugRouteImport } from './routes/nl.kennisbank.categorie.$slug'
 
 const YogaStylesRoute = YogaStylesRouteImport.update({
@@ -149,6 +150,12 @@ const NlKennisbankCategorieIndexRoute =
     path: '/categorie/',
     getParentRoute: () => NlKennisbankRoute,
   } as any)
+const NlKennisbankPreviewArticleIdRoute =
+  NlKennisbankPreviewArticleIdRouteImport.update({
+    id: '/preview/$articleId',
+    path: '/preview/$articleId',
+    getParentRoute: () => NlKennisbankRoute,
+  } as any)
 const NlKennisbankCategorieSlugRoute =
   NlKennisbankCategorieSlugRouteImport.update({
     id: '/categorie/$slug',
@@ -179,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
+  '/nl/kennisbank/preview/$articleId': typeof NlKennisbankPreviewArticleIdRoute
   '/nl/kennisbank/categorie/': typeof NlKennisbankCategorieIndexRoute
 }
 export interface FileRoutesByTo {
@@ -203,6 +211,7 @@ export interface FileRoutesByTo {
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
+  '/nl/kennisbank/preview/$articleId': typeof NlKennisbankPreviewArticleIdRoute
   '/nl/kennisbank/categorie': typeof NlKennisbankCategorieIndexRoute
 }
 export interface FileRoutesById {
@@ -229,6 +238,7 @@ export interface FileRoutesById {
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
+  '/nl/kennisbank/preview/$articleId': typeof NlKennisbankPreviewArticleIdRoute
   '/nl/kennisbank/categorie/': typeof NlKennisbankCategorieIndexRoute
 }
 export interface FileRouteTypes {
@@ -256,6 +266,7 @@ export interface FileRouteTypes {
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
+    | '/nl/kennisbank/preview/$articleId'
     | '/nl/kennisbank/categorie/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -280,6 +291,7 @@ export interface FileRouteTypes {
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank'
     | '/nl/kennisbank/categorie/$slug'
+    | '/nl/kennisbank/preview/$articleId'
     | '/nl/kennisbank/categorie'
   id:
     | '__root__'
@@ -305,6 +317,7 @@ export interface FileRouteTypes {
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
+    | '/nl/kennisbank/preview/$articleId'
     | '/nl/kennisbank/categorie/'
   fileRoutesById: FileRoutesById
 }
@@ -485,6 +498,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NlKennisbankCategorieIndexRouteImport
       parentRoute: typeof NlKennisbankRoute
     }
+    '/nl/kennisbank/preview/$articleId': {
+      id: '/nl/kennisbank/preview/$articleId'
+      path: '/preview/$articleId'
+      fullPath: '/nl/kennisbank/preview/$articleId'
+      preLoaderRoute: typeof NlKennisbankPreviewArticleIdRouteImport
+      parentRoute: typeof NlKennisbankRoute
+    }
     '/nl/kennisbank/categorie/$slug': {
       id: '/nl/kennisbank/categorie/$slug'
       path: '/categorie/$slug'
@@ -500,6 +520,7 @@ interface NlKennisbankRouteChildren {
   NlKennisbankAlleArtikelenRoute: typeof NlKennisbankAlleArtikelenRoute
   NlKennisbankIndexRoute: typeof NlKennisbankIndexRoute
   NlKennisbankCategorieSlugRoute: typeof NlKennisbankCategorieSlugRoute
+  NlKennisbankPreviewArticleIdRoute: typeof NlKennisbankPreviewArticleIdRoute
   NlKennisbankCategorieIndexRoute: typeof NlKennisbankCategorieIndexRoute
 }
 
@@ -508,6 +529,7 @@ const NlKennisbankRouteChildren: NlKennisbankRouteChildren = {
   NlKennisbankAlleArtikelenRoute: NlKennisbankAlleArtikelenRoute,
   NlKennisbankIndexRoute: NlKennisbankIndexRoute,
   NlKennisbankCategorieSlugRoute: NlKennisbankCategorieSlugRoute,
+  NlKennisbankPreviewArticleIdRoute: NlKennisbankPreviewArticleIdRoute,
   NlKennisbankCategorieIndexRoute: NlKennisbankCategorieIndexRoute,
 }
 
