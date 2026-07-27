@@ -22,11 +22,6 @@ DECLARE
   v_ok boolean;
   v_msg text;
 
-  PROCEDURE record_result(p_name text, p_ok boolean, p_msg text DEFAULT NULL) AS $$
-  BEGIN
-    v_results := v_results || jsonb_build_object('test', p_name, 'pass', p_ok, 'msg', p_msg);
-  END;
-  $$ LANGUAGE plpgsql;
 BEGIN
   -- Simulate service_role for _pub_require_admin
   PERFORM set_config('request.jwt.claims','{"role":"service_role"}', true);
@@ -58,9 +53,9 @@ BEGIN
   END IF;
   v_claim := claim_next_publication_run(v_proj_key, 'scheduled', v_slot, 300);
   IF v_claim->>'disposition' = 'cadence_blocked' AND v_claim->>'reason' = 'wrong_weekday' THEN
-    CALL record_result('T1_wrong_weekday', true, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T1_wrong_weekday','pass',true,'msg',v_claim::text);
   ELSE
-    CALL record_result('T1_wrong_weekday', false, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T1_wrong_weekday','pass',false,'msg',v_claim::text);
   END IF;
 
   -- ================================================================
@@ -80,9 +75,9 @@ BEGIN
   v_claim := claim_next_publication_run(v_proj_key, 'manual', NULL, 300);
   IF v_claim->>'disposition' = 'cadence_blocked' AND v_claim->>'reason' = 'weekly_quota_reached'
      AND (v_claim->'cadence'->>'quota_max')::int = 3 THEN
-    CALL record_result('T2_phase_quota_3', true, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T2_phase_quota_3','pass',true,'msg',v_claim::text);
   ELSE
-    CALL record_result('T2_phase_quota_3', false, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T2_phase_quota_3','pass',false,'msg',v_claim::text);
   END IF;
 
   -- ================================================================
@@ -99,9 +94,9 @@ BEGIN
   v_claim := claim_next_publication_run(v_proj_key, 'manual', NULL, 300);
   IF v_claim->>'disposition' = 'cadence_blocked' AND v_claim->>'reason' = 'weekly_quota_reached'
      AND (v_claim->'cadence'->>'quota_max')::int = 2 THEN
-    CALL record_result('T3_phase_quota_2', true, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T3_phase_quota_2','pass',true,'msg',v_claim::text);
   ELSE
-    CALL record_result('T3_phase_quota_2', false, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T3_phase_quota_2','pass',false,'msg',v_claim::text);
   END IF;
 
   -- ================================================================
@@ -115,9 +110,9 @@ BEGIN
   v_claim := claim_next_publication_run(v_proj_key, 'manual', NULL, 300);
   IF v_claim->>'disposition' = 'cadence_blocked' AND v_claim->>'reason' = 'weekly_quota_reached'
      AND (v_claim->'cadence'->>'quota_max')::int = 1 THEN
-    CALL record_result('T4_phase_quota_1', true, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T4_phase_quota_1','pass',true,'msg',v_claim::text);
   ELSE
-    CALL record_result('T4_phase_quota_1', false, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T4_phase_quota_1','pass',false,'msg',v_claim::text);
   END IF;
 
   -- ================================================================
@@ -138,9 +133,9 @@ BEGIN
     v_run := (v_claim->>'run_id')::uuid;
     v_art := (v_claim->>'article_id')::uuid;
     v_tok := (v_claim->>'lock_token')::uuid;
-    CALL record_result('T_claim_head_61_manual', true, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T_claim_head_61_manual','pass',true,'msg',v_claim::text);
   ELSE
-    CALL record_result('T_claim_head_61_manual', false, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T_claim_head_61_manual','pass',false,'msg',v_claim::text);
     RAISE EXCEPTION 'MIGC_TESTS_STOP: cannot proceed without valid claim: %', v_claim::text;
   END IF;
 
@@ -150,9 +145,9 @@ BEGIN
   BEGIN
     PERFORM record_publication_qa_check(v_run, v_art, gen_random_uuid(),
       'seo_metadata','content','pass','wrong token','{}'::jsonb);
-    CALL record_result('T5_invalid_lock', false, 'no error raised');
+    v_results := v_results || jsonb_build_object('test','T5_invalid_lock','pass',false,'msg','no error raised');
   EXCEPTION WHEN OTHERS THEN
-    CALL record_result('T5_invalid_lock', true, SQLERRM);
+    v_results := v_results || jsonb_build_object('test','T5_invalid_lock','pass',true,'msg',SQLERRM);
   END;
 
   -- ================================================================
@@ -161,9 +156,9 @@ BEGIN
   BEGIN
     PERFORM record_publication_qa_check(v_run, gen_random_uuid(), v_tok,
       'seo_metadata','content','pass','wrong article','{}'::jsonb);
-    CALL record_result('T6_wrong_run_article', false, 'no error raised');
+    v_results := v_results || jsonb_build_object('test','T6_wrong_run_article','pass',false,'msg','no error raised');
   EXCEPTION WHEN OTHERS THEN
-    CALL record_result('T6_wrong_run_article', true, SQLERRM);
+    v_results := v_results || jsonb_build_object('test','T6_wrong_run_article','pass',true,'msg',SQLERRM);
   END;
 
   -- ================================================================
@@ -197,12 +192,12 @@ BEGIN
        AND (SELECT published_at FROM publication_articles WHERE id=v_art) IS NULL
        AND (SELECT live_url FROM publication_articles WHERE id=v_art) IS NULL
        AND (SELECT lock_token FROM publication_articles WHERE id=v_art) IS NULL THEN
-      CALL record_result('T7_preview_ready_valid', true, v_claim::text);
+      v_results := v_results || jsonb_build_object('test','T7_preview_ready_valid','pass',true,'msg',v_claim::text);
     ELSE
-      CALL record_result('T7_preview_ready_valid', false, 'state mismatch after preview');
+      v_results := v_results || jsonb_build_object('test','T7_preview_ready_valid','pass',false,'msg','state mismatch after preview');
     END IF;
   EXCEPTION WHEN OTHERS THEN
-    CALL record_result('T7_preview_ready_valid', false, SQLERRM);
+    v_results := v_results || jsonb_build_object('test','T7_preview_ready_valid','pass',false,'msg',SQLERRM);
   END;
 
   -- ================================================================
@@ -219,9 +214,9 @@ BEGIN
     v_run2 := (v_claim->>'run_id')::uuid;
     v_art2 := (v_claim->>'article_id')::uuid;
     v_tok2 := (v_claim->>'lock_token')::uuid;
-    CALL record_result('T_claim_skips_preview_ready', true, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T_claim_skips_preview_ready','pass',true,'msg',v_claim::text);
   ELSE
-    CALL record_result('T_claim_skips_preview_ready', false, v_claim::text);
+    v_results := v_results || jsonb_build_object('test','T_claim_skips_preview_ready','pass',false,'msg',v_claim::text);
     RAISE EXCEPTION 'MIGC_TESTS_STOP: cannot proceed: %', v_claim::text;
   END IF;
 
@@ -239,12 +234,12 @@ BEGIN
   BEGIN
     PERFORM complete_publication_success(v_run2, v_art2, v_tok2, 'T','test-62-slug',
       'h','d','https://e.com/62', now());
-    CALL record_result('T8_missing_qa_blocks_publish', false, 'no error');
+    v_results := v_results || jsonb_build_object('test','T8_missing_qa_blocks_publish','pass',false,'msg','no error');
   EXCEPTION WHEN OTHERS THEN
     IF SQLERRM ~ 'qa_gate_failed' THEN
-      CALL record_result('T8_missing_qa_blocks_publish', true, SQLERRM);
+      v_results := v_results || jsonb_build_object('test','T8_missing_qa_blocks_publish','pass',true,'msg',SQLERRM);
     ELSE
-      CALL record_result('T8_missing_qa_blocks_publish', false, SQLERRM);
+      v_results := v_results || jsonb_build_object('test','T8_missing_qa_blocks_publish','pass',false,'msg',SQLERRM);
     END IF;
   END;
 
@@ -268,12 +263,12 @@ BEGIN
   BEGIN
     PERFORM complete_publication_success(v_run2, v_art2, v_tok2, 'T','test-62-slug',
       'h','d','https://e.com/62', now());
-    CALL record_result('T9_failing_qa_blocks_publish', false, 'no error');
+    v_results := v_results || jsonb_build_object('test','T9_failing_qa_blocks_publish','pass',false,'msg','no error');
   EXCEPTION WHEN OTHERS THEN
     IF SQLERRM ~ 'qa_gate_failed' THEN
-      CALL record_result('T9_failing_qa_blocks_publish', true, SQLERRM);
+      v_results := v_results || jsonb_build_object('test','T9_failing_qa_blocks_publish','pass',true,'msg',SQLERRM);
     ELSE
-      CALL record_result('T9_failing_qa_blocks_publish', false, SQLERRM);
+      v_results := v_results || jsonb_build_object('test','T9_failing_qa_blocks_publish','pass',false,'msg',SQLERRM);
     END IF;
   END;
 
@@ -282,12 +277,12 @@ BEGIN
   BEGIN
     PERFORM complete_publication_success(v_run2, v_art2, v_tok2, 'T','test-62-slug',
       'h','d','https://e.com/62', now());
-    CALL record_result('T11_no_direct_publish_without_live_qa', false, 'no error');
+    v_results := v_results || jsonb_build_object('test','T11_no_direct_publish_without_live_qa','pass',false,'msg','no error');
   EXCEPTION WHEN OTHERS THEN
     IF SQLERRM ~ 'qa_gate_failed' THEN
-      CALL record_result('T11_no_direct_publish_without_live_qa', true, SQLERRM);
+      v_results := v_results || jsonb_build_object('test','T11_no_direct_publish_without_live_qa','pass',true,'msg',SQLERRM);
     ELSE
-      CALL record_result('T11_no_direct_publish_without_live_qa', false, SQLERRM);
+      v_results := v_results || jsonb_build_object('test','T11_no_direct_publish_without_live_qa','pass',false,'msg',SQLERRM);
     END IF;
   END;
 
@@ -303,12 +298,12 @@ BEGIN
       'h','d','https://e.com/62', now());
     IF (SELECT status FROM publication_articles WHERE id=v_art2) = 'published'
        AND (SELECT final_status FROM publication_runs WHERE id=v_run2) = 'published' THEN
-      CALL record_result('T10_all_30_valid_qa_publishes', true, NULL);
+      v_results := v_results || jsonb_build_object('test','T10_all_30_valid_qa_publishes','pass',true,'msg',NULL);
     ELSE
-      CALL record_result('T10_all_30_valid_qa_publishes', false, 'state mismatch after publish');
+      v_results := v_results || jsonb_build_object('test','T10_all_30_valid_qa_publishes','pass',false,'msg','state mismatch after publish');
     END IF;
   EXCEPTION WHEN OTHERS THEN
-    CALL record_result('T10_all_30_valid_qa_publishes', false, SQLERRM);
+    v_results := v_results || jsonb_build_object('test','T10_all_30_valid_qa_publishes','pass',false,'msg',SQLERRM);
   END;
 
   -- ================================================================
