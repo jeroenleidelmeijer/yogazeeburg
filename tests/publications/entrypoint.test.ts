@@ -74,7 +74,10 @@ function makePlacementStore(): PlacementStore & { rows: PlacementRow[]; upserts:
   return store;
 }
 
-const legacy: LegacyArticleIndex = { hasSlug: () => false, listSlugs: () => [] };
+const legacy: LegacyArticleIndex = {
+  hasSlug: (s) => s === "wat-is-yoga",
+  listSlugs: () => ["wat-is-yoga"],
+};
 
 function goodRecords() {
   const pkg = seal();
