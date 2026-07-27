@@ -344,6 +344,22 @@ function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRe
 
 // -- DB article rendering (SafeMarkdownBody) -------------------------------
 
+function DbSourcesList({ sources }: { sources: { title: string; url: string }[] }) {
+  if (!sources || sources.length === 0) return null;
+  return (
+    <section aria-labelledby="bronnen-heading" className="mt-14">
+      <h2 id="bronnen-heading" className="font-display text-xl font-medium tracking-tight text-foreground">Bronnen</h2>
+      <ul className="mt-3 space-y-2 text-sm">
+        {sources.map((s) => (
+          <li key={s.url}>
+            <a href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="text-primary underline underline-offset-4 hover:no-underline">{s.title}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function DbArticleView({ view, related }: { view: DbArticleViewModel; related: ArticleRef[] }) {
   return (
     <ArticleShell
@@ -359,10 +375,13 @@ function DbArticleView({ view, related }: { view: DbArticleViewModel; related: A
       {view.template.showTOC && <TocBlock toc={view.toc} />}
       <SafeMarkdownBody markdown={view.bodyMarkdown} />
       {view.template.showFAQ && <FaqList faqs={view.faqs} />}
+      {view.template.showSources && <DbSourcesList sources={view.sources} />}
       {view.template.showRelated && <RelatedGrid related={related} />}
     </ArticleShell>
   );
 }
+
+export { DbSourcesList };
 
 function ArticleNotFound() {
   return (
