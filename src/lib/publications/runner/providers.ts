@@ -72,13 +72,30 @@ export interface RunControl {
     retryable: boolean;
     details: Record<string, unknown>;
   }): Promise<void>;
-  completePreview(input: {
+}
+
+// Durable per-step artifact store. Backed in production by the
+// `publication_run_artifacts` table via the `upsert_publication_run_artifact`
+// and `list_publication_run_artifacts` RPCs (both service_role only,
+// lock-validated). Tests inject an in-memory fake.
+export interface ArtifactRecord {
+  stepKey: string;
+  schemaVersion: string;
+  promptVersion: string;
+  contentHash: string;
+  payload: unknown;
+}
+export interface ArtifactStore {
+  list(input: { runId: string; articleId: string; lockToken: string }): Promise<ArtifactRecord[]>;
+  upsert(input: {
     runId: string;
     articleId: string;
     lockToken: string;
-    previewUrl: string;
+    stepKey: string;
+    schemaVersion: string;
+    promptVersion: string;
     contentHash: string;
-    previewDeploymentId?: string;
+    payload: unknown;
   }): Promise<void>;
 }
 
@@ -99,8 +116,11 @@ export interface RunnerDeps {
   config: ConfigProvider;
   runControl: RunControl;
   ai: AiProviders;
+  artifacts: ArtifactStore;
   now?: () => Date;
   heartbeatIntervalMs?: number;
   promptVersion: string;
   schemaVersion: string;
+  /** Max number of repair cycles allowed across the review phase. Default 3. */
+  maxRepairCycles?: number;
 }
