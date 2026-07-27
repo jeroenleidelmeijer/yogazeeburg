@@ -62,6 +62,9 @@ export type Database = {
           original_title: string
           phase: Database["public"]["Enums"]["publication_phase"] | null
           planning_number: number
+          preview_deployment_id: string | null
+          preview_ready_at: string | null
+          preview_url: string | null
           primary_keyword: string | null
           project_id: string
           published_at: string | null
@@ -94,6 +97,9 @@ export type Database = {
           original_title: string
           phase?: Database["public"]["Enums"]["publication_phase"] | null
           planning_number: number
+          preview_deployment_id?: string | null
+          preview_ready_at?: string | null
+          preview_url?: string | null
           primary_keyword?: string | null
           project_id: string
           published_at?: string | null
@@ -126,6 +132,9 @@ export type Database = {
           original_title?: string
           phase?: Database["public"]["Enums"]["publication_phase"] | null
           planning_number?: number
+          preview_deployment_id?: string | null
+          preview_ready_at?: string | null
+          preview_url?: string | null
           primary_keyword?: string | null
           project_id?: string
           published_at?: string | null
@@ -705,8 +714,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      _debug_recovery: { Args: never; Returns: Json }
-      _debug_runs: { Args: never; Returns: Json }
+      _pub_evaluate_cadence: {
+        Args: {
+          p_check_weekday: boolean
+          p_planning_number: number
+          p_project_id: string
+          p_scheduler_slot: Database["public"]["Enums"]["publication_scheduler_slot"]
+        }
+        Returns: Json
+      }
       _pub_lock_run: {
         Args: { p_article_id: string; p_lock_token: string; p_run_id: string }
         Returns: {
@@ -730,6 +746,9 @@ export type Database = {
           original_title: string
           phase: Database["public"]["Enums"]["publication_phase"] | null
           planning_number: number
+          preview_deployment_id: string | null
+          preview_ready_at: string | null
+          preview_url: string | null
           primary_keyword: string | null
           project_id: string
           published_at: string | null
@@ -748,8 +767,15 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      _pub_qa_gate: {
+        Args: {
+          p_article_id: string
+          p_run_id: string
+          p_stages: Database["public"]["Enums"]["publication_qa_stage"][]
+        }
+        Returns: Json
+      }
       _pub_require_admin: { Args: { p_project_id: string }; Returns: undefined }
-      _run_migb_tests: { Args: never; Returns: Json }
       admin_mark_article: {
         Args: {
           p_article_id: string
@@ -814,6 +840,17 @@ export type Database = {
         }
         Returns: Json
       }
+      complete_publication_preview: {
+        Args: {
+          p_article_id: string
+          p_content_hash: string
+          p_lock_token: string
+          p_preview_deployment_id?: string
+          p_preview_url: string
+          p_run_id: string
+        }
+        Returns: Json
+      }
       complete_publication_success: {
         Args: {
           p_article_id: string
@@ -857,6 +894,19 @@ export type Database = {
         }
         Returns: Json
       }
+      record_publication_qa_check: {
+        Args: {
+          p_article_id: string
+          p_check_key: string
+          p_evidence?: Json
+          p_lock_token: string
+          p_result: Database["public"]["Enums"]["publication_check_result"]
+          p_run_id: string
+          p_stage: Database["public"]["Enums"]["publication_qa_stage"]
+          p_summary: string
+        }
+        Returns: Json
+      }
     }
     Enums: {
       publication_article_status:
@@ -872,6 +922,7 @@ export type Database = {
         | "retry_pending"
         | "failed"
         | "blocked"
+        | "preview_ready"
       publication_check_result: "pass" | "fail" | "not_applicable"
       publication_notification_status:
         | "not_started"
@@ -891,6 +942,7 @@ export type Database = {
         | "sequence_blocked"
         | "lock_conflict"
         | "recovery_blocked"
+        | "cadence_blocked"
       publication_run_status:
         | "running"
         | "published"
@@ -901,6 +953,7 @@ export type Database = {
         | "stopped_noop"
         | "configuration_blocked"
         | "cancelled"
+        | "preview_ready"
       publication_scheduler_slot: "monday" | "wednesday" | "friday"
       publication_trigger_type: "scheduled" | "retry" | "manual" | "migration"
     }
@@ -1043,6 +1096,7 @@ export const Constants = {
         "retry_pending",
         "failed",
         "blocked",
+        "preview_ready",
       ],
       publication_check_result: ["pass", "fail", "not_applicable"],
       publication_notification_status: [
@@ -1064,6 +1118,7 @@ export const Constants = {
         "sequence_blocked",
         "lock_conflict",
         "recovery_blocked",
+        "cadence_blocked",
       ],
       publication_run_status: [
         "running",
@@ -1075,6 +1130,7 @@ export const Constants = {
         "stopped_noop",
         "configuration_blocked",
         "cancelled",
+        "preview_ready",
       ],
       publication_scheduler_slot: ["monday", "wednesday", "friday"],
       publication_trigger_type: ["scheduled", "retry", "manual", "migration"],

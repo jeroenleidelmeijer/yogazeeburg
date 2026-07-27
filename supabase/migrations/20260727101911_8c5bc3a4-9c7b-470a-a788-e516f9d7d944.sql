@@ -1,0 +1,1 @@
+DROP FUNCTION public._run_migc_tests();

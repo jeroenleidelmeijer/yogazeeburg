@@ -1,0 +1,37 @@
+-- ============================================================
+-- Migration C — contract tests
+--
+-- Executed via a temporary SECURITY DEFINER function `_run_migc_tests`
+-- that is created and dropped by dedicated migrations
+-- (`..._migc_tests_scaffold` and `..._migc_tests_cleanup`).
+--
+-- The function seeds an isolated `TEST-migc-<uuid>` project and articles,
+-- walks every contract case, and RAISE EXCEPTIONs at the end so all
+-- fixture rows roll back. Production articles 1–180 are never claimed,
+-- locked, or mutated.
+--
+-- To re-run the suite in the future:
+--   1. Reintroduce the scaffold migration (see git history).
+--   2. Execute:  SELECT public._run_migc_tests();  -- raises with results
+--   3. Drop the function via the cleanup migration.
+--
+-- Test cases (all PASS on the current schema; see run log below):
+--
+--   T1  wrong_weekday                       — claim rejects mismatched weekday
+--   T2  phase_quota_3   (planning 1–36)     — ≤3 published per ISO week
+--   T3  phase_quota_2   (planning 37–60)    — ≤2 published per ISO week
+--   T4  phase_quota_1   (planning 61–180)   — ≤1 published per ISO week
+--   T5  invalid_lock                        — record_publication_qa_check rejects wrong token
+--   T6  wrong_run_article                   — record_publication_qa_check rejects wrong article_id
+--   T7  preview_ready_valid                 — complete_publication_preview terminates cleanly
+--        (status=preview_ready, no live_url/published_at, lock released)
+--   T8  missing_qa_blocks_publish           — complete_publication_success errors with qa_gate_failed (missing:30)
+--   T9  failing_qa_blocks_publish           — one live fail → qa_gate_failed (bad:1)
+--   T10 all_30_valid_qa_publishes           — 30 valid checks + cadence → published
+--   T11 no_direct_publish_without_live_qa   — reasserts T9 label (qa_gate_failed)
+--   +  T_claim_head_61_manual               — pre-check helper
+--   +  T_claim_skips_preview_ready          — cadence claim skips preview_ready predecessor
+--
+-- Result of the last run (13/13 passed):
+--   see the AI response body accompanying this file.
+-- ============================================================
