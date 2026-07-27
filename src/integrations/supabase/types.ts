@@ -14,6 +14,59 @@ export type Database = {
   }
   public: {
     Tables: {
+      kennisbank_placements: {
+        Row: {
+          article_id: string
+          content_hash: string
+          created_at: string
+          id: string
+          notes: string | null
+          package: Json
+          placement_status: Database["public"]["Enums"]["kennisbank_placement_status"]
+          preview_token: string | null
+          preview_url: string | null
+          published_at: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          article_id: string
+          content_hash: string
+          created_at?: string
+          id?: string
+          notes?: string | null
+          package: Json
+          placement_status?: Database["public"]["Enums"]["kennisbank_placement_status"]
+          preview_token?: string | null
+          preview_url?: string | null
+          published_at?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          article_id?: string
+          content_hash?: string
+          created_at?: string
+          id?: string
+          notes?: string | null
+          package?: Json
+          placement_status?: Database["public"]["Enums"]["kennisbank_placement_status"]
+          preview_token?: string | null
+          preview_url?: string | null
+          published_at?: string | null
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kennisbank_placements_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: true
+            referencedRelation: "publication_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       publication_admins: {
         Row: {
           created_at: string
@@ -975,6 +1028,7 @@ export type Database = {
       }
     }
     Enums: {
+      kennisbank_placement_status: "draft" | "preview" | "published"
       publication_article_status:
         | "planned"
         | "locked"
@@ -1149,6 +1203,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      kennisbank_placement_status: ["draft", "preview", "published"],
       publication_article_status: [
         "planned",
         "locked",
