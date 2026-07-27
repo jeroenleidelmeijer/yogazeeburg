@@ -3,6 +3,8 @@
 // touched — tests operate purely in memory.
 import type {
   AiProviders,
+  ArtifactRecord,
+  ArtifactStore,
   ClaimedRun,
   ConfigProvider,
   ProjectConfig,
@@ -23,7 +25,7 @@ export const TEST_PROJECT_KEY = "TEST-runner";
 export function buildBrief(over: Partial<ArticleBrief> = {}): ArticleBrief {
   return {
     articleId: "art_test_1",
-    planningNumber: 999 as unknown as number, // schema max 180; tests never send this
+    planningNumber: 4,
     primaryQuestion: "Wat is yin yoga?",
     originalTitle: "Yin Yoga voor drukke mensen",
     finalTitle: "Yin Yoga voor drukke mensen in Amsterdam Oost",
@@ -45,8 +47,6 @@ export function buildBrief(over: Partial<ArticleBrief> = {}): ArticleBrief {
     expectedStructure: ["direct antwoord", "hoofdstuk 1", "faq"],
     schemaVersion: "1",
     ...over,
-    // planning number must be inside range for schema validation
-    ...(over.planningNumber === undefined ? { planningNumber: 4 } : {}),
   };
 }
 
@@ -62,10 +62,7 @@ export function buildSources(over: Partial<ValidatedSourcePack> = {}): Validated
     ],
     externalSources: [],
     claimSourceMap: [
-      {
-        claim: "Intro pass kost 30 euro.",
-        supportingUrls: ["https://www.yogazeeburg.com/pricing"],
-      },
+      { claim: "Intro pass kost 30 euro.", supportingUrls: ["https://www.yogazeeburg.com/pricing"] },
     ],
     conflicts: [],
     missingSubstantiation: [],
@@ -90,17 +87,15 @@ export function buildPackage(over: Partial<GeneratedArticlePackage> = {}): Gener
       "# Yin yoga\n\nEen rustige stijl waarin je houdingen langer vasthoudt. ".repeat(20),
     commercialLinkCount: 1,
     hasAbsoluteMedicalClaim: false,
-    faq: [
-      { question: "Voor wie is yin yoga?", answer: "Iedereen die wil onthaasten." },
-    ],
+    faq: [{ question: "Voor wie is yin yoga?", answer: "Iedereen die wil onthaasten." }],
     internalLinks: [{ slug: "wat-is-yoga", anchor: "wat is yoga" }],
     seoIntents: ["primary-keyword-in-title"],
     geoIntents: ["mentions-amsterdam-oost"],
     structuredDataIntents: ["FAQPage"],
     cta: { ...FIXED_CTA },
     language: "nl",
-    contentHash: "h_deadbeef",
-    promptVersion: "p1",
+    contentHash: "placeholder",
+    promptVersion: "runner.v1",
     schemaVersion: "1",
     ...over,
   };
@@ -135,18 +130,16 @@ export function fakeConfig(over: Partial<ProjectConfig> = {}): FakeConfig {
 export interface RunControlSpy extends RunControl {
   claims: number;
   heartbeats: number;
-  advances: number;
-  failures: Array<{ category: string; summary: string; stepKey: string }>;
-  previews: number;
+  advances: Array<{ stepKey: string; fromStatus: string; toStatus: string }>;
+  failures: Array<{ category: string; summary: string; stepKey: string; retryable: boolean }>;
   claim_out: ClaimedRun | null;
 }
 export function fakeRunControl(claim: ClaimedRun | null = defaultClaim()): RunControlSpy {
   const spy: RunControlSpy = {
     claims: 0,
     heartbeats: 0,
-    advances: 0,
+    advances: [],
     failures: [],
-    previews: 0,
     claim_out: claim,
     async claim() {
       spy.claims += 1;
@@ -155,14 +148,16 @@ export function fakeRunControl(claim: ClaimedRun | null = defaultClaim()): RunCo
     async heartbeat() {
       spy.heartbeats += 1;
     },
-    async advance() {
-      spy.advances += 1;
+    async advance(input) {
+      spy.advances.push({ stepKey: input.stepKey, fromStatus: input.fromStatus, toStatus: input.toStatus });
     },
     async recordFailure(input) {
-      spy.failures.push({ category: input.category, summary: input.summary, stepKey: input.stepKey });
-    },
-    async completePreview() {
-      spy.previews += 1;
+      spy.failures.push({
+        category: input.category,
+        summary: input.summary,
+        stepKey: input.stepKey,
+        retryable: input.retryable,
+      });
     },
   };
   return spy;
@@ -210,21 +205,57 @@ export function fakeAi(over: Partial<AiProviders> = {}): AiSpy {
   return spy;
 }
 
+export interface ArtifactStoreSpy extends ArtifactStore {
+  records: ArtifactRecord[];
+  upserts: number;
+  lists: number;
+}
+export function fakeArtifactStore(seed: ArtifactRecord[] = []): ArtifactStoreSpy {
+  const records: ArtifactRecord[] = [...seed];
+  const spy: ArtifactStoreSpy = {
+    records,
+    upserts: 0,
+    lists: 0,
+    async list() {
+      spy.lists += 1;
+      return records.slice();
+    },
+    async upsert(input) {
+      spy.upserts += 1;
+      const idx = records.findIndex((r) => r.stepKey === input.stepKey);
+      const rec: ArtifactRecord = {
+        stepKey: input.stepKey,
+        schemaVersion: input.schemaVersion,
+        promptVersion: input.promptVersion,
+        contentHash: input.contentHash,
+        payload: input.payload,
+      };
+      if (idx >= 0) records[idx] = rec;
+      else records.push(rec);
+    },
+  };
+  return spy;
+}
+
 export function buildDeps(over: Partial<RunnerDeps> = {}): RunnerDeps & {
   config: FakeConfig;
   runControl: RunControlSpy;
   ai: AiSpy;
+  artifacts: ArtifactStoreSpy;
 } {
   const config = (over.config as FakeConfig) ?? fakeConfig();
   const runControl = (over.runControl as RunControlSpy) ?? fakeRunControl();
   const ai = (over.ai as AiSpy) ?? fakeAi();
+  const artifacts = (over.artifacts as ArtifactStoreSpy) ?? fakeArtifactStore();
   return {
     config,
     runControl,
     ai,
+    artifacts,
     now: over.now ?? (() => new Date("2026-08-03T09:00:00Z")),
     heartbeatIntervalMs: over.heartbeatIntervalMs ?? 60_000,
-    promptVersion: over.promptVersion ?? "p1",
+    promptVersion: over.promptVersion ?? "runner.v1",
     schemaVersion: over.schemaVersion ?? "1",
+    maxRepairCycles: over.maxRepairCycles ?? 3,
   };
 }

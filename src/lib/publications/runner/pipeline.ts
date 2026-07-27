@@ -2,6 +2,11 @@
 // Scope of THIS step: init -> claim -> brief -> source_validation -> generation
 // -> review_1 -> review_2 -> review_3 -> content_ready. Website placement,
 // deployment and live QA belong to step 3 and are intentionally out of scope.
+//
+// This orchestrator is fully deterministic and resumable: every produced
+// artifact is written idempotently to the injected ArtifactStore keyed by
+// (runId, stepKey), and every step first consults the store for a matching
+// prior artifact (schemaVersion + promptVersion) before making an AI call.
 import {
   ArticleBriefSchema,
   GeneratedArticlePackageSchema,
@@ -15,12 +20,14 @@ import {
 } from "./schemas";
 import { PipelineError, MAX_RETRIES_PER_STEP } from "./errors";
 import type {
+  ArtifactRecord,
   ClaimedRun,
   Disposition,
   RunnerDeps,
   StepKey,
 } from "./providers";
 import { FIXED_CTA } from "./cta";
+import { contentHashOf, packageContentHash } from "./hash";
 
 export interface PipelineResult {
   disposition: Disposition;
@@ -33,6 +40,8 @@ export interface PipelineResult {
   pkg?: GeneratedArticlePackage;
   reviews: ReviewOutput[];
   attempts: Record<string, number>;
+  repairCycles: number;
+  resumedSteps: StepKey[];
   errors: Array<{ step: StepKey; category: string; message: string }>;
 }
 
@@ -48,12 +57,14 @@ function newResult(projectKey: string): PipelineResult {
     projectKey,
     reviews: [],
     attempts: {},
+    repairCycles: 0,
+    resumedSteps: [],
     errors: [],
   };
 }
 
-// Non-cryptographic deterministic hash (djb2). Runner deps supply real hashes
-// for real content; this fallback is used only if the package omits one.
+// Non-cryptographic deterministic hash (djb2). Retained as a light helper for
+// evidence tags. Real content hashing uses `hash.ts` (sha256 canonical JSON).
 export function deterministicHash(input: string): string {
   let h = 5381;
   for (let i = 0; i < input.length; i++) h = ((h << 5) + h + input.charCodeAt(i)) | 0;
@@ -68,18 +79,17 @@ async function withBoundedRetry<T>(
   fn: () => Promise<T>,
 ): Promise<T> {
   let lastError: unknown;
+  const prior = attempts[step] ?? 0;
   for (let i = 1; i <= MAX_RETRIES_PER_STEP; i++) {
-    attempts[step] = i;
+    attempts[step] = prior + i;
     try {
-      // Heartbeat around each attempt for long-running AI calls.
       await deps.runControl.heartbeat({
         runId: claim.runId,
         articleId: claim.articleId,
         lockToken: claim.lockToken,
         extendSeconds: 120,
       });
-      const value = await fn();
-      return value;
+      return await fn();
     } catch (err) {
       lastError = err;
       const isPipelineErr = err instanceof PipelineError;
@@ -96,11 +106,11 @@ async function withBoundedRetry<T>(
   });
 }
 
-function parseOrThrow<T>(
-  step: StepKey,
-  schema: { safeParse: (v: unknown) => { success: boolean; data?: T; error?: unknown } },
-  value: unknown,
-): T {
+interface ParsingSchema<T> {
+  safeParse(v: unknown): { success: boolean; data?: T; error?: unknown };
+}
+
+function parseOrThrow<T>(step: StepKey, schema: ParsingSchema<T>, value: unknown): T {
   const parsed = schema.safeParse(value);
   if (!parsed.success) {
     throw new PipelineError({
@@ -114,7 +124,19 @@ function parseOrThrow<T>(
   return parsed.data as T;
 }
 
-function assertCtaMatches(pkg: GeneratedArticlePackage): void {
+function assertPackageInvariants(
+  claim: ClaimedRun,
+  brief: ArticleBrief,
+  pkg: GeneratedArticlePackage,
+): void {
+  if (pkg.articleId !== claim.articleId) {
+    throw new PipelineError({
+      category: "validation_error",
+      step: "generation",
+      message: `package.articleId ${pkg.articleId} != claim.articleId ${claim.articleId}`,
+      retryable: false,
+    });
+  }
   const cta = pkg.cta;
   if (
     cta.heading !== FIXED_CTA.heading ||
@@ -142,6 +164,65 @@ function assertCtaMatches(pkg: GeneratedArticlePackage): void {
       message: "absolute medical claim detected",
     });
   }
+  // Internal links must resolve to validated targets or previously published
+  // articles known to the brief. This closes the door on hallucinated links.
+  const allowedSlugs = new Set(brief.relatedPublishedArticles.map((a) => a.slug));
+  const allowedUrls = new Set(brief.validatedLinkTargets.map((t) => t.url));
+  for (const link of pkg.internalLinks) {
+    if (!allowedSlugs.has(link.slug)) {
+      throw new PipelineError({
+        category: "content_safety_error",
+        step: "generation",
+        message: `internal link '${link.slug}' not in brief.relatedPublishedArticles`,
+      });
+    }
+  }
+  // Any absolute URL surfaced by the package (via markdown) that points to
+  // yogazeeburg.com must be one of the validated link targets. We only assert
+  // presence of at least one validated target when the package contains a
+  // yogazeeburg.com URL.
+  const yzUrlRegex = /https?:\/\/(?:www\.)?yogazeeburg\.com[^\s)]*/gi;
+  const urls = pkg.bodyMarkdown.match(yzUrlRegex) ?? [];
+  for (const u of urls) {
+    if (!allowedUrls.has(u)) {
+      throw new PipelineError({
+        category: "content_safety_error",
+        step: "generation",
+        message: `unvalidated yogazeeburg.com link in body: ${u}`,
+      });
+    }
+  }
+}
+
+async function persistArtifact(
+  deps: RunnerDeps,
+  claim: ClaimedRun,
+  stepKey: StepKey,
+  contentHash: string,
+  payload: unknown,
+): Promise<void> {
+  await deps.artifacts.upsert({
+    runId: claim.runId,
+    articleId: claim.articleId,
+    lockToken: claim.lockToken,
+    stepKey,
+    schemaVersion: deps.schemaVersion,
+    promptVersion: deps.promptVersion,
+    contentHash,
+    payload,
+  });
+}
+
+function findValidArtifact(
+  records: ArtifactRecord[],
+  stepKey: StepKey,
+  deps: RunnerDeps,
+): ArtifactRecord | undefined {
+  const r = records.find((x) => x.stepKey === stepKey);
+  if (!r) return undefined;
+  if (r.schemaVersion !== deps.schemaVersion) return undefined;
+  if (r.promptVersion !== deps.promptVersion) return undefined;
+  return r;
 }
 
 /**
@@ -155,8 +236,9 @@ export async function runPipeline(
 ): Promise<PipelineResult> {
   const result = newResult(input.projectKey);
   const trigger = input.trigger ?? "manual";
+  const maxRepairCycles = deps.maxRepairCycles ?? 3;
 
-  // Step: init — read config first.
+  // Step: init — read config first. No claim, no AI, no artifact write.
   result.step = "init";
   const config = await deps.config.loadProjectConfig(input.projectKey);
   if (!config.automationEnabled || config.publicationStopped) {
@@ -174,39 +256,71 @@ export async function runPipeline(
   result.runId = claim.runId;
   result.articleId = claim.articleId;
 
+  // Load any prior artifacts for resume.
+  const prior = await deps.artifacts.list({
+    runId: claim.runId,
+    articleId: claim.articleId,
+    lockToken: claim.lockToken,
+  });
+
   try {
     // Step: brief
     result.step = "brief";
-    const rawBrief = await withBoundedRetry("brief", result.attempts, deps, claim, () =>
-      deps.ai.generateBrief({ claim, context: {} }),
-    );
-    const brief = parseOrThrow<ArticleBrief>("brief", ArticleBriefSchema, rawBrief);
-    result.brief = brief;
-    await deps.runControl.advance({
-      runId: claim.runId,
-      articleId: claim.articleId,
-      lockToken: claim.lockToken,
-      fromStatus: "locked",
-      toStatus: "drafting",
-      stepKey: "brief",
-      evidence: { schemaVersion: brief.schemaVersion, promptVersion: deps.promptVersion },
+    const brief = await resumeOrProduce<ArticleBrief>({
+      step: "brief",
+      prior,
+      deps,
+      claim,
+      result,
+      schema: ArticleBriefSchema,
+      produce: () => deps.ai.generateBrief({ claim, context: {} }),
+      hash: (v) => contentHashOf(v),
+      validate: (v) => {
+        if (v.articleId !== claim.articleId) {
+          throw new PipelineError({
+            category: "validation_error",
+            step: "brief",
+            message: `brief.articleId ${v.articleId} != claim.articleId ${claim.articleId}`,
+            retryable: false,
+          });
+        }
+      },
+      onFresh: async (v) => {
+        await deps.runControl.advance({
+          runId: claim.runId,
+          articleId: claim.articleId,
+          lockToken: claim.lockToken,
+          fromStatus: "locked",
+          toStatus: "drafting",
+          stepKey: "brief",
+          evidence: { schemaVersion: v.schemaVersion, promptVersion: deps.promptVersion },
+        });
+      },
     });
+    result.brief = brief;
 
     // Step: source_validation
     result.step = "source_validation";
-    const rawSources = await withBoundedRetry(
-      "source_validation",
-      result.attempts,
+    const sources = await resumeOrProduce<ValidatedSourcePack>({
+      step: "source_validation",
+      prior,
       deps,
       claim,
-      () => deps.ai.validateSources({ brief }),
-    );
-    const sources = parseOrThrow<ValidatedSourcePack>(
-      "source_validation",
-      ValidatedSourcePackSchema,
-      rawSources,
-    );
-    result.sources = sources;
+      result,
+      schema: ValidatedSourcePackSchema,
+      produce: () => deps.ai.validateSources({ brief }),
+      hash: (v) => contentHashOf(v),
+      validate: (v) => {
+        if (v.articleId !== claim.articleId) {
+          throw new PipelineError({
+            category: "validation_error",
+            step: "source_validation",
+            message: `sources.articleId ${v.articleId} != claim.articleId ${claim.articleId}`,
+            retryable: false,
+          });
+        }
+      },
+    });
     if (sources.blocked) {
       throw new PipelineError({
         category: "source_conflict",
@@ -215,18 +329,76 @@ export async function runPipeline(
         retryable: false,
       });
     }
+    result.sources = sources;
 
     // Step: generation
     result.step = "generation";
-    let pkg = await generateAndValidatePackage(brief, sources, deps, claim, result);
+    let pkg = await resumeOrProduce<GeneratedArticlePackage>({
+      step: "generation",
+      prior,
+      deps,
+      claim,
+      result,
+      schema: GeneratedArticlePackageSchema,
+      produce: () => deps.ai.generateArticle({ brief, sources }),
+      hash: (v) => packageContentHash(v as unknown as Record<string, unknown>),
+      validate: (v) => assertPackageInvariants(claim, brief, v),
+    });
+    // Runner is authoritative on contentHash; AI cannot manipulate it.
+    pkg = { ...pkg, contentHash: packageContentHash(pkg as unknown as Record<string, unknown>) };
 
-    // Step: review 1..3 in fixed order. A repair triggers re-check of prior gates.
-    for (let i = 0; i < REVIEW_ORDER.length; i++) {
-      const round = REVIEW_ORDER[i];
-      const stepKey = (`review_${i + 1}`) as StepKey;
+    // Reviews — with repair-triggered restart-from-round-1, bounded by
+    // maxRepairCycles. Attempt counters accumulate across restarts so runaway
+    // cycles surface as retry-budget exhaustion.
+    let roundIdx = 0;
+    result.reviews = [];
+    while (roundIdx < REVIEW_ORDER.length) {
+      const round = REVIEW_ORDER[roundIdx];
+      const stepKey = (`review_${roundIdx + 1}`) as StepKey;
       result.step = stepKey;
 
-      const review = await runReviewRound(round, brief, sources, pkg, result.reviews, deps, claim, stepKey);
+      // Reviews are always re-run after a repair. We only resume the review
+      // that has an artifact whose input contentHash matches the current
+      // package; otherwise we run fresh. Encode the input package's hash into
+      // the resume key by including it in the artifact contentHash.
+      const currentPkgHash = pkg.contentHash;
+      const priorReview = prior.find(
+        (r) =>
+          r.stepKey === stepKey &&
+          r.schemaVersion === deps.schemaVersion &&
+          r.promptVersion === deps.promptVersion &&
+          (r.payload as Record<string, unknown> | null)?.__inputPkgHash === currentPkgHash,
+      );
+
+      let review: ReviewOutput;
+      if (priorReview) {
+        const inner = (priorReview.payload as Record<string, unknown>).review;
+        review = parseOrThrow<ReviewOutput>(stepKey, ReviewOutputSchema, inner);
+        result.resumedSteps.push(stepKey);
+      } else {
+        review = await withBoundedRetry(stepKey, result.attempts, deps, claim, async () => {
+          const raw = await deps.ai.reviewRound({
+            round,
+            brief,
+            sources,
+            pkg,
+            priorReviews: result.reviews.slice(),
+          });
+          const parsed = parseOrThrow<ReviewOutput>(stepKey, ReviewOutputSchema, raw);
+          if (parsed.round !== round) {
+            throw new PipelineError({
+              category: "validation_error",
+              step: stepKey,
+              message: `review round mismatch: expected ${round}, got ${parsed.round}`,
+            });
+          }
+          return parsed;
+        });
+        await persistArtifact(deps, claim, stepKey, contentHashOf(review), {
+          review,
+          __inputPkgHash: currentPkgHash,
+        });
+      }
       result.reviews.push(review);
 
       if (review.blocked) {
@@ -246,43 +418,58 @@ export async function runPipeline(
             retryable: false,
           });
         }
-        // Apply repair, re-validate through schema + CTA, then re-run prior review rounds.
-        pkg = parseOrThrow<GeneratedArticlePackage>(
+        if (result.repairCycles >= maxRepairCycles) {
+          throw new PipelineError({
+            category: "validation_error",
+            step: stepKey,
+            message: `repair cycle limit (${maxRepairCycles}) exhausted`,
+            retryable: false,
+          });
+        }
+        // Apply repair — full schema + invariant re-validation, then restart
+        // review sequence from round 1 with the repaired package.
+        const repaired = parseOrThrow<GeneratedArticlePackage>(
           stepKey,
           GeneratedArticlePackageSchema,
           review.repairedPackage,
         );
-        assertCtaMatches(pkg);
-        for (let j = 0; j < i; j++) {
-          const priorRound = REVIEW_ORDER[j];
-          const priorStep = (`review_${j + 1}`) as StepKey;
-          const recheck = await runReviewRound(
-            priorRound,
-            brief,
-            sources,
-            pkg,
-            result.reviews.slice(0, j),
-            deps,
-            claim,
-            priorStep,
-          );
-          // Replace the prior review record with the recheck outcome.
-          result.reviews[j] = recheck;
-          if (!recheck.pass || recheck.blocked) {
-            throw new PipelineError({
-              category: "validation_error",
-              step: priorStep,
-              message: `regression after repair at ${priorRound}`,
-              retryable: false,
-            });
-          }
-        }
+        assertPackageInvariants(claim, brief, repaired);
+        pkg = {
+          ...repaired,
+          contentHash: packageContentHash(repaired as unknown as Record<string, unknown>),
+        };
+        await persistArtifact(deps, claim, "generation", pkg.contentHash, pkg);
+        result.repairCycles += 1;
+        result.reviews = [];
+        roundIdx = 0;
+        continue;
       }
-      result.pkg = pkg;
+      roundIdx += 1;
     }
+    result.pkg = pkg;
 
-    // Step: content_ready. Terminal for THIS step of the automation.
+    // Step: content_ready. Terminal for THIS step of the automation. We
+    // persist a durable evidence artifact but do NOT change the article's
+    // database status — that belongs to step 3 (preview / publish).
     result.step = "content_ready";
+    const evidence = {
+      articleId: claim.articleId,
+      runId: claim.runId,
+      briefHash: contentHashOf(brief),
+      sourcesHash: contentHashOf(sources),
+      packageHash: pkg.contentHash,
+      reviews: result.reviews.map((r) => ({ round: r.round, pass: r.pass })),
+      promptVersion: deps.promptVersion,
+      schemaVersion: deps.schemaVersion,
+      repairCycles: result.repairCycles,
+    };
+    await persistArtifact(
+      deps,
+      claim,
+      "content_ready",
+      contentHashOf(evidence),
+      evidence,
+    );
     result.disposition = "content_ready";
     return result;
   } catch (err) {
@@ -310,41 +497,39 @@ export async function runPipeline(
   }
 }
 
-async function generateAndValidatePackage(
-  brief: ArticleBrief,
-  sources: ValidatedSourcePack,
-  deps: RunnerDeps,
-  claim: ClaimedRun,
-  result: PipelineResult,
-): Promise<GeneratedArticlePackage> {
-  const raw = await withBoundedRetry("generation", result.attempts, deps, claim, () =>
-    deps.ai.generateArticle({ brief, sources }),
-  );
-  const pkg = parseOrThrow<GeneratedArticlePackage>("generation", GeneratedArticlePackageSchema, raw);
-  assertCtaMatches(pkg);
-  return pkg;
+interface ResumeOrProduceArgs<T> {
+  step: StepKey;
+  prior: ArtifactRecord[];
+  deps: RunnerDeps;
+  claim: ClaimedRun;
+  result: PipelineResult;
+  schema: ParsingSchema<T>;
+  produce: () => Promise<unknown>;
+  hash: (parsed: T) => string;
+  validate?: (parsed: T) => void;
+  onFresh?: (parsed: T) => Promise<void>;
 }
 
-async function runReviewRound(
-  round: (typeof REVIEW_ORDER)[number],
-  brief: ArticleBrief,
-  sources: ValidatedSourcePack,
-  pkg: GeneratedArticlePackage,
-  priorReviews: ReviewOutput[],
-  deps: RunnerDeps,
-  claim: ClaimedRun,
-  stepKey: StepKey,
-): Promise<ReviewOutput> {
-  const raw = await withBoundedRetry(stepKey, { [stepKey]: 0 } as Record<string, number>, deps, claim, () =>
-    deps.ai.reviewRound({ round, brief, sources, pkg, priorReviews }),
-  );
-  const review = parseOrThrow<ReviewOutput>(stepKey, ReviewOutputSchema, raw);
-  if (review.round !== round) {
-    throw new PipelineError({
-      category: "validation_error",
-      step: stepKey,
-      message: `review round mismatch: expected ${round}, got ${review.round}`,
-    });
+/**
+ * Reuse a prior artifact when its schema/prompt versions match, otherwise
+ * run the AI call bounded by retries and persist the resulting artifact.
+ */
+async function resumeOrProduce<T>(args: ResumeOrProduceArgs<T>): Promise<T> {
+  const { step, prior, deps, claim, result, schema, produce, hash, validate, onFresh } = args;
+  const existing = findValidArtifact(prior, step, deps);
+  if (existing) {
+    const parsed = parseOrThrow<T>(step, schema, existing.payload);
+    if (validate) validate(parsed);
+    result.resumedSteps.push(step);
+    return parsed;
   }
-  return review;
+  const parsed = await withBoundedRetry(step, result.attempts, deps, claim, async () => {
+    const raw = await produce();
+    const p = parseOrThrow<T>(step, schema, raw);
+    if (validate) validate(p);
+    return p;
+  });
+  await persistArtifact(deps, claim, step, hash(parsed), parsed);
+  if (onFresh) await onFresh(parsed);
+  return parsed;
 }
