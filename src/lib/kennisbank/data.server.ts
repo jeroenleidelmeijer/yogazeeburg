@@ -184,6 +184,24 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
   const bodyMarkdown = pkg.bodyMarkdown as string;
   const readingTimeMin = Math.max(3, Math.round(bodyMarkdown.trim().split(/\s+/).length / 220));
 
+  // Sources come from the runner's ValidatedSourcePack, persisted alongside
+  // the package under a namespaced `_sourcesPack` key by placeArticle. The
+  // canonical content hash is over the pkg only, so this JSONB enrichment
+  // never affects hash-based idempotency.
+  const sourcesPack = pkg._sourcesPack as
+    | { sources?: { title?: unknown; url?: unknown; type?: unknown }[] }
+    | undefined;
+  const sources: { title: string; url: string }[] = Array.isArray(sourcesPack?.sources)
+    ? sourcesPack!.sources!
+        .filter(
+          (s) =>
+            typeof s?.title === "string" &&
+            typeof s?.url === "string" &&
+            (s.url as string).startsWith("https://"),
+        )
+        .map((s) => ({ title: String(s.title), url: String(s.url) }))
+    : [];
+
   const publishedAt = (row.published_at ?? row.created_at).slice(0, 10);
   const updatedAt = row.updated_at.slice(0, 10);
 
@@ -204,7 +222,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     bodyMarkdown,
     toc: extractTocFromMarkdown(bodyMarkdown),
     faqs: faq,
-    sources: [],
+    sources,
     internalLinks,
     tags,
     primaryKeyword:
@@ -217,7 +235,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     template: {
       showTOC: true,
       showFAQ: faq.length > 0,
-      showSources: false,
+      showSources: sources.length > 0,
       showRelated: true,
     },
   };
