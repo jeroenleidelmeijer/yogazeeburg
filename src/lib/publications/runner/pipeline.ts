@@ -294,6 +294,7 @@ export async function runPipeline(
             step: result.step,
             message: err instanceof Error ? err.message : String(err),
           });
+    process.stderr.write(`\n[DBG] category=${pe.category} step=${pe.step} msg=${pe.message}\n`);
     result.errors.push({ step: pe.step as StepKey, category: pe.category, message: pe.message });
     result.disposition = pe.category === "content_safety_error" ? "blocked" : "failed";
     await deps.runControl.recordFailure({
