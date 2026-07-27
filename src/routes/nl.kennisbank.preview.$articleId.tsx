@@ -84,6 +84,16 @@ function PreviewView({ view }: { view: DbArticleViewModel }) {
           </header>
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
             <div className="text-[17px] leading-relaxed text-foreground/90">
+              {view.template.showTOC && view.toc.length > 0 && (
+                <nav aria-label="Inhoudsopgave" className="mb-10 rounded-2xl border border-border bg-card p-5">
+                  <p className="font-display text-sm font-medium uppercase tracking-widest text-muted-foreground">Inhoud</p>
+                  <ul className="mt-3 space-y-1.5 text-sm">
+                    {view.toc.map((t) => (
+                      <li key={t.id}><a href={`#${t.id}`} className="text-primary hover:underline">{t.label}</a></li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
               <SafeMarkdownBody markdown={view.bodyMarkdown} />
               {view.template.showFAQ && view.faqs.length > 0 && (
                 <section className="mt-14">
@@ -98,6 +108,24 @@ function PreviewView({ view }: { view: DbArticleViewModel }) {
                   </dl>
                 </section>
               )}
+              {view.template.showSources && view.sources.length > 0 && (
+                <section aria-labelledby="preview-bronnen-heading" className="mt-14">
+                  <h2 id="preview-bronnen-heading" className="font-display text-xl font-medium tracking-tight text-foreground">Bronnen</h2>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {view.sources.map((s) => (
+                      <li key={s.url}>
+                        <a href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="text-primary underline underline-offset-4 hover:no-underline">{s.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+              <section aria-labelledby="preview-cta-heading" className="mt-14 rounded-2xl border border-border bg-secondary/40 p-6">
+                <h2 id="preview-cta-heading" className="font-display text-xl font-medium tracking-tight text-foreground">{view.cta.heading}</h2>
+                <p className="mt-2 text-foreground/85">{view.cta.body}</p>
+                <p className="mt-4 inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground">{view.cta.button}</p>
+                <p className="mt-3 text-xs text-muted-foreground">{view.cta.subtext}</p>
+              </section>
             </div>
           </div>
         </article>
