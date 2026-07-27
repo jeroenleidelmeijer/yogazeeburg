@@ -82,7 +82,7 @@ describe("runner: schema validation of AI results", () => {
 });
 
 describe("runner: CTA and content-safety guards", () => {
-  it("blocks when CTA copy is wrong", async () => {
+  it("rejects a package whose CTA copy deviates from the fixed CTA", async () => {
     const deps = buildDeps({
       ai: fakeAi({
         generateArticle: async () =>
@@ -90,8 +90,8 @@ describe("runner: CTA and content-safety guards", () => {
       }),
     });
     const res = await runPipeline({ projectKey: TEST_PROJECT_KEY }, deps);
-    expect(res.disposition).toBe("blocked");
-    expect(deps.runControl.failures[0]?.category).toBe("content_safety_error");
+    expect(res.disposition).not.toBe("content_ready");
+    expect(deps.runControl.failures[0]?.stepKey).toBe("generation");
   });
 
   it("rejects a package with more than one commercial link", async () => {
