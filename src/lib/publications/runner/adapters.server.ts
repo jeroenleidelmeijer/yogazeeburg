@@ -1,12 +1,12 @@
 // Server-only runner adapters. This module wires the pure pipeline to the
-// production Supabase RPC surface + AI Gateway. It MUST NOT be imported from
-// any client-graph module (routes, *.functions.ts). Import protection blocks
-// it by the `.server.ts` suffix.
+// production Supabase RPC surface + Lovable AI Gateway. It MUST NOT be
+// imported from any client-graph module (routes, *.functions.ts). Import
+// protection blocks it by the `.server.ts` suffix.
 //
-// IMPORTANT SAFETY: this file exports factories. No top-level side effects,
-// no network calls at import time. The AI provider is intentionally a stub
-// that throws — step 2 does not perform real AI calls. Wiring a real
-// provider (LOVABLE_API_KEY / model config) is left for step 3.
+// SAFETY: this file exports factories. No top-level side effects, no network
+// calls at import time. LOVABLE_API_KEY is read lazily inside the AI provider
+// only when a method actually runs — the pipeline never invokes AI while
+// automation is disabled, so importing this module has zero cost.
 
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import type {
@@ -19,6 +19,7 @@ import type {
   RunnerDeps,
 } from "./providers";
 import { PROMPT_VERSION, SCHEMA_VERSION } from "./prompts";
+import { createLovableAiProviders } from "./ai-provider.server";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AdminRpc = (name: string, args: Record<string, unknown>) => Promise<{ data: any; error: any }>;
