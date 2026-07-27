@@ -42,15 +42,16 @@ export const getPreviewByArticleIdFn = createServerFn({ method: "GET" })
       .parse(input),
   )
   .handler(async ({ data, context }): Promise<{ view: DbArticleViewModel } | null> => {
-    const { fetchPreviewByArticleId, dbRowToViewModel, assertCallerIsPublicationAdmin } =
+    const { fetchPreviewByArticleId, dbRowToViewModel, assertCallerIsAdminForArticle } =
       await import("./data.server");
 
-    await assertCallerIsPublicationAdmin(context.userId);
+    // Project-scoped admin check: caller must be an admin for the article's
+    // own project, not just any project.
+    await assertCallerIsAdminForArticle(context.userId, data.articleId);
 
     const row = await fetchPreviewByArticleId(data.articleId);
     if (!row) return null;
-    // Optional defence-in-depth: when a token is supplied it must match the
-    // stored preview_token. The PRIMARY gate is the admin check above.
+    // Defence-in-depth: when supplied, the token must match the stored one.
     if (data.token && row.preview_token && data.token !== row.preview_token) {
       throw new Error("Forbidden: preview token mismatch");
     }
