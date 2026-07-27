@@ -238,7 +238,7 @@ describe("runner: review gates, repair and cycle limit", () => {
           round,
           pass: false,
           blocked: false,
-          findings: [{ code: "x", severity: "error", evidence: "ev", remediation: "fix" }],
+          findings: [{ code: "seo01", severity: "error", evidence: "ev", remediation: "fix" }],
           repairedPackage: buildPackage(),
           schemaVersion: "1",
         }),
