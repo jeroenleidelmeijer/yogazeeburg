@@ -143,45 +143,18 @@ export function createSupabaseArtifactStore(): ArtifactStore {
 }
 
 /**
- * AI provider stub. Deliberately throws configuration_error so no real AI
- * traffic can happen in step 2. Step 3 replaces this with a Lovable AI
- * Gateway implementation.
- */
-export function createStubAiProviders(): AiProviders {
-  const notImplemented = (kind: string) => {
-    throw Object.assign(new Error(`AI provider '${kind}' not wired in step 2`), {
-      category: "configuration_error",
-    });
-  };
-  return {
-    async generateBrief() {
-      return notImplemented("generateBrief");
-    },
-    async validateSources() {
-      return notImplemented("validateSources");
-    },
-    async generateArticle() {
-      return notImplemented("generateArticle");
-    },
-    async reviewRound() {
-      return notImplemented("reviewRound");
-    },
-  };
-}
-
-/**
  * Compose default production RunnerDeps. Callers can override individual
- * fields — in particular the AI providers for future step-3 wiring.
+ * fields — for tests, a fake AI provider is typically injected.
  *
  * SAFETY: this function does not read secrets at module scope; env vars are
- * read only when a wrapped RPC actually runs (inside supabaseAdmin proxy).
+ * read only when a wrapped RPC or AI call actually runs.
  */
 export function createDefaultRunnerDeps(overrides: Partial<RunnerDeps> = {}): RunnerDeps {
   return {
     config: overrides.config ?? createSupabaseConfigProvider(),
     runControl: overrides.runControl ?? createSupabaseRunControl(),
     artifacts: overrides.artifacts ?? createSupabaseArtifactStore(),
-    ai: overrides.ai ?? createStubAiProviders(),
+    ai: overrides.ai ?? createLovableAiProviders(),
     now: overrides.now,
     heartbeatIntervalMs: overrides.heartbeatIntervalMs,
     promptVersion: overrides.promptVersion ?? PROMPT_VERSION,
