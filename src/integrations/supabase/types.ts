@@ -776,6 +776,7 @@ export type Database = {
         Returns: Json
       }
       _pub_require_admin: { Args: { p_project_id: string }; Returns: undefined }
+      _run_migc_tests: { Args: never; Returns: Json }
       admin_mark_article: {
         Args: {
           p_article_id: string
