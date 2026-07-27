@@ -189,6 +189,31 @@ export async function placementFromArtifacts(
       message: "content_ready evidence has invalid shape",
     });
   }
+  // Evidence payload's own version fields must equal the run's input
+  // versions — the artifact record fields alone are not sufficient because
+  // they can be set independently of the payload the runner sealed.
+  if (ev.data.schemaVersion !== parsed.schemaVersion) {
+    throw new PlacementValidationError({
+      code: "schema_invalid",
+      message: `content_ready evidence schemaVersion ${ev.data.schemaVersion} != ${parsed.schemaVersion}`,
+    });
+  }
+  if (ev.data.promptVersion !== parsed.promptVersion) {
+    throw new PlacementValidationError({
+      code: "schema_invalid",
+      message: `content_ready evidence promptVersion ${ev.data.promptVersion} != ${parsed.promptVersion}`,
+    });
+  }
+  // The artifact record's contentHash must match a recomputed hash over the
+  // parsed evidence body. This proves the terminal evidence was not tampered
+  // with between the runner and the placement boundary.
+  const evTrusted = contentHashOf(ev.data);
+  if (evRec.contentHash !== evTrusted) {
+    throw new PlacementValidationError({
+      code: "hash_mismatch",
+      message: `content_ready artifact.contentHash ${evRec.contentHash} != recomputed ${evTrusted}`,
+    });
+  }
   if (
     ev.data.articleId !== parsed.articleId ||
     ev.data.runId !== parsed.runId ||
