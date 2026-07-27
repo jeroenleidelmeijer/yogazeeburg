@@ -53,7 +53,8 @@ export type PlacementRow = {
   slug: string;
   contentHash: string;
   placementStatus: PlacementStatus;
-  package: GeneratedArticlePackage;
+  /** JSONB blob: the schema-validated package plus optional `_sourcesPack`. */
+  package: Record<string, unknown>;
   previewUrl: string | null;
   previewToken: string | null;
   publishedAt: string | null;
