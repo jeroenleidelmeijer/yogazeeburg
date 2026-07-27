@@ -25,40 +25,6 @@ export { CATEGORY_META, legacyArticleToRef, listLegacyRefs };
 
 const CANONICAL_BASE = "https://www.yogazeeburg.com";
 
-// -- Pure legacy conversion (safe to call anywhere) -----------------------
-
-export function legacyArticleToRef(a: Article): ArticleRef {
-  const meta = CATEGORY_META[a.category.slug];
-  const filters = meta?.filters ?? [];
-  const searchText = [
-    a.title,
-    a.description,
-    a.category.title,
-    a.h1,
-    a.seoTitle,
-    ...a.faqs.map((f) => `${f.question} ${f.answer}`),
-  ]
-    .join(" ")
-    .toLowerCase();
-  return {
-    slug: a.slug,
-    title: a.title,
-    description: a.description,
-    category: { slug: a.category.slug, title: a.category.title },
-    readingTimeMin: a.readingTimeMin,
-    publishedAt: a.publishedAt,
-    updatedAt: a.updatedAt,
-    pillar: a.pillar,
-    source: "legacy",
-    searchText,
-    filters,
-  };
-}
-
-export function listLegacyRefs(): ArticleRef[] {
-  return ARTICLES.map(legacyArticleToRef);
-}
-
 // -- DB reads -------------------------------------------------------------
 
 interface PlacementRowDb {
