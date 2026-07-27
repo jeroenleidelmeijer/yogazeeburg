@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ArticleRef } from "@/lib/kennisbank/types";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { ArticleCard } from "@/components/kennisbank/ArticleCard";
@@ -60,7 +61,7 @@ function CategoryPage() {
         <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           {articles.length > 0 ? (
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((a) => <ArticleCard key={a.slug} article={a} />)}
+              {articles.map((a: ArticleRef) => <ArticleCard key={a.slug} article={a} />)}
             </ul>
           ) : (
             <div className="text-center">
