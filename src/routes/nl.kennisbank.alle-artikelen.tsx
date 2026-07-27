@@ -55,7 +55,7 @@ function AllArticlesPage() {
         <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           {articles.length > 0 ? (
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((a) => <ArticleCard key={a.slug} article={a} />)}
+              {articles.map((a: ArticleRef) => <ArticleCard key={a.slug} article={a} />)}
             </ul>
           ) : (
             <div className="rounded-2xl border border-dashed border-border bg-card/70 p-8 text-center">
