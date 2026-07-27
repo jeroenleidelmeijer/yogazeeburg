@@ -311,12 +311,17 @@ export async function placeArticle(
     return { disposition: "noop", row: existing };
   }
 
+  const enrichedPackage: Record<string, unknown> =
+    input.sourcesPack != null
+      ? { ...(pkg as unknown as Record<string, unknown>), _sourcesPack: input.sourcesPack }
+      : { ...(pkg as unknown as Record<string, unknown>) };
+
   const row = await deps.store.upsert({
     articleId,
     slug: pkg.slug,
     contentHash: pkg.contentHash,
     placementStatus: desiredStatus,
-    package: pkg,
+    package: enrichedPackage,
     previewUrl: desiredPreviewUrl,
     previewToken: desiredPreviewToken,
     // Placement never sets `published_at`; step 4 owns that column.
