@@ -40,6 +40,7 @@ import {
   REVIEW_ORDER,
   type GeneratedArticlePackage,
   type ReviewOutput,
+  type ValidatedSourcePack,
 } from "./runner/schemas";
 import { FIXED_CTA } from "./runner/cta";
 import { packageContentHash } from "./runner/hash";
