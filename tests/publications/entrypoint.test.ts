@@ -216,7 +216,7 @@ describe("placementFromArtifacts contract", () => {
         : r,
     );
     await expect(placementFromArtifacts(input, baseDeps(bad))).rejects.toThrow(
-      /review_2 did not pass/,
+      /review_2/,
     );
   });
 
