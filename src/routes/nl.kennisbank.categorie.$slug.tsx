@@ -17,27 +17,25 @@ const CATEGORY_TITLES: Record<string, string> = {
 export const Route = createFileRoute("/nl/kennisbank/categorie/$slug")({
   loader: ({ params }) => {
     const title = CATEGORY_TITLES[params.slug] ?? null;
-    const articles = getArticlesByCategory(params.slug);
-    return { slug: params.slug, title, articles };
+    // Return only the serializable slug; article objects contain non-serializable
+    // React component fields (category.icon, body) that break SSR when returned
+    // from a loader. Re-derive articles inside the component.
+    return { slug: params.slug, title };
   },
   head: ({ loaderData }) => {
-    const known = loaderData?.title !== null;
-    const hasArticles = (loaderData?.articles?.length ?? 0) > 0;
+    const known = loaderData?.title != null;
     const title = known
       ? `${loaderData!.title} — Yoga Gids | Yoga Zeeburg`
       : "Categorie — Yoga Gids | Yoga Zeeburg";
     return {
       meta: [
         { title },
-        // Categorie-pagina's zijn nog beperkt in content; houd ze uit index
-        // tot ze meerdere artikelen bevatten.
-        {
-          name: "robots",
-          content: hasArticles ? "index, follow" : "noindex, follow",
-        },
+        // Category pages are functional navigation/archive pages, not SEO
+        // landing pages — always noindex, follow.
+        { name: "robots", content: "noindex, follow" },
         {
           name: "description",
-          content: hasArticles
+          content: known
             ? `Artikelen in de categorie ${loaderData!.title} van de Yoga Gids van Yoga Zeeburg.`
             : "Deze categoriepagina van de Yoga Gids wordt binnenkort gevuld.",
         },
@@ -48,7 +46,8 @@ export const Route = createFileRoute("/nl/kennisbank/categorie/$slug")({
 });
 
 function CategoryPage() {
-  const { title, articles } = Route.useLoaderData() as { title: string | null; articles: import("@/lib/kennisbank/articles").Article[] };
+  const { slug, title } = Route.useLoaderData();
+  const articles = getArticlesByCategory(slug);
 
   return (
     <div lang="nl" className="flex min-h-screen flex-col bg-background">

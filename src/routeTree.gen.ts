@@ -30,6 +30,7 @@ import { Route as NlKennisbankIndexRouteImport } from './routes/nl.kennisbank.in
 import { Route as NlKennisbankAlleArtikelenRouteImport } from './routes/nl.kennisbank.alle-artikelen'
 import { Route as NlKennisbankSlugRouteImport } from './routes/nl.kennisbank.$slug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as NlKennisbankCategorieIndexRouteImport } from './routes/nl.kennisbank.categorie.index'
 import { Route as NlKennisbankCategorieSlugRouteImport } from './routes/nl.kennisbank.categorie.$slug'
 
 const YogaStylesRoute = YogaStylesRouteImport.update({
@@ -142,6 +143,12 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const NlKennisbankCategorieIndexRoute =
+  NlKennisbankCategorieIndexRouteImport.update({
+    id: '/categorie/',
+    path: '/categorie/',
+    getParentRoute: () => NlKennisbankRoute,
+  } as any)
 const NlKennisbankCategorieSlugRoute =
   NlKennisbankCategorieSlugRouteImport.update({
     id: '/categorie/$slug',
@@ -172,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
+  '/nl/kennisbank/categorie/': typeof NlKennisbankCategorieIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -195,6 +203,7 @@ export interface FileRoutesByTo {
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
+  '/nl/kennisbank/categorie': typeof NlKennisbankCategorieIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -220,6 +229,7 @@ export interface FileRoutesById {
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank/': typeof NlKennisbankIndexRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
+  '/nl/kennisbank/categorie/': typeof NlKennisbankCategorieIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
+    | '/nl/kennisbank/categorie/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -269,6 +280,7 @@ export interface FileRouteTypes {
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank'
     | '/nl/kennisbank/categorie/$slug'
+    | '/nl/kennisbank/categorie'
   id:
     | '__root__'
     | '/'
@@ -293,6 +305,7 @@ export interface FileRouteTypes {
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank/'
     | '/nl/kennisbank/categorie/$slug'
+    | '/nl/kennisbank/categorie/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -465,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nl/kennisbank/categorie/': {
+      id: '/nl/kennisbank/categorie/'
+      path: '/categorie'
+      fullPath: '/nl/kennisbank/categorie/'
+      preLoaderRoute: typeof NlKennisbankCategorieIndexRouteImport
+      parentRoute: typeof NlKennisbankRoute
+    }
     '/nl/kennisbank/categorie/$slug': {
       id: '/nl/kennisbank/categorie/$slug'
       path: '/categorie/$slug'
@@ -480,6 +500,7 @@ interface NlKennisbankRouteChildren {
   NlKennisbankAlleArtikelenRoute: typeof NlKennisbankAlleArtikelenRoute
   NlKennisbankIndexRoute: typeof NlKennisbankIndexRoute
   NlKennisbankCategorieSlugRoute: typeof NlKennisbankCategorieSlugRoute
+  NlKennisbankCategorieIndexRoute: typeof NlKennisbankCategorieIndexRoute
 }
 
 const NlKennisbankRouteChildren: NlKennisbankRouteChildren = {
@@ -487,6 +508,7 @@ const NlKennisbankRouteChildren: NlKennisbankRouteChildren = {
   NlKennisbankAlleArtikelenRoute: NlKennisbankAlleArtikelenRoute,
   NlKennisbankIndexRoute: NlKennisbankIndexRoute,
   NlKennisbankCategorieSlugRoute: NlKennisbankCategorieSlugRoute,
+  NlKennisbankCategorieIndexRoute: NlKennisbankCategorieIndexRoute,
 }
 
 const NlKennisbankRouteWithChildren = NlKennisbankRoute._addFileChildren(
