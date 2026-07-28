@@ -285,7 +285,7 @@ export async function runArticle4PreviewOnce(
         });
       } catch (relErr) {
         errors.push({
-          step: "content_ready",
+          step: "placement_ready",
           category: "finalize_error",
           message: `safety releaseLock failed: ${
             relErr instanceof Error ? relErr.message : String(relErr)
@@ -307,7 +307,7 @@ export async function runArticle4PreviewOnce(
       status: "pipeline_failed",
       errors: [
         {
-          step: "content_ready",
+          step: "placement_ready",
           category: "invariant_violation",
           message: "missing runId/articleId/pkg after content_ready",
         },
@@ -324,7 +324,7 @@ export async function runArticle4PreviewOnce(
   // Individual sub-failures are captured and returned as errors, but the
   // function always returns a "pipeline_failed" outcome — never preview_ready.
   const finalizeFailed = async (
-    stepKey: "content_ready",
+    stepKey: "placement_ready",
     category: string,
     summary: string,
     lockTokenForFinalize: string | null,
@@ -382,7 +382,7 @@ export async function runArticle4PreviewOnce(
     // We do NOT have a lock token — recordFailure requires one, so skip it
     // and rely on admin_release_stale_lock to clear active_run_id/lock.
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "invariant_violation",
       `lock_token read failed: ${msg}`,
       null,
@@ -390,7 +390,7 @@ export async function runArticle4PreviewOnce(
   }
   if (!lockToken) {
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "invariant_violation",
       "lock lost after content_ready; artifact list would fail",
       null,
@@ -419,7 +419,7 @@ export async function runArticle4PreviewOnce(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "placement_error",
       `placementFromArtifacts failed: ${msg}`,
       lockToken,
@@ -438,7 +438,7 @@ export async function runArticle4PreviewOnce(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "finalize_error",
       `releaseLock failed after successful placement: ${msg}`,
       lockToken,
