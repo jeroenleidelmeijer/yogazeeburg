@@ -31,8 +31,11 @@ import {
 import { packageContentHash } from "@/lib/publications/runner/hash";
 import type { RunnerDeps } from "@/lib/publications/runner/providers";
 
-const PROJECT_ID = "proj_test";
-const ARTICLE_ID = "art_test_1";
+const PROJECT_ID = "11111111-1111-4111-8111-111111111111";
+const ARTICLE_ID = "22222222-2222-4222-8222-222222222222";
+const RUN_ID = "33333333-3333-4333-8333-333333333333";
+const LOCK_TOKEN = "44444444-4444-4444-8444-444444444444";
+
 
 function emptyLegacy(): LegacyArticleIndex {
   return { hasSlug: () => false, listSlugs: () => [] };
@@ -82,23 +85,26 @@ function inMemoryPlacementStore(): PlacementStore & {
 
 /** Build a fresh runner deps set that will successfully run the pipeline. */
 function successfulRunner(): RunnerDeps {
-  // AI returns a package with the correct articleId. Seed generation
-  // artifact hash matches via the pipeline's authoritative recompute.
-  const pkg = buildPackage({ articleId: ARTICLE_ID });
-  pkg.contentHash = packageContentHash({ ...pkg, contentHash: "" });
   const ai = fakeAi({
+    async generateBrief() {
+      const { buildBrief } = require("../runner/fakes") as typeof import("../runner/fakes");
+      return buildBrief({ articleId: ARTICLE_ID });
+    },
+    async validateSources() {
+      const { buildSources } = require("../runner/fakes") as typeof import("../runner/fakes");
+      return buildSources({ articleId: ARTICLE_ID });
+    },
     async generateArticle() {
-      // Return a fresh copy each time; pipeline reseals the hash.
       return { ...buildPackage({ articleId: ARTICLE_ID }) };
     },
   });
   return buildDeps({
     config: fakeConfig({ projectId: PROJECT_ID, automationEnabled: false }),
     runControl: fakeRunControl({
-      runId: "run_test",
+      runId: RUN_ID,
       articleId: ARTICLE_ID,
       planningNumber: TARGET_PLANNING_NUMBER,
-      lockToken: "lock_test",
+      lockToken: LOCK_TOKEN,
       phase: "phase_1_36",
       originalTitle: "Yoga voor kantoormedewerkers in Amsterdam Oost",
     }),
@@ -120,7 +126,7 @@ function baseDeps(overrides: Partial<PreviewRunDeps> = {}): PreviewRunDeps {
       lockToken: null,
     }),
     sequenceCheck: async () => [],
-    readLockToken: async () => "lock_test",
+    readLockToken: async () => LOCK_TOKEN,
     releaseLock: async () => {},
     now: () => new Date("2026-08-03T09:00:00Z"),
     ...overrides,
