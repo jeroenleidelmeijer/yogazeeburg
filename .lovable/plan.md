@@ -1,51 +1,76 @@
-# Yoga Zeeburg — Launch SEO & GEO audit (read-only)
+## Doel
 
-Scope inspected: all files in `src/routes/`, `public/`, `__root.tsx` head, per-route `head()`, JSON-LD, `robots.txt`, `sitemap[.]xml.ts`, redirect routes, canonical hosts.
+Formaliseer het bewezen proces: ChatGPT schrijft en review't buiten deze codebase een compleet, definitief artikelpakket. Deze runner accepteert enkel dat pakket, valideert het strikt en plaatst het onveranderd. Geen briefing/schrijven/review meer door Gemini of enige AI in het runnerpad. `automation_enabled=false` blijft. Geen artikelrun of publicatie tijdens deze opdracht.
 
-## ✅ Already good (no action needed)
+## Wijzigingen
 
-- **Canonical host** unified on `https://www.yogazeeburg.com` across every route's `<link rel="canonical">` and `og:url`.
-- **robots.txt** (`public/robots.txt`) allows all crawlers and references the sitemap at the canonical host.
-- **sitemap.xml** served as a TSS server route at `/sitemap.xml` with correct `Content-Type: application/xml`, valid XML, and the six intended URLs (`/`, `/pricing`, `/classes`, `/schedule`, `/contact`, `/sportbit`) — no preview/lovable URLs.
-- **Legacy 301 redirects** implemented as real server handlers returning HTTP 301 (`/class-schedule → /schedule`, `/prices → /pricing`, `/yoga-styles → /classes`) — true permanent redirects, not client navigation.
-- **Per-route metadata**: each of the six public routes has its own `title`, `description`, `og:title`, `og:description`, `og:url`, and self-referencing `canonical`. No accidental "Lovable App" defaults.
-- **Sitewide defaults** in `__root.tsx`: charset, viewport, `og:site_name`, `og:type: website`, `twitter:card: summary_large_image`, `lang="en"` on `<html>`.
-- **Structured data** on home: `ExerciseGym` JSON-LD with `name`, `description`, `PostalAddress` (Cruquiusweg 96F, 1019 AH Amsterdam, NL), `areaServed`, `url`, `email`.
-- **No noindex** leaked anywhere; no sitewide `Disallow: /`.
-- **Router shell** correct (`__root.tsx` renders `<Outlet/>`, no duplicate `/` routes).
+### 1. Schema — `FinalArticlePackage` (Zod)
+Nieuw bestand: `src/lib/publications/runner/final-package.ts`. Verplichte velden op basis van artikelen 4 en 5:
+- `articleId`, `planningNumber` (1–180)
+- `slug` (kebab-case), `title`, `h1`, `seoTitle`, `metaDescription`
+- `categorySlug`, `categoryTitle`
+- `type` ("explainer" | "how-to" | "local-guide"), `pillar` (bool)
+- `readingTimeMin` (int ≥ 1)
+- `publishedAt`, `updatedAt` (ISO date YYYY-MM-DD)
+- `directAnswer`, `intro`, `bodyMarkdown` (≥ 200 chars)
+- `toc[]` (id/label), `faqs[]` (question/answer)
+- `sources[]` (optional; title/url), `internalLinks[]` (slug/anchor)
+- `cta` — pinned to `FIXED_CTA` (heading/body/button/subtext literals)
+- `structuredDataIntents[]`, `seoIntents[]`, `geoIntents[]`
+- `tags[]`, `primaryKeyword`, `audiences[]`
+- `template` (showTOC/showFAQ/showSources/showRelated)
+- `contentHash` (runner is authoritatief — wordt herberekend)
+- `schemaVersion`, `authoredBy` literal `"chatgpt-external"`, `authoredAt` (ISO datetime)
+- Refinements: geen commercial link count > 1, geen absolute medical claims, CTA-copy literal-matched.
 
-## 🚨 Launch-critical before DNS switch
+### 2. Runner — verwijder AI-contentpad
+`src/lib/publications/runner/pipeline.ts`:
+- Nieuwe input: `RunPipelineInput.finalPackage: FinalArticlePackage` (verplicht).
+- Nieuwe stappen: `init → claim → validate_package → placement_ready`. Verwijder `brief`, `source_validation`, `generation`, `review_1..3`, `content_ready` uit het uitvoeringspad.
+- Fail closed vóór DB-mutatie wanneer package invalid of `package.articleId !== claim.articleId`.
+- Behoud lease/heartbeat, retry (validatie is deterministisch → geen retry op validation_error), idempotente artifact-upsert.
+- `AiProviders` interface: markeer met deprecatie-comment; runner mag deze methodes niet aanroepen. `pipeline.ts` importeert de interface niet meer.
 
-1. **`www` vs apex resolution.** Everything (canonicals, sitemap, robots) points at `www.yogazeeburg.com`. Before flipping DNS, confirm the apex `yogazeeburg.com` will 301 → `www` at the DNS/hosting layer, otherwise crawlers will find duplicate hosts.
-2. **`/mcp` endpoint is publicly reachable and not disallowed** in `robots.txt`. Crawlers can hit it and consume budget on non-content responses. Either add `Disallow: /mcp` + `Disallow: /.mcp/` + `Disallow: /.well-known/` to robots, or gate `mcpPlugin()`. Decision belongs to launch, not later.
-3. **No `og:image` anywhere.** With no image and no external default image, WhatsApp / iMessage / LinkedIn / X previews will fall back to hosting's screenshot on `lovable.app` — but on the custom domain there is no such fallback, so shares from `www.yogazeeburg.com` will render as text-only cards. Add one absolute-URL `og:image` per leaf route (or at minimum a shared studio hero for `/`).
-4. **`ExerciseGym` schema is missing high-signal fields** that AI answer engines (Google AIO, Perplexity, ChatGPT search, Gemini) and Google's local pack read: `telephone`, `openingHoursSpecification`, `geo` (lat/lng), `priceRange`, `image`, `sameAs` (Instagram, Facebook, Google Maps CID), `hasMap`. Address alone is not enough for local ranking.
+`src/lib/publications/runner/adapters.server.ts` / `ai-provider.server.ts`:
+- Verwijder productie-wiring van AI content-methodes; werp `PipelineError("configuration_error", …)` bij aanroep, zodat regressie hard faalt.
 
-## 🟡 Immediately after launch (first week)
+`src/lib/publications/runner/index.ts`: exporteer `FinalArticlePackage(Schema)`.
 
-5. **Add `llms.txt`** at `public/llms.txt` (and optionally `llms-full.txt`) — the emerging convention for GEO / AI-answer engines. Currently absent. A short llms.txt naming the studio, location, class types, intro pass URL, contact email, and canonical links is a fast GEO win.
-6. **FAQPage JSON-LD** on `/pricing` and `/sportbit`. Both pages already render Q&A visually; wrapping the existing content in `FAQPage` schema is a direct rich-result opportunity with no copy changes.
-7. **Sitemap `<lastmod>`** — currently omitted. Adding `lastmod` (build-time ISO date is fine) speeds re-crawl after edits.
-8. **Twitter/X card completeness.** Root sets generic `twitter:title` / `twitter:description`; leaf routes only override `og:*`. Per-route `twitter:title` / `twitter:description` will keep X shares route-specific.
-9. **Favicon set.** Only `favicon.ico` is present. Add `apple-touch-icon-180x180.png` and a 32×32 PNG so iOS/Android home-screen icons and modern browser tabs render the studio mark.
-10. **Google Search Console + Bing Webmaster** verification (meta tag or DNS TXT) and manual sitemap submission the moment DNS is live.
+### 3. Preview/entrypoint
+`src/lib/publications/preview-run.server.ts`: `runArticle4PreviewOnce` en gerelateerde helpers accepteren nu een `finalPackage` argument; laat het bestaande onder-de-motorkap placementpad (`placement-entrypoint.server.ts`) intact.
+`src/lib/publications/preview-run.functions.ts`: aanroep-signatuur uitbreiden met `data.finalPackage`.
 
-## 🟢 Later improvements
+### 4. Scheduler — di/do en fasegrenzen
+Migratie: nieuwe waarden voor `publication_scheduler_slot` enum: `tuesday`, `thursday` (naast bestaande `monday`, `wednesday`, `friday`).
+Vervang `_pub_evaluate_cadence` (SECURITY DEFINER):
+- Bereken `weeks_since_start = floor((today - project.automation_start_date) / 7)` in Europe/Amsterdam.
+- Weken 0–11 (1–12): ma/wo/vr toegestaan.
+- Weken 12–23 (13–24): di/do toegestaan.
+- Weken ≥ 24 (25+): alleen wo.
+- Return `not_applicable` wanneer weekdag niet in de toegestane set voor de fase.
+- Nieuwe kolom `publication_projects.automation_start_date DATE`.
+- `planning_number > 180` → hard stop (bestaande gedragsregel bewaren).
 
-11. **BreadcrumbList JSON-LD** on non-home routes (Yoga Zeeburg › Schedule, etc.) — small SERP polish.
-12. **`Organization` / `LocalBusiness` sameAs** — link Instagram / Facebook / Google Business Profile in JSON-LD so entities merge in the Google Knowledge Graph and are surfaced by AI answer engines.
-13. **Dutch-language landing pages** (e.g. `/nl/`, `/nl/rooster`, `/nl/prijzen`) with `hreflang` — Amsterdam East market is bilingual, and Dutch queries ("yogastudio Amsterdam Oost", "yoga proefles") are being missed entirely by an English-only site.
-14. **Individual class pages** under `/classes/<slug>` (Slow Flow & Soundbath, Restorative & Reiki & Aroma, Stress Release Yin, etc.) — each ranks for a long-tail class-type query and gets its own head/JSON-LD. Currently `/classes` is one big finder page.
-15. **Teacher pages** with `Person` schema — small studios rank surprisingly well on teacher-name queries.
-16. **Blog / journal** for cornerstone content ("beginner's first yoga class", "yoga for desk-work shoulders", "how often should I do yoga to feel a difference") — the routine-focused positioning is a natural content brief.
-17. **Analytics + Search Console rank monitoring** wired into the app (Semrush data service is available for ongoing rank tracking and competitor visibility once launched).
-18. **Image alt-text pass** once real studio photography replaces the current typography-led layout.
-19. **Speed budget**: preconnects to fonts.googleapis are in place; consider self-hosting the Fraunces + Inter subsets to eliminate the extra DNS/TLS hop and improve LCP on mobile.
+### 5. Tests
+- Herzie `tests/runner/pipeline.test.ts`: verwijder AI-content-testcases. Bewijs: geen `ai.generateBrief/generateArticle/reviewRound` calls; valid package → `placement_ready`; invalid velden → `failed` zonder artifact upsert / advance / placement.
+- Nieuw `tests/runner/final-package.schema.test.ts`: veld-per-veld strict-parse regressies (missing slug, wrong CTA copy, commercial link count > 1, medical claim, articleId mismatch → all reject; volledige geldige fixture → accept).
+- Nieuw `tests/runner/scheduler-cadence.test.ts` (pure TS-mirror van `_pub_evaluate_cadence` logica) OF `tests/sql/scheduler-cadence.sql`: bewijs ma-wo-vr → di-do → wo per weeknummer, DST-safe in Europe/Amsterdam, en stop bij planning > 180.
+- Update `tests/runner/lock-lease.test.ts` naar nieuwe stappen.
 
-## Notes / uncertainties
+### 6. Documentatie
+Werk `AGENTS.md` (of `src/lib/publications/README.md` wanneer aanwezig) bij:
+- Rolverdeling: ChatGPT extern = enige author/reviewer; runner = plaatser.
+- Cadans: ma-wo-vr weken 1–12; di-do weken 13–24; wo weken 25+; stop na artikel 180.
+- Verplichte velden van FinalArticlePackage.
 
-- I did not run a live crawler; findings are strictly from the source in this repo.
-- Whether the apex `yogazeeburg.com` already redirects to `www` is a hosting/DNS question I can't verify from the codebase.
-- The `og:image` gap is the single biggest visible-to-humans launch issue and the cheapest to fix (one image + one meta tag per route).
+### 7. Onaangeroerd
+Artikelen 1–5 (`src/lib/kennisbank/articles.tsx`), alle routes, styling, CTA-copy, kennisbankweergave, sitemap, metadata, structured data.
 
-Ready to convert any of the launch-critical items into a fix plan when you say go.
+## Verificatie
+- `bunx vitest run` volledig groen.
+- `tsgo` typecheck clean.
+- `bun run build` groen.
+- Read-only DB check: `automation_enabled=false`, 0 actieve runs/locks, artikelen 1–5 ongewijzigd.
+
+## Uitleveringen
+Bestandsoverzicht, migratie-SQL, testresultaten, commit-SHA, bevestiging dat geen artikel is gestart of gepubliceerd.
