@@ -199,11 +199,9 @@ async function defaultLegacyIndex(): Promise<LegacyArticleIndex> {
  * Never publishes, never mutates automation_enabled, never notifies.
  */
 export async function runArticle4PreviewOnce(
+  finalPackage: unknown,
   deps: PreviewRunDeps = {},
 ): Promise<PreviewRunOutcome> {
-  // Wire runner deps with a preview-scoped config wrapper. If the caller
-  // supplied a full RunnerDeps we still wrap its config so the automation
-  // override is uniformly applied.
   const baseRunner = deps.runner
     ? deps.runner
     : createDefaultRunnerDeps({
@@ -247,7 +245,6 @@ export async function runArticle4PreviewOnce(
   }
 
   // Sequence check: refuse if any earlier planning_number is not terminal.
-  // Articles 1-3 are 'published' → empty list, allow.
   const sequenceCheck = deps.sequenceCheck ?? defaultSequenceCheck;
   const earlier = await sequenceCheck({ projectId: cfg.projectId });
   if (earlier.length > 0) {
@@ -257,11 +254,11 @@ export async function runArticle4PreviewOnce(
     };
   }
 
-  // Run the pipeline. Trigger is 'manual' so the DB claim RPC's
-  // automation guard (scheduled-only) is not triggered. The pipeline's own
-  // guard is bypassed by the config wrapper (in-memory, non-persistent).
+  // Run the pipeline. Trigger is 'manual'. The externally-authored package
+  // is the sole authoritative content input — the runner will strictly
+  // validate it and fail-closed on any mismatch.
   const result = await runPipeline(
-    { projectKey: YOGA_PROJECT_KEY, trigger: "manual" },
+    { projectKey: YOGA_PROJECT_KEY, trigger: "manual", finalPackage },
     runnerDeps,
   );
 
