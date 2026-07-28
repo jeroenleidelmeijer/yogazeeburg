@@ -151,22 +151,20 @@ export function createSupabaseArtifactStore(): ArtifactStore {
 }
 
 /**
- * Compose default production RunnerDeps. Callers can override individual
- * fields — for tests, a fake AI provider is typically injected.
+ * Compose default production RunnerDeps.
  *
- * SAFETY: this function does not read secrets at module scope; env vars are
- * read only when a wrapped RPC or AI call actually runs.
+ * SAFETY: this function does not read secrets at module scope. The runner
+ * no longer wires an AI provider — content authorship is external.
  */
 export function createDefaultRunnerDeps(overrides: Partial<RunnerDeps> = {}): RunnerDeps {
   return {
     config: overrides.config ?? createSupabaseConfigProvider(),
     runControl: overrides.runControl ?? createSupabaseRunControl(),
     artifacts: overrides.artifacts ?? createSupabaseArtifactStore(),
-    ai: overrides.ai ?? createLovableAiProviders(),
     now: overrides.now,
     heartbeatIntervalMs: overrides.heartbeatIntervalMs,
-    promptVersion: overrides.promptVersion ?? PROMPT_VERSION,
-    schemaVersion: overrides.schemaVersion ?? SCHEMA_VERSION,
+    promptVersion: overrides.promptVersion ?? EXTERNAL_PROMPT_VERSION,
+    schemaVersion: overrides.schemaVersion ?? RUNNER_SCHEMA_VERSION,
     maxRepairCycles: overrides.maxRepairCycles,
   };
 }
