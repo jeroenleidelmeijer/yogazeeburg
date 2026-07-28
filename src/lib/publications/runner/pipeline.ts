@@ -536,16 +536,32 @@ export async function runPipeline(
           });
     result.errors.push({ step: pe.step as StepKey, category: pe.category, message: pe.message });
     result.disposition = pe.category === "content_safety_error" ? "blocked" : "failed";
-    await deps.runControl.recordFailure({
-      runId: claim.runId,
-      articleId: claim.articleId,
-      lockToken: claim.lockToken,
-      stepKey: pe.step,
-      category: pe.category,
-      summary: pe.message,
-      retryable: pe.retryable,
-      details: { details: pe.details ?? null },
-    });
+    // Finalization must never throw out of runPipeline. If recordFailure
+    // itself fails (e.g. lock genuinely expired before this point) we
+    // surface a `finalize_error` on the result and let the caller run a
+    // service-side safety-net release. That guarantees article rows never
+    // stay in status=locked with a non-null active_run_id after this fn
+    // returns.
+    try {
+      await deps.runControl.recordFailure({
+        runId: claim.runId,
+        articleId: claim.articleId,
+        lockToken: claim.lockToken,
+        stepKey: pe.step,
+        category: pe.category,
+        summary: pe.message,
+        retryable: pe.retryable,
+        details: { details: pe.details ?? null },
+      });
+    } catch (recErr) {
+      result.errors.push({
+        step: pe.step as StepKey,
+        category: "finalize_error",
+        message: `recordFailure failed: ${
+          recErr instanceof Error ? recErr.message : String(recErr)
+        }`,
+      });
+    }
     return result;
   }
 }
