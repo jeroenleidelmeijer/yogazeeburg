@@ -402,7 +402,7 @@ export async function runArticle4PreviewOnce(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return finalizeFailed(
-      "placement",
+      "content_ready",
       "placement_error",
       `placementFromArtifacts failed: ${msg}`,
       lockToken,
@@ -421,7 +421,7 @@ export async function runArticle4PreviewOnce(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return finalizeFailed(
-      "release_lock",
+      "content_ready",
       "finalize_error",
       `releaseLock failed after successful placement: ${msg}`,
       lockToken,
