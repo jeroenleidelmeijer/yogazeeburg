@@ -71,6 +71,27 @@ export function deterministicHash(input: string): string {
   return "h_" + (h >>> 0).toString(16);
 }
 
+// Lease/heartbeat renewal for long-running AI steps.
+//
+// The DB claim RPC issues a bounded lock (see adapters.server.ts). A single
+// heartbeat before an AI call is not enough: individual reviewRound / brief
+// / generation calls routinely exceed the TTL. We therefore:
+//   1) heartbeat once up-front to extend the lease before starting fn(),
+//   2) run a background renewal timer every `heartbeatIntervalMs` while fn()
+//      is in flight — each renewal extends the lock by LEASE_EXTEND_SECONDS,
+//   3) tear the timer down in `finally`, so nothing renews after fn resolves,
+//   4) if any renewal throws (lock expired / stolen / RPC error), we capture
+//      the error and treat the failure as non-retryable: the run has lost
+//      ownership and cannot safely continue.
+//
+// Ownership is enforced server-side by heartbeat_publication_run, which
+// runs _pub_lock_run — only the owner of the exact (runId, articleId,
+// lockToken) triple can extend. A caller with a stale token gets a hard
+// RPC error, which we surface as a non-retryable pipeline failure so the
+// top-level catch runs recordFailure once (with the still-current token
+// when possible) and never leaves active_run_id in place.
+const LEASE_EXTEND_SECONDS = 300;
+
 async function withBoundedRetry<T>(
   step: StepKey,
   attempts: Record<string, number>,
@@ -80,22 +101,56 @@ async function withBoundedRetry<T>(
 ): Promise<T> {
   let lastError: unknown;
   const prior = attempts[step] ?? 0;
+  const intervalMs = deps.heartbeatIntervalMs ?? 60_000;
   for (let i = 1; i <= MAX_RETRIES_PER_STEP; i++) {
     attempts[step] = prior + i;
+    let leaseErr: unknown = null;
+    let timer: ReturnType<typeof setInterval> | null = null;
     try {
+      // Up-front lease extension. If this fails we never start fn().
       await deps.runControl.heartbeat({
         runId: claim.runId,
         articleId: claim.articleId,
         lockToken: claim.lockToken,
-        extendSeconds: 120,
+        extendSeconds: LEASE_EXTEND_SECONDS,
       });
-      return await fn();
+      // Background renewal. Only the current owner can renew; the DB RPC
+      // rejects any other token. On failure we stop the timer and surface
+      // the error after fn resolves so we never race with the AI call.
+      timer = setInterval(() => {
+        void deps.runControl
+          .heartbeat({
+            runId: claim.runId,
+            articleId: claim.articleId,
+            lockToken: claim.lockToken,
+            extendSeconds: LEASE_EXTEND_SECONDS,
+          })
+          .catch((e: unknown) => {
+            leaseErr = e;
+            if (timer) {
+              clearInterval(timer);
+              timer = null;
+            }
+          });
+      }, intervalMs);
+      const out = await fn();
+      if (leaseErr) throw leaseErr;
+      return out;
     } catch (err) {
-      lastError = err;
-      const isPipelineErr = err instanceof PipelineError;
-      const retryable = isPipelineErr ? err.retryable : true;
+      const fromLease = leaseErr != null;
+      lastError = fromLease ? leaseErr : err;
+      const isPipelineErr = lastError instanceof PipelineError;
+      // Lock loss during renewal is never retryable: we have no valid
+      // lock to run another attempt with. Let the top-level catch finalize.
+      const retryable = fromLease
+        ? false
+        : isPipelineErr
+        ? (lastError as PipelineError).retryable
+        : true;
       if (!retryable) break;
       if (i === MAX_RETRIES_PER_STEP) break;
+    } finally {
+      if (timer) clearInterval(timer);
     }
   }
   if (lastError instanceof PipelineError) throw lastError;
@@ -103,6 +158,7 @@ async function withBoundedRetry<T>(
     category: "infrastructure_error",
     step,
     message: lastError instanceof Error ? lastError.message : String(lastError),
+    retryable: false,
   });
 }
 
