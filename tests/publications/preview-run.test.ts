@@ -304,3 +304,89 @@ describe("runArticle4PreviewOnce — recovery on forced pipeline failure", () =>
     expect(rc.failures[0].stepKey).toBe("generation");
   });
 });
+
+describe("runArticle4PreviewOnce — post-content_ready recovery (fail-closed)", () => {
+  it("readLockToken failure: never returns preview_ready and releases the stale lock", async () => {
+    const runner = successfulRunner();
+    const releases: Array<{ articleId: string; reason: string }> = [];
+    const out = await runArticle4PreviewOnce(
+      baseDeps({
+        runner,
+        readLockToken: async () => {
+          throw new Error("db offline");
+        },
+        releaseLock: async (i) => {
+          releases.push(i);
+        },
+      }),
+    );
+    expect(out.status).toBe("pipeline_failed");
+    expect(releases).toHaveLength(1);
+    expect(releases[0].reason).toMatch(/preview_run_recovery/);
+    const errors = (out as { errors: Array<{ category: string; message: string }> }).errors;
+    expect(errors.some((e) => /lock_token read failed/.test(e.message))).toBe(true);
+  });
+
+  it("placement failure: recordFailure + releaseLock invoked; no preview_ready", async () => {
+    const runner = successfulRunner();
+    const rc = runner.runControl as unknown as {
+      failures: Array<{ category: string; stepKey: string; retryable: boolean }>;
+    };
+    const failingStore: PlacementStore = {
+      findByArticleId: async () => null,
+      findBySlug: async () => null,
+      hasPublishedSlug: async () => false,
+      upsert: async () => {
+        throw new Error("placement db error");
+      },
+    };
+    const releases: Array<{ articleId: string; reason: string }> = [];
+    const out = await runArticle4PreviewOnce(
+      baseDeps({
+        runner,
+        placementStore: failingStore,
+        releaseLock: async (i) => {
+          releases.push(i);
+        },
+      }),
+    );
+    expect(out.status).toBe("pipeline_failed");
+    // recordFailure must be called with the lock token we read.
+    const placementFailures = rc.failures.filter((f) => f.category === "placement_error");
+    expect(placementFailures.length).toBeGreaterThan(0);
+    expect(placementFailures[0].stepKey).toBe("content_ready");
+    expect(placementFailures[0].retryable).toBe(false);
+    expect(releases).toHaveLength(1);
+    expect(releases[0].reason).toMatch(/preview_run_recovery:placement_error/);
+  });
+
+  it("releaseLock failure after successful placement: fails closed with auditable finalize", async () => {
+    const runner = successfulRunner();
+    const rc = runner.runControl as unknown as {
+      failures: Array<{ category: string; stepKey: string }>;
+    };
+    const store = inMemoryPlacementStore();
+    let releaseCalls = 0;
+    const out = await runArticle4PreviewOnce(
+      baseDeps({
+        runner,
+        placementStore: store,
+        releaseLock: async () => {
+          releaseCalls += 1;
+          throw new Error("release rpc failed");
+        },
+      }),
+    );
+    expect(out.status).toBe("pipeline_failed");
+    // Placement is durable but private (preview status only).
+    expect(store.rows).toHaveLength(1);
+    expect(store.rows[0].placementStatus).toBe("preview");
+    // Both the initial success-path release and the recovery-path release
+    // are attempted; total call count is > 0.
+    expect(releaseCalls).toBeGreaterThanOrEqual(1);
+    // Auditable finalize: recordFailure was called with the lock token.
+    const finalizeFailures = rc.failures.filter((f) => f.category === "finalize_error");
+    expect(finalizeFailures.length).toBeGreaterThan(0);
+    expect(finalizeFailures[0].stepKey).toBe("content_ready");
+  });
+});
