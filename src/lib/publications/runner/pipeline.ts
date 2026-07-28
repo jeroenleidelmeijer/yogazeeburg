@@ -174,11 +174,41 @@ function parseOrThrow<T>(step: StepKey, schema: ParsingSchema<T>, value: unknown
       category: "validation_error",
       step,
       message: `runtime validation failed at ${step}`,
-      details: parsed.error,
+      // Only field paths + issue codes + zod messages. Never the payload.
+      details: summarizeZodIssues(parsed.error),
       retryable: true,
     });
   }
   return parsed.data as T;
+}
+
+/**
+ * Extract a safe, non-sensitive diagnostic from a ZodError-shape object.
+ * Emits only the field paths, issue codes, and zod's own messages — never any
+ * value from the offending payload. Resilient to non-ZodError shapes so a
+ * malformed provider response cannot crash the diagnostic path.
+ */
+function summarizeZodIssues(err: unknown): {
+  issues: Array<{ path: string; code: string; message: string; expected?: string }>;
+} {
+  const anyErr = err as { issues?: unknown } | null;
+  const rawIssues = Array.isArray(anyErr?.issues) ? (anyErr!.issues as unknown[]) : [];
+  const issues = rawIssues.slice(0, 50).map((iRaw) => {
+    const i = (iRaw ?? {}) as {
+      path?: unknown;
+      code?: unknown;
+      message?: unknown;
+      expected?: unknown;
+    };
+    const pathArr = Array.isArray(i.path) ? i.path : [];
+    return {
+      path: pathArr.map((p) => String(p)).join("."),
+      code: typeof i.code === "string" ? i.code : "unknown",
+      message: typeof i.message === "string" ? i.message : "invalid",
+      ...(typeof i.expected === "string" ? { expected: i.expected } : {}),
+    };
+  });
+  return { issues };
 }
 
 function assertPackageInvariants(
