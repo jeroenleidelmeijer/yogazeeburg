@@ -21,8 +21,10 @@ import type {
   PlacementStore,
 } from "@/lib/publications/placement.server";
 import {
+  buildBrief,
   buildDeps,
   buildPackage,
+  buildSources,
   fakeAi,
   fakeArtifactStore,
   fakeConfig,
@@ -87,11 +89,9 @@ function inMemoryPlacementStore(): PlacementStore & {
 function successfulRunner(): RunnerDeps {
   const ai = fakeAi({
     async generateBrief() {
-      const { buildBrief } = require("../runner/fakes") as typeof import("../runner/fakes");
       return buildBrief({ articleId: ARTICLE_ID });
     },
     async validateSources() {
-      const { buildSources } = require("../runner/fakes") as typeof import("../runner/fakes");
       return buildSources({ articleId: ARTICLE_ID });
     },
     async generateArticle() {
