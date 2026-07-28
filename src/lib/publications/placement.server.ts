@@ -251,6 +251,7 @@ export async function placeArticle(
 
   // 7. Internal link allowlist.
   const legacySlugs = new Set(deps.legacy.listSlugs());
+  console.log("[DEBUG placement] legacy:", Array.from(legacySlugs), "links:", pkg.internalLinks.map((l:any)=>l.slug), "pkgSlug:", pkg.slug);
   for (const link of pkg.internalLinks) {
     if (link.slug === pkg.slug) continue;
     if (legacySlugs.has(link.slug)) continue;
