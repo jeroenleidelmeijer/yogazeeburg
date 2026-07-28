@@ -95,7 +95,14 @@ function successfulRunner(): RunnerDeps {
       return buildSources({ articleId: ARTICLE_ID });
     },
     async generateArticle() {
-      return { ...buildPackage({ articleId: ARTICLE_ID }) };
+      const pkg = buildPackage({ articleId: ARTICLE_ID });
+      // pipeline overwrites contentHash post-generation, but tests read the
+      // stored artifact directly via placement — compute a real hash here.
+      const { packageContentHash } = await import(
+        "../../src/lib/publications/runner/hashing"
+      );
+      pkg.contentHash = packageContentHash(pkg as unknown as Record<string, unknown>);
+      return pkg;
     },
   });
   return buildDeps({
