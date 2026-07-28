@@ -267,20 +267,37 @@ export async function runArticle4PreviewOnce(
 
   if (result.disposition === "disabled_noop") return { status: "pipeline_disabled_noop" };
   if (result.disposition === "claim_noop") return { status: "pipeline_claim_noop" };
-  if (result.disposition === "failed") {
+  if (result.disposition === "failed" || result.disposition === "blocked") {
+    // Safety-net: recordFailure clears lock/active_run_id atomically. If
+    // it itself threw (surfaced by the runner as a `finalize_error`
+    // entry) the article row is still locked and we must release it here
+    // via the auditable stale-lock RPC. Happens after a genuine lock
+    // loss during renewal; the auth-scoped caller is a project admin so
+    // the RPC's admin check passes.
+    const errors = [...result.errors];
+    const needsSafetyRelease =
+      !!result.articleId && errors.some((e) => e.category === "finalize_error");
+    if (needsSafetyRelease && result.articleId) {
+      try {
+        await (deps.releaseLock ?? defaultReleaseLock)({
+          articleId: result.articleId,
+          reason: "preview_run_recovery:pipeline_finalize_error",
+        });
+      } catch (relErr) {
+        errors.push({
+          step: "content_ready",
+          category: "finalize_error",
+          message: `safety releaseLock failed: ${
+            relErr instanceof Error ? relErr.message : String(relErr)
+          }`,
+        });
+      }
+    }
     return {
-      status: "pipeline_failed",
+      status: result.disposition === "blocked" ? "pipeline_blocked" : "pipeline_failed",
       runId: result.runId,
       articleId: result.articleId,
-      errors: result.errors,
-    };
-  }
-  if (result.disposition === "blocked") {
-    return {
-      status: "pipeline_blocked",
-      runId: result.runId,
-      articleId: result.articleId,
-      errors: result.errors,
+      errors,
     };
   }
 
