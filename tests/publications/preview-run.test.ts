@@ -99,7 +99,7 @@ function successfulRunner(): RunnerDeps {
       // pipeline overwrites contentHash post-generation, but tests read the
       // stored artifact directly via placement — compute a real hash here.
       const { packageContentHash } = await import(
-        "../../src/lib/publications/runner/hashing"
+        "../../src/lib/publications/runner/hash"
       );
       pkg.contentHash = packageContentHash(pkg as unknown as Record<string, unknown>);
       return pkg;
