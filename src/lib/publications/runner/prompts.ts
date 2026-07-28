@@ -40,6 +40,39 @@ const HOUSE_RULES = [
   "Interne links mogen alleen wijzen naar reeds gepubliceerde kennisbank-artikelen of vooraf gevalideerde link-targets.",
 ].join("\n- ");
 
+// Explicit schema skeleton for the AI. `response_format: json_object` only
+// guarantees valid JSON — not schema compliance — so we enumerate every
+// required key with its type and constraints in-band. Keep this in lock-step
+// with ArticleBriefSchema in ./schemas.ts.
+const ARTICLE_BRIEF_JSON_SHAPE = {
+  articleId: "<string, must equal input.articleId>",
+  planningNumber: "<integer 1..180, must equal input.planningNumber>",
+  primaryQuestion: "<string, min 3 chars>",
+  originalTitle: "<string, min 3 chars>",
+  finalTitle: "<string, min 3 chars>",
+  primaryKeyword: "<string, min 2 chars>",
+  secondaryKeywords: ["<string, min 2 chars>", "... 1..20 items"],
+  category: "<string, min 1 char>",
+  cluster: "<string, min 1 char>",
+  differentiation: "<string, min 3 chars>",
+  cannibalisationNotes: "<string, may be empty>",
+  riskFlags: ["<string>", "... may be []"],
+  sourceFlags: ["<string>", "... may be []"],
+  allowedStudioFacts: ["<string>", "... may be []"],
+  validatedLinkTargets: [
+    { url: "<https URL>", rationale: "<string, min 2 chars>" },
+    "... may be []",
+  ],
+  relatedPublishedArticles: [
+    { slug: "<string, min 1>", title: "<string, min 1>" },
+    "... may be []",
+  ],
+  ctaRule: "fixed-intro-pass",
+  publicationDateEuropeAmsterdam: "<YYYY-MM-DD>",
+  expectedStructure: ["<string, min 2>", "... 3..N items"],
+  schemaVersion: SCHEMA_VERSION,
+};
+
 export function briefPrompt(claim: ClaimedRun): PromptMessages {
   return {
     promptVersion: PROMPT_VERSION,
@@ -48,14 +81,18 @@ export function briefPrompt(claim: ClaimedRun): PromptMessages {
     system:
       "Je bent de senior contentstrateeg van Yoga Zeeburg. Maak een machineleesbare artikelbrief conform de Kennisbank Werkinstructie Masterdocument v2.2 en het Pilotartikelen-addendum. Volg deze huisregels:\n- " +
       HOUSE_RULES +
-      "\nRetourneer UITSLUITEND geldige JSON die het meegegeven schema volgt.",
+      "\nRetourneer UITSLUITEND geldige JSON. Het object MOET EXACT deze top-level sleutels bevatten, in dit format (waarden zijn placeholders, vervang door echte inhoud):\n" +
+      JSON.stringify(ARTICLE_BRIEF_JSON_SHAPE, null, 2) +
+      "\nGeen extra sleutels, geen wrapper-object, geen markdown. `ctaRule` moet exact de literal-string 'fixed-intro-pass' zijn. `schemaVersion` moet exact '" +
+      SCHEMA_VERSION +
+      "' zijn.",
     user: JSON.stringify({
       articleId: claim.articleId,
       planningNumber: claim.planningNumber,
       originalTitle: claim.originalTitle,
       phase: claim.phase,
       instruction:
-        "Genereer een ArticleBrief. Vul alle verplichte velden. articleId moet exact overeenkomen met de meegegeven articleId.",
+        "Genereer een ArticleBrief. Vul alle verplichte velden. articleId moet exact overeenkomen met de meegegeven articleId. Retourneer uitsluitend het ArticleBrief-object zoals gespecificeerd in het systeembericht.",
     }),
   };
 }
