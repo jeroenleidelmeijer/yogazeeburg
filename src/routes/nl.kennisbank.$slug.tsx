@@ -320,7 +320,7 @@ function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRe
       publishedAt={a.publishedAt}
       updatedAt={a.updatedAt}
       readingTimeMin={a.readingTimeMin}
-      intro="Praktische, warme uitleg over hoe een eerste yogales in Amsterdam Oost werkt — zonder marketingtaal en zonder prestatiedruk."
+      intro={a.intro ?? "Praktische, warme uitleg over hoe een eerste yogales in Amsterdam Oost werkt — zonder marketingtaal en zonder prestatiedruk."}
     >
       {a.template.showTOC && <TocBlock toc={a.toc} />}
       <Body />

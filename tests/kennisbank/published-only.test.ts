@@ -131,10 +131,10 @@ describe("listPublishedRefs — published-only merge", () => {
     expect(capturedFilters.some(([c, v]) => c === "placement_status" && v === "published")).toBe(true);
   });
 
-  it("preserves legacy 1–3 when the DB has zero rows", async () => {
+  it("preserves legacy articles when the DB has zero rows", async () => {
     const { listPublishedRefs } = await withRows([]);
     const refs = await listPublishedRefs();
-    expect(refs).toHaveLength(3);
+    expect(refs).toHaveLength(4);
     for (const r of refs) expect(r.source).toBe("legacy");
   });
 });
