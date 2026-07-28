@@ -316,6 +316,7 @@ export async function runArticle4PreviewOnce(
   }
 
   const legacy = deps.legacyIndex ?? (await defaultLegacyIndex());
+  console.log("[DEBUG legacy]", legacy.listSlugs());
   const store = deps.placementStore ?? createSupabasePlacementStore();
   const previewPath = `https://www.yogazeeburg.com/nl/kennisbank/preview/${result.articleId}`;
   const previewToken = derivePreviewToken(result.articleId, result.pkg.contentHash);
