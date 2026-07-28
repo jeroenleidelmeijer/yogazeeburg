@@ -177,7 +177,7 @@ describe("runArticle4PreviewOnce — target + concurrency guards", () => {
   });
 
   it("returns already_running when article 4 holds a fresh lock", async () => {
-    const soon = new Date(Date.now() + 60_000).toISOString();
+    const soon = new Date(new Date("2026-08-03T09:00:00Z").getTime() + 60_000).toISOString();
     const out = await runArticle4PreviewOnce(
       baseDeps({
         preflight: async () => ({
@@ -193,7 +193,7 @@ describe("runArticle4PreviewOnce — target + concurrency guards", () => {
   });
 
   it("proceeds when a prior lock has expired (no false positive)", async () => {
-    const past = new Date(Date.now() - 60_000).toISOString();
+    const past = new Date(new Date("2026-08-03T09:00:00Z").getTime() - 60_000).toISOString();
     const out = await runArticle4PreviewOnce(
       baseDeps({
         preflight: async () => ({
