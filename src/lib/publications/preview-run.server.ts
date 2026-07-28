@@ -1,8 +1,9 @@
-// Server-only preview-run orchestrator for planning_number=4 of the
-// `yoga-zeeburg-kennisbank` publication project.
+// Server-only preview-run orchestrator for a SINGLE article of the
+// `yoga-zeeburg-kennisbank` publication project. Generic over
+// planning_number and slug; one invocation processes exactly one article.
 //
-// This module composes existing building blocks — nothing new is added to
-// the pipeline, placement or DB surfaces:
+// Composes existing building blocks — nothing new is added to
+// pipeline, placement or DB surfaces:
 //   - runPipeline (src/lib/publications/runner/pipeline.ts)
 //   - placementFromArtifacts (placement-entrypoint.server.ts)
 //   - existing Supabase RPCs (claim_next_publication_run, heartbeat,
@@ -16,27 +17,16 @@
 //     automationEnabled=true only for the current invocation via an
 //     in-memory wrapper. Nothing is persisted.
 //   * publication_stopped is respected: when true, we refuse with "stopped".
-//   * Refuses any target other than (project=yoga-zeeburg-kennisbank,
-//     planning_number=4).
-//   * Idempotent: if article 4 currently holds a non-expired lock or has an
-//     active_run_id, we refuse. The DB claim RPC is the ultimate
-//     single-source-of-truth for concurrency — this preflight is a fast
-//     rejection path.
-//   * On failure the pipeline itself calls complete_publication_failure via
-//     runControl.recordFailure, which clears lock_token/lock_expires_at/
-//     locked_by/active_run_id and marks the run failed|blocked|retry_pending.
-//     No manual cleanup required for expected provider/schema/QA failures.
-//   * On success we release the article lock via admin_release_stale_lock
-//     so the article is not left in a locked-with-active_run_id shape.
-//     Article status stays at whatever the pipeline left it (drafting) —
-//     `publication_articles.status` has NO influence on the public registry
-//     which reads only `kennisbank_placements`.
-//   * Placement is written with placement_status='preview'. The placement
-//     service structurally refuses to set 'published' or fill published_at.
-//     The public registry and sitemap read only 'published' rows, so
-//     article 4 cannot leak onto any public surface via this call.
-//   * No LOVABLE_API_KEY, SUPABASE_SERVICE_ROLE_KEY or any other secret is
-//     returned or logged.
+//   * Idempotent: if the target article currently holds a non-expired lock
+//     or has an active_run_id, we refuse.
+//   * On failure the pipeline itself calls complete_publication_failure,
+//     which clears lock_token/lock_expires_at/locked_by/active_run_id and
+//     marks the run failed|blocked|retry_pending. A failed run does NOT
+//     silently skip the article — the same planning_number remains next in
+//     line for a retry invocation.
+//   * planning_number > 180 → hard stop (wrong_target).
+//   * Placement is always preview; public registry/sitemap read only
+//     'published' rows, so the article cannot leak onto any public surface.
 
 import { runPipeline, type PipelineResult } from "./runner/pipeline";
 import { placementFromArtifacts } from "./placement-entrypoint.server";
@@ -53,9 +43,9 @@ import {
   type PlacementStore,
 } from "./placement.server";
 import type { ArtifactStore, ConfigProvider, RunnerDeps } from "./runner/providers";
+import { MAX_PLANNING_NUMBER } from "./scheduler/cadence";
 
 export const YOGA_PROJECT_KEY = "yoga-zeeburg-kennisbank" as const;
-export const TARGET_PLANNING_NUMBER = 4 as const;
 
 export type PreviewRunOutcome =
   | { status: "wrong_target"; message: string }
@@ -92,24 +82,29 @@ interface PreflightRow {
   lockToken: string | null;
 }
 
+export interface PreviewRunInput {
+  /** Publication project key. Defaults to yoga-zeeburg-kennisbank. */
+  projectKey?: string;
+  /** Target article's planning_number. Must be 1..180 inclusive. */
+  planningNumber: number;
+  /** Externally-authored, fully-reviewed article package. */
+  finalPackage: unknown;
+}
+
 export interface PreviewRunDeps {
-  /** Full RunnerDeps to use. When omitted, production adapters are wired. */
   runner?: RunnerDeps;
-  /** Placement deps. When omitted, production Supabase store + legacy index. */
   placementStore?: PlacementStore;
   legacyIndex?: LegacyArticleIndex;
-  /** Pre-flight lookup for article 4. Injectable for tests. */
   preflight?: (input: {
     projectId: string;
     planningNumber: number;
   }) => Promise<PreflightRow | null>;
-  /** Sequence check: any earlier planning_number not in a terminal state. */
-  sequenceCheck?: (input: { projectId: string }) => Promise<number[]>;
-  /** Look up the current lock_token after pipeline completes (for artifact list). */
+  sequenceCheck?: (input: {
+    projectId: string;
+    planningNumber: number;
+  }) => Promise<number[]>;
   readLockToken?: (articleId: string) => Promise<string | null>;
-  /** Release the lock post-success. Injectable for tests. */
   releaseLock?: (input: { articleId: string; reason: string }) => Promise<void>;
-  /** Clock override for tests. */
   now?: () => Date;
 }
 
@@ -150,13 +145,16 @@ async function defaultPreflight(input: {
   };
 }
 
-async function defaultSequenceCheck(input: { projectId: string }): Promise<number[]> {
+async function defaultSequenceCheck(input: {
+  projectId: string;
+  planningNumber: number;
+}): Promise<number[]> {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { data, error } = await supabaseAdmin
     .from("publication_articles")
     .select("planning_number, status")
     .eq("project_id", input.projectId)
-    .lt("planning_number", TARGET_PLANNING_NUMBER);
+    .lt("planning_number", input.planningNumber);
   if (error) throw new Error(`sequence check failed: ${error.message}`);
   return (data ?? [])
     .filter((r: { status: string }) => r.status !== "published" && r.status !== "preview_ready")
@@ -194,14 +192,29 @@ async function defaultLegacyIndex(): Promise<LegacyArticleIndex> {
 }
 
 /**
- * Run the pipeline+placement for planning_number=4 of yoga-zeeburg-kennisbank
- * in preview-only mode. Idempotent: refuses to start a second concurrent run.
- * Never publishes, never mutates automation_enabled, never notifies.
+ * Run the pipeline+placement for a single article in preview-only mode.
+ * Idempotent: refuses to start a second concurrent run for the same
+ * planning_number. Never publishes, never mutates automation_enabled,
+ * never notifies. On failure the same planning_number stays next in line
+ * — this function never silently skips.
  */
-export async function runArticle4PreviewOnce(
-  finalPackage: unknown,
+export async function runArticlePreviewOnce(
+  input: PreviewRunInput,
   deps: PreviewRunDeps = {},
 ): Promise<PreviewRunOutcome> {
+  const projectKey = input.projectKey ?? YOGA_PROJECT_KEY;
+  const planningNumber = input.planningNumber;
+
+  if (!Number.isInteger(planningNumber) || planningNumber < 1) {
+    return { status: "wrong_target", message: `invalid planning_number: ${planningNumber}` };
+  }
+  if (planningNumber > MAX_PLANNING_NUMBER) {
+    return {
+      status: "wrong_target",
+      message: `planning_number ${planningNumber} exceeds hard stop at ${MAX_PLANNING_NUMBER}`,
+    };
+  }
+
   const baseRunner = deps.runner
     ? deps.runner
     : createDefaultRunnerDeps({
@@ -214,22 +227,19 @@ export async function runArticle4PreviewOnce(
     config: wrapConfigProviderForPreview(baseRunner.config),
   };
 
-  // Load config through the wrapper to fail closed on publication_stopped.
   let cfg;
   try {
-    cfg = await runnerDeps.config.loadProjectConfig(YOGA_PROJECT_KEY);
+    cfg = await runnerDeps.config.loadProjectConfig(projectKey);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return { status: "stopped", message: msg };
   }
 
-  // Preflight: article 4 must exist and not hold a fresh lock.
   const preflight = deps.preflight ?? defaultPreflight;
-  const pre = await preflight({
-    projectId: cfg.projectId,
-    planningNumber: TARGET_PLANNING_NUMBER,
-  });
-  if (!pre) return { status: "wrong_target", message: "planning_number=4 not found" };
+  const pre = await preflight({ projectId: cfg.projectId, planningNumber });
+  if (!pre) {
+    return { status: "wrong_target", message: `planning_number=${planningNumber} not found` };
+  }
   const now = (deps.now ?? (() => new Date()))();
   if (
     pre.activeRunId &&
@@ -244,9 +254,8 @@ export async function runArticle4PreviewOnce(
     };
   }
 
-  // Sequence check: refuse if any earlier planning_number is not terminal.
   const sequenceCheck = deps.sequenceCheck ?? defaultSequenceCheck;
-  const earlier = await sequenceCheck({ projectId: cfg.projectId });
+  const earlier = await sequenceCheck({ projectId: cfg.projectId, planningNumber });
   if (earlier.length > 0) {
     return {
       status: "wrong_target",
@@ -254,23 +263,14 @@ export async function runArticle4PreviewOnce(
     };
   }
 
-  // Run the pipeline. Trigger is 'manual'. The externally-authored package
-  // is the sole authoritative content input — the runner will strictly
-  // validate it and fail-closed on any mismatch.
   const result = await runPipeline(
-    { projectKey: YOGA_PROJECT_KEY, trigger: "manual", finalPackage },
+    { projectKey, trigger: "manual", finalPackage: input.finalPackage },
     runnerDeps,
   );
 
   if (result.disposition === "disabled_noop") return { status: "pipeline_disabled_noop" };
   if (result.disposition === "claim_noop") return { status: "pipeline_claim_noop" };
   if (result.disposition === "failed" || result.disposition === "blocked") {
-    // Safety-net: recordFailure clears lock/active_run_id atomically. If
-    // it itself threw (surfaced by the runner as a `finalize_error`
-    // entry) the article row is still locked and we must release it here
-    // via the auditable stale-lock RPC. Happens after a genuine lock
-    // loss during renewal; the auth-scoped caller is a project admin so
-    // the RPC's admin check passes.
     const errors = [...result.errors];
     const needsSafetyRelease =
       !!result.articleId && errors.some((e) => e.category === "finalize_error");
@@ -298,7 +298,6 @@ export async function runArticle4PreviewOnce(
     };
   }
 
-  // content_ready — place as preview.
   if (!result.runId || !result.articleId || !result.pkg) {
     return {
       status: "pipeline_failed",
@@ -315,11 +314,6 @@ export async function runArticle4PreviewOnce(
   const readLockToken = deps.readLockToken ?? defaultReadLockToken;
   const releaseLock = deps.releaseLock ?? defaultReleaseLock;
 
-  // Helper: fail-closed finalization. Attempts (in order):
-  //   1) auditable runControl.recordFailure when we have a lockToken
-  //   2) admin_release_stale_lock to clear active_run_id/lock fields
-  // Individual sub-failures are captured and returned as errors, but the
-  // function always returns a "pipeline_failed" outcome — never preview_ready.
   const finalizeFailed = async (
     stepKey: "placement_ready",
     category: string,
@@ -370,14 +364,11 @@ export async function runArticle4PreviewOnce(
     };
   };
 
-  // 1) Read the lock token needed for the artifact list + placement.
   let lockToken: string | null;
   try {
     lockToken = await readLockToken(result.articleId);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    // We do NOT have a lock token — recordFailure requires one, so skip it
-    // and rely on admin_release_stale_lock to clear active_run_id/lock.
     return finalizeFailed(
       "placement_ready",
       "invariant_violation",
@@ -399,7 +390,6 @@ export async function runArticle4PreviewOnce(
   const previewPath = `https://www.yogazeeburg.com/nl/kennisbank/preview/${result.articleId}`;
   const previewToken = derivePreviewToken(result.articleId, result.pkg.contentHash);
 
-  // 2) Placement — durable preview row via placementFromArtifacts.
   let placement;
   try {
     placement = await placementFromArtifacts(
@@ -423,10 +413,6 @@ export async function runArticle4PreviewOnce(
     );
   }
 
-  // 3) Release the article lock post-success. Fail closed: if we cannot
-  //    release the lock we do NOT return preview_ready — the article row
-  //    would remain locked-with-active_run_id, which violates the
-  //    idempotency invariant. Record an auditable failure and surface it.
   try {
     await releaseLock({
       articleId: result.articleId,
