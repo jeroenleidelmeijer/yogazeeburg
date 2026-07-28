@@ -40,7 +40,8 @@ const LOCK_TOKEN = "44444444-4444-4444-8444-444444444444";
 
 
 function emptyLegacy(): LegacyArticleIndex {
-  return { hasSlug: () => false, listSlugs: () => [] };
+  const slugs = ["wat-is-yoga"];
+  return { hasSlug: (s: string) => slugs.includes(s), listSlugs: () => slugs };
 }
 
 function inMemoryPlacementStore(): PlacementStore & {
