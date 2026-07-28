@@ -1,5 +1,6 @@
-// Project-bound admin entrypoint for the single manual preview-run of
-// planning_number=4 of the `yoga-zeeburg-kennisbank` publication project.
+// Project-bound admin entrypoint for a single manual preview-run of one
+// article of the `yoga-zeeburg-kennisbank` publication project. Generic
+// over planning_number (1..180); one call processes exactly one article.
 //
 // The externally-authored FinalArticlePackage is passed in as the sole
 // authoritative content input; the runner does not brief, write, review
@@ -8,18 +9,15 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
+import { MAX_PLANNING_NUMBER } from "./scheduler/cadence";
 
-// Input schema: the projectKey + planningNumber are pinned; `finalPackage`
-// is passed through opaquely (validated strictly server-side by the
-// runner's FinalArticlePackageSchema so we do not duplicate the shape
-// here and drift). It is required.
 const InputSchema = z.object({
   projectKey: z.literal("yoga-zeeburg-kennisbank"),
-  planningNumber: z.literal(4),
+  planningNumber: z.number().int().min(1).max(MAX_PLANNING_NUMBER),
   finalPackage: z.record(z.string(), z.unknown()),
 });
 
-export const runArticle4Preview = createServerFn({ method: "POST" })
+export const runArticlePreview = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => InputSchema.parse(input))
   .handler(async ({ data, context }) => {
@@ -42,7 +40,11 @@ export const runArticle4Preview = createServerFn({ method: "POST" })
       return { status: "stopped" as const, message: "publication_stopped" };
     }
 
-    const { runArticle4PreviewOnce } = await import("./preview-run.server");
-    const outcome = await runArticle4PreviewOnce(data.finalPackage);
+    const { runArticlePreviewOnce } = await import("./preview-run.server");
+    const outcome = await runArticlePreviewOnce({
+      projectKey: data.projectKey,
+      planningNumber: data.planningNumber,
+      finalPackage: data.finalPackage,
+    });
     return outcome;
   });
