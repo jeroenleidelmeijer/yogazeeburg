@@ -56,7 +56,11 @@ export function createSupabaseRunControl(): RunControl {
         p_project_key: projectKey,
         p_trigger: trigger,
         p_scheduler_slot: null,
-        p_lock_ttl_seconds: 300,
+        // 10-minute initial lease. The pipeline heartbeats every ~60s
+        // during long AI steps, so the effective lock never expires while
+        // the runner is actively working. The larger initial value only
+        // widens the safety window before the first heartbeat lands.
+        p_lock_ttl_seconds: 600,
       });
       if (error) throw new Error(`claim failed: ${error.message}`);
       if (!data || data.disposition !== "claimed") return null;
