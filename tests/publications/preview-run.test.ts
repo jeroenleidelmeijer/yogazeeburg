@@ -240,7 +240,7 @@ describe("runArticle4PreviewOnce — placement is always preview, never publishe
     expect(store.rows).toHaveLength(1);
     expect(store.rows[0].placementStatus).toBe("preview");
     expect(store.rows[0].publishedAt).toBeNull();
-    expect(store.rows[0].previewUrl).toMatch(/^\/nl\/kennisbank\/preview\//);
+    expect(store.rows[0].previewUrl).toMatch(/^https?:\/\/.+\/nl\/kennisbank\/preview\//);
   });
 
   it("is idempotent: a second call reuses the same row (upsert count still 1)", async () => {
@@ -275,24 +275,24 @@ describe("runArticle4PreviewOnce — recovery on forced pipeline failure", () =>
     expect(rc.failures[0].stepKey).toBe("generation");
   });
 
-  it("content-safety violation (medical claim) is recorded as content_safety_error", async () => {
+  it("content-safety violation (invariant: link not in brief allowlist) is recorded as content_safety_error", async () => {
     const runner = successfulRunner();
+    // Schema-valid package, but its internal link is NOT in the brief's
+    // relatedPublishedArticles allowlist. This trips
+    // assertPackageInvariants (content_safety_error, non-retryable).
     runner.ai.generateArticle = async () => {
       const pkg = buildPackage({ articleId: ARTICLE_ID });
-      pkg.hasAbsoluteMedicalClaim = true;
+      pkg.internalLinks = [{ slug: "not-in-brief-allowlist", anchor: "verkeerde link" }];
       return pkg;
     };
     const rc = runner.runControl as unknown as {
-      failures: Array<{ category: string; retryable: boolean }>;
+      failures: Array<{ category: string; retryable: boolean; stepKey: string }>;
     };
     const out = await runArticle4PreviewOnce(baseDeps({ runner }));
-    // Either 'pipeline_blocked' (non-retryable path) or 'pipeline_failed'
-    // (after retry exhaustion) is a valid safe terminal — both invoke
-    // recordFailure which clears the lock in production. The recovery
-    // contract we care about is: a failure IS recorded and its category
-    // is content_safety_error.
-    expect(["pipeline_blocked", "pipeline_failed"]).toContain(out.status);
+    expect(out.status).toBe("pipeline_blocked");
     expect(rc.failures.length).toBeGreaterThan(0);
     expect(rc.failures[0].category).toBe("content_safety_error");
+    expect(rc.failures[0].retryable).toBe(false);
+    expect(rc.failures[0].stepKey).toBe("generation");
   });
 });

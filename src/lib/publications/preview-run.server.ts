@@ -317,7 +317,7 @@ export async function runArticle4PreviewOnce(
 
   const legacy = deps.legacyIndex ?? (await defaultLegacyIndex());
   const store = deps.placementStore ?? createSupabasePlacementStore();
-  const previewPath = `/nl/kennisbank/preview/${result.articleId}`;
+  const previewPath = `https://www.yogazeeburg.com/nl/kennisbank/preview/${result.articleId}`;
   const previewToken = derivePreviewToken(result.articleId, result.pkg.contentHash);
 
   const placement = await placementFromArtifacts(
