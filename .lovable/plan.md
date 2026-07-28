@@ -1,76 +1,77 @@
 ## Doel
+Formaliseer het bewezen proces: ChatGPT levert extern het volledige, drie keer gecontroleerde artikelpakket. De runner briefing, schrijft, reviewt of herstelt inhoud niet meer. Cadence wordt uitgebreid met dinsdag/donderdag en fasegrenzen tellen kalenderweken vanaf een expliciete `automation_start_date`. `automation_enabled` blijft `false`. Geen artikelrun. Geen artikel 1–5-wijziging.
 
-Formaliseer het bewezen proces: ChatGPT schrijft en review't buiten deze codebase een compleet, definitief artikelpakket. Deze runner accepteert enkel dat pakket, valideert het strikt en plaatst het onveranderd. Geen briefing/schrijven/review meer door Gemini of enige AI in het runnerpad. `automation_enabled=false` blijft. Geen artikelrun of publicatie tijdens deze opdracht.
+## Aannames (corrigeer indien fout)
+- Artikelen 1–5, hun routes, styling, CTA, metadata en structured data blijven byte-voor-byte gelijk (alleen registermetadata in de DB wijzigt niet).
+- `placement.server.ts` + `placement-entrypoint.server.ts` blijven ongewijzigd; de runner blijft artefacten met dezelfde legacy shape schrijven (`generation`, `source_validation`, `review_1..3`, `content_ready`) — de STAPNAMEN in `PipelineResult.step` en de nieuwe artefactstroom worden `init | claim | validate_package | placement_ready`, maar de PLACEMENT-invoerartefacten blijven identiek zodat de placement-laag ongemoeid blijft. **Als je dit niet accepteert**, dan renamen we ook de artefactkeys en updaten `placement-entrypoint.server.ts` — dit is duurder (+~4 credits).
+- `AiProviders`-interface blijft bestaan als typedefinitie, maar wordt verwijderd uit `RunnerDeps` en de productie-implementatie in `ai-provider.server.ts` throwt op elke methode met `configuration_error`. Historische data blijft leesbaar.
+- Testbestanden die het AI-contentpad testen (`brief-schema-fix.test.ts`, `prompts.test.ts`) worden verwijderd. `pipeline.test.ts`, `lock-lease.test.ts`, `ai-provider.test.ts` worden herschreven. `placement.test.ts`, `entrypoint.test.ts`, `adapters.test.ts` blijven zoals ze zijn (leggen legacy shape vast).
 
 ## Wijzigingen
 
-### 1. Schema — `FinalArticlePackage` (Zod)
-Nieuw bestand: `src/lib/publications/runner/final-package.ts`. Verplichte velden op basis van artikelen 4 en 5:
-- `articleId`, `planningNumber` (1–180)
-- `slug` (kebab-case), `title`, `h1`, `seoTitle`, `metaDescription`
-- `categorySlug`, `categoryTitle`
-- `type` ("explainer" | "how-to" | "local-guide"), `pillar` (bool)
-- `readingTimeMin` (int ≥ 1)
-- `publishedAt`, `updatedAt` (ISO date YYYY-MM-DD)
-- `directAnswer`, `intro`, `bodyMarkdown` (≥ 200 chars)
-- `toc[]` (id/label), `faqs[]` (question/answer)
-- `sources[]` (optional; title/url), `internalLinks[]` (slug/anchor)
-- `cta` — pinned to `FIXED_CTA` (heading/body/button/subtext literals)
-- `structuredDataIntents[]`, `seoIntents[]`, `geoIntents[]`
-- `tags[]`, `primaryKeyword`, `audiences[]`
-- `template` (showTOC/showFAQ/showSources/showRelated)
-- `contentHash` (runner is authoritatief — wordt herberekend)
-- `schemaVersion`, `authoredBy` literal `"chatgpt-external"`, `authoredAt` (ISO datetime)
-- Refinements: geen commercial link count > 1, geen absolute medical claims, CTA-copy literal-matched.
+### 1. Nieuwe runner-invoer (`src/lib/publications/runner/final-package.ts`)
+Strikt Zod-schema voor `FinalArticlePackage` met alle velden die artikelen 4 en 5 nu gebruiken: identiteit (articleId, planningNumber), titels/slug, category+type+pillar, readingTimeMin, publishedAt/updatedAt, directAnswer, intro, bodyMarkdown, toc, faqs, sources, internalLinks, template, cta (FIXED_CTA literals), tags, primaryKeyword, audiences, seoIntents, geoIntents, structuredDataIntents, commercialLinkCount (0–1), hasAbsoluteMedicalClaim (false), schemaVersion `"1"`, authoredBy `"chatgpt-external"`, authoredAt. `.strict()` — onbekende velden falen. Plus deterministische mapper `toGeneratedArticlePackage()` en `synthesizeExternalReviews()` (drie passing-reviews met `findings: []`).
 
-### 2. Runner — verwijder AI-contentpad
-`src/lib/publications/runner/pipeline.ts`:
-- Nieuwe input: `RunPipelineInput.finalPackage: FinalArticlePackage` (verplicht).
-- Nieuwe stappen: `init → claim → validate_package → placement_ready`. Verwijder `brief`, `source_validation`, `generation`, `review_1..3`, `content_ready` uit het uitvoeringspad.
-- Fail closed vóór DB-mutatie wanneer package invalid of `package.articleId !== claim.articleId`.
-- Behoud lease/heartbeat, retry (validatie is deterministisch → geen retry op validation_error), idempotente artifact-upsert.
-- `AiProviders` interface: markeer met deprecatie-comment; runner mag deze methodes niet aanroepen. `pipeline.ts` importeert de interface niet meer.
+### 2. Pipeline (`src/lib/publications/runner/pipeline.ts`)
+Volledige herschrijving. Nieuwe stappen: `init → claim → validate_package → placement_ready`.
+- `init`: `automation_enabled=false` of `publication_stopped=true` → `disabled_noop`, geen claim.
+- Pre-claim: valideer `input.finalPackage` strikt. Ongeldig → `failed` met `validation_error`, GEEN claim, GEEN mutatie.
+- `claim`: bestaande RPC.
+- `validate_package`: verifieer `finalPackage.articleId === claim.articleId` en `finalPackage.planningNumber === claim.planningNumber`. Mismatch → non-retryable `validation_error` + `recordFailure`.
+- Map → `GeneratedArticlePackage` + 3 synthetic passing reviews. Runner herberekent `contentHash` autoritair.
+- Persist artefacten in legacy shape (`generation`, `source_validation` als lege valide pack, `review_1..3`, `content_ready`) zodat placement-laag ongemoeid blijft. Elk artefact draagt `promptVersion: "external.chatgpt-v1"`.
+- Lease/heartbeat + retry gedrag blijft (bewezen fix voor stap 5).
+- `placement_ready` disposition (nieuw); `PipelineResult.disposition` accepteert `disabled_noop | claim_noop | placement_ready | failed`.
 
-`src/lib/publications/runner/adapters.server.ts` / `ai-provider.server.ts`:
-- Verwijder productie-wiring van AI content-methodes; werp `PipelineError("configuration_error", …)` bij aanroep, zodat regressie hard faalt.
+### 3. Providers (`providers.ts`)
+`StepKey` = `init | claim | validate_package | placement_ready`. `Disposition` uitgebreid met `placement_ready`. `RunnerDeps.ai` verwijderd. `AiProviders` type blijft (voor historische compat) maar niet meer in `RunnerDeps`.
 
-`src/lib/publications/runner/index.ts`: exporteer `FinalArticlePackage(Schema)`.
+### 4. Adapters (`adapters.server.ts`)
+`createDefaultRunnerDeps()` wired niet meer `ai`. Import van `ai-provider.server` verdwijnt.
 
-### 3. Preview/entrypoint
-`src/lib/publications/preview-run.server.ts`: `runArticle4PreviewOnce` en gerelateerde helpers accepteren nu een `finalPackage` argument; laat het bestaande onder-de-motorkap placementpad (`placement-entrypoint.server.ts`) intact.
-`src/lib/publications/preview-run.functions.ts`: aanroep-signatuur uitbreiden met `data.finalPackage`.
+### 5. AI provider (`ai-provider.server.ts`)
+Volledig vervangen door regressiedeur: `createLovableAiProviders()` retourneert een object waarvan elke methode `throw new PipelineError({ category: "configuration_error", ... })`. Testbestand `ai-provider.test.ts` bewijst dit.
 
-### 4. Scheduler — di/do en fasegrenzen
-Migratie: nieuwe waarden voor `publication_scheduler_slot` enum: `tuesday`, `thursday` (naast bestaande `monday`, `wednesday`, `friday`).
-Vervang `_pub_evaluate_cadence` (SECURITY DEFINER):
-- Bereken `weeks_since_start = floor((today - project.automation_start_date) / 7)` in Europe/Amsterdam.
-- Weken 0–11 (1–12): ma/wo/vr toegestaan.
-- Weken 12–23 (13–24): di/do toegestaan.
-- Weken ≥ 24 (25+): alleen wo.
-- Return `not_applicable` wanneer weekdag niet in de toegestane set voor de fase.
-- Nieuwe kolom `publication_projects.automation_start_date DATE`.
-- `planning_number > 180` → hard stop (bestaande gedragsregel bewaren).
+### 6. Preview-run (`preview-run.server.ts`, `preview-run.functions.ts`)
+Nieuwe verplichte parameter `finalPackage: FinalArticlePackage`. Server function valideert admin, deserialiseert, roept `runPipeline` aan met het pakket. Alle bestaande veiligheidsgaranties (single-flight, wrong-target, lock recovery, safety-net stale-lock release) blijven.
 
-### 5. Tests
-- Herzie `tests/runner/pipeline.test.ts`: verwijder AI-content-testcases. Bewijs: geen `ai.generateBrief/generateArticle/reviewRound` calls; valid package → `placement_ready`; invalid velden → `failed` zonder artifact upsert / advance / placement.
-- Nieuw `tests/runner/final-package.schema.test.ts`: veld-per-veld strict-parse regressies (missing slug, wrong CTA copy, commercial link count > 1, medical claim, articleId mismatch → all reject; volledige geldige fixture → accept).
-- Nieuw `tests/runner/scheduler-cadence.test.ts` (pure TS-mirror van `_pub_evaluate_cadence` logica) OF `tests/sql/scheduler-cadence.sql`: bewijs ma-wo-vr → di-do → wo per weeknummer, DST-safe in Europe/Amsterdam, en stop bij planning > 180.
-- Update `tests/runner/lock-lease.test.ts` naar nieuwe stappen.
+### 7. Migratie F — scheduler + automation start date
+```sql
+ALTER TYPE publication_scheduler_slot ADD VALUE IF NOT EXISTS 'tuesday';
+ALTER TYPE publication_scheduler_slot ADD VALUE IF NOT EXISTS 'thursday';
+ALTER TABLE publication_projects ADD COLUMN IF NOT EXISTS automation_start_date DATE;
+CREATE OR REPLACE FUNCTION public._pub_evaluate_cadence(...) -- herschrijft cadans:
+  -- weken 1–12 vanaf start_date: ma/wo/vr slots
+  -- weken 13–24: di/do slots
+  -- weken 25+: alleen wo
+  -- fase gebaseerd op verstreken kalenderweken in Europe/Amsterdam vanaf start_date
+  -- harde stop na planning_number 180
+```
+Geen INSERT of enable van automation; alleen schema + functie.
 
-### 6. Documentatie
-Werk `AGENTS.md` (of `src/lib/publications/README.md` wanneer aanwezig) bij:
-- Rolverdeling: ChatGPT extern = enige author/reviewer; runner = plaatser.
-- Cadans: ma-wo-vr weken 1–12; di-do weken 13–24; wo weken 25+; stop na artikel 180.
-- Verplichte velden van FinalArticlePackage.
+### 8. Tests
+- NEW `tests/runner/final-package.schema.test.ts`: strikte schema-tests (missing/extra/verkeerde types → fail-closed; geldig pakket → parse ok).
+- NEW `tests/runner/scheduler-cadence.test.ts`: pure-TS spiegel van fasegrenzen (weken 1–12, 13–24, 25+, wo-only, stop na 180, Europe/Amsterdam edge cases zoals DST-overgang en zondag-vs-maandag week rollover). Behavior-only, geen DB.
+- REWRITE `tests/runner/pipeline.test.ts`: bewijst (a) geen AI-call mogelijk, (b) invalid package = zero mutation, (c) valid package = 1 claim + 7 legacy artefacten + `placement_ready`, (d) mismatch articleId non-retryable, (e) retry/idempotency via gedeelde artefactstore, (f) `automation_enabled=false` = `disabled_noop`.
+- REWRITE `tests/runner/lock-lease.test.ts`: heartbeat renewal blijft, met synchrone `validate_package` (geen slow AI meer nodig).
+- REWRITE `tests/runner/ai-provider.test.ts`: bewijst dat elke methode van `createLovableAiProviders()` `configuration_error` throwt.
+- UPDATE `tests/publications/preview-run.test.ts`: injecteer `finalPackage` in inputs.
+- DELETE `tests/runner/brief-schema-fix.test.ts`, `tests/runner/prompts.test.ts`.
+- Onaangeraakt: `adapters.test.ts`, `placement.test.ts`, `entrypoint.test.ts`, kennisbank-tests, sql-contracttests.
 
-### 7. Onaangeroerd
-Artikelen 1–5 (`src/lib/kennisbank/articles.tsx`), alle routes, styling, CTA-copy, kennisbankweergave, sitemap, metadata, structured data.
+### 9. Docs (`AGENTS.md`)
+Nieuw kort blok "Kennisbank publicatie-rolverdeling": ChatGPT extern schrijft+reviewt drie keer; runner accepteert alleen `FinalArticlePackage`; scheduler ma/wo/vr → di/do → wo; harde stop na artikel 180; `automation_enabled` blijft `false` tot expliciete go-live.
 
 ## Verificatie
-- `bunx vitest run` volledig groen.
-- `tsgo` typecheck clean.
-- `bun run build` groen.
-- Read-only DB check: `automation_enabled=false`, 0 actieve runs/locks, artikelen 1–5 ongewijzigd.
+`vitest run`, `bunx tsgo`, `bun run build`. Read-only Supabase-check: `automation_enabled=false`, geen actieve run, geen artefact voor artikel 5+, planning-count = 180.
 
-## Uitleveringen
-Bestandsoverzicht, migratie-SQL, testresultaten, commit-SHA, bevestiging dat geen artikel is gestart of gepubliceerd.
+## Uit scope (expliciet)
+- Runner activeren of scheduler cron aanzetten.
+- Artikel 4/5 herschrijven of hun DB-rijen wijzigen.
+- Placement-laag / SafeMarkdownBody / kennisbank-routes aanpassen.
+- `AiProviders`-interface volledig verwijderen (legacy tests hangen ervan af).
+
+## Vragen die de scope kunnen bijstellen
+1. Mag de placement-laag artefacten met de legacy stepKeys blijven lezen, of moeten alle artefactnamen naar `final_package` / `placement_ready` en de placement-laag mee-updaten? (Legacy-behoud = -4 credits, minder risico.)
+2. `automation_start_date` — laat ik die `NULL` en verwerp cadence bij `NULL` fail-closed, of moet ik hem seeden voor project `yoga-zeeburg-kennisbank`? (Advies: `NULL` laten; go-live-datum is een expliciete admin-actie.)
+3. Volstaat een korte docs-append aan `AGENTS.md`, of wil je een apart bestand (bv. `docs/publications-rolverdeling.md`)?
