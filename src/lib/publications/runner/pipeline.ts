@@ -28,6 +28,7 @@ import type {
 } from "./providers";
 import { FIXED_CTA } from "./cta";
 import { contentHashOf, packageContentHash } from "./hash";
+import { normalizeBriefCandidate } from "./normalize";
 
 export interface PipelineResult {
   disposition: Disposition;
