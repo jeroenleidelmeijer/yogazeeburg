@@ -26,6 +26,7 @@ export type Article = {
   seoTitle: string;
   h1: string;
   description: string;
+  intro?: string;
   category: ArticleCategory;
   type: "local-guide" | "explainer" | "how-to";
   pillar: boolean;
