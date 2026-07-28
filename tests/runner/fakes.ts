@@ -1,6 +1,15 @@
-// Fake providers & fixture builders for runner tests. No real network, no
-// real Supabase calls. Production article rows (planning 1-180) are never
-// touched — tests operate purely in memory.
+// Fake providers & fixture builders for runner tests. Fully in-memory —
+// no real network, no Supabase calls. Production article rows are never
+// touched.
+//
+// Post-rolverdeling (July 2026): the runner accepts a FinalArticlePackage
+// as its authoritative content input. The legacy `AiProviders` fake and
+// the `buildBrief` / `buildSources` / `buildPackage` / `passingReview`
+// helpers are RETAINED because legacy tests (placement.test.ts,
+// entrypoint.test.ts, adapters.test.ts) still need them to exercise the
+// artifact-shape contract that placement-entrypoint.server.ts enforces.
+// The active pipeline never invokes `AiProviders`.
+
 import type {
   AiProviders,
   ArtifactRecord,
@@ -19,8 +28,68 @@ import type {
   ReviewRoundKind,
   ValidatedSourcePack,
 } from "@/lib/publications/runner/schemas";
+import {
+  AUTHORED_BY_EXTERNAL,
+  type FinalArticlePackage,
+} from "@/lib/publications/runner/final-package";
+import { packageContentHash } from "@/lib/publications/runner/hash";
 
 export const TEST_PROJECT_KEY = "TEST-runner";
+
+// --------------------------------------------------------------------------
+// FinalArticlePackage — authoritative fixture builder for the new pipeline.
+// --------------------------------------------------------------------------
+
+export function buildFinalPackage(
+  over: Partial<FinalArticlePackage> = {},
+): FinalArticlePackage {
+  const pkg: FinalArticlePackage = {
+    authoredBy: AUTHORED_BY_EXTERNAL,
+    authoredAt: "2026-08-03T09:00:00.000Z",
+    articleId: "art_test_1",
+    planningNumber: 4,
+    slug: "yin-yoga-drukke-mensen-amsterdam-oost",
+    title: "Yin Yoga voor drukke mensen in Amsterdam Oost",
+    h1: "Yin yoga voor drukke mensen",
+    seoTitle: "Yin Yoga voor drukke mensen — Yoga Zeeburg",
+    metaDescription:
+      "Rustige yin yoga in Amsterdam Oost voor werkende volwassenen die stress willen loslaten. Beginners welkom.",
+    category: { slug: "stijlen", title: "Stijlen" },
+    type: "explainer",
+    pillar: false,
+    readingTimeMin: 6,
+    publishedAt: "2026-08-03",
+    updatedAt: "2026-08-03",
+    directAnswer:
+      "Yin yoga is een rustige stijl waarin je houdingen langer vasthoudt, ideaal voor drukke mensen.",
+    intro:
+      "Een rustige stijl waarin je houdingen langer vasthoudt en het lichaam tijd geeft om te ontladen.",
+    bodyMarkdown:
+      "# Yin yoga\n\nEen rustige stijl waarin je houdingen langer vasthoudt. ".repeat(20),
+    toc: [{ id: "intro", label: "Introductie" }],
+    faqs: [{ question: "Voor wie is yin yoga?", answer: "Iedereen die wil onthaasten." }],
+    sources: [{ title: "Yoga Zeeburg tarieven", url: "https://www.yogazeeburg.com/pricing" }],
+    internalLinks: [{ slug: "wat-is-yoga", anchor: "wat is yoga" }],
+    template: { showTOC: true, showFAQ: true, showSources: true, showRelated: true },
+    cta: { ...FIXED_CTA },
+    tags: ["yin", "beginners"],
+    primaryKeyword: "yin yoga amsterdam oost",
+    audiences: ["werkende volwassenen"],
+    seoIntents: ["primary-keyword-in-title"],
+    geoIntents: ["mentions-amsterdam-oost"],
+    structuredDataIntents: ["FAQPage"],
+    commercialLinkCount: 1,
+    hasAbsoluteMedicalClaim: false,
+    schemaVersion: "1",
+    contentHash: "placeholder-runner-recomputes",
+    ...over,
+  };
+  return pkg;
+}
+
+// --------------------------------------------------------------------------
+// Legacy builders — kept for placement-layer tests only.
+// --------------------------------------------------------------------------
 
 export function buildBrief(over: Partial<ArticleBrief> = {}): ArticleBrief {
   return {
@@ -74,7 +143,7 @@ export function buildSources(over: Partial<ValidatedSourcePack> = {}): Validated
 }
 
 export function buildPackage(over: Partial<GeneratedArticlePackage> = {}): GeneratedArticlePackage {
-  return {
+  const base: GeneratedArticlePackage = {
     articleId: "art_test_1",
     finalTitle: "Yin Yoga voor drukke mensen in Amsterdam Oost",
     slug: "yin-yoga-drukke-mensen-amsterdam-oost",
@@ -99,6 +168,9 @@ export function buildPackage(over: Partial<GeneratedArticlePackage> = {}): Gener
     schemaVersion: "1",
     ...over,
   };
+  // Placement-entrypoint verifies pkg.contentHash === packageContentHash(pkg with empty hash).
+  base.contentHash = packageContentHash({ ...base, contentHash: "" } as unknown as Record<string, unknown>);
+  return base;
 }
 
 export function passingReview(round: ReviewRoundKind): ReviewOutput {
@@ -111,6 +183,10 @@ export function passingReview(round: ReviewRoundKind): ReviewOutput {
     schemaVersion: "1",
   };
 }
+
+// --------------------------------------------------------------------------
+// Provider fakes.
+// --------------------------------------------------------------------------
 
 export interface FakeConfig extends ConfigProvider {
   cfg: ProjectConfig;
@@ -149,7 +225,11 @@ export function fakeRunControl(claim: ClaimedRun | null = defaultClaim()): RunCo
       spy.heartbeats += 1;
     },
     async advance(input) {
-      spy.advances.push({ stepKey: input.stepKey, fromStatus: input.fromStatus, toStatus: input.toStatus });
+      spy.advances.push({
+        stepKey: input.stepKey,
+        fromStatus: input.fromStatus,
+        toStatus: input.toStatus,
+      });
     },
     async recordFailure(input) {
       spy.failures.push({
@@ -174,6 +254,8 @@ export function defaultClaim(): ClaimedRun {
   };
 }
 
+// Legacy AiProviders fake — retained for placement-layer / adapters tests
+// that assert nothing calls it. The active pipeline never touches it.
 export interface AiSpy extends AiProviders {
   calls: string[];
 }
@@ -240,21 +322,18 @@ export function fakeArtifactStore(seed: ArtifactRecord[] = []): ArtifactStoreSpy
 export function buildDeps(over: Partial<RunnerDeps> = {}): RunnerDeps & {
   config: FakeConfig;
   runControl: RunControlSpy;
-  ai: AiSpy;
   artifacts: ArtifactStoreSpy;
 } {
   const config = (over.config as FakeConfig) ?? fakeConfig();
   const runControl = (over.runControl as RunControlSpy) ?? fakeRunControl();
-  const ai = (over.ai as AiSpy) ?? fakeAi();
   const artifacts = (over.artifacts as ArtifactStoreSpy) ?? fakeArtifactStore();
   return {
     config,
     runControl,
-    ai,
     artifacts,
     now: over.now ?? (() => new Date("2026-08-03T09:00:00Z")),
     heartbeatIntervalMs: over.heartbeatIntervalMs ?? 60_000,
-    promptVersion: over.promptVersion ?? "runner.v1",
+    promptVersion: over.promptVersion ?? "external.chatgpt-v1",
     schemaVersion: over.schemaVersion ?? "1",
     maxRepairCycles: over.maxRepairCycles ?? 3,
   };

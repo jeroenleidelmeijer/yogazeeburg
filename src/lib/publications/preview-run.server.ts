@@ -199,11 +199,9 @@ async function defaultLegacyIndex(): Promise<LegacyArticleIndex> {
  * Never publishes, never mutates automation_enabled, never notifies.
  */
 export async function runArticle4PreviewOnce(
+  finalPackage: unknown,
   deps: PreviewRunDeps = {},
 ): Promise<PreviewRunOutcome> {
-  // Wire runner deps with a preview-scoped config wrapper. If the caller
-  // supplied a full RunnerDeps we still wrap its config so the automation
-  // override is uniformly applied.
   const baseRunner = deps.runner
     ? deps.runner
     : createDefaultRunnerDeps({
@@ -247,7 +245,6 @@ export async function runArticle4PreviewOnce(
   }
 
   // Sequence check: refuse if any earlier planning_number is not terminal.
-  // Articles 1-3 are 'published' → empty list, allow.
   const sequenceCheck = deps.sequenceCheck ?? defaultSequenceCheck;
   const earlier = await sequenceCheck({ projectId: cfg.projectId });
   if (earlier.length > 0) {
@@ -257,11 +254,11 @@ export async function runArticle4PreviewOnce(
     };
   }
 
-  // Run the pipeline. Trigger is 'manual' so the DB claim RPC's
-  // automation guard (scheduled-only) is not triggered. The pipeline's own
-  // guard is bypassed by the config wrapper (in-memory, non-persistent).
+  // Run the pipeline. Trigger is 'manual'. The externally-authored package
+  // is the sole authoritative content input — the runner will strictly
+  // validate it and fail-closed on any mismatch.
   const result = await runPipeline(
-    { projectKey: YOGA_PROJECT_KEY, trigger: "manual" },
+    { projectKey: YOGA_PROJECT_KEY, trigger: "manual", finalPackage },
     runnerDeps,
   );
 
@@ -285,7 +282,7 @@ export async function runArticle4PreviewOnce(
         });
       } catch (relErr) {
         errors.push({
-          step: "content_ready",
+          step: "placement_ready",
           category: "finalize_error",
           message: `safety releaseLock failed: ${
             relErr instanceof Error ? relErr.message : String(relErr)
@@ -307,7 +304,7 @@ export async function runArticle4PreviewOnce(
       status: "pipeline_failed",
       errors: [
         {
-          step: "content_ready",
+          step: "placement_ready",
           category: "invariant_violation",
           message: "missing runId/articleId/pkg after content_ready",
         },
@@ -324,7 +321,7 @@ export async function runArticle4PreviewOnce(
   // Individual sub-failures are captured and returned as errors, but the
   // function always returns a "pipeline_failed" outcome — never preview_ready.
   const finalizeFailed = async (
-    stepKey: "content_ready",
+    stepKey: "placement_ready",
     category: string,
     summary: string,
     lockTokenForFinalize: string | null,
@@ -382,7 +379,7 @@ export async function runArticle4PreviewOnce(
     // We do NOT have a lock token — recordFailure requires one, so skip it
     // and rely on admin_release_stale_lock to clear active_run_id/lock.
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "invariant_violation",
       `lock_token read failed: ${msg}`,
       null,
@@ -390,7 +387,7 @@ export async function runArticle4PreviewOnce(
   }
   if (!lockToken) {
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "invariant_violation",
       "lock lost after content_ready; artifact list would fail",
       null,
@@ -419,7 +416,7 @@ export async function runArticle4PreviewOnce(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "placement_error",
       `placementFromArtifacts failed: ${msg}`,
       lockToken,
@@ -438,7 +435,7 @@ export async function runArticle4PreviewOnce(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return finalizeFailed(
-      "content_ready",
+      "placement_ready",
       "finalize_error",
       `releaseLock failed after successful placement: ${msg}`,
       lockToken,

@@ -1,51 +1,77 @@
-# Yoga Zeeburg — Launch SEO & GEO audit (read-only)
+## Doel
+Formaliseer het bewezen proces: ChatGPT levert extern het volledige, drie keer gecontroleerde artikelpakket. De runner briefing, schrijft, reviewt of herstelt inhoud niet meer. Cadence wordt uitgebreid met dinsdag/donderdag en fasegrenzen tellen kalenderweken vanaf een expliciete `automation_start_date`. `automation_enabled` blijft `false`. Geen artikelrun. Geen artikel 1–5-wijziging.
 
-Scope inspected: all files in `src/routes/`, `public/`, `__root.tsx` head, per-route `head()`, JSON-LD, `robots.txt`, `sitemap[.]xml.ts`, redirect routes, canonical hosts.
+## Aannames (corrigeer indien fout)
+- Artikelen 1–5, hun routes, styling, CTA, metadata en structured data blijven byte-voor-byte gelijk (alleen registermetadata in de DB wijzigt niet).
+- `placement.server.ts` + `placement-entrypoint.server.ts` blijven ongewijzigd; de runner blijft artefacten met dezelfde legacy shape schrijven (`generation`, `source_validation`, `review_1..3`, `content_ready`) — de STAPNAMEN in `PipelineResult.step` en de nieuwe artefactstroom worden `init | claim | validate_package | placement_ready`, maar de PLACEMENT-invoerartefacten blijven identiek zodat de placement-laag ongemoeid blijft. **Als je dit niet accepteert**, dan renamen we ook de artefactkeys en updaten `placement-entrypoint.server.ts` — dit is duurder (+~4 credits).
+- `AiProviders`-interface blijft bestaan als typedefinitie, maar wordt verwijderd uit `RunnerDeps` en de productie-implementatie in `ai-provider.server.ts` throwt op elke methode met `configuration_error`. Historische data blijft leesbaar.
+- Testbestanden die het AI-contentpad testen (`brief-schema-fix.test.ts`, `prompts.test.ts`) worden verwijderd. `pipeline.test.ts`, `lock-lease.test.ts`, `ai-provider.test.ts` worden herschreven. `placement.test.ts`, `entrypoint.test.ts`, `adapters.test.ts` blijven zoals ze zijn (leggen legacy shape vast).
 
-## ✅ Already good (no action needed)
+## Wijzigingen
 
-- **Canonical host** unified on `https://www.yogazeeburg.com` across every route's `<link rel="canonical">` and `og:url`.
-- **robots.txt** (`public/robots.txt`) allows all crawlers and references the sitemap at the canonical host.
-- **sitemap.xml** served as a TSS server route at `/sitemap.xml` with correct `Content-Type: application/xml`, valid XML, and the six intended URLs (`/`, `/pricing`, `/classes`, `/schedule`, `/contact`, `/sportbit`) — no preview/lovable URLs.
-- **Legacy 301 redirects** implemented as real server handlers returning HTTP 301 (`/class-schedule → /schedule`, `/prices → /pricing`, `/yoga-styles → /classes`) — true permanent redirects, not client navigation.
-- **Per-route metadata**: each of the six public routes has its own `title`, `description`, `og:title`, `og:description`, `og:url`, and self-referencing `canonical`. No accidental "Lovable App" defaults.
-- **Sitewide defaults** in `__root.tsx`: charset, viewport, `og:site_name`, `og:type: website`, `twitter:card: summary_large_image`, `lang="en"` on `<html>`.
-- **Structured data** on home: `ExerciseGym` JSON-LD with `name`, `description`, `PostalAddress` (Cruquiusweg 96F, 1019 AH Amsterdam, NL), `areaServed`, `url`, `email`.
-- **No noindex** leaked anywhere; no sitewide `Disallow: /`.
-- **Router shell** correct (`__root.tsx` renders `<Outlet/>`, no duplicate `/` routes).
+### 1. Nieuwe runner-invoer (`src/lib/publications/runner/final-package.ts`)
+Strikt Zod-schema voor `FinalArticlePackage` met alle velden die artikelen 4 en 5 nu gebruiken: identiteit (articleId, planningNumber), titels/slug, category+type+pillar, readingTimeMin, publishedAt/updatedAt, directAnswer, intro, bodyMarkdown, toc, faqs, sources, internalLinks, template, cta (FIXED_CTA literals), tags, primaryKeyword, audiences, seoIntents, geoIntents, structuredDataIntents, commercialLinkCount (0–1), hasAbsoluteMedicalClaim (false), schemaVersion `"1"`, authoredBy `"chatgpt-external"`, authoredAt. `.strict()` — onbekende velden falen. Plus deterministische mapper `toGeneratedArticlePackage()` en `synthesizeExternalReviews()` (drie passing-reviews met `findings: []`).
 
-## 🚨 Launch-critical before DNS switch
+### 2. Pipeline (`src/lib/publications/runner/pipeline.ts`)
+Volledige herschrijving. Nieuwe stappen: `init → claim → validate_package → placement_ready`.
+- `init`: `automation_enabled=false` of `publication_stopped=true` → `disabled_noop`, geen claim.
+- Pre-claim: valideer `input.finalPackage` strikt. Ongeldig → `failed` met `validation_error`, GEEN claim, GEEN mutatie.
+- `claim`: bestaande RPC.
+- `validate_package`: verifieer `finalPackage.articleId === claim.articleId` en `finalPackage.planningNumber === claim.planningNumber`. Mismatch → non-retryable `validation_error` + `recordFailure`.
+- Map → `GeneratedArticlePackage` + 3 synthetic passing reviews. Runner herberekent `contentHash` autoritair.
+- Persist artefacten in legacy shape (`generation`, `source_validation` als lege valide pack, `review_1..3`, `content_ready`) zodat placement-laag ongemoeid blijft. Elk artefact draagt `promptVersion: "external.chatgpt-v1"`.
+- Lease/heartbeat + retry gedrag blijft (bewezen fix voor stap 5).
+- `placement_ready` disposition (nieuw); `PipelineResult.disposition` accepteert `disabled_noop | claim_noop | placement_ready | failed`.
 
-1. **`www` vs apex resolution.** Everything (canonicals, sitemap, robots) points at `www.yogazeeburg.com`. Before flipping DNS, confirm the apex `yogazeeburg.com` will 301 → `www` at the DNS/hosting layer, otherwise crawlers will find duplicate hosts.
-2. **`/mcp` endpoint is publicly reachable and not disallowed** in `robots.txt`. Crawlers can hit it and consume budget on non-content responses. Either add `Disallow: /mcp` + `Disallow: /.mcp/` + `Disallow: /.well-known/` to robots, or gate `mcpPlugin()`. Decision belongs to launch, not later.
-3. **No `og:image` anywhere.** With no image and no external default image, WhatsApp / iMessage / LinkedIn / X previews will fall back to hosting's screenshot on `lovable.app` — but on the custom domain there is no such fallback, so shares from `www.yogazeeburg.com` will render as text-only cards. Add one absolute-URL `og:image` per leaf route (or at minimum a shared studio hero for `/`).
-4. **`ExerciseGym` schema is missing high-signal fields** that AI answer engines (Google AIO, Perplexity, ChatGPT search, Gemini) and Google's local pack read: `telephone`, `openingHoursSpecification`, `geo` (lat/lng), `priceRange`, `image`, `sameAs` (Instagram, Facebook, Google Maps CID), `hasMap`. Address alone is not enough for local ranking.
+### 3. Providers (`providers.ts`)
+`StepKey` = `init | claim | validate_package | placement_ready`. `Disposition` uitgebreid met `placement_ready`. `RunnerDeps.ai` verwijderd. `AiProviders` type blijft (voor historische compat) maar niet meer in `RunnerDeps`.
 
-## 🟡 Immediately after launch (first week)
+### 4. Adapters (`adapters.server.ts`)
+`createDefaultRunnerDeps()` wired niet meer `ai`. Import van `ai-provider.server` verdwijnt.
 
-5. **Add `llms.txt`** at `public/llms.txt` (and optionally `llms-full.txt`) — the emerging convention for GEO / AI-answer engines. Currently absent. A short llms.txt naming the studio, location, class types, intro pass URL, contact email, and canonical links is a fast GEO win.
-6. **FAQPage JSON-LD** on `/pricing` and `/sportbit`. Both pages already render Q&A visually; wrapping the existing content in `FAQPage` schema is a direct rich-result opportunity with no copy changes.
-7. **Sitemap `<lastmod>`** — currently omitted. Adding `lastmod` (build-time ISO date is fine) speeds re-crawl after edits.
-8. **Twitter/X card completeness.** Root sets generic `twitter:title` / `twitter:description`; leaf routes only override `og:*`. Per-route `twitter:title` / `twitter:description` will keep X shares route-specific.
-9. **Favicon set.** Only `favicon.ico` is present. Add `apple-touch-icon-180x180.png` and a 32×32 PNG so iOS/Android home-screen icons and modern browser tabs render the studio mark.
-10. **Google Search Console + Bing Webmaster** verification (meta tag or DNS TXT) and manual sitemap submission the moment DNS is live.
+### 5. AI provider (`ai-provider.server.ts`)
+Volledig vervangen door regressiedeur: `createLovableAiProviders()` retourneert een object waarvan elke methode `throw new PipelineError({ category: "configuration_error", ... })`. Testbestand `ai-provider.test.ts` bewijst dit.
 
-## 🟢 Later improvements
+### 6. Preview-run (`preview-run.server.ts`, `preview-run.functions.ts`)
+Nieuwe verplichte parameter `finalPackage: FinalArticlePackage`. Server function valideert admin, deserialiseert, roept `runPipeline` aan met het pakket. Alle bestaande veiligheidsgaranties (single-flight, wrong-target, lock recovery, safety-net stale-lock release) blijven.
 
-11. **BreadcrumbList JSON-LD** on non-home routes (Yoga Zeeburg › Schedule, etc.) — small SERP polish.
-12. **`Organization` / `LocalBusiness` sameAs** — link Instagram / Facebook / Google Business Profile in JSON-LD so entities merge in the Google Knowledge Graph and are surfaced by AI answer engines.
-13. **Dutch-language landing pages** (e.g. `/nl/`, `/nl/rooster`, `/nl/prijzen`) with `hreflang` — Amsterdam East market is bilingual, and Dutch queries ("yogastudio Amsterdam Oost", "yoga proefles") are being missed entirely by an English-only site.
-14. **Individual class pages** under `/classes/<slug>` (Slow Flow & Soundbath, Restorative & Reiki & Aroma, Stress Release Yin, etc.) — each ranks for a long-tail class-type query and gets its own head/JSON-LD. Currently `/classes` is one big finder page.
-15. **Teacher pages** with `Person` schema — small studios rank surprisingly well on teacher-name queries.
-16. **Blog / journal** for cornerstone content ("beginner's first yoga class", "yoga for desk-work shoulders", "how often should I do yoga to feel a difference") — the routine-focused positioning is a natural content brief.
-17. **Analytics + Search Console rank monitoring** wired into the app (Semrush data service is available for ongoing rank tracking and competitor visibility once launched).
-18. **Image alt-text pass** once real studio photography replaces the current typography-led layout.
-19. **Speed budget**: preconnects to fonts.googleapis are in place; consider self-hosting the Fraunces + Inter subsets to eliminate the extra DNS/TLS hop and improve LCP on mobile.
+### 7. Migratie F — scheduler + automation start date
+```sql
+ALTER TYPE publication_scheduler_slot ADD VALUE IF NOT EXISTS 'tuesday';
+ALTER TYPE publication_scheduler_slot ADD VALUE IF NOT EXISTS 'thursday';
+ALTER TABLE publication_projects ADD COLUMN IF NOT EXISTS automation_start_date DATE;
+CREATE OR REPLACE FUNCTION public._pub_evaluate_cadence(...) -- herschrijft cadans:
+  -- weken 1–12 vanaf start_date: ma/wo/vr slots
+  -- weken 13–24: di/do slots
+  -- weken 25+: alleen wo
+  -- fase gebaseerd op verstreken kalenderweken in Europe/Amsterdam vanaf start_date
+  -- harde stop na planning_number 180
+```
+Geen INSERT of enable van automation; alleen schema + functie.
 
-## Notes / uncertainties
+### 8. Tests
+- NEW `tests/runner/final-package.schema.test.ts`: strikte schema-tests (missing/extra/verkeerde types → fail-closed; geldig pakket → parse ok).
+- NEW `tests/runner/scheduler-cadence.test.ts`: pure-TS spiegel van fasegrenzen (weken 1–12, 13–24, 25+, wo-only, stop na 180, Europe/Amsterdam edge cases zoals DST-overgang en zondag-vs-maandag week rollover). Behavior-only, geen DB.
+- REWRITE `tests/runner/pipeline.test.ts`: bewijst (a) geen AI-call mogelijk, (b) invalid package = zero mutation, (c) valid package = 1 claim + 7 legacy artefacten + `placement_ready`, (d) mismatch articleId non-retryable, (e) retry/idempotency via gedeelde artefactstore, (f) `automation_enabled=false` = `disabled_noop`.
+- REWRITE `tests/runner/lock-lease.test.ts`: heartbeat renewal blijft, met synchrone `validate_package` (geen slow AI meer nodig).
+- REWRITE `tests/runner/ai-provider.test.ts`: bewijst dat elke methode van `createLovableAiProviders()` `configuration_error` throwt.
+- UPDATE `tests/publications/preview-run.test.ts`: injecteer `finalPackage` in inputs.
+- DELETE `tests/runner/brief-schema-fix.test.ts`, `tests/runner/prompts.test.ts`.
+- Onaangeraakt: `adapters.test.ts`, `placement.test.ts`, `entrypoint.test.ts`, kennisbank-tests, sql-contracttests.
 
-- I did not run a live crawler; findings are strictly from the source in this repo.
-- Whether the apex `yogazeeburg.com` already redirects to `www` is a hosting/DNS question I can't verify from the codebase.
-- The `og:image` gap is the single biggest visible-to-humans launch issue and the cheapest to fix (one image + one meta tag per route).
+### 9. Docs (`AGENTS.md`)
+Nieuw kort blok "Kennisbank publicatie-rolverdeling": ChatGPT extern schrijft+reviewt drie keer; runner accepteert alleen `FinalArticlePackage`; scheduler ma/wo/vr → di/do → wo; harde stop na artikel 180; `automation_enabled` blijft `false` tot expliciete go-live.
 
-Ready to convert any of the launch-critical items into a fix plan when you say go.
+## Verificatie
+`vitest run`, `bunx tsgo`, `bun run build`. Read-only Supabase-check: `automation_enabled=false`, geen actieve run, geen artefact voor artikel 5+, planning-count = 180.
+
+## Uit scope (expliciet)
+- Runner activeren of scheduler cron aanzetten.
+- Artikel 4/5 herschrijven of hun DB-rijen wijzigen.
+- Placement-laag / SafeMarkdownBody / kennisbank-routes aanpassen.
+- `AiProviders`-interface volledig verwijderen (legacy tests hangen ervan af).
+
+## Vragen die de scope kunnen bijstellen
+1. Mag de placement-laag artefacten met de legacy stepKeys blijven lezen, of moeten alle artefactnamen naar `final_package` / `placement_ready` en de placement-laag mee-updaten? (Legacy-behoud = -4 credits, minder risico.)
+2. `automation_start_date` — laat ik die `NULL` en verwerp cadence bij `NULL` fail-closed, of moet ik hem seeden voor project `yoga-zeeburg-kennisbank`? (Advies: `NULL` laten; go-live-datum is een expliciete admin-actie.)
+3. Volstaat een korte docs-append aan `AGENTS.md`, of wil je een apart bestand (bv. `docs/publications-rolverdeling.md`)?
