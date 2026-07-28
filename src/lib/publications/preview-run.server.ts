@@ -299,20 +299,85 @@ export async function runArticle4PreviewOnce(
   }
 
   const readLockToken = deps.readLockToken ?? defaultReadLockToken;
-  const lockToken = await readLockToken(result.articleId);
-  if (!lockToken) {
+  const releaseLock = deps.releaseLock ?? defaultReleaseLock;
+
+  // Helper: fail-closed finalization. Attempts (in order):
+  //   1) auditable runControl.recordFailure when we have a lockToken
+  //   2) admin_release_stale_lock to clear active_run_id/lock fields
+  // Individual sub-failures are captured and returned as errors, but the
+  // function always returns a "pipeline_failed" outcome — never preview_ready.
+  const finalizeFailed = async (
+    stepKey: "content_ready",
+    category: string,
+    summary: string,
+    lockTokenForFinalize: string | null,
+    details: Record<string, unknown> = {},
+  ): Promise<PreviewRunOutcome> => {
+    const errors: PipelineResult["errors"] = [
+      { step: stepKey, category, message: summary },
+    ];
+    if (lockTokenForFinalize) {
+      try {
+        await runnerDeps.runControl.recordFailure({
+          runId: result.runId!,
+          articleId: result.articleId!,
+          lockToken: lockTokenForFinalize,
+          stepKey,
+          category,
+          summary,
+          retryable: false,
+          details,
+        });
+      } catch (err) {
+        errors.push({
+          step: stepKey,
+          category: "finalize_error",
+          message: `recordFailure failed: ${err instanceof Error ? err.message : String(err)}`,
+        });
+      }
+    }
+    try {
+      await releaseLock({
+        articleId: result.articleId!,
+        reason: `preview_run_recovery:${category}`,
+      });
+    } catch (err) {
+      errors.push({
+        step: stepKey,
+        category: "finalize_error",
+        message: `releaseLock failed: ${err instanceof Error ? err.message : String(err)}`,
+      });
+    }
     return {
       status: "pipeline_failed",
       runId: result.runId,
       articleId: result.articleId,
-      errors: [
-        {
-          step: "content_ready",
-          category: "invariant_violation",
-          message: "lock lost after content_ready; artifact list would fail",
-        },
-      ],
+      errors,
     };
+  };
+
+  // 1) Read the lock token needed for the artifact list + placement.
+  let lockToken: string | null;
+  try {
+    lockToken = await readLockToken(result.articleId);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    // We do NOT have a lock token — recordFailure requires one, so skip it
+    // and rely on admin_release_stale_lock to clear active_run_id/lock.
+    return finalizeFailed(
+      "content_ready",
+      "invariant_violation",
+      `lock_token read failed: ${msg}`,
+      null,
+    );
+  }
+  if (!lockToken) {
+    return finalizeFailed(
+      "content_ready",
+      "invariant_violation",
+      "lock lost after content_ready; artifact list would fail",
+      null,
+    );
   }
 
   const legacy = deps.legacyIndex ?? (await defaultLegacyIndex());
@@ -320,27 +385,48 @@ export async function runArticle4PreviewOnce(
   const previewPath = `https://www.yogazeeburg.com/nl/kennisbank/preview/${result.articleId}`;
   const previewToken = derivePreviewToken(result.articleId, result.pkg.contentHash);
 
-  const placement = await placementFromArtifacts(
-    {
-      runId: result.runId,
-      articleId: result.articleId,
-      lockToken,
-      schemaVersion: runnerDeps.schemaVersion,
-      promptVersion: runnerDeps.promptVersion,
-      preview: { previewUrl: previewPath, previewToken },
-    },
-    { store, legacy, artifacts: runnerDeps.artifacts as ArtifactStore },
-  );
-
-  // Best-effort lock release after successful placement. Failures here are
-  // non-fatal — placement is already durable and an admin can release later.
+  // 2) Placement — durable preview row via placementFromArtifacts.
+  let placement;
   try {
-    await (deps.releaseLock ?? defaultReleaseLock)({
+    placement = await placementFromArtifacts(
+      {
+        runId: result.runId,
+        articleId: result.articleId,
+        lockToken,
+        schemaVersion: runnerDeps.schemaVersion,
+        promptVersion: runnerDeps.promptVersion,
+        preview: { previewUrl: previewPath, previewToken },
+      },
+      { store, legacy, artifacts: runnerDeps.artifacts as ArtifactStore },
+    );
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return finalizeFailed(
+      "content_ready",
+      "placement_error",
+      `placementFromArtifacts failed: ${msg}`,
+      lockToken,
+    );
+  }
+
+  // 3) Release the article lock post-success. Fail closed: if we cannot
+  //    release the lock we do NOT return preview_ready — the article row
+  //    would remain locked-with-active_run_id, which violates the
+  //    idempotency invariant. Record an auditable failure and surface it.
+  try {
+    await releaseLock({
       articleId: result.articleId,
       reason: "preview_run_complete",
     });
-  } catch {
-    /* swallow */
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return finalizeFailed(
+      "content_ready",
+      "finalize_error",
+      `releaseLock failed after successful placement: ${msg}`,
+      lockToken,
+      { placementDisposition: placement.disposition, slug: placement.row.slug },
+    );
   }
 
   return {
