@@ -360,7 +360,7 @@ export async function runPipeline(
       claim,
       result,
       schema: ArticleBriefSchema,
-      produce: () => deps.ai.generateBrief({ claim, context: {} }),
+      produce: async () => normalizeBriefCandidate(await deps.ai.generateBrief({ claim, context: {} })),
       hash: (v) => contentHashOf(v),
       validate: (v) => {
         if (v.articleId !== claim.articleId) {
