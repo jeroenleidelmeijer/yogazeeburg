@@ -10,7 +10,6 @@
 
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import type {
-  AiProviders,
   ArtifactStore,
   ClaimedRun,
   ConfigProvider,
@@ -18,8 +17,13 @@ import type {
   RunControl,
   RunnerDeps,
 } from "./providers";
-import { PROMPT_VERSION, SCHEMA_VERSION } from "./prompts";
-import { createLovableAiProviders } from "./ai-provider.server";
+
+// External-authorship stamps. The runner does not brief/write/review
+// content; every artifact it emits is tagged with this identifier so
+// audits can distinguish externally-authored packages from any historical
+// AI-generated runs.
+export const EXTERNAL_PROMPT_VERSION = "external.chatgpt-v1";
+export const RUNNER_SCHEMA_VERSION = "1";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AdminRpc = (name: string, args: Record<string, unknown>) => Promise<{ data: any; error: any }>;
