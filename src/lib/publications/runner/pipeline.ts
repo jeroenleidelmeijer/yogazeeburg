@@ -455,13 +455,10 @@ export async function runPipeline(
     const evidence = {
       articleId: claim.articleId,
       runId: claim.runId,
-      briefHash: contentHashOf(brief),
-      sourcesHash: contentHashOf(sources),
       packageHash: pkg.contentHash,
       reviews: result.reviews.map((r) => ({ round: r.round, pass: r.pass })),
-      promptVersion: deps.promptVersion,
       schemaVersion: deps.schemaVersion,
-      repairCycles: result.repairCycles,
+      promptVersion: deps.promptVersion,
     };
     await persistArtifact(
       deps,
