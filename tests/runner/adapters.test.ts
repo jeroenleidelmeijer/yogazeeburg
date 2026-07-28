@@ -58,7 +58,7 @@ describe("adapters: argument mapping", () => {
       p_project_key: "yoga-zeeburg-kennisbank",
       p_trigger: "manual",
       p_scheduler_slot: null,
-      p_lock_ttl_seconds: 300,
+      p_lock_ttl_seconds: 600,
     });
   });
 
