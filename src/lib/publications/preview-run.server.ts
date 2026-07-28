@@ -307,7 +307,7 @@ export async function runArticle4PreviewOnce(
   // Individual sub-failures are captured and returned as errors, but the
   // function always returns a "pipeline_failed" outcome — never preview_ready.
   const finalizeFailed = async (
-    stepKey: string,
+    stepKey: "content_ready",
     category: string,
     summary: string,
     lockTokenForFinalize: string | null,
