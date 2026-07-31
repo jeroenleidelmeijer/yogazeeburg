@@ -23,8 +23,7 @@ import {
   type QuickFilter,
 } from "@/lib/kennisbank/compose";
 
-const INTRO_URL =
-  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
+const INTRO_URL = "/trial";
 const CANONICAL = "https://www.yogazeeburg.com/nl/kennisbank";
 
 type QuickChoice = { value: QuickFilter; label: string };
@@ -223,7 +222,7 @@ function KennisbankPage() {
             <div className="rounded-3xl bg-primary p-8 text-primary-foreground shadow-lg sm:p-12">
               <h2 id="cta-heading" className="font-display text-3xl font-medium tracking-tight sm:text-4xl">Zelf ervaren wat yoga voor je doet?</h2>
               <p className="mt-4 max-w-2xl text-primary-foreground/90">Probeer 14 dagen onbeperkt verschillende lessen, docenten en tijden bij Yoga Zeeburg in Amsterdam Oost.</p>
-              <a href={INTRO_URL} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex min-h-[44px] items-center rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-background/90">Start je 14 dagen onbeperkt</a>
+              <a href={INTRO_URL} className="mt-7 inline-flex min-h-[44px] items-center rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-background/90">Start je 14 dagen onbeperkt</a>
               <p className="mt-3 text-sm text-primary-foreground/75">Voor nieuwe studenten. Stopt automatisch.</p>
             </div>
           </div>

@@ -7,8 +7,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 /* ------------------------------------------------------------------
    Sportbit checkout links
    ------------------------------------------------------------------ */
-const INTRO_PASS_URL =
-  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
+const INTRO_PASS_URL = "/trial";
 
 const SPORTBIT_WEEKLY_YOGA_URL =
   "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=45";
@@ -148,7 +147,7 @@ function Hero() {
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
-            {...sportbitLinkProps(INTRO_PASS_URL)}
+            href={INTRO_PASS_URL}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start Intro Pass
@@ -220,7 +219,7 @@ function IntroPass() {
               </p>
               <div className="mt-8">
                 <a
-                  {...sportbitLinkProps(INTRO_PASS_URL)}
+                  href={INTRO_PASS_URL}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
                 >
                   Start with 14 days unlimited
@@ -947,7 +946,7 @@ function FinalCTA() {
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
-            {...sportbitLinkProps(INTRO_PASS_URL)}
+            href={INTRO_PASS_URL}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start with 14 days unlimited

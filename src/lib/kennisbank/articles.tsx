@@ -133,9 +133,7 @@ function ProeflesBody() {
           <p>
             Bij Yoga Zeeburg kun je met de{" "}
             <a
-              href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/trial"
               className="font-medium text-primary underline underline-offset-4 hover:no-underline"
             >
               14-daagse Intro Pass
@@ -615,9 +613,7 @@ function WelkeStudioBody() {
         eerlijk door voordat je kiest — en houd rekening met opzegtermijnen
         of minimumtermijnen. Yoga Zeeburg biedt een{" "}
         <a
-          href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Bekijk onze 14-daagse Intro Pass
@@ -1108,9 +1104,7 @@ function BeginnersBody() {
         verschillende docenten proberen, zodat je zonder haast een routine
         kunt uitzoeken die daadwerkelijk in je week past.{" "}
         <a
-          href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Bekijk onze 14-daagse Intro Pass
@@ -2912,9 +2906,7 @@ function WaterBody() {
         Twijfel je tussen meerdere lessen, dan is vergelijken in de praktijk
         vaak nuttiger dan eindeloos lezen. Met de{" "}
         <a
-          href="https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           14-daagse Intro Pass
