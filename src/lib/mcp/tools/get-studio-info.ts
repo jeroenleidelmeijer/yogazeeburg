@@ -18,12 +18,7 @@ export default defineTool({
         city: "Amsterdam",
         country: "NL",
       },
-      neighbourhoods: [
-        "Amsterdam East",
-        "Zeeburg",
-        "Cruquius",
-        "Eastern Docklands",
-      ],
+      neighbourhoods: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
       location_notes: "Above CrossFit Zeeburg, by the water.",
       positioning:
         "A small, personal, beginner-friendly studio for busy people who need a weekly reset — not another class on their schedule.",

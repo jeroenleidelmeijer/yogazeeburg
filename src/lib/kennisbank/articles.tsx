@@ -118,17 +118,15 @@ function ProeflesBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Tijdens een proefles yoga in Amsterdam Oost kom je binnen, meld je
-            je bij de docent, kies je een plek en leg je een matje neer. De les
-            duurt meestal 60 tot 75 minuten en bestaat uit een rustige opening,
-            een reeks houdingen op je eigen tempo en een korte ontspanning aan
-            het einde.
+            Tijdens een proefles yoga in Amsterdam Oost kom je binnen, meld je je bij de docent,
+            kies je een plek en leg je een matje neer. De les duurt meestal 60 tot 75 minuten en
+            bestaat uit een rustige opening, een reeks houdingen op je eigen tempo en een korte
+            ontspanning aan het einde.
           </p>
           <p>
-            Je hoeft niet lenig te zijn, geen ervaring te hebben en geen
-            complete outfit te kopen. Comfortabele kleding en blote voeten zijn
-            voldoende. Je werkt binnen je eigen bereik en volgt aanpassingen
-            als een houding nog niet lukt.
+            Je hoeft niet lenig te zijn, geen ervaring te hebben en geen complete outfit te kopen.
+            Comfortabele kleding en blote voeten zijn voldoende. Je werkt binnen je eigen bereik en
+            volgt aanpassingen als een houding nog niet lukt.
           </p>
           <p>
             Bij Yoga Zeeburg kun je met de{" "}
@@ -138,8 +136,7 @@ function ProeflesBody() {
             >
               14-daagse Intro Pass
             </a>{" "}
-            rustig verschillende lessen, docenten en tijden proberen voordat je
-            een keuze maakt.
+            rustig verschillende lessen, docenten en tijden proberen voordat je een keuze maakt.
           </p>
         </div>
       </section>
@@ -151,21 +148,18 @@ function ProeflesBody() {
         Hoe kies je vooraf een passende yogales?
       </h2>
       <p className="mt-4">
-        De belangrijkste aanwijzing bij het kiezen van een proefles is de naam
-        en omschrijving van de les zelf. Studios geven daarin bewust aan voor
-        wie een les bedoeld is: voor beginners, voor gevorderden, of voor alle
-        niveaus. Lees die omschrijving rustig door voordat je boekt, ook als je
-        haast hebt.
+        De belangrijkste aanwijzing bij het kiezen van een proefles is de naam en omschrijving van
+        de les zelf. Studios geven daarin bewust aan voor wie een les bedoeld is: voor beginners,
+        voor gevorderden, of voor alle niveaus. Lees die omschrijving rustig door voordat je boekt,
+        ook als je haast hebt.
       </p>
       <p className="mt-4">
-        Grofweg zijn er twee smaken. Een rustigere les werkt met langere
-        houdingen, adem en aandacht — vaak herkenbaar aan woorden als hatha,
-        yin, restorative of gentle. Een dynamischere les werkt met vloeiende
-        overgangen en bouwt vaker een fysieke opbouw op — herkenbaar aan
-        vinyasa, flow of power. Voor een eerste kennismaking is het meestal
-        prettig om te starten met een les die als toegankelijk of geschikt voor
-        alle niveaus omschreven staat, ongeacht welke stijl je uiteindelijk het
-        prettigst gaat vinden.
+        Grofweg zijn er twee smaken. Een rustigere les werkt met langere houdingen, adem en aandacht
+        — vaak herkenbaar aan woorden als hatha, yin, restorative of gentle. Een dynamischere les
+        werkt met vloeiende overgangen en bouwt vaker een fysieke opbouw op — herkenbaar aan
+        vinyasa, flow of power. Voor een eerste kennismaking is het meestal prettig om te starten
+        met een les die als toegankelijk of geschikt voor alle niveaus omschreven staat, ongeacht
+        welke stijl je uiteindelijk het prettigst gaat vinden.
       </p>
       <p className="mt-4">
         Bekijk het{" "}
@@ -175,9 +169,9 @@ function ProeflesBody() {
         >
           actuele rooster van Yoga Zeeburg
         </a>{" "}
-        om te zien welke tijden en docenten er op dit moment lesgeven. Merk je
-        dat je twijfelt, kies dan simpelweg de eerste les die qua tijd past —
-        met een intro pass kun je later andere momenten testen.
+        om te zien welke tijden en docenten er op dit moment lesgeven. Merk je dat je twijfelt, kies
+        dan simpelweg de eerste les die qua tijd past — met een intro pass kun je later andere
+        momenten testen.
       </p>
 
       <h2
@@ -187,36 +181,32 @@ function ProeflesBody() {
         Hoe bereid je je voor?
       </h2>
       <p className="mt-4">
-        De voorbereiding voor een eerste yogales is bewust minimaal. Je hebt
-        niets speciaals nodig. Wat wel helpt:
+        De voorbereiding voor een eerste yogales is bewust minimaal. Je hebt niets speciaals nodig.
+        Wat wel helpt:
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>
-          <strong>Kleding.</strong> Draag iets waarin je vrij kunt bewegen en
-          dat niet strak op je middel drukt. Yoga doe je op blote voeten. Neem
-          eventueel een extra laagje mee voor de rustige delen aan het einde,
-          omdat je lichaam dan afkoelt.
+          <strong>Kleding.</strong> Draag iets waarin je vrij kunt bewegen en dat niet strak op je
+          middel drukt. Yoga doe je op blote voeten. Neem eventueel een extra laagje mee voor de
+          rustige delen aan het einde, omdat je lichaam dan afkoelt.
         </li>
         <li>
-          <strong>Eten en drinken.</strong> Kom niet met een zware maag. Een
-          klein tussendoortje één tot twee uur van tevoren is prima. Drink
-          water, maar niet vlak voor de les liters achter elkaar.
+          <strong>Eten en drinken.</strong> Kom niet met een zware maag. Een klein tussendoortje één
+          tot twee uur van tevoren is prima. Drink water, maar niet vlak voor de les liters achter
+          elkaar.
         </li>
         <li>
-          <strong>Op tijd komen.</strong> Plan tien tot vijftien minuten
-          speling in. Zo kun je rustig binnenkomen, je matje neerleggen en de
-          docent kort iets vertellen als dat nodig is.
+          <strong>Op tijd komen.</strong> Plan tien tot vijftien minuten speling in. Zo kun je
+          rustig binnenkomen, je matje neerleggen en de docent kort iets vertellen als dat nodig is.
         </li>
         <li>
-          <strong>Blessures of zwangerschap.</strong> Meld dit vooraf per
-          bericht of vertel het de docent voor de les begint. Zo kan er
-          gerichter naar je gekeken worden en kunnen aanpassingen worden
-          voorgesteld waar dat helpt.
+          <strong>Blessures of zwangerschap.</strong> Meld dit vooraf per bericht of vertel het de
+          docent voor de les begint. Zo kan er gerichter naar je gekeken worden en kunnen
+          aanpassingen worden voorgesteld waar dat helpt.
         </li>
         <li>
-          <strong>Verwachtingen.</strong> Je hoeft niets te kunnen. Lenigheid,
-          balans en concentratie ontwikkelen zich in de tijd — niet op één
-          middag.
+          <strong>Verwachtingen.</strong> Je hoeft niets te kunnen. Lenigheid, balans en
+          concentratie ontwikkelen zich in de tijd — niet op één middag.
         </li>
       </ul>
 
@@ -227,26 +217,22 @@ function ProeflesBody() {
         Wat gebeurt er bij aankomst en tijdens de les?
       </h2>
       <p className="mt-4">
-        Bij binnenkomst meld je jezelf even bij de docent, vooral als het je
-        eerste keer is. Je kunt vragen waar je een plek kunt kiezen en of er
-        iets specifieks is dat je moet weten. Het is normaal om iets van
-        onzekerheid te voelen op je eerste les — dat hoort erbij en verdwijnt
+        Bij binnenkomst meld je jezelf even bij de docent, vooral als het je eerste keer is. Je kunt
+        vragen waar je een plek kunt kiezen en of er iets specifieks is dat je moet weten. Het is
+        normaal om iets van onzekerheid te voelen op je eerste les — dat hoort erbij en verdwijnt
         meestal binnen tien minuten.
       </p>
       <p className="mt-4">
-        Een yogales begint doorgaans met een rustige opening: even zitten,
-        adem opmerken en aankomen. Daarna volgt een opbouw van houdingen,
-        vaak eerst staand of zittend, later mogelijk op de rug of buik. De
-        docent legt uit wat de bedoeling is en geeft aanwijzingen om
-        aanpassingen te doen. Aan het einde is er meestal een korte
-        ontspanning — vaak in savasana, gewoon liggend op je rug — waarna de
-        les afsluit.
+        Een yogales begint doorgaans met een rustige opening: even zitten, adem opmerken en
+        aankomen. Daarna volgt een opbouw van houdingen, vaak eerst staand of zittend, later
+        mogelijk op de rug of buik. De docent legt uit wat de bedoeling is en geeft aanwijzingen om
+        aanpassingen te doen. Aan het einde is er meestal een korte ontspanning — vaak in savasana,
+        gewoon liggend op je rug — waarna de les afsluit.
       </p>
       <p className="mt-4">
-        Tijdens de les hoef je niet mee te doen met alles. Je mag altijd een
-        houding overslaan, een moment gaan zitten of iets aanpassen als dat
-        voor jouw lichaam op dat moment beter is. Een goede docent moedigt dit
-        expliciet aan en zal je niet in een houding duwen die niet past.
+        Tijdens de les hoef je niet mee te doen met alles. Je mag altijd een houding overslaan, een
+        moment gaan zitten of iets aanpassen als dat voor jouw lichaam op dat moment beter is. Een
+        goede docent moedigt dit expliciet aan en zal je niet in een houding duwen die niet past.
       </p>
 
       <h2
@@ -256,18 +242,16 @@ function ProeflesBody() {
         Wat als je een houding niet kunt?
       </h2>
       <p className="mt-4">
-        Dan doe je iets anders. Serieus — dat is geen zwaktebod, dat is
-        gewoon hoe yoga werkt. Iedere houding heeft variaties: makkelijker,
-        korter, met steun. Kun je een houding niet, dan is de instructie meestal
-        om terug te gaan naar een variant, even te rusten in child's pose, of
-        simpelweg de adem te blijven volgen. Prestatie is geen doel; opmerken
-        wat er wel of niet gaat op dit moment, is dat wel.
+        Dan doe je iets anders. Serieus — dat is geen zwaktebod, dat is gewoon hoe yoga werkt.
+        Iedere houding heeft variaties: makkelijker, korter, met steun. Kun je een houding niet, dan
+        is de instructie meestal om terug te gaan naar een variant, even te rusten in child's pose,
+        of simpelweg de adem te blijven volgen. Prestatie is geen doel; opmerken wat er wel of niet
+        gaat op dit moment, is dat wel.
       </p>
       <p className="mt-4">
-        Als je merkt dat je iets forceert of vasthoudt op adem, is dat een
-        signaal om terug te schakelen. Yoga doet geen pijn. Ongemak in een lange
-        rekhouding kan voorkomen, maar scherpe of stekende pijn is een reden om
-        eruit te komen.
+        Als je merkt dat je iets forceert of vasthoudt op adem, is dat een signaal om terug te
+        schakelen. Yoga doet geen pijn. Ongemak in een lange rekhouding kan voorkomen, maar scherpe
+        of stekende pijn is een reden om eruit te komen.
       </p>
 
       <h2
@@ -277,19 +261,17 @@ function ProeflesBody() {
         Wat voel je na een eerste les?
       </h2>
       <p className="mt-4">
-        Ervaringen verschillen per persoon en per les. Sommige mensen voelen
-        zich na een eerste yogales rustiger en helderder; anderen zijn juist
-        wat moe of merken de dag erna iets van spierstijfheid. Beide zijn
-        normaal. Wat je voelt hangt af van de stijl van de les, hoe jouw week
-        eruitzag en of je gewend bent te bewegen.
+        Ervaringen verschillen per persoon en per les. Sommige mensen voelen zich na een eerste
+        yogales rustiger en helderder; anderen zijn juist wat moe of merken de dag erna iets van
+        spierstijfheid. Beide zijn normaal. Wat je voelt hangt af van de stijl van de les, hoe jouw
+        week eruitzag en of je gewend bent te bewegen.
       </p>
       <p className="mt-4">
-        Waar je vooral op kunt letten, is het gevoel in de uren erna. Merk je
-        dat je iets meer ruimte in je hoofd of je schouders hebt? Dat je iets
-        makkelijker ademt? Dat is bruikbaardere informatie dan het antwoord op
-        de vraag of je alle houdingen "goed" deed. Yoga is geen prestatie die
-        je afvinkt; het is een oefening die zijn effect vooral laat zien over
-        weken, niet in één sessie.
+        Waar je vooral op kunt letten, is het gevoel in de uren erna. Merk je dat je iets meer
+        ruimte in je hoofd of je schouders hebt? Dat je iets makkelijker ademt? Dat is bruikbaardere
+        informatie dan het antwoord op de vraag of je alle houdingen "goed" deed. Yoga is geen
+        prestatie die je afvinkt; het is een oefening die zijn effect vooral laat zien over weken,
+        niet in één sessie.
       </p>
 
       <h2
@@ -299,20 +281,17 @@ function ProeflesBody() {
         Waarom is één losse les niet altijd genoeg om een goede keuze te maken?
       </h2>
       <p className="mt-4">
-        Een enkele proefles vertelt je vooral iets over dat ene moment: die
-        stijl, die docent, dat tijdstip en jouw dag tot dan toe. Dat is
-        waardevol, maar niet altijd representatief. Een dynamische les op een
-        drukke woensdagavond voelt anders dan een rustige les op een zaterdag —
-        en welke docent lesgeeft maakt in yoga een aanzienlijk verschil in hoe
-        een les op je overkomt.
+        Een enkele proefles vertelt je vooral iets over dat ene moment: die stijl, die docent, dat
+        tijdstip en jouw dag tot dan toe. Dat is waardevol, maar niet altijd representatief. Een
+        dynamische les op een drukke woensdagavond voelt anders dan een rustige les op een zaterdag
+        — en welke docent lesgeeft maakt in yoga een aanzienlijk verschil in hoe een les op je
+        overkomt.
       </p>
       <p className="mt-4">
-        Voor de meeste mensen werkt het daarom beter om binnen een korte
-        periode meerdere lessen te proberen: verschillende docenten,
-        verschillende tijden en één rustige en één dynamischere stijl. Dat is
-        precies waarom een intro pass zoals de 14-daagse Intro Pass{" "}
-        bestaat: niet als korting, maar als kader om rustig te ontdekken welke
-        vorm van yoga bij jouw week past.
+        Voor de meeste mensen werkt het daarom beter om binnen een korte periode meerdere lessen te
+        proberen: verschillende docenten, verschillende tijden en één rustige en één dynamischere
+        stijl. Dat is precies waarom een intro pass zoals de 14-daagse Intro Pass bestaat: niet als
+        korting, maar als kader om rustig te ontdekken welke vorm van yoga bij jouw week past.
       </p>
 
       <h2
@@ -322,21 +301,18 @@ function ProeflesBody() {
         Praktisch: Yoga Zeeburg in Amsterdam Oost
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg is een kleine, persoonlijke studio in Amsterdam Oost. Je
-        vindt ons aan de <strong>Cruquiusweg 96F</strong>, boven CrossFit
-        Zeeburg en aan het water. De sfeer is bewust rustig en niet-zweverig:
-        de nadruk ligt op praktische, toegankelijke yoga voor mensen met een
-        gewone volle week.
+        Yoga Zeeburg is een kleine, persoonlijke studio in Amsterdam Oost. Je vindt ons aan de{" "}
+        <strong>Cruquiusweg 96F</strong>, boven CrossFit Zeeburg en aan het water. De sfeer is
+        bewust rustig en niet-zweverig: de nadruk ligt op praktische, toegankelijke yoga voor mensen
+        met een gewone volle week.
       </p>
       <p className="mt-4">
-        Omdat de groepen niet groot zijn, is er ruimte voor persoonlijke
-        aandacht. Docenten geven aanpassingen waar dat helpt en kennen na een
-        paar lessen je naam. Dat maakt het makkelijker om terug te komen — wat
-        uiteindelijk het enige is dat je op langere termijn iets oplevert.
+        Omdat de groepen niet groot zijn, is er ruimte voor persoonlijke aandacht. Docenten geven
+        aanpassingen waar dat helpt en kennen na een paar lessen je naam. Dat maakt het makkelijker
+        om terug te komen — wat uiteindelijk het enige is dat je op langere termijn iets oplevert.
       </p>
       <p className="mt-4">
-        Meer weten over de buurt en welke lessen op welk moment aansluiten?
-        Bekijk het{" "}
+        Meer weten over de buurt en welke lessen op welk moment aansluiten? Bekijk het{" "}
         <a
           href="/schedule"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
@@ -360,17 +336,16 @@ function ProeflesBody() {
         Verder na je proefles
       </h2>
       <p className="mt-4">
-        Als je proefles bevallen is, is de vervolgvraag zelden "welke stijl is
-        het beste?" maar veel vaker "welk moment past het beste in mijn week?"
-        Regelmaat wint het van intensiteit. Twee tot drie keer per week een
-        toegankelijke les zal je meer opleveren dan één zware les die je
+        Als je proefles bevallen is, is de vervolgvraag zelden "welke stijl is het beste?" maar veel
+        vaker "welk moment past het beste in mijn week?" Regelmaat wint het van intensiteit. Twee
+        tot drie keer per week een toegankelijke les zal je meer opleveren dan één zware les die je
         vervolgens niet volhoudt.
       </p>
       <p className="mt-4">
-        Kies bij voorkeur vaste tijdslots die je zonder onderhandeling in je
-        agenda kunt zetten. Combineer een rustigere en een dynamischere les zodat
-        je weekritme divers blijft. En geef jezelf de eerste maand vooral geen
-        oordeel — je bent aan het verkennen, niet aan het presteren.
+        Kies bij voorkeur vaste tijdslots die je zonder onderhandeling in je agenda kunt zetten.
+        Combineer een rustigere en een dynamischere les zodat je weekritme divers blijft. En geef
+        jezelf de eerste maand vooral geen oordeel — je bent aan het verkennen, niet aan het
+        presteren.
       </p>
     </>
   );
@@ -448,20 +423,18 @@ function WelkeStudioBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            De "beste" yogastudio in Amsterdam Oost bestaat niet in het
-            algemeen — de beste studio voor jou wel. Die past bij jouw
-            lesstijl, je niveau, je week en de plek waar je woont of werkt.
+            De "beste" yogastudio in Amsterdam Oost bestaat niet in het algemeen — de beste studio
+            voor jou wel. Die past bij jouw lesstijl, je niveau, je week en de plek waar je woont of
+            werkt.
           </p>
           <p>
-            De belangrijkste vraag is niet welke studio het mooiste interieur
-            heeft, maar welke studio je daadwerkelijk regelmatig blijft
-            bezoeken. Een rooster dat je volhoudt, is meer waard dan een
-            theoretisch perfecte les die je één keer per maand haalt.
+            De belangrijkste vraag is niet welke studio het mooiste interieur heeft, maar welke
+            studio je daadwerkelijk regelmatig blijft bezoeken. Een rooster dat je volhoudt, is meer
+            waard dan een theoretisch perfecte les die je één keer per maand haalt.
           </p>
           <p>
-            In deze gids lopen we samen door de criteria die er echt toe doen,
-            zodat je binnen twee tot drie proeflessen een goed onderbouwde
-            keuze kunt maken.
+            In deze gids lopen we samen door de criteria die er echt toe doen, zodat je binnen twee
+            tot drie proeflessen een goed onderbouwde keuze kunt maken.
           </p>
         </div>
       </section>
@@ -473,22 +446,18 @@ function WelkeStudioBody() {
         Welke yogastudio past bij jou?
       </h2>
       <p className="mt-4">
-        Amsterdam Oost is een groot gebied — Zeeburg, Cruquius, IJburg,
-        Indische Buurt, Oostelijk Havengebied, Watergraafsmeer. In dat gebied
-        vind je uiteenlopende yogastudio's: van fysieke, dynamische vloeren
-        tot kleine, persoonlijke studio's met rustige lessen. Dat maakt kiezen
-        soms verwarrend, vooral als je net begint. De valkuil is dat je op
-        zoek gaat naar objectief "de beste" studio, terwijl de vraag eigenlijk
-        is welke studio past bij hoe jouw week eruitziet en wat je op dit
-        moment nodig hebt.
+        Amsterdam Oost is een groot gebied — Zeeburg, Cruquius, IJburg, Indische Buurt, Oostelijk
+        Havengebied, Watergraafsmeer. In dat gebied vind je uiteenlopende yogastudio's: van fysieke,
+        dynamische vloeren tot kleine, persoonlijke studio's met rustige lessen. Dat maakt kiezen
+        soms verwarrend, vooral als je net begint. De valkuil is dat je op zoek gaat naar objectief
+        "de beste" studio, terwijl de vraag eigenlijk is welke studio past bij hoe jouw week
+        eruitziet en wat je op dit moment nodig hebt.
       </p>
       <p className="mt-4">
-        Neem als vertrekpunt dat een yogastudio pas werkt als je er
-        daadwerkelijk komt. Dat klinkt vanzelfsprekend, maar veel mensen
-        boeken een lidmaatschap op basis van sfeer of Instagram en merken pas
-        na een paar weken dat het rooster of de reistijd in de praktijk niet
-        past. Beoordeel een studio daarom op de nuchtere criteria hieronder,
-        niet op eerste indruk.
+        Neem als vertrekpunt dat een yogastudio pas werkt als je er daadwerkelijk komt. Dat klinkt
+        vanzelfsprekend, maar veel mensen boeken een lidmaatschap op basis van sfeer of Instagram en
+        merken pas na een paar weken dat het rooster of de reistijd in de praktijk niet past.
+        Beoordeel een studio daarom op de nuchtere criteria hieronder, niet op eerste indruk.
       </p>
 
       <h2
@@ -498,28 +467,23 @@ function WelkeStudioBody() {
         Welke yogastijl en welk niveau zoek je?
       </h2>
       <p className="mt-4">
-        Yoga is een verzamelnaam voor verschillende stijlen die onderling
-        flink kunnen verschillen. Grofweg zijn er rustigere vormen — hatha,
-        yin, restorative, gentle — waar houdingen langer worden vastgehouden
-        en adem centraal staat. Daarnaast zijn er dynamischere vormen —
-        vinyasa, flow, power, ashtanga — waar overgangen sneller gaan en de
-        opbouw fysieker is.
+        Yoga is een verzamelnaam voor verschillende stijlen die onderling flink kunnen verschillen.
+        Grofweg zijn er rustigere vormen — hatha, yin, restorative, gentle — waar houdingen langer
+        worden vastgehouden en adem centraal staat. Daarnaast zijn er dynamischere vormen — vinyasa,
+        flow, power, ashtanga — waar overgangen sneller gaan en de opbouw fysieker is.
       </p>
       <p className="mt-4">
-        Welke stijl bij je past hangt af van wat je zoekt: rust en herstel,
-        beweging en kracht, of een combinatie. Belangrijk: kijk niet alleen
-        naar de <em>naam</em> van een les, maar ook naar de{" "}
-        <em>omschrijving</em>. Twee lessen met dezelfde naam kunnen op twee
-        studio's totaal anders aanvoelen. In een goede omschrijving lees je
-        voor wie de les bedoeld is, wat de opbouw is en of aanpassingen worden
-        aangeboden. Als die informatie ontbreekt, is dat op zichzelf al een
-        signaal.
+        Welke stijl bij je past hangt af van wat je zoekt: rust en herstel, beweging en kracht, of
+        een combinatie. Belangrijk: kijk niet alleen naar de <em>naam</em> van een les, maar ook
+        naar de <em>omschrijving</em>. Twee lessen met dezelfde naam kunnen op twee studio's totaal
+        anders aanvoelen. In een goede omschrijving lees je voor wie de les bedoeld is, wat de
+        opbouw is en of aanpassingen worden aangeboden. Als die informatie ontbreekt, is dat op
+        zichzelf al een signaal.
       </p>
       <p className="mt-4">
-        Voor niveau geldt hetzelfde. Termen als "geschikt voor alle niveaus"
-        of "toegankelijk" zijn een goede eerste indicatie dat je zonder
-        ervaring welkom bent. Ben je onzeker? Kies bewust voor een rustigere
-        stijl bij je eerste les, ongeacht welke stijl je uiteindelijk het
+        Voor niveau geldt hetzelfde. Termen als "geschikt voor alle niveaus" of "toegankelijk" zijn
+        een goede eerste indicatie dat je zonder ervaring welkom bent. Ben je onzeker? Kies bewust
+        voor een rustigere stijl bij je eerste les, ongeacht welke stijl je uiteindelijk het
         prettigst gaat vinden.
       </p>
 
@@ -530,25 +494,21 @@ function WelkeStudioBody() {
         Hoe belangrijk zijn docent, sfeer en groepsgrootte?
       </h2>
       <p className="mt-4">
-        Aanzienlijk belangrijker dan de meeste mensen inschatten. Bij yoga
-        maakt de docent een groot verschil in hoe een les op je overkomt.
-        Twee vinyasa-lessen bij twee verschillende docenten kunnen radicaal
-        anders aanvoelen — in tempo, aandacht, uitleg en muziek. Reken er
-        dus op dat je binnen dezelfde studio verschillende docenten wilt
-        proberen voordat je een oordeel vormt.
+        Aanzienlijk belangrijker dan de meeste mensen inschatten. Bij yoga maakt de docent een groot
+        verschil in hoe een les op je overkomt. Twee vinyasa-lessen bij twee verschillende docenten
+        kunnen radicaal anders aanvoelen — in tempo, aandacht, uitleg en muziek. Reken er dus op dat
+        je binnen dezelfde studio verschillende docenten wilt proberen voordat je een oordeel vormt.
       </p>
       <p className="mt-4">
-        Sfeer is subtieler maar even belangrijk. Voelt de studio als een plek
-        waar je binnenkomt en je schouders al iets zakken? Of merk je een
-        prestatiedruk, harde muziek of drukte die je juist opjaagt? Beide
-        soorten sfeer hebben hun publiek; er is geen goed of fout, alleen wat
+        Sfeer is subtieler maar even belangrijk. Voelt de studio als een plek waar je binnenkomt en
+        je schouders al iets zakken? Of merk je een prestatiedruk, harde muziek of drukte die je
+        juist opjaagt? Beide soorten sfeer hebben hun publiek; er is geen goed of fout, alleen wat
         past bij wat jij zoekt.
       </p>
       <p className="mt-4">
-        Groepsgrootte hangt hiermee samen. Kleinere groepen bieden meestal
-        meer ruimte voor persoonlijke aandacht en aanpassingen; grotere
-        groepen hebben een andere dynamiek en vaak meer roosterkeuze. Neem
-        mee wat voor jou werkt — en check bij een proefles hoe vol de les
+        Groepsgrootte hangt hiermee samen. Kleinere groepen bieden meestal meer ruimte voor
+        persoonlijke aandacht en aanpassingen; grotere groepen hebben een andere dynamiek en vaak
+        meer roosterkeuze. Neem mee wat voor jou werkt — en check bij een proefles hoe vol de les
         werkelijk zit op het tijdstip dat je van plan bent te gaan.
       </p>
 
@@ -559,11 +519,9 @@ function WelkeStudioBody() {
         Kies een locatie en rooster die je echt volhoudt
       </h2>
       <p className="mt-4">
-        Dit is misschien wel het meest onderschatte criterium. Een studio op
-        tien minuten fietsen die je vier keer per maand haalt levert je meer
-        op dan een prachtige studio op een half uur waar je alleen op
-        zondagochtend komt. Reistijd is een sluipmoordenaar van goede
-        voornemens.
+        Dit is misschien wel het meest onderschatte criterium. Een studio op tien minuten fietsen
+        die je vier keer per maand haalt levert je meer op dan een prachtige studio op een half uur
+        waar je alleen op zondagochtend komt. Reistijd is een sluipmoordenaar van goede voornemens.
       </p>
       <p className="mt-4">
         Bekijk daarom altijd het{" "}
@@ -573,12 +531,10 @@ function WelkeStudioBody() {
         >
           actuele rooster
         </a>{" "}
-        voordat je een keuze maakt. Zijn er minstens twee tot drie momenten
-        per week die zonder onderhandeling in je agenda passen? Zo niet, dan
-        past de studio in de praktijk niet, hoe goed de lessen ook zijn.
-        Regelmaat wint het van intensiteit — twee toegankelijke lessen per
-        week doen op de lange termijn meer dan één zware les die je vaak
-        overslaat.
+        voordat je een keuze maakt. Zijn er minstens twee tot drie momenten per week die zonder
+        onderhandeling in je agenda passen? Zo niet, dan past de studio in de praktijk niet, hoe
+        goed de lessen ook zijn. Regelmaat wint het van intensiteit — twee toegankelijke lessen per
+        week doen op de lange termijn meer dan één zware les die je vaak overslaat.
       </p>
 
       <h2
@@ -588,14 +544,12 @@ function WelkeStudioBody() {
         Hoe vergelijk je proefaanbod en prijs?
       </h2>
       <p className="mt-4">
-        Bijna elke yogastudio biedt een vorm van kennismaking aan — een losse
-        proefles, een introductieweek of een intro pass van één tot twee
-        weken. Wat het meest oplevert, is een intro pass waarmee je binnen
-        korte tijd meerdere lessen, docenten en tijdstippen kunt proberen. Eén
-        losse les geeft je namelijk vooral informatie over dat ene moment;
-        drie of vier lessen laten zien wat de studio structureel is. Voor een
-        uitgebreidere uitleg over hoe zo'n eerste les eruitziet, zie ons
-        artikel over{" "}
+        Bijna elke yogastudio biedt een vorm van kennismaking aan — een losse proefles, een
+        introductieweek of een intro pass van één tot twee weken. Wat het meest oplevert, is een
+        intro pass waarmee je binnen korte tijd meerdere lessen, docenten en tijdstippen kunt
+        proberen. Eén losse les geeft je namelijk vooral informatie over dat ene moment; drie of
+        vier lessen laten zien wat de studio structureel is. Voor een uitgebreidere uitleg over hoe
+        zo'n eerste les eruitziet, zie ons artikel over{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
@@ -606,20 +560,19 @@ function WelkeStudioBody() {
         .
       </p>
       <p className="mt-4">
-        Voor prijs geldt: kijk niet naar de laagste prijs per les, maar naar
-        de prijs per les die je daadwerkelijk gaat volgen. Een goedkoop
-        rittenkaartje wordt duur als je het niet opmaakt. Een lidmaatschap
-        wordt goedkoop als je twee tot drie keer per week komt. Reken het
-        eerlijk door voordat je kiest — en houd rekening met opzegtermijnen
-        of minimumtermijnen. Yoga Zeeburg biedt een{" "}
+        Voor prijs geldt: kijk niet naar de laagste prijs per les, maar naar de prijs per les die je
+        daadwerkelijk gaat volgen. Een goedkoop rittenkaartje wordt duur als je het niet opmaakt.
+        Een lidmaatschap wordt goedkoop als je twee tot drie keer per week komt. Reken het eerlijk
+        door voordat je kiest — en houd rekening met opzegtermijnen of minimumtermijnen. Yoga
+        Zeeburg biedt een{" "}
         <a
           href="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Bekijk onze 14-daagse Intro Pass
         </a>{" "}
-        waarmee je in twee weken meerdere lessen kunt proberen voordat je
-        beslist of een lidmaatschap past.
+        waarmee je in twee weken meerdere lessen kunt proberen voordat je beslist of een
+        lidmaatschap past.
       </p>
 
       <h2
@@ -630,37 +583,36 @@ function WelkeStudioBody() {
       </h2>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>
-          <strong>Lesstijl en omschrijving.</strong> Sluit de omschrijving aan
-          bij wat jij zoekt — rust, beweging of een combinatie?
+          <strong>Lesstijl en omschrijving.</strong> Sluit de omschrijving aan bij wat jij zoekt —
+          rust, beweging of een combinatie?
         </li>
         <li>
-          <strong>Niveau en toegankelijkheid.</strong> Wordt duidelijk gemaakt
-          voor wie een les bedoeld is en zijn aanpassingen mogelijk?
+          <strong>Niveau en toegankelijkheid.</strong> Wordt duidelijk gemaakt voor wie een les
+          bedoeld is en zijn aanpassingen mogelijk?
         </li>
         <li>
-          <strong>Docent en persoonlijke aandacht.</strong> Krijg je een
-          korte introductie voor je eerste les? Kent de docent je naam na
-          een paar keer?
+          <strong>Docent en persoonlijke aandacht.</strong> Krijg je een korte introductie voor je
+          eerste les? Kent de docent je naam na een paar keer?
         </li>
         <li>
-          <strong>Sfeer en groepsgrootte.</strong> Voelt het rustig genoeg om
-          terug te komen? Is de groep behapbaar op het tijdstip dat jij komt?
+          <strong>Sfeer en groepsgrootte.</strong> Voelt het rustig genoeg om terug te komen? Is de
+          groep behapbaar op het tijdstip dat jij komt?
         </li>
         <li>
-          <strong>Locatie en reistijd.</strong> Zit de studio op een plek die
-          je zonder omweg bereikt vanaf huis of werk?
+          <strong>Locatie en reistijd.</strong> Zit de studio op een plek die je zonder omweg
+          bereikt vanaf huis of werk?
         </li>
         <li>
-          <strong>Rooster.</strong> Zijn er twee tot drie lestijden per week
-          die structureel in je agenda passen?
+          <strong>Rooster.</strong> Zijn er twee tot drie lestijden per week die structureel in je
+          agenda passen?
         </li>
         <li>
-          <strong>Prijs en proefaanbod.</strong> Reken de prijs per
-          verwachte les uit; check het intro-aanbod en de voorwaarden.
+          <strong>Prijs en proefaanbod.</strong> Reken de prijs per verwachte les uit; check het
+          intro-aanbod en de voorwaarden.
         </li>
         <li>
-          <strong>Materialen en voorzieningen.</strong> Zijn matjes, blokken
-          en riemen aanwezig? Is er ruimte om rustig aan te komen?
+          <strong>Materialen en voorzieningen.</strong> Zijn matjes, blokken en riemen aanwezig? Is
+          er ruimte om rustig aan te komen?
         </li>
       </ul>
 
@@ -671,22 +623,19 @@ function WelkeStudioBody() {
         Wanneer past Yoga Zeeburg bij jou?
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg is een kleine, persoonlijke studio aan de{" "}
-        <strong>Cruquiusweg 96F</strong>, boven CrossFit Zeeburg en aan het
-        water in Amsterdam Oost. De sfeer is bewust rustig en niet-zweverig;
-        de nadruk ligt op toegankelijke, praktische yoga voor mensen met een
-        gewone volle week. Groepen zijn niet groot, waardoor er ruimte is
-        voor persoonlijke aandacht en aanpassingen.
+        Yoga Zeeburg is een kleine, persoonlijke studio aan de <strong>Cruquiusweg 96F</strong>,
+        boven CrossFit Zeeburg en aan het water in Amsterdam Oost. De sfeer is bewust rustig en
+        niet-zweverig; de nadruk ligt op toegankelijke, praktische yoga voor mensen met een gewone
+        volle week. Groepen zijn niet groot, waardoor er ruimte is voor persoonlijke aandacht en
+        aanpassingen.
       </p>
       <p className="mt-4">
-        Yoga Zeeburg past bij jou als je een plek zoekt in Zeeburg, Cruquius,
-        de Indische Buurt of het Oostelijk Havengebied waar je in een kleine
-        setting yoga wilt oefenen, met verschillende lessen, docenten en
-        tijden om af te wisselen. Zoek je een grote, dynamische studio met
-        tientallen lessen per dag, dan past een andere plek in Amsterdam
-        waarschijnlijk beter — en dat is prima. We claimen niet objectief de
-        beste te zijn; we zijn de beste optie voor het publiek dat past bij
-        onze aanpak.
+        Yoga Zeeburg past bij jou als je een plek zoekt in Zeeburg, Cruquius, de Indische Buurt of
+        het Oostelijk Havengebied waar je in een kleine setting yoga wilt oefenen, met verschillende
+        lessen, docenten en tijden om af te wisselen. Zoek je een grote, dynamische studio met
+        tientallen lessen per dag, dan past een andere plek in Amsterdam waarschijnlijk beter — en
+        dat is prima. We claimen niet objectief de beste te zijn; we zijn de beste optie voor het
+        publiek dat past bij onze aanpak.
       </p>
 
       <h2
@@ -696,13 +645,11 @@ function WelkeStudioBody() {
         Zo maak je de definitieve keuze
       </h2>
       <p className="mt-4">
-        Kies twee tot drie studio's die op papier bij je passen op basis van
-        stijl, locatie en rooster. Boek bij elk daarvan minstens één les op
-        een tijdstip dat je structureel wilt bezoeken. Beoordeel na afloop
-        drie dingen: hoe je je in de uren erna voelt, of het rooster
-        realistisch in je week past, en of de drempel om opnieuw te boeken
-        laag is. De studio waar die drie het beste kloppen, is voor dit
-        moment jouw studio.
+        Kies twee tot drie studio's die op papier bij je passen op basis van stijl, locatie en
+        rooster. Boek bij elk daarvan minstens één les op een tijdstip dat je structureel wilt
+        bezoeken. Beoordeel na afloop drie dingen: hoe je je in de uren erna voelt, of het rooster
+        realistisch in je week past, en of de drempel om opnieuw te boeken laag is. De studio waar
+        die drie het beste kloppen, is voor dit moment jouw studio.
       </p>
       <p className="mt-4">
         Blader gerust ook door de{" "}
@@ -790,22 +737,20 @@ function BeginnersBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Beginnen met yoga in Amsterdam Oost doe je in drie stappen: kies
-            een les die zichzelf toegankelijk noemt, plan twee vaste momenten
-            per week in en geef jezelf de eerste maand geen oordeel. Je hoeft
-            niets te kunnen, niets bijzonders aan te schaffen en geen
+            Beginnen met yoga in Amsterdam Oost doe je in drie stappen: kies een les die zichzelf
+            toegankelijk noemt, plan twee vaste momenten per week in en geef jezelf de eerste maand
+            geen oordeel. Je hoeft niets te kunnen, niets bijzonders aan te schaffen en geen
             ervaring te hebben.
           </p>
           <p>
-            De belangrijkste beslissing is niet <em>welke</em> stijl je kiest,
-            maar of het tijdstip realistisch in jouw week past. Regelmaat wint
-            het van intensiteit — twee rustige lessen per week doen op de
-            lange termijn meer dan één zware les die je vaak overslaat.
+            De belangrijkste beslissing is niet <em>welke</em> stijl je kiest, maar of het tijdstip
+            realistisch in jouw week past. Regelmaat wint het van intensiteit — twee rustige lessen
+            per week doen op de lange termijn meer dan één zware les die je vaak overslaat.
           </p>
           <p>
-            In deze gids lopen we praktisch door de eerste weken: hoe je een
-            passende les kiest, wat je meeneemt, hoe vaak je realistisch gaat
-            en hoe je stap voor stap een routine opbouwt die je écht volhoudt.
+            In deze gids lopen we praktisch door de eerste weken: hoe je een passende les kiest, wat
+            je meeneemt, hoe vaak je realistisch gaat en hoe je stap voor stap een routine opbouwt
+            die je écht volhoudt.
           </p>
         </div>
       </section>
@@ -817,25 +762,22 @@ function BeginnersBody() {
         Waarom een goed begin het verschil maakt
       </h2>
       <p className="mt-4">
-        De meeste mensen die stoppen met yoga stoppen niet omdat yoga
-        tegenviel — ze stoppen omdat de start niet aansloot bij hun week.
-        Een te fysieke eerste les, een tijdstip dat toch niet past, of het
-        gevoel dat iedereen om je heen al lang meedoet. Dat zijn geen
-        yogaproblemen; dat zijn startproblemen. En die zijn te voorkomen.
+        De meeste mensen die stoppen met yoga stoppen niet omdat yoga tegenviel — ze stoppen omdat
+        de start niet aansloot bij hun week. Een te fysieke eerste les, een tijdstip dat toch niet
+        past, of het gevoel dat iedereen om je heen al lang meedoet. Dat zijn geen yogaproblemen;
+        dat zijn startproblemen. En die zijn te voorkomen.
       </p>
       <p className="mt-4">
-        Beginnen met yoga is minder een sportieve keuze en meer een
-        organisatorische. De vraag is niet hoeveel push-ups je kunt, maar of
-        je twee vaste momenten per week structureel vrij kunt houden. Wie
-        die momenten eerlijk in kaart brengt voordat de eerste les geboekt
-        wordt, heeft de grootste kans om het vol te houden.
+        Beginnen met yoga is minder een sportieve keuze en meer een organisatorische. De vraag is
+        niet hoeveel push-ups je kunt, maar of je twee vaste momenten per week structureel vrij kunt
+        houden. Wie die momenten eerlijk in kaart brengt voordat de eerste les geboekt wordt, heeft
+        de grootste kans om het vol te houden.
       </p>
       <p className="mt-4">
-        Amsterdam Oost heeft daarbij een praktisch voordeel: alles ligt
-        dichtbij en bereikbaar. In Zeeburg, Cruquius, de Indische Buurt of
-        het Oostelijk Havengebied ben je met de fiets binnen tien tot
-        vijftien minuten bij een studio. Dat maakt structurele beoefening
-        een stuk makkelijker dan wanneer je eerst een half uur moet reizen.
+        Amsterdam Oost heeft daarbij een praktisch voordeel: alles ligt dichtbij en bereikbaar. In
+        Zeeburg, Cruquius, de Indische Buurt of het Oostelijk Havengebied ben je met de fiets binnen
+        tien tot vijftien minuten bij een studio. Dat maakt structurele beoefening een stuk
+        makkelijker dan wanneer je eerst een half uur moet reizen.
       </p>
 
       <h2
@@ -845,39 +787,34 @@ function BeginnersBody() {
         Welke yogales past bij jou als beginner?
       </h2>
       <p className="mt-4">
-        Voor een eerste periode kies je een les die in de omschrijving
-        expliciet <strong>toegankelijk</strong>, <strong>rustig</strong> of{" "}
-        <strong>geschikt voor alle niveaus</strong> is. Dat zegt meer dan de
-        stijlnaam op zichzelf. Een vinyasa-les kan bij de ene docent
-        toegankelijk zijn en bij de andere pittig; de omschrijving is de
-        betrouwbaardere aanwijzing.
+        Voor een eerste periode kies je een les die in de omschrijving expliciet{" "}
+        <strong>toegankelijk</strong>, <strong>rustig</strong> of{" "}
+        <strong>geschikt voor alle niveaus</strong> is. Dat zegt meer dan de stijlnaam op zichzelf.
+        Een vinyasa-les kan bij de ene docent toegankelijk zijn en bij de andere pittig; de
+        omschrijving is de betrouwbaardere aanwijzing.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-foreground">
         Rustigere stijlen om mee te starten
       </h3>
       <p className="mt-3">
-        Hatha, yin, restorative en gentle zijn stijlen waar houdingen langer
-        worden vastgehouden en adem centraal staat. Voor beginners zijn ze
-        prettig omdat je tijd hebt om te snappen wat er gebeurt in je
-        lichaam, in plaats van houdingen te volgen op tempo. Je bouwt
-        aandacht en lichaamsgevoel op — de basis voor alles daarna.
+        Hatha, yin, restorative en gentle zijn stijlen waar houdingen langer worden vastgehouden en
+        adem centraal staat. Voor beginners zijn ze prettig omdat je tijd hebt om te snappen wat er
+        gebeurt in je lichaam, in plaats van houdingen te volgen op tempo. Je bouwt aandacht en
+        lichaamsgevoel op — de basis voor alles daarna.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-foreground">
         Dynamischere stijlen — pas na een paar weken
       </h3>
       <p className="mt-3">
-        Vinyasa, flow en power gaan sneller en zijn fysieker. Ze zijn niet
-        moeilijker in de zin van "gevorderd", maar ze vragen wel dat je de
-        basisnamen van houdingen enigszins kent. Als je nul ervaring hebt,
-        is het rustiger om deze pas te proberen na drie tot vier
-        toegankelijke lessen. Je ziet er dan meer van, in plaats van vooral
-        de docent te proberen bij te houden.
+        Vinyasa, flow en power gaan sneller en zijn fysieker. Ze zijn niet moeilijker in de zin van
+        "gevorderd", maar ze vragen wel dat je de basisnamen van houdingen enigszins kent. Als je
+        nul ervaring hebt, is het rustiger om deze pas te proberen na drie tot vier toegankelijke
+        lessen. Je ziet er dan meer van, in plaats van vooral de docent te proberen bij te houden.
       </p>
       <p className="mt-4">
-        Twijfel je nog? Kies simpelweg de eerste toegankelijke les die qua
-        tijd goed uitkomt. Met een intro pass kun je later andere stijlen en
-        docenten toetsen. Voor een uitgebreidere vergelijking van studio's
-        kun je ons artikel over{" "}
+        Twijfel je nog? Kies simpelweg de eerste toegankelijke les die qua tijd goed uitkomt. Met
+        een intro pass kun je later andere stijlen en docenten toetsen. Voor een uitgebreidere
+        vergelijking van studio's kun je ons artikel over{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
@@ -895,36 +832,33 @@ function BeginnersBody() {
         Wat heb je nodig — en wat juist niet?
       </h2>
       <p className="mt-4">
-        Beginnen met yoga vraagt bewust weinig materiaal. Alles wat je in
-        de eerste weken écht nodig hebt, heb je waarschijnlijk al thuis:
+        Beginnen met yoga vraagt bewust weinig materiaal. Alles wat je in de eerste weken écht nodig
+        hebt, heb je waarschijnlijk al thuis:
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>
-          <strong>Kleding waarin je beweegt.</strong> Een legging of joggingbroek
-          en een T-shirt of longsleeve zijn prima. Vermijd kleding die strak op
-          je middel drukt. Je hoeft geen speciale yoga-outfit te kopen — dat is
-          later hooguit een prettige, geen voorwaarde.
+          <strong>Kleding waarin je beweegt.</strong> Een legging of joggingbroek en een T-shirt of
+          longsleeve zijn prima. Vermijd kleding die strak op je middel drukt. Je hoeft geen
+          speciale yoga-outfit te kopen — dat is later hooguit een prettige, geen voorwaarde.
         </li>
         <li>
-          <strong>Blote voeten.</strong> Yoga doe je zonder schoenen en meestal
-          zonder sokken. Extra sokken meenemen voor de rustige delen aan het
-          einde kan prettig zijn, omdat je lichaam dan afkoelt.
+          <strong>Blote voeten.</strong> Yoga doe je zonder schoenen en meestal zonder sokken. Extra
+          sokken meenemen voor de rustige delen aan het einde kan prettig zijn, omdat je lichaam dan
+          afkoelt.
         </li>
         <li>
-          <strong>Water.</strong> Neem een flesje mee, maar drink niet vlak voor
-          de les liters achter elkaar.
+          <strong>Water.</strong> Neem een flesje mee, maar drink niet vlak voor de les liters
+          achter elkaar.
         </li>
         <li>
-          <strong>Een matje?</strong> In veel studio's zijn matjes, blokken en
-          riemen aanwezig. Vraag dit vooraf, dan hoef je op je eerste les niets
-          te sjouwen.
+          <strong>Een matje?</strong> In veel studio's zijn matjes, blokken en riemen aanwezig.
+          Vraag dit vooraf, dan hoef je op je eerste les niets te sjouwen.
         </li>
       </ul>
       <p className="mt-4">
-        Wat je vooral <em>niet</em> nodig hebt: een spirituele voorbereiding,
-        een leeg hoofd of het gevoel dat je "er klaar voor" bent. Yoga is er
-        juist voor mensen met een druk hoofd en een volle week. Je hoeft
-        niets weg te werken voordat je begint.
+        Wat je vooral <em>niet</em> nodig hebt: een spirituele voorbereiding, een leeg hoofd of het
+        gevoel dat je "er klaar voor" bent. Yoga is er juist voor mensen met een druk hoofd en een
+        volle week. Je hoeft niets weg te werken voordat je begint.
       </p>
 
       <h2
@@ -934,32 +868,29 @@ function BeginnersBody() {
         Hoe vaak in de week is realistisch?
       </h2>
       <p className="mt-4">
-        Voor de meeste beginners werkt twee keer per week goed. Dat is
-        genoeg om houdingen te herkennen, adem te leren volgen en effect te
-        merken. En het is weinig genoeg om je week niet te overbelasten,
-        zodat je niet na drie weken uitgeput afhaakt.
+        Voor de meeste beginners werkt twee keer per week goed. Dat is genoeg om houdingen te
+        herkennen, adem te leren volgen en effect te merken. En het is weinig genoeg om je week niet
+        te overbelasten, zodat je niet na drie weken uitgeput afhaakt.
       </p>
       <p className="mt-4">
-        Kies daarbij bij voorkeur <strong>twee vaste momenten</strong> in de
-        week, geen zwevende tijden. Bijvoorbeeld dinsdagavond en
-        zaterdagochtend, of maandagavond en donderdagochtend. Vaste momenten
-        onderhandel je niet meer met jezelf, en dat is precies waarom ze
-        werken. Zwevende plannen ("ik ga twee keer, ergens deze week")
-        verliezen bijna altijd van een drukke agenda.
+        Kies daarbij bij voorkeur <strong>twee vaste momenten</strong> in de week, geen zwevende
+        tijden. Bijvoorbeeld dinsdagavond en zaterdagochtend, of maandagavond en donderdagochtend.
+        Vaste momenten onderhandel je niet meer met jezelf, en dat is precies waarom ze werken.
+        Zwevende plannen ("ik ga twee keer, ergens deze week") verliezen bijna altijd van een drukke
+        agenda.
       </p>
       <p className="mt-4">
-        Combineer waar mogelijk één rustigere en één dynamischere les. Zo
-        krijg je afwisseling én zie je zelf welke vorm je op de lange termijn
-        prettiger vindt. Bekijk het{" "}
+        Combineer waar mogelijk één rustigere en één dynamischere les. Zo krijg je afwisseling én
+        zie je zelf welke vorm je op de lange termijn prettiger vindt. Bekijk het{" "}
         <a
           href="/schedule"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesrooster
         </a>{" "}
-        en zoek twee blokken die in je week passen zonder omweg. Als je die
-        niet vindt, is dat waardevolle informatie: dan past die studio in de
-        praktijk niet, hoe goed de lessen ook zijn.
+        en zoek twee blokken die in je week passen zonder omweg. Als je die niet vindt, is dat
+        waardevolle informatie: dan past die studio in de praktijk niet, hoe goed de lessen ook
+        zijn.
       </p>
 
       <h2
@@ -969,24 +900,21 @@ function BeginnersBody() {
         Rustig en verantwoord opbouwen
       </h2>
       <p className="mt-4">
-        Yoga hoort geen pijn te doen. Rekken kan intens voelen en spieren
-        kunnen de dag erna wat stijver zijn — dat hoort erbij. Scherpe of
-        stekende pijn tijdens een houding is echter een reden om eruit te
-        komen, niet om door te zetten. De docent zal dit vaak expliciet
-        benoemen; volg dat op.
+        Yoga hoort geen pijn te doen. Rekken kan intens voelen en spieren kunnen de dag erna wat
+        stijver zijn — dat hoort erbij. Scherpe of stekende pijn tijdens een houding is echter een
+        reden om eruit te komen, niet om door te zetten. De docent zal dit vaak expliciet benoemen;
+        volg dat op.
       </p>
       <p className="mt-4">
-        Twee praktische regels voor de eerste weken. Eén: als je adem stokt
-        of oppervlakkig wordt, schakel je terug. Rustig kunnen ademen is een
-        goede indicator dat je binnen je bereik werkt. Twee: variaties zijn
-        geen zwaktebod. Iedere houding heeft makkelijker en zwaarder
-        varianten; de makkelijkere kiezen is een oefening, geen concessie.
+        Twee praktische regels voor de eerste weken. Eén: als je adem stokt of oppervlakkig wordt,
+        schakel je terug. Rustig kunnen ademen is een goede indicator dat je binnen je bereik werkt.
+        Twee: variaties zijn geen zwaktebod. Iedere houding heeft makkelijker en zwaarder varianten;
+        de makkelijkere kiezen is een oefening, geen concessie.
       </p>
       <p className="mt-4">
-        Heb je bestaande klachten of ben je zwanger? Meld dit voor de les
-        aan de docent, zodat aanpassingen kunnen worden voorgesteld. Yoga is
-        geen medische behandeling — bij twijfel overleg je eerst met je
-        arts, verloskundige of behandelaar wat op dit moment verstandig is.
+        Heb je bestaande klachten of ben je zwanger? Meld dit voor de les aan de docent, zodat
+        aanpassingen kunnen worden voorgesteld. Yoga is geen medische behandeling — bij twijfel
+        overleg je eerst met je arts, verloskundige of behandelaar wat op dit moment verstandig is.
       </p>
 
       <h2
@@ -999,37 +927,33 @@ function BeginnersBody() {
         "Ik ben niet lenig genoeg."
       </h3>
       <p className="mt-3">
-        Lenigheid is geen voorwaarde voor yoga; het is een mogelijk gevolg
-        van regelmatig oefenen. Beginnen mét stijve hamstrings of schouders
-        is eerder de regel dan de uitzondering. Sterker: mensen die zichzelf
-        niet lenig noemen, merken vaak sneller effect omdat er meer ruimte
-        te winnen valt.
+        Lenigheid is geen voorwaarde voor yoga; het is een mogelijk gevolg van regelmatig oefenen.
+        Beginnen mét stijve hamstrings of schouders is eerder de regel dan de uitzondering. Sterker:
+        mensen die zichzelf niet lenig noemen, merken vaak sneller effect omdat er meer ruimte te
+        winnen valt.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-foreground">
         "Iedereen om me heen weet wat ze doen."
       </h3>
       <p className="mt-3">
-        Dat lijkt zo, maar in de praktijk kijkt vrijwel niemand naar wat de
-        rest doet. Bijna elke yogastudent is met dezelfde onzekerheid ooit
-        begonnen. Kies bewust een plek iets achterin de zaal als dat je
-        helpt, en volg gewoon de docent.
+        Dat lijkt zo, maar in de praktijk kijkt vrijwel niemand naar wat de rest doet. Bijna elke
+        yogastudent is met dezelfde onzekerheid ooit begonnen. Kies bewust een plek iets achterin de
+        zaal als dat je helpt, en volg gewoon de docent.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-foreground">
         "Ik heb geen tijd."
       </h3>
       <p className="mt-3">
-        Vaak niet echt waar — meestal is het geen tijd voor onduidelijke
-        momenten. Twee vaste blokken van 60 tot 75 minuten per week vind je
-        bijna altijd, mits je ze eerlijk plant. Behandel ze als een afspraak
-        met iemand anders; dan schuiven ze ook niet zomaar.
+        Vaak niet echt waar — meestal is het geen tijd voor onduidelijke momenten. Twee vaste
+        blokken van 60 tot 75 minuten per week vind je bijna altijd, mits je ze eerlijk plant.
+        Behandel ze als een afspraak met iemand anders; dan schuiven ze ook niet zomaar.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-foreground">
         "Ik weet niet of ik het langer volhoud dan een maand."
       </h3>
       <p className="mt-3">
-        Dat hoef je nu ook niet te weten. De vraag voor de eerste maand is
-        alleen of je de twee gekozen momenten haalt. Effect zien is
-        vervolgvraag, niet startvraag.
+        Dat hoef je nu ook niet te weten. De vraag voor de eerste maand is alleen of je de twee
+        gekozen momenten haalt. Effect zien is vervolgvraag, niet startvraag.
       </p>
 
       <h2
@@ -1040,9 +964,9 @@ function BeginnersBody() {
       </h2>
       <ol className="mt-4 space-y-3 pl-5 [list-style-type:decimal]">
         <li>
-          <strong>Kies twee tijdslots.</strong> Kijk in je agenda naar de
-          komende twee weken en markeer twee blokken van 90 minuten (les +
-          reistijd) die realistisch vrij zijn. Niet ideaal, maar echt vrij.
+          <strong>Kies twee tijdslots.</strong> Kijk in je agenda naar de komende twee weken en
+          markeer twee blokken van 90 minuten (les + reistijd) die realistisch vrij zijn. Niet
+          ideaal, maar echt vrij.
         </li>
         <li>
           <strong>Bekijk het rooster.</strong> Zoek in het{" "}
@@ -1055,24 +979,21 @@ function BeginnersBody() {
           twee toegankelijke lessen die op die momenten vallen.
         </li>
         <li>
-          <strong>Boek beide lessen tegelijk.</strong> Niet één en dan "we zien
-          wel". Twee gelijk geboekte lessen maken de start automatisch een
-          routine, geen experiment.
+          <strong>Boek beide lessen tegelijk.</strong> Niet één en dan "we zien wel". Twee gelijk
+          geboekte lessen maken de start automatisch een routine, geen experiment.
         </li>
         <li>
-          <strong>Leg je kleding klaar.</strong> Zet je tas de avond ervoor
-          klaar. Kleine drempels weghalen bij de start scheelt op moeilijke
-          dagen.
+          <strong>Leg je kleding klaar.</strong> Zet je tas de avond ervoor klaar. Kleine drempels
+          weghalen bij de start scheelt op moeilijke dagen.
         </li>
         <li>
-          <strong>Beoordeel na twee weken.</strong> Niet na één les. Kijk naar
-          hoe je week aanvoelde en of je jezelf terug ziet gaan. Dat is
-          bruikbaardere informatie dan of je alle houdingen "goed" deed.
+          <strong>Beoordeel na twee weken.</strong> Niet na één les. Kijk naar hoe je week aanvoelde
+          en of je jezelf terug ziet gaan. Dat is bruikbaardere informatie dan of je alle houdingen
+          "goed" deed.
         </li>
       </ol>
       <p className="mt-4">
-        Meer weten over hoe zo'n eerste les er concreet uitziet? Lees ons
-        artikel over{" "}
+        Meer weten over hoe zo'n eerste les er concreet uitziet? Lees ons artikel over{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{
@@ -1092,17 +1013,15 @@ function BeginnersBody() {
         Zo begin je bij Yoga Zeeburg
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg is een kleine, persoonlijke studio aan de{" "}
-        <strong>Cruquiusweg 96F</strong> in Amsterdam Oost, boven CrossFit
-        Zeeburg en aan het water. De studio is bewust ingericht op mensen die
-        met een gewone volle week toch een yogaroutine willen opbouwen — geen
+        Yoga Zeeburg is een kleine, persoonlijke studio aan de <strong>Cruquiusweg 96F</strong> in
+        Amsterdam Oost, boven CrossFit Zeeburg en aan het water. De studio is bewust ingericht op
+        mensen die met een gewone volle week toch een yogaroutine willen opbouwen — geen
         prestatiedruk, geen zweverigheid, wel persoonlijke aandacht.
       </p>
       <p className="mt-4">
-        Voor beginners werkt een intro pass prettig: in twee weken kun je
-        meerdere toegankelijke lessen op verschillende tijden en bij
-        verschillende docenten proberen, zodat je zonder haast een routine
-        kunt uitzoeken die daadwerkelijk in je week past.{" "}
+        Voor beginners werkt een intro pass prettig: in twee weken kun je meerdere toegankelijke
+        lessen op verschillende tijden en bij verschillende docenten proberen, zodat je zonder haast
+        een routine kunt uitzoeken die daadwerkelijk in je week past.{" "}
         <a
           href="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
@@ -1191,12 +1110,11 @@ function KantoorBody() {
   return (
     <>
       <p className="mt-4">
-        Wie veel achter een laptop zit, herkent het vaak: aan het einde van de
-        werkdag voelt je lichaam stijf en blijft je hoofd nog op kantoorstand
-        staan. Yoga kan dan een praktisch overgangsmoment zijn tussen werken
-        en de rest van je dag. Je hoeft daarvoor niet lenig te zijn en ook
-        geen ervaring te hebben. De belangrijkste keuze is een les die past
-        bij je energie, je lichaam en je agenda.
+        Wie veel achter een laptop zit, herkent het vaak: aan het einde van de werkdag voelt je
+        lichaam stijf en blijft je hoofd nog op kantoorstand staan. Yoga kan dan een praktisch
+        overgangsmoment zijn tussen werken en de rest van je dag. Je hoeft daarvoor niet lenig te
+        zijn en ook geen ervaring te hebben. De belangrijkste keuze is een les die past bij je
+        energie, je lichaam en je agenda.
       </p>
 
       <section
@@ -1212,13 +1130,11 @@ function KantoorBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Yoga voor kantoormedewerkers combineert bewegen, bewust ademen en
-            aandacht. Na veel zitten kan een les prettig zijn om je hele
-            lichaam weer te gebruiken en je werkdag bewust af te sluiten. Een
-            actieve les past vaak goed als je behoefte hebt aan beweging; een
-            rustige les als je vooral wilt vertragen. Kies bij voorkeur een
-            studio dichtbij huis of werk en een lestijd die je wekelijks kunt
-            volhouden.
+            Yoga voor kantoormedewerkers combineert bewegen, bewust ademen en aandacht. Na veel
+            zitten kan een les prettig zijn om je hele lichaam weer te gebruiken en je werkdag
+            bewust af te sluiten. Een actieve les past vaak goed als je behoefte hebt aan beweging;
+            een rustige les als je vooral wilt vertragen. Kies bij voorkeur een studio dichtbij huis
+            of werk en een lestijd die je wekelijks kunt volhouden.
           </p>
         </div>
       </section>
@@ -1230,23 +1146,21 @@ function KantoorBody() {
         Waarom yoga prettig kan zijn na een kantoordag
       </h2>
       <p className="mt-4">
-        Kantoorwerk vraagt meestal weinig afwisseling van je lichaam en juist
-        veel van je concentratie. Je zit lang in dezelfde houding, kijkt uren
-        naar een scherm en schakelt voortdurend tussen berichten,
-        vergaderingen en taken. Daardoor kun je aan het einde van de dag het
-        gevoel hebben dat je tegelijk moe én onrustig bent.
+        Kantoorwerk vraagt meestal weinig afwisseling van je lichaam en juist veel van je
+        concentratie. Je zit lang in dezelfde houding, kijkt uren naar een scherm en schakelt
+        voortdurend tussen berichten, vergaderingen en taken. Daardoor kun je aan het einde van de
+        dag het gevoel hebben dat je tegelijk moe én onrustig bent.
       </p>
       <p className="mt-4">
-        Een yogales doorbreekt dat patroon. Je staat op van je stoel, beweegt
-        in verschillende richtingen en brengt je aandacht terug naar wat je op
-        dat moment voelt en doet. Dat maakt yoga niet alleen een vorm van
-        bewegen, maar ook een duidelijke grens tussen werk en vrije tijd.
+        Een yogales doorbreekt dat patroon. Je staat op van je stoel, beweegt in verschillende
+        richtingen en brengt je aandacht terug naar wat je op dat moment voelt en doet. Dat maakt
+        yoga niet alleen een vorm van bewegen, maar ook een duidelijke grens tussen werk en vrije
+        tijd.
       </p>
       <p className="mt-4">
-        Yoga is geen medische behandeling voor aanhoudende pijn of andere
-        klachten. Heb je ernstige, onverklaarde of terugkerende klachten, laat
-        die dan beoordelen door een gekwalificeerde zorgprofessional en
-        bespreek met je docent welke aanpassingen verstandig zijn.
+        Yoga is geen medische behandeling voor aanhoudende pijn of andere klachten. Heb je ernstige,
+        onverklaarde of terugkerende klachten, laat die dan beoordelen door een gekwalificeerde
+        zorgprofessional en bespreek met je docent welke aanpassingen verstandig zijn.
       </p>
 
       <h2
@@ -1256,18 +1170,17 @@ function KantoorBody() {
         Welke yogales past na een werkdag?
       </h2>
       <p className="mt-4">
-        Er bestaat niet één beste yogastijl voor iedereen met een kantoorbaan.
-        Kijk vooral naar wat jij na je werk nodig hebt.
+        Er bestaat niet één beste yogastijl voor iedereen met een kantoorbaan. Kijk vooral naar wat
+        jij na je werk nodig hebt.
       </p>
 
       <h3 className="mt-8 font-display text-xl font-medium tracking-tight text-foreground">
         Als je weer wilt bewegen
       </h3>
       <p className="mt-3">
-        Een dynamische les, zoals Vinyasa, kan fijn zijn wanneer je na veel
-        zitten behoefte hebt aan een actieve, vloeiende training. Houdingen
-        lopen in elkaar over en je gebruikt het hele lichaam. Je hoeft niet
-        snel of perfect mee te kunnen doen: een goede docent geeft opties
+        Een dynamische les, zoals Vinyasa, kan fijn zijn wanneer je na veel zitten behoefte hebt aan
+        een actieve, vloeiende training. Houdingen lopen in elkaar over en je gebruikt het hele
+        lichaam. Je hoeft niet snel of perfect mee te kunnen doen: een goede docent geeft opties
         waarmee je op je eigen niveau kunt bewegen.
       </p>
 
@@ -1275,29 +1188,25 @@ function KantoorBody() {
         Als je vooral wilt vertragen
       </h3>
       <p className="mt-3">
-        Na een volle dag met veel prikkels kan een rustige les beter passen.
-        Bij Yin yoga blijf je langer in houdingen en ligt het tempo laag. Dat
-        vraagt minder schakelen en geeft ruimte om bewust tot rust te komen.
-        Rustig betekent overigens niet dat iedere houding automatisch
-        gemakkelijk voelt; ook hier mag je altijd minder diep gaan of een
-        houding aanpassen.
+        Na een volle dag met veel prikkels kan een rustige les beter passen. Bij Yin yoga blijf je
+        langer in houdingen en ligt het tempo laag. Dat vraagt minder schakelen en geeft ruimte om
+        bewust tot rust te komen. Rustig betekent overigens niet dat iedere houding automatisch
+        gemakkelijk voelt; ook hier mag je altijd minder diep gaan of een houding aanpassen.
       </p>
 
       <h3 className="mt-8 font-display text-xl font-medium tracking-tight text-foreground">
         Als je nog niet weet wat bij je past
       </h3>
       <p className="mt-3">
-        Begin dan niet met eindeloos vergelijken. Probeer verschillende
-        lessen en let na afloop op drie dingen:
+        Begin dan niet met eindeloos vergelijken. Probeer verschillende lessen en let na afloop op
+        drie dingen:
       </p>
       <ol className="mt-4 space-y-2 pl-5 [list-style-type:decimal]">
         <li>Voelt je lichaam prettiger dan vóór de les?</li>
         <li>Is je hoofd rustiger of helderder?</li>
         <li>Zou je deze les en dit tijdstip wekelijks willen herhalen?</li>
       </ol>
-      <p className="mt-4">
-        Die antwoorden zeggen meestal meer dan de naam van de yogastijl.
-      </p>
+      <p className="mt-4">Die antwoorden zeggen meestal meer dan de naam van de yogastijl.</p>
 
       <h2
         id="niet-alleen-schouders"
@@ -1306,16 +1215,14 @@ function KantoorBody() {
         Let niet alleen op stijve schouders
       </h2>
       <p className="mt-4">
-        Bij bureauwerk gaat de aandacht vaak direct naar nek en schouders.
-        Toch is het verstandiger om je hele lichaam te bewegen. Lang zitten
-        betekent ook dat je heupen en benen weinig variatie krijgen en dat je
-        romp lang in ongeveer dezelfde positie blijft.
+        Bij bureauwerk gaat de aandacht vaak direct naar nek en schouders. Toch is het verstandiger
+        om je hele lichaam te bewegen. Lang zitten betekent ook dat je heupen en benen weinig
+        variatie krijgen en dat je romp lang in ongeveer dezelfde positie blijft.
       </p>
       <p className="mt-4">
-        Een complete yogales bevat daarom niet alleen bewegingen voor het
-        bovenlichaam, maar bijvoorbeeld ook staande houdingen, rotaties,
-        balans en rustige momenten. Het doel is niet om één plek zo hard
-        mogelijk op te rekken. Het gaat om afwisseling, controle en bewegen
+        Een complete yogales bevat daarom niet alleen bewegingen voor het bovenlichaam, maar
+        bijvoorbeeld ook staande houdingen, rotaties, balans en rustige momenten. Het doel is niet
+        om één plek zo hard mogelijk op te rekken. Het gaat om afwisseling, controle en bewegen
         binnen een bereik dat voor jou prettig voelt.
       </p>
 
@@ -1326,8 +1233,8 @@ function KantoorBody() {
         Zo maak je yoga haalbaar naast je werk
       </h2>
       <p className="mt-4">
-        De beste les is uiteindelijk de les waar je daadwerkelijk naartoe
-        gaat. Maak de drempel daarom klein.
+        De beste les is uiteindelijk de les waar je daadwerkelijk naartoe gaat. Maak de drempel
+        daarom klein.
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>Kies een studio dichtbij huis, werk of je vaste reisroute.</li>
@@ -1338,10 +1245,9 @@ function KantoorBody() {
         <li>Vertel de docent vooraf dat je nieuw bent of ergens rekening mee wilt houden.</li>
       </ul>
       <p className="mt-4">
-        Woon of werk je in Amsterdam Oost, dan helpt een locatie in de buurt
-        om van yoga een vaste gewoonte te maken. Yoga Zeeburg ligt aan de
-        Cruquiusweg, boven CrossFit Zeeburg en aan het water. De studio is
-        kleinschalig, persoonlijk en beginnersvriendelijk.
+        Woon of werk je in Amsterdam Oost, dan helpt een locatie in de buurt om van yoga een vaste
+        gewoonte te maken. Yoga Zeeburg ligt aan de Cruquiusweg, boven CrossFit Zeeburg en aan het
+        water. De studio is kleinschalig, persoonlijk en beginnersvriendelijk.
       </p>
       <p className="mt-4">
         Wil je ontdekken welke les na jouw werkdag past? Probeer dan via{" "}
@@ -1361,16 +1267,14 @@ function KantoorBody() {
         Een korte bureaubreak is nuttig, maar geen yogales
       </h2>
       <p className="mt-4">
-        Je hoeft niet tot de avond te wachten om van houding te veranderen.
-        Even opstaan, een stukje lopen, je blik van het scherm halen en
-        rustig bewegen kan je werkdag al onderbreken. Zulke korte pauzes zijn
-        vooral waardevol omdat ze je zittijd doorbreken.
+        Je hoeft niet tot de avond te wachten om van houding te veranderen. Even opstaan, een stukje
+        lopen, je blik van het scherm halen en rustig bewegen kan je werkdag al onderbreken. Zulke
+        korte pauzes zijn vooral waardevol omdat ze je zittijd doorbreken.
       </p>
       <p className="mt-4">
-        Een volledige yogales heeft een ander voordeel: je reserveert langere
-        tijd zonder laptop, taken of meldingen. Daardoor hoef je niet zelf
-        steeds te bedenken wat je gaat doen en kun je onder begeleiding
-        bewegen. Een bureaubreak en een yogales hoeven elkaar dus niet te
+        Een volledige yogales heeft een ander voordeel: je reserveert langere tijd zonder laptop,
+        taken of meldingen. Daardoor hoef je niet zelf steeds te bedenken wat je gaat doen en kun je
+        onder begeleiding bewegen. Een bureaubreak en een yogales hoeven elkaar dus niet te
         vervangen; ze kunnen elkaar juist aanvullen.
       </p>
 
@@ -1381,10 +1285,9 @@ function KantoorBody() {
         Wat neem je mee naar je eerste les?
       </h2>
       <p className="mt-4">
-        Comfortabele kleding waarin je vrij kunt bewegen is voldoende. Je
-        hoeft geen speciale yoga-outfit te kopen en je hoeft vooraf geen
-        houdingen te oefenen. Kom iets eerder, vertel de docent dat het je
-        eerste les is en geef aan wanneer een houding niet prettig voelt.
+        Comfortabele kleding waarin je vrij kunt bewegen is voldoende. Je hoeft geen speciale
+        yoga-outfit te kopen en je hoeft vooraf geen houdingen te oefenen. Kom iets eerder, vertel
+        de docent dat het je eerste les is en geef aan wanneer een houding niet prettig voelt.
       </p>
       <p className="mt-4">
         Bekijk voor vertrek altijd het actuele lesrooster via{" "}
@@ -1404,12 +1307,11 @@ function KantoorBody() {
         Conclusie
       </h2>
       <p className="mt-4">
-        Yoga kan voor kantoormedewerkers een praktisch moment zijn om na veel
-        zitten weer te bewegen en de werkdag bewust af te sluiten. Kies een
-        actieve les wanneer je energie kwijt wilt, een rustige les wanneer je
-        wilt vertragen, en probeer meerdere opties als je nog twijfelt. De
-        grootste kans dat je het volhoudt ontstaat wanneer de locatie,
-        lestijd en sfeer echt bij je dagelijks leven passen.
+        Yoga kan voor kantoormedewerkers een praktisch moment zijn om na veel zitten weer te bewegen
+        en de werkdag bewust af te sluiten. Kies een actieve les wanneer je energie kwijt wilt, een
+        rustige les wanneer je wilt vertragen, en probeer meerdere opties als je nog twijfelt. De
+        grootste kans dat je het volhoudt ontstaat wanneer de locatie, lestijd en sfeer echt bij je
+        dagelijks leven passen.
       </p>
     </>
   );
@@ -1485,11 +1387,10 @@ function KeuzeBody() {
   return (
     <>
       <p className="mt-4">
-        Een yogales kiezen in Amsterdam lijkt eenvoudig, totdat je tientallen
-        studio’s, lesstijlen en roosters naast elkaar ziet. De beste keuze is
-        niet automatisch de bekendste studio of de les met de spannendste naam.
-        Een goede yogales past bij wat jij zoekt, bij je ervaring én bij de
-        manier waarop je week werkelijk is ingericht.
+        Een yogales kiezen in Amsterdam lijkt eenvoudig, totdat je tientallen studio’s, lesstijlen
+        en roosters naast elkaar ziet. De beste keuze is niet automatisch de bekendste studio of de
+        les met de spannendste naam. Een goede yogales past bij wat jij zoekt, bij je ervaring én
+        bij de manier waarop je week werkelijk is ingericht.
       </p>
 
       <section
@@ -1505,13 +1406,11 @@ function KeuzeBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Let bij het kiezen van een yogales in Amsterdam vooral op zeven
-            dingen: je doel, de inhoud en intensiteit van de les, het niveau,
-            de docent, de locatie, het rooster en de sfeer in de studio. Kies
-            eerst twee of drie opties die praktisch haalbaar zijn en probeer
-            daarna zelf een les. De beste yogastudio is de plek waar je je
-            welkom voelt, passende begeleiding krijgt en zonder veel gedoe
-            regelmatig naartoe kunt gaan.
+            Let bij het kiezen van een yogales in Amsterdam vooral op zeven dingen: je doel, de
+            inhoud en intensiteit van de les, het niveau, de docent, de locatie, het rooster en de
+            sfeer in de studio. Kies eerst twee of drie opties die praktisch haalbaar zijn en
+            probeer daarna zelf een les. De beste yogastudio is de plek waar je je welkom voelt,
+            passende begeleiding krijgt en zonder veel gedoe regelmatig naartoe kunt gaan.
           </p>
         </div>
       </section>
@@ -1523,15 +1422,13 @@ function KeuzeBody() {
         1. Begin bij je doel
       </h2>
       <p className="mt-4">
-        Vraag jezelf vóór het vergelijken af waarom je yoga wilt doen. Wil je
-        rustig bewegen na een drukke werkdag, juist actief trainen, soepeler
-        worden, bewuster leren ademen of een vast moment voor jezelf creëren?
-        Zonder duidelijk doel wordt iedere lesomschrijving tegelijk
+        Vraag jezelf vóór het vergelijken af waarom je yoga wilt doen. Wil je rustig bewegen na een
+        drukke werkdag, juist actief trainen, soepeler worden, bewuster leren ademen of een vast
+        moment voor jezelf creëren? Zonder duidelijk doel wordt iedere lesomschrijving tegelijk
         aantrekkelijk en onduidelijk.
       </p>
       <p className="mt-4">
-        Je antwoord hoeft niet perfect te zijn. Een eenvoudige richting is
-        genoeg:
+        Je antwoord hoeft niet perfect te zijn. Een eenvoudige richting is genoeg:
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>Ik wil vooral vertragen en tot rust komen.</li>
@@ -1541,9 +1438,9 @@ function KeuzeBody() {
         <li>Ik wil verschillende stijlen proberen voordat ik kies.</li>
       </ul>
       <p className="mt-4">
-        Met zo’n uitgangspunt kun je gerichter naar het lesaanbod kijken. Wil
-        je vooral ontdekken wat bij je past, dan is een studio met meerdere
-        lesvormen en docenten vaak praktischer dan direct één stijl vastleggen.
+        Met zo’n uitgangspunt kun je gerichter naar het lesaanbod kijken. Wil je vooral ontdekken
+        wat bij je past, dan is een studio met meerdere lesvormen en docenten vaak praktischer dan
+        direct één stijl vastleggen.
       </p>
 
       <h2
@@ -1553,23 +1450,21 @@ function KeuzeBody() {
         2. Kijk verder dan de naam van de les
       </h2>
       <p className="mt-4">
-        Namen als Vinyasa, Yin, Hatha en Slow Flow geven een eerste indruk,
-        maar vertellen niet alles. Twee lessen met dezelfde naam kunnen bij
-        verschillende docenten heel anders aanvoelen. Tempo, opbouw, muziek,
-        hoeveelheid uitleg en ruimte voor aanpassingen bepalen minstens
-        zoveel als het label.
+        Namen als Vinyasa, Yin, Hatha en Slow Flow geven een eerste indruk, maar vertellen niet
+        alles. Twee lessen met dezelfde naam kunnen bij verschillende docenten heel anders
+        aanvoelen. Tempo, opbouw, muziek, hoeveelheid uitleg en ruimte voor aanpassingen bepalen
+        minstens zoveel als het label.
       </p>
       <p className="mt-4">
-        Lees daarom de volledige lesomschrijving. Zoek naar concrete
-        informatie: is de les actief of rustig, is ervaring nodig, hoe lang
-        duurt de les en worden er alternatieven aangeboden? Een duidelijke
-        beschrijving helpt meer dan woorden als “transformerend”, “advanced”
-        of “voor iedereen” zonder verdere uitleg.
+        Lees daarom de volledige lesomschrijving. Zoek naar concrete informatie: is de les actief of
+        rustig, is ervaring nodig, hoe lang duurt de les en worden er alternatieven aangeboden? Een
+        duidelijke beschrijving helpt meer dan woorden als “transformerend”, “advanced” of “voor
+        iedereen” zonder verdere uitleg.
       </p>
       <p className="mt-4">
-        Twijfel je tussen een actieve en rustige les? Kies op basis van wat
-        je op dat moment nodig hebt en probeer later ook de andere variant.
-        Je hoeft niet meteen één yogastijl voor altijd te kiezen.
+        Twijfel je tussen een actieve en rustige les? Kies op basis van wat je op dat moment nodig
+        hebt en probeer later ook de andere variant. Je hoeft niet meteen één yogastijl voor altijd
+        te kiezen.
       </p>
 
       <h2
@@ -1579,14 +1474,11 @@ function KeuzeBody() {
         3. Controleer niveau en begeleiding
       </h2>
       <p className="mt-4">
-        Een beginnersvriendelijke les betekent niet dat alles gemakkelijk is.
-        Het betekent vooral dat je uitleg krijgt, vragen mag stellen en
-        houdingen kunt aanpassen. Een docent hoeft niet iedereen exact
-        hetzelfde te laten doen om een samenhangende les te geven.
+        Een beginnersvriendelijke les betekent niet dat alles gemakkelijk is. Het betekent vooral
+        dat je uitleg krijgt, vragen mag stellen en houdingen kunt aanpassen. Een docent hoeft niet
+        iedereen exact hetzelfde te laten doen om een samenhangende les te geven.
       </p>
-      <p className="mt-4">
-        Let bij de omschrijving of tijdens een proefles op deze signalen:
-      </p>
+      <p className="mt-4">Let bij de omschrijving of tijdens een proefles op deze signalen:</p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>De docent legt uit wat de bedoeling van een houding of beweging is.</li>
         <li>Er zijn eenvoudigere en intensievere opties.</li>
@@ -1595,10 +1487,9 @@ function KeuzeBody() {
         <li>Je kunt vooraf aangeven dat je nieuw bent of ergens rekening mee wilt houden.</li>
       </ul>
       <p className="mt-4">
-        Heb je pijn, een blessure, ben je zwanger of twijfel je of een les
-        passend is, neem dan vooraf contact op met de studio en bespreek het
-        met de docent. Een algemene yogales vervangt geen individuele
-        beoordeling of behandeling door een gekwalificeerde zorgprofessional.
+        Heb je pijn, een blessure, ben je zwanger of twijfel je of een les passend is, neem dan
+        vooraf contact op met de studio en bespreek het met de docent. Een algemene yogales vervangt
+        geen individuele beoordeling of behandeling door een gekwalificeerde zorgprofessional.
       </p>
 
       <h2
@@ -1608,14 +1499,11 @@ function KeuzeBody() {
         4. Let op de docent, niet alleen op de studio
       </h2>
       <p className="mt-4">
-        De docent bepaalt voor een groot deel hoe een les voelt. De ene
-        docent geeft veel technische aanwijzingen; de andere laat meer
-        stilte. Sommige lessen zijn speels en energiek, andere rustig en
-        precies. Geen van die vormen is automatisch beter.
+        De docent bepaalt voor een groot deel hoe een les voelt. De ene docent geeft veel technische
+        aanwijzingen; de andere laat meer stilte. Sommige lessen zijn speels en energiek, andere
+        rustig en precies. Geen van die vormen is automatisch beter.
       </p>
-      <p className="mt-4">
-        Vraag na een proefles niet alleen: “Vond ik yoga leuk?” Vraag ook:
-      </p>
+      <p className="mt-4">Vraag na een proefles niet alleen: “Vond ik yoga leuk?” Vraag ook:</p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>Begreep ik de uitleg?</li>
         <li>Voelde ik ruimte om mijn eigen tempo te volgen?</li>
@@ -1624,9 +1512,9 @@ function KeuzeBody() {
         <li>Zou ik bij deze docent terugkomen?</li>
       </ul>
       <p className="mt-4">
-        Bevalt de studio wel, maar de eerste docent minder? Probeer dan een
-        andere les voordat je de plek afschrijft. Een rooster met meerdere
-        docenten geeft je ruimte om een combinatie te vinden die bij je past.
+        Bevalt de studio wel, maar de eerste docent minder? Probeer dan een andere les voordat je de
+        plek afschrijft. Een rooster met meerdere docenten geeft je ruimte om een combinatie te
+        vinden die bij je past.
       </p>
 
       <h2
@@ -1636,22 +1524,20 @@ function KeuzeBody() {
         5. Maak locatie en reistijd onderdeel van je keuze
       </h2>
       <p className="mt-4">
-        In Amsterdam kan een korte afstand op de kaart alsnog veel reistijd
-        kosten. Een studio moet daarom niet alleen aantrekkelijk zijn, maar
-        ook logisch liggen ten opzichte van huis, werk of je vaste route.
+        In Amsterdam kan een korte afstand op de kaart alsnog veel reistijd kosten. Een studio moet
+        daarom niet alleen aantrekkelijk zijn, maar ook logisch liggen ten opzichte van huis, werk
+        of je vaste route.
       </p>
       <p className="mt-4">
-        Denk praktisch. Kun je op tijd komen zonder te haasten? Is de
-        terugreis ’s avonds prettig? Kun je rechtstreeks vanuit kantoor gaan?
-        Een studio die tien minuten makkelijker bereikbaar is, kan op lange
-        termijn waardevoller zijn dan een plek die op papier nét beter lijkt.
+        Denk praktisch. Kun je op tijd komen zonder te haasten? Is de terugreis ’s avonds prettig?
+        Kun je rechtstreeks vanuit kantoor gaan? Een studio die tien minuten makkelijker bereikbaar
+        is, kan op lange termijn waardevoller zijn dan een plek die op papier nét beter lijkt.
       </p>
       <p className="mt-4">
-        Voor wie woont of werkt in Amsterdam Oost zijn Zeeburg, Cruquius, het
-        Oostelijk Havengebied en de Indische Buurt logische gebieden om mee
-        te nemen. Yoga Zeeburg ligt aan de Cruquiusweg 96F, boven CrossFit
-        Zeeburg en aan het water. Bekijk altijd zelf of de locatie goed
-        aansluit op jouw dagelijkse route.
+        Voor wie woont of werkt in Amsterdam Oost zijn Zeeburg, Cruquius, het Oostelijk Havengebied
+        en de Indische Buurt logische gebieden om mee te nemen. Yoga Zeeburg ligt aan de Cruquiusweg
+        96F, boven CrossFit Zeeburg en aan het water. Bekijk altijd zelf of de locatie goed aansluit
+        op jouw dagelijkse route.
       </p>
 
       <h2
@@ -1661,10 +1547,9 @@ function KeuzeBody() {
         6. Kies een rooster dat in je echte week past
       </h2>
       <p className="mt-4">
-        Een uitgebreid rooster heeft weinig waarde als jouw favoriete lessen
-        altijd op onmogelijke tijden vallen. Kijk daarom niet alleen naar het
-        totale aanbod, maar naar twee of drie momenten waarop jij structureel
-        zou kunnen gaan.
+        Een uitgebreid rooster heeft weinig waarde als jouw favoriete lessen altijd op onmogelijke
+        tijden vallen. Kijk daarom niet alleen naar het totale aanbod, maar naar twee of drie
+        momenten waarop jij structureel zou kunnen gaan.
       </p>
       <p className="mt-4">Controleer:</p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
@@ -1682,8 +1567,8 @@ function KeuzeBody() {
         >
           /schedule
         </Link>
-        . Begin liever met één realistisch moment per week dan met een
-        ambitieus plan dat na twee weken niet meer past.
+        . Begin liever met één realistisch moment per week dan met een ambitieus plan dat na twee
+        weken niet meer past.
       </p>
 
       <h2
@@ -1693,23 +1578,20 @@ function KeuzeBody() {
         7. Ervaar de sfeer zelf
       </h2>
       <p className="mt-4">
-        Foto’s, reviews en teksten geven een indruk, maar de sfeer van een
-        studio ervaar je pas wanneer je binnenstapt. Let tijdens je eerste
-        bezoek op kleine dingen: word je begroet, is duidelijk waar je moet
-        zijn, voelt de ruimte verzorgd en kun je zonder prestatiedruk
+        Foto’s, reviews en teksten geven een indruk, maar de sfeer van een studio ervaar je pas
+        wanneer je binnenstapt. Let tijdens je eerste bezoek op kleine dingen: word je begroet, is
+        duidelijk waar je moet zijn, voelt de ruimte verzorgd en kun je zonder prestatiedruk
         meedoen?
       </p>
       <p className="mt-4">
-        Een grote studio kan veel keuze en anonimiteit bieden. Een kleine
-        studio kan persoonlijker voelen en sneller vertrouwd worden. Wat
-        prettig is, verschilt per persoon. Ook taal speelt mee: sommige
-        deelnemers voelen zich fijner bij Nederlandse uitleg, anderen juist
-        bij een Engelstalige les.
+        Een grote studio kan veel keuze en anonimiteit bieden. Een kleine studio kan persoonlijker
+        voelen en sneller vertrouwd worden. Wat prettig is, verschilt per persoon. Ook taal speelt
+        mee: sommige deelnemers voelen zich fijner bij Nederlandse uitleg, anderen juist bij een
+        Engelstalige les.
       </p>
       <p className="mt-4">
-        De juiste sfeer betekent niet dat alles perfect moet zijn. Het gaat
-        erom dat jij je voldoende op je gemak voelt om aandacht aan de les te
-        geven en nog een keer terug te komen.
+        De juiste sfeer betekent niet dat alles perfect moet zijn. Het gaat erom dat jij je
+        voldoende op je gemak voelt om aandacht aan de les te geven en nog een keer terug te komen.
       </p>
 
       <h2
@@ -1719,11 +1601,9 @@ function KeuzeBody() {
         Vergelijk een proefles, introductiepas en lidmaatschap
       </h2>
       <p className="mt-4">
-        Een losse proefles is handig om één moment te ervaren. Een
-        introductiepas is vaak geschikter wanneer je verschillende
-        lesstijlen, docenten en tijden wilt vergelijken. Een regulier
-        lidmaatschap wordt pas interessant wanneer je weet hoe vaak je
-        realistisch wilt gaan.
+        Een losse proefles is handig om één moment te ervaren. Een introductiepas is vaak geschikter
+        wanneer je verschillende lesstijlen, docenten en tijden wilt vergelijken. Een regulier
+        lidmaatschap wordt pas interessant wanneer je weet hoe vaak je realistisch wilt gaan.
       </p>
       <p className="mt-4">Let niet alleen op de laagste prijs. Bekijk ook:</p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
@@ -1741,8 +1621,8 @@ function KeuzeBody() {
         >
           14-Day Unlimited Intro Pass
         </Link>{" "}
-        gedurende veertien dagen verschillende lessen, docenten en tijden
-        proberen. De pas is voor nieuwe deelnemers en stopt automatisch.
+        gedurende veertien dagen verschillende lessen, docenten en tijden proberen. De pas is voor
+        nieuwe deelnemers en stopt automatisch.
       </p>
 
       <h2
@@ -1752,17 +1632,15 @@ function KeuzeBody() {
         Wanneer past een studio waarschijnlijk niet bij je?
       </h2>
       <p className="mt-4">
-        Een studio hoeft niet voor iedereen geschikt te zijn. Wees voorzichtig
-        wanneer belangrijke informatie onduidelijk blijft, je vragen worden
-        weggewuifd, aanpassingen niet welkom zijn of je druk voelt om direct
-        een lang abonnement af te sluiten.
+        Een studio hoeft niet voor iedereen geschikt te zijn. Wees voorzichtig wanneer belangrijke
+        informatie onduidelijk blijft, je vragen worden weggewuifd, aanpassingen niet welkom zijn of
+        je druk voelt om direct een lang abonnement af te sluiten.
       </p>
       <p className="mt-4">
-        Ook een praktisch slechte match is een geldige reden om verder te
-        kijken. Als de reistijd, lestijden of taal telkens wrijving
-        opleveren, wordt regelmatig gaan onnodig moeilijk. De beste keuze
-        ondersteunt een gewoonte; hij vraagt niet iedere week opnieuw
-        wilskracht om er te komen.
+        Ook een praktisch slechte match is een geldige reden om verder te kijken. Als de reistijd,
+        lestijden of taal telkens wrijving opleveren, wordt regelmatig gaan onnodig moeilijk. De
+        beste keuze ondersteunt een gewoonte; hij vraagt niet iedere week opnieuw wilskracht om er
+        te komen.
       </p>
 
       <h2
@@ -1772,8 +1650,7 @@ function KeuzeBody() {
         Een snelle keuzehulp
       </h2>
       <p className="mt-4">
-        Gebruik deze volgorde wanneer je meerdere yogastudio’s in Amsterdam
-        vergelijkt:
+        Gebruik deze volgorde wanneer je meerdere yogastudio’s in Amsterdam vergelijkt:
       </p>
       <ol className="mt-4 space-y-2 pl-5 [list-style-type:decimal]">
         <li>Schrijf in één zin op wat je uit yoga wilt halen.</li>
@@ -1803,12 +1680,11 @@ function KeuzeBody() {
         Conclusie
       </h2>
       <p className="mt-4">
-        Een yogales in Amsterdam kies je niet alleen op stijl of prijs. Je
-        doel, niveau, docent, locatie, rooster en de sfeer bepalen samen of
-        een les echt bij je past. Maak eerst een praktische voorselectie en
-        ervaar daarna zelf hoe een les voelt. De beste keuze is uiteindelijk
-        de studio waar je graag terugkomt en waarvan de lessen passen in je
-        gewone week.
+        Een yogales in Amsterdam kies je niet alleen op stijl of prijs. Je doel, niveau, docent,
+        locatie, rooster en de sfeer bepalen samen of een les echt bij je past. Maak eerst een
+        praktische voorselectie en ervaar daarna zelf hoe een les voelt. De beste keuze is
+        uiteindelijk de studio waar je graag terugkomt en waarvan de lessen passen in je gewone
+        week.
       </p>
     </>
   );
@@ -1881,11 +1757,10 @@ function TaalBody() {
   return (
     <>
       <p className="mt-4">
-        In Amsterdam kun je yogalessen volgen in het Nederlands, in het Engels
-        of in een combinatie van beide talen. Maar maakt de voertaal echt
-        verschil? Dat hangt vooral af van hoe gemakkelijk je instructies
-        begrijpt, hoeveel yoga-ervaring je hebt en in welke taal jij je het
-        meest ontspannen voelt.
+        In Amsterdam kun je yogalessen volgen in het Nederlands, in het Engels of in een combinatie
+        van beide talen. Maar maakt de voertaal echt verschil? Dat hangt vooral af van hoe
+        gemakkelijk je instructies begrijpt, hoeveel yoga-ervaring je hebt en in welke taal jij je
+        het meest ontspannen voelt.
       </p>
 
       <section
@@ -1901,13 +1776,11 @@ function TaalBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Kies een Nederlandse yogales wanneer je aanwijzingen het liefst
-            zonder vertaalslag begrijpt. Kies een Engelse yogales wanneer
-            Engels voor jou vertrouwd voelt, je met internationale deelnemers
-            wilt oefenen of het aanbod daardoor beter bij je agenda past. Heb
-            je al yoga-ervaring, dan is de taal vaak minder belangrijk. Als
-            beginner is helder kunnen volgen meestal belangrijker dan de taal
-            op zichzelf.
+            Kies een Nederlandse yogales wanneer je aanwijzingen het liefst zonder vertaalslag
+            begrijpt. Kies een Engelse yogales wanneer Engels voor jou vertrouwd voelt, je met
+            internationale deelnemers wilt oefenen of het aanbod daardoor beter bij je agenda past.
+            Heb je al yoga-ervaring, dan is de taal vaak minder belangrijk. Als beginner is helder
+            kunnen volgen meestal belangrijker dan de taal op zichzelf.
           </p>
         </div>
       </section>
@@ -1919,22 +1792,19 @@ function TaalBody() {
         Waarom de taal van een yogales verschil kan maken
       </h2>
       <p className="mt-4">
-        Tijdens een yogales luister je niet alleen naar de naam van een
-        houding. Een docent geeft ook aanwijzingen over ademhaling,
-        uitlijning, tempo en mogelijke aanpassingen. Soms gaat dat snel,
-        terwijl je tegelijkertijd beweegt.
+        Tijdens een yogales luister je niet alleen naar de naam van een houding. Een docent geeft
+        ook aanwijzingen over ademhaling, uitlijning, tempo en mogelijke aanpassingen. Soms gaat dat
+        snel, terwijl je tegelijkertijd beweegt.
       </p>
       <p className="mt-4">
-        In een vertrouwde taal begrijp je nuances vaak gemakkelijker. Een
-        instructie als “kantel je bekken licht”, “houd ruimte rond je nek” of
-        “kom uit de houding als je scherpe pijn voelt” moet duidelijk zijn.
-        Dat helpt je om rustiger en veiliger te oefenen.
+        In een vertrouwde taal begrijp je nuances vaak gemakkelijker. Een instructie als “kantel je
+        bekken licht”, “houd ruimte rond je nek” of “kom uit de houding als je scherpe pijn voelt”
+        moet duidelijk zijn. Dat helpt je om rustiger en veiliger te oefenen.
       </p>
       <p className="mt-4">
-        Tegelijk is yoga sterk visueel. Je ziet wat de docent voordoet en
-        herkent na een tijdje veel houdingen en overgangen. Daardoor kunnen
-        veel deelnemers een Engelstalige les prima volgen, ook als Engels
-        niet hun moedertaal is.
+        Tegelijk is yoga sterk visueel. Je ziet wat de docent voordoet en herkent na een tijdje veel
+        houdingen en overgangen. Daardoor kunnen veel deelnemers een Engelstalige les prima volgen,
+        ook als Engels niet hun moedertaal is.
       </p>
 
       <h2
@@ -1952,15 +1822,13 @@ function TaalBody() {
         <li>makkelijker ontspant wanneer je niet hoeft te vertalen.</li>
       </ul>
       <p className="mt-4">
-        Vooral bij een eerste les kan taal rust geven. Je hoeft dan minder na
-        te denken en kunt meer aandacht besteden aan wat je in je lichaam
-        voelt.
+        Vooral bij een eerste les kan taal rust geven. Je hoeft dan minder na te denken en kunt meer
+        aandacht besteden aan wat je in je lichaam voelt.
       </p>
       <p className="mt-4">
-        Dat betekent niet dat een Engelstalige les ongeschikt is voor
-        beginners. Een rustige docent die duidelijk demonstreert, eenvoudige
-        woorden gebruikt en ruimte geeft om vragen te stellen, kan
-        belangrijker zijn dan de taalkeuze.
+        Dat betekent niet dat een Engelstalige les ongeschikt is voor beginners. Een rustige docent
+        die duidelijk demonstreert, eenvoudige woorden gebruikt en ruimte geeft om vragen te
+        stellen, kan belangrijker zijn dan de taalkeuze.
       </p>
 
       <h2
@@ -1970,10 +1838,9 @@ function TaalBody() {
         Wanneer past een Engelse yogales beter?
       </h2>
       <p className="mt-4">
-        Een Engelstalige yogales ligt voor de hand als Engels je dagelijkse
-        taal is of als je nog weinig Nederlands spreekt. Amsterdam heeft een
-        grote internationale gemeenschap, waardoor Engels in veel studio’s een
-        normale voertaal is.
+        Een Engelstalige yogales ligt voor de hand als Engels je dagelijkse taal is of als je nog
+        weinig Nederlands spreekt. Amsterdam heeft een grote internationale gemeenschap, waardoor
+        Engels in veel studio’s een normale voertaal is.
       </p>
       <p className="mt-4">Een Engelse les kan goed passen wanneer je:</p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
@@ -1984,10 +1851,9 @@ function TaalBody() {
         <li>door Engelstalige lessen meer keuze hebt in tijden, stijlen of docenten.</li>
       </ul>
       <p className="mt-4">
-        Veel yogawoorden worden ook in Nederland vaak in het Engels of
-        Sanskriet gebruikt. Denk aan downward-facing dog, child’s pose,
-        savasana en vinyasa. Wie online yogavideo’s in het Engels volgt,
-        herkent deze termen vaak sneller dan de Nederlandse vertalingen.
+        Veel yogawoorden worden ook in Nederland vaak in het Engels of Sanskriet gebruikt. Denk aan
+        downward-facing dog, child’s pose, savasana en vinyasa. Wie online yogavideo’s in het Engels
+        volgt, herkent deze termen vaak sneller dan de Nederlandse vertalingen.
       </p>
 
       <h2
@@ -1997,21 +1863,18 @@ function TaalBody() {
         Is een tweetalige yogales verwarrend?
       </h2>
       <p className="mt-4">
-        Niet per se. In een gemengde groep kan een docent de belangrijkste
-        instructies kort in beide talen geven of overschakelen wanneer iemand
-        iets niet begrijpt. Dat maakt een les toegankelijk, maar te veel
-        herhaling kan ook het ritme onderbreken.
+        Niet per se. In een gemengde groep kan een docent de belangrijkste instructies kort in beide
+        talen geven of overschakelen wanneer iemand iets niet begrijpt. Dat maakt een les
+        toegankelijk, maar te veel herhaling kan ook het ritme onderbreken.
       </p>
       <p className="mt-4">
-        Een goede tweetalige les is daarom geen volledige zin-voor-zinvertaling.
-        De docent houdt de aanwijzingen compact, demonstreert duidelijk en
-        controleert of iedereen kan volgen.
+        Een goede tweetalige les is daarom geen volledige zin-voor-zinvertaling. De docent houdt de
+        aanwijzingen compact, demonstreert duidelijk en controleert of iedereen kan volgen.
       </p>
       <p className="mt-4">
-        Twijfel je? Vraag vooraf welke taal hoofdzakelijk wordt gebruikt en of
-        de docent korte uitleg in een andere taal kan geven. Dan weet je wat
-        je kunt verwachten zonder dat de hele groep zich voortdurend hoeft
-        aan te passen.
+        Twijfel je? Vraag vooraf welke taal hoofdzakelijk wordt gebruikt en of de docent korte
+        uitleg in een andere taal kan geven. Dan weet je wat je kunt verwachten zonder dat de hele
+        groep zich voortdurend hoeft aan te passen.
       </p>
 
       <h2
@@ -2021,34 +1884,30 @@ function TaalBody() {
         Wat is belangrijker dan Nederlands of Engels?
       </h2>
       <p className="mt-4">
-        De taal telt mee, maar bepaalt niet alleen of een les bij je past. Let
-        ook op:
+        De taal telt mee, maar bepaalt niet alleen of een les bij je past. Let ook op:
       </p>
       <h3 className="mt-6 font-display text-xl font-medium text-foreground">De yogastijl</h3>
       <p className="mt-4">
-        Een rustige Yin- of Hatha-les vraagt iets anders dan een actieve
-        Vinyasa-les. Bij snelle overgangen is het extra handig als je
-        instructies direct begrijpt. In een langzamere les heb je vaak meer
-        tijd om te kijken en te reageren.
+        Een rustige Yin- of Hatha-les vraagt iets anders dan een actieve Vinyasa-les. Bij snelle
+        overgangen is het extra handig als je instructies direct begrijpt. In een langzamere les heb
+        je vaak meer tijd om te kijken en te reageren.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium text-foreground">De docent</h3>
       <p className="mt-4">
-        Een docent die helder praat, goed voordoet en verschillende opties
-        aanbiedt, maakt een les toegankelijker in iedere taal. Een ingewikkelde
-        uitleg in je moedertaal kan lastiger zijn dan eenvoudige instructies
-        in het Engels.
+        Een docent die helder praat, goed voordoet en verschillende opties aanbiedt, maakt een les
+        toegankelijker in iedere taal. Een ingewikkelde uitleg in je moedertaal kan lastiger zijn
+        dan eenvoudige instructies in het Engels.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium text-foreground">De sfeer</h3>
       <p className="mt-4">
-        Je moet je vrij voelen om rond te kijken, een houding over te slaan of
-        een vraag te stellen. Een ontspannen, niet-prestatiegerichte sfeer
-        helpt meer dan perfecte beheersing van iedere term.
+        Je moet je vrij voelen om rond te kijken, een houding over te slaan of een vraag te stellen.
+        Een ontspannen, niet-prestatiegerichte sfeer helpt meer dan perfecte beheersing van iedere
+        term.
       </p>
       <h3 className="mt-6 font-display text-xl font-medium text-foreground">De praktische match</h3>
       <p className="mt-4">
-        Een les die qua tijd, locatie en niveau in je week past, houd je
-        gemakkelijker vol. Kies daarom niet uitsluitend op taal. Bekijk ook
-        het{" "}
+        Een les die qua tijd, locatie en niveau in je week past, houd je gemakkelijker vol. Kies
+        daarom niet uitsluitend op taal. Bekijk ook het{" "}
         <Link
           to="/schedule"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
@@ -2065,32 +1924,32 @@ function TaalBody() {
         Zo kies je zonder te blijven twijfelen
       </h2>
       <p className="mt-4">
-        Je hoeft de perfecte keuze niet vooraf te maken. Gebruik deze
-        eenvoudige volgorde:
+        Je hoeft de perfecte keuze niet vooraf te maken. Gebruik deze eenvoudige volgorde:
       </p>
       <ol className="mt-4 space-y-2 pl-5 [list-style-type:decimal]">
         <li>Kies een les die past bij je niveau en gewenste intensiteit.</li>
         <li>Controleer welke taal de docent meestal gebruikt.</li>
-        <li>Meld vooraf dat je Nederlands of Engels prettiger vindt als dat belangrijk voor je is.</li>
+        <li>
+          Meld vooraf dat je Nederlands of Engels prettiger vindt als dat belangrijk voor je is.
+        </li>
         <li>Ga één keer ervaren hoe duidelijk de les voor jou voelt.</li>
         <li>Probeer eventueel een andere docent of les voordat je een studio beoordeelt.</li>
       </ol>
       <p className="mt-4">
-        Let na de les vooral op drie vragen: kon je de aanwijzingen volgen,
-        voelde je je op je gemak en wil je terugkomen? Als het antwoord meestal
-        ja is, past de les waarschijnlijk goed genoeg.
+        Let na de les vooral op drie vragen: kon je de aanwijzingen volgen, voelde je je op je gemak
+        en wil je terugkomen? Als het antwoord meestal ja is, past de les waarschijnlijk goed
+        genoeg.
       </p>
       <p className="mt-4">
-        Met een introductieaanbod kun je meerdere lessen en docenten
-        vergelijken. Bij Yoga Zeeburg kun je met de{" "}
+        Met een introductieaanbod kun je meerdere lessen en docenten vergelijken. Bij Yoga Zeeburg
+        kun je met de{" "}
         <Link
           to="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Intro Pass
         </Link>{" "}
-        verschillende momenten en lesvormen proberen voordat je een vast
-        ritme kiest.
+        verschillende momenten en lesvormen proberen voordat je een vast ritme kiest.
       </p>
 
       <h2
@@ -2100,27 +1959,24 @@ function TaalBody() {
         Nederlandse of Engelse yoga bij Yoga Zeeburg
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg is een kleinschalige, toegankelijke yogastudio aan de
-        Cruquiusweg in Amsterdam-Oost. De studio is bedoeld voor mensen met
-        verschillende ervaringsniveaus en achtergronden.
+        Yoga Zeeburg is een kleinschalige, toegankelijke yogastudio aan de Cruquiusweg in
+        Amsterdam-Oost. De studio is bedoeld voor mensen met verschillende ervaringsniveaus en
+        achtergronden.
       </p>
       <p className="mt-4">
-        Wil je weten welke taal tijdens een specifieke les wordt gebruikt?
-        Bekijk het{" "}
+        Wil je weten welke taal tijdens een specifieke les wordt gebruikt? Bekijk het{" "}
         <Link
           to="/schedule"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster
         </Link>{" "}
-        of vraag het vooraf. Zo kies je een les waarin je de begeleiding goed
-        kunt volgen. Belangrijker dan foutloos Nederlands of Engels spreken is
-        dat je je welkom voelt, begrijpt wat je doet en op je eigen niveau
-        kunt oefenen.
+        of vraag het vooraf. Zo kies je een les waarin je de begeleiding goed kunt volgen.
+        Belangrijker dan foutloos Nederlands of Engels spreken is dat je je welkom voelt, begrijpt
+        wat je doet en op je eigen niveau kunt oefenen.
       </p>
       <p className="mt-4">
-        Meer praktische informatie en artikelen voor je eerste lessen vind je
-        in de{" "}
+        Meer praktische informatie en artikelen voor je eerste lessen vind je in de{" "}
         <Link
           to="/nl/kennisbank"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
@@ -2137,17 +1993,16 @@ function TaalBody() {
         Conclusie
       </h2>
       <p className="mt-4">
-        Een Nederlandse yogales is vaak het prettigst als je voor het eerst
-        begint en alle aanwijzingen direct wilt begrijpen. Een Engelse
-        yogales past goed als Engels vertrouwd voelt of als je deel uitmaakt
-        van de internationale gemeenschap in Amsterdam. Ervaren yogi’s merken
-        meestal dat duidelijke demonstraties en bekende houdingen de taal
-        minder belangrijk maken.
+        Een Nederlandse yogales is vaak het prettigst als je voor het eerst begint en alle
+        aanwijzingen direct wilt begrijpen. Een Engelse yogales past goed als Engels vertrouwd voelt
+        of als je deel uitmaakt van de internationale gemeenschap in Amsterdam. Ervaren yogi’s
+        merken meestal dat duidelijke demonstraties en bekende houdingen de taal minder belangrijk
+        maken.
       </p>
       <p className="mt-4">
-        Kies uiteindelijk niet alleen met je hoofd. Probeer een les en merk of
-        je kunt volgen, ontspannen en bewegen zonder voortdurend na te denken
-        over woorden. Dat is de taal waarin yoga voor jou het beste werkt.
+        Kies uiteindelijk niet alleen met je hoofd. Probeer een les en merk of je kunt volgen,
+        ontspannen en bewegen zonder voortdurend na te denken over woorden. Dat is de taal waarin
+        yoga voor jou het beste werkt.
       </p>
     </>
   );
@@ -2243,15 +2098,13 @@ function PrijzenBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Yoga in Amsterdam kost bij actuele voorbeelden in Amsterdam Oost
-            grofweg €8 tot €25 per les. De laagste lesprijs hoort meestal bij
-            een abonnement en regelmatig bezoek; een losse les is het duurst.
-            Bij Yoga Zeeburg kost een losse les momenteel €25, een
-            10-lessenkaart €18 per les en een regulier abonnement ongeveer
-            €8,63 tot €12,25 per les, afhankelijk van je ritme. Nieuwe
-            studenten kunnen 14 dagen onbeperkt yoga proberen voor €30.
-            Vergelijk daarom niet alleen het bedrag, maar ook geldigheid,
-            opzegvoorwaarden en hoeveel lessen je werkelijk gaat volgen.
+            Yoga in Amsterdam kost bij actuele voorbeelden in Amsterdam Oost grofweg €8 tot €25 per
+            les. De laagste lesprijs hoort meestal bij een abonnement en regelmatig bezoek; een
+            losse les is het duurst. Bij Yoga Zeeburg kost een losse les momenteel €25, een
+            10-lessenkaart €18 per les en een regulier abonnement ongeveer €8,63 tot €12,25 per les,
+            afhankelijk van je ritme. Nieuwe studenten kunnen 14 dagen onbeperkt yoga proberen voor
+            €30. Vergelijk daarom niet alleen het bedrag, maar ook geldigheid, opzegvoorwaarden en
+            hoeveel lessen je werkelijk gaat volgen.
           </p>
         </div>
       </section>
@@ -2263,36 +2116,32 @@ function PrijzenBody() {
         Welke prijsmodellen kom je tegen?
       </h2>
       <p className="mt-4">
-        Yogastudio’s in Amsterdam gebruiken meestal vier prijsmodellen. Elk
-        model verdeelt flexibiliteit en zekerheid anders tussen jou en de
-        studio.
+        Yogastudio’s in Amsterdam gebruiken meestal vier prijsmodellen. Elk model verdeelt
+        flexibiliteit en zekerheid anders tussen jou en de studio.
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>
-          <strong>Introductieaanbod.</strong> Een tijdelijke aanbieding voor
-          nieuwe studenten waarmee je meerdere lessen, docenten en tijden kunt
-          proberen.
+          <strong>Introductieaanbod.</strong> Een tijdelijke aanbieding voor nieuwe studenten
+          waarmee je meerdere lessen, docenten en tijden kunt proberen.
         </li>
         <li>
-          <strong>Losse les.</strong> Maximale vrijheid zonder
-          vervolgverplichting, maar doorgaans de hoogste prijs per bezoek.
+          <strong>Losse les.</strong> Maximale vrijheid zonder vervolgverplichting, maar doorgaans
+          de hoogste prijs per bezoek.
         </li>
         <li>
-          <strong>Rittenkaart.</strong> Je koopt meerdere lessen vooraf en
-          gebruikt ze binnen een vaste geldigheidsduur.
+          <strong>Rittenkaart.</strong> Je koopt meerdere lessen vooraf en gebruikt ze binnen een
+          vaste geldigheidsduur.
         </li>
         <li>
-          <strong>Abonnement.</strong> Je betaalt periodiek voor een vast
-          aantal lessen of onbeperkte toegang. Dit geeft meestal de laagste
-          prijs per gebruikte les, maar vraagt meer regelmaat en vaak een
-          minimale looptijd.
+          <strong>Abonnement.</strong> Je betaalt periodiek voor een vast aantal lessen of
+          onbeperkte toegang. Dit geeft meestal de laagste prijs per gebruikte les, maar vraagt meer
+          regelmaat en vaak een minimale looptijd.
         </li>
       </ul>
       <p className="mt-4">
-        De goedkoopste optie op papier is dus niet automatisch de beste
-        keuze. Een voordelig abonnement wordt duur als je weinig gaat; een
-        duurdere rittenkaart kan juist goedkoper uitpakken als je agenda vaak
-        verandert.
+        De goedkoopste optie op papier is dus niet automatisch de beste keuze. Een voordelig
+        abonnement wordt duur als je weinig gaat; een duurdere rittenkaart kan juist goedkoper
+        uitpakken als je agenda vaak verandert.
       </p>
 
       <h2
@@ -2302,44 +2151,33 @@ function PrijzenBody() {
         Wat betaal je per yogales in Amsterdam?
       </h2>
       <p className="mt-4">
-        Actuele gepubliceerde tarieven van studio’s in Amsterdam Oost laten
-        een duidelijke bandbreedte zien. Op 29 juli 2026 kost een losse les
-        bij Yoga Zeeburg €25. Een 10-lessenkaart komt uit op €18 per les. De
-        reguliere abonnementen kosten, afhankelijk van het gekozen ritme,
-        ongeveer €8,63 tot €12,25 per les. Bij onbeperkt yoga daalt de
-        effectieve lesprijs verder wanneer je drie of vier keer per week
-        komt.
+        Actuele gepubliceerde tarieven van studio’s in Amsterdam Oost laten een duidelijke
+        bandbreedte zien. Op 29 juli 2026 kost een losse les bij Yoga Zeeburg €25. Een
+        10-lessenkaart komt uit op €18 per les. De reguliere abonnementen kosten, afhankelijk van
+        het gekozen ritme, ongeveer €8,63 tot €12,25 per les. Bij onbeperkt yoga daalt de effectieve
+        lesprijs verder wanneer je drie of vier keer per week komt.
       </p>
       <p className="mt-4">
-        Thrive Yoga publiceert voor rittenkaarten een bandbreedte van €14,25
-        tot €17 per les en voor maandabonnementen ongeveer €8 tot €13 per
-        les. Dat ondersteunt een praktische Amsterdamse richtlijn: reken
-        grofweg op €8 tot €25 per gevolgde groepsles, afhankelijk van
-        flexibiliteit, frequentie en looptijd. Tarieven veranderen;
-        controleer daarom altijd de actuele prijspagina voordat je koopt.
+        Thrive Yoga publiceert voor rittenkaarten een bandbreedte van €14,25 tot €17 per les en voor
+        maandabonnementen ongeveer €8 tot €13 per les. Dat ondersteunt een praktische Amsterdamse
+        richtlijn: reken grofweg op €8 tot €25 per gevolgde groepsles, afhankelijk van
+        flexibiliteit, frequentie en looptijd. Tarieven veranderen; controleer daarom altijd de
+        actuele prijspagina voordat je koopt.
       </p>
       <div className="mt-6 overflow-x-auto">
         <table className="w-full border-collapse text-left text-sm">
           <thead>
             <tr className="border-b border-border">
               <th className="py-2 pr-4 font-medium text-foreground">Optie</th>
-              <th className="py-2 pr-4 font-medium text-foreground">
-                Actueel voorbeeld
-              </th>
-              <th className="py-2 font-medium text-foreground">
-                Past vooral bij
-              </th>
+              <th className="py-2 pr-4 font-medium text-foreground">Actueel voorbeeld</th>
+              <th className="py-2 font-medium text-foreground">Past vooral bij</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border">
               <td className="py-2 pr-4">Introductieaanbod</td>
-              <td className="py-2 pr-4">
-                €30 voor 14 dagen onbeperkt bij Yoga Zeeburg
-              </td>
-              <td className="py-2">
-                Nieuwe studenten die meerdere lessen willen proberen
-              </td>
+              <td className="py-2 pr-4">€30 voor 14 dagen onbeperkt bij Yoga Zeeburg</td>
+              <td className="py-2">Nieuwe studenten die meerdere lessen willen proberen</td>
             </tr>
             <tr className="border-b border-border">
               <td className="py-2 pr-4">Losse les</td>
@@ -2353,24 +2191,20 @@ function PrijzenBody() {
             </tr>
             <tr className="border-b border-border">
               <td className="py-2 pr-4">Regulier abonnement</td>
-              <td className="py-2 pr-4">
-                Circa €8,63–€12,25 per gebruikte les bij Yoga Zeeburg
-              </td>
+              <td className="py-2 pr-4">Circa €8,63–€12,25 per gebruikte les bij Yoga Zeeburg</td>
               <td className="py-2">Eén of twee vaste lessen per week</td>
             </tr>
             <tr>
               <td className="py-2 pr-4">Onbeperkt abonnement</td>
-              <td className="py-2 pr-4">
-                Effectieve prijs daalt bij vaker komen
-              </td>
+              <td className="py-2 pr-4">Effectieve prijs daalt bij vaker komen</td>
               <td className="py-2">Drie of meer lessen per week</td>
             </tr>
           </tbody>
         </table>
       </div>
       <p className="mt-4">
-        Deze bedragen zijn momentopnamen van 29 juli 2026 en geen vaste
-        marktprijzen voor heel Amsterdam.
+        Deze bedragen zijn momentopnamen van 29 juli 2026 en geen vaste marktprijzen voor heel
+        Amsterdam.
       </p>
 
       <h2
@@ -2380,25 +2214,21 @@ function PrijzenBody() {
         Waar betaal je eigenlijk voor?
       </h2>
       <p className="mt-4">
-        De prijs van een yogales bestaat uit meer dan de minuten op de mat.
-        Een studio betaalt onder andere de huur van een geschikte ruimte,
-        docenten, planning en boekingssoftware, schoonmaak, materialen,
-        verzekeringen en administratie. In Amsterdam weegt huisvesting zwaar
-        mee.
+        De prijs van een yogales bestaat uit meer dan de minuten op de mat. Een studio betaalt onder
+        andere de huur van een geschikte ruimte, docenten, planning en boekingssoftware, schoonmaak,
+        materialen, verzekeringen en administratie. In Amsterdam weegt huisvesting zwaar mee.
       </p>
       <p className="mt-4">
-        Je betaalt daarnaast voor keuzes die minder zichtbaar zijn:
-        groepsgrootte, persoonlijke aandacht, ervaring van de docent,
-        bereikbaarheid, de variatie in het rooster en de rust van de ruimte.
-        Een goedkope les op een onhandig tijdstip kan weinig waarde hebben.
-        Een iets duurdere les vijf minuten fietsen van huis kan juist de
-        optie zijn die je werkelijk volhoudt.
+        Je betaalt daarnaast voor keuzes die minder zichtbaar zijn: groepsgrootte, persoonlijke
+        aandacht, ervaring van de docent, bereikbaarheid, de variatie in het rooster en de rust van
+        de ruimte. Een goedkope les op een onhandig tijdstip kan weinig waarde hebben. Een iets
+        duurdere les vijf minuten fietsen van huis kan juist de optie zijn die je werkelijk
+        volhoudt.
       </p>
       <p className="mt-4">
-        Prijs en kwaliteit lopen niet automatisch gelijk. Een hogere prijs
-        garandeert geen betere docent of fijnere sfeer. Gebruik prijs daarom
-        als één criterium naast niveau, lesstijl, locatie, rooster en hoe
-        welkom je je voelt.
+        Prijs en kwaliteit lopen niet automatisch gelijk. Een hogere prijs garandeert geen betere
+        docent of fijnere sfeer. Gebruik prijs daarom als één criterium naast niveau, lesstijl,
+        locatie, rooster en hoe welkom je je voelt.
       </p>
 
       <h2
@@ -2410,23 +2240,20 @@ function PrijzenBody() {
       <p className="mt-4">De eerlijkste vergelijking is eenvoudig:</p>
       <p className="mt-4">
         <strong>
-          werkelijke prijs per les = totaal betaald bedrag ÷ aantal lessen dat
-          je daadwerkelijk volgt
+          werkelijke prijs per les = totaal betaald bedrag ÷ aantal lessen dat je daadwerkelijk
+          volgt
         </strong>
       </p>
       <p className="mt-4">
-        Stel dat een abonnement €69 per vier weken kost en acht lessen bevat.
-        Als je alle acht lessen volgt, betaal je €8,63 per les. Ga je maar
-        vier keer, dan is je werkelijke prijs €17,25. Een 10-lessenkaart van
-        €180 lijkt duurder, maar kan voordeliger zijn wanneer je anders veel
-        abonnementlessen ongebruikt laat.
+        Stel dat een abonnement €69 per vier weken kost en acht lessen bevat. Als je alle acht
+        lessen volgt, betaal je €8,63 per les. Ga je maar vier keer, dan is je werkelijke prijs
+        €17,25. Een 10-lessenkaart van €180 lijkt duurder, maar kan voordeliger zijn wanneer je
+        anders veel abonnementlessen ongebruikt laat.
       </p>
       <p className="mt-4">
-        Kijk daarom eerst realistisch naar je agenda. Eén vaste les per week
-        is voor veel mensen waardevoller dan onbeperkt toegang die vooral een
-        voornemen blijft. Wie al zeker weet dat drie lessen per week
-        haalbaar zijn, kan met unlimited juist een lage prijs per les
-        bereiken.
+        Kijk daarom eerst realistisch naar je agenda. Eén vaste les per week is voor veel mensen
+        waardevoller dan onbeperkt toegang die vooral een voornemen blijft. Wie al zeker weet dat
+        drie lessen per week haalbaar zijn, kan met unlimited juist een lage prijs per les bereiken.
       </p>
 
       <h2
@@ -2436,8 +2263,7 @@ function PrijzenBody() {
         Let op geldigheid, looptijd en opzeggen
       </h2>
       <p className="mt-4">
-        Vergelijk niet alleen het grote bedrag op de prijspagina. Controleer
-        ook:
+        Vergelijk niet alleen het grote bedrag op de prijspagina. Controleer ook:
       </p>
       <ol className="mt-4 space-y-2 pl-5 [list-style-type:decimal]">
         <li>Hoe lang een rittenkaart geldig blijft.</li>
@@ -2445,16 +2271,13 @@ function PrijzenBody() {
         <li>Wat de minimale looptijd van een abonnement is.</li>
         <li>Of het abonnement daarna automatisch doorloopt.</li>
         <li>Hoe en wanneer je kunt opzeggen.</li>
-        <li>
-          Of pauzeren mogelijk is bij vakantie, zwangerschap of een blessure.
-        </li>
+        <li>Of pauzeren mogelijk is bij vakantie, zwangerschap of een blessure.</li>
         <li>Of annuleren kort voor de les een credit kost.</li>
       </ol>
       <p className="mt-4">
-        Vierwekelijks betalen is bovendien niet hetzelfde als maandelijks
-        betalen. In één jaar zitten dertien periodes van vier weken.
-        Vergelijk jaarbedragen daarom op dezelfde basis en kijk niet alleen
-        naar het bedrag per incasso.
+        Vierwekelijks betalen is bovendien niet hetzelfde als maandelijks betalen. In één jaar
+        zitten dertien periodes van vier weken. Vergelijk jaarbedragen daarom op dezelfde basis en
+        kijk niet alleen naar het bedrag per incasso.
       </p>
 
       <h2
@@ -2464,33 +2287,31 @@ function PrijzenBody() {
         Wanneer is een abonnement goedkoper?
       </h2>
       <p className="mt-4">
-        Een abonnement is meestal logisch als je een vast ritme kunt
-        volhouden. Reken vóór aankoop drie scenario’s door: één, twee en
-        drie lessen per week. Gebruik vervolgens het laagste aantal dat je
-        ook tijdens drukke weken waarschijnlijk haalt.
+        Een abonnement is meestal logisch als je een vast ritme kunt volhouden. Reken vóór aankoop
+        drie scenario’s door: één, twee en drie lessen per week. Gebruik vervolgens het laagste
+        aantal dat je ook tijdens drukke weken waarschijnlijk haalt.
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>
-          Ga je gemiddeld <strong>één keer per week</strong>, kies dan een
-          klein abonnement of een passende rittenkaart.
+          Ga je gemiddeld <strong>één keer per week</strong>, kies dan een klein abonnement of een
+          passende rittenkaart.
         </li>
         <li>
-          Ga je gemiddeld <strong>twee keer per week</strong>, dan biedt een
-          abonnement vaak duidelijk meer waarde per les.
+          Ga je gemiddeld <strong>twee keer per week</strong>, dan biedt een abonnement vaak
+          duidelijk meer waarde per les.
         </li>
         <li>
-          Ga je <strong>drie keer per week of vaker</strong>, dan kan
-          onbeperkt yoga financieel interessant worden.
+          Ga je <strong>drie keer per week of vaker</strong>, dan kan onbeperkt yoga financieel
+          interessant worden.
         </li>
         <li>
-          Verandert je agenda voortdurend, dan betaal je bij een rittenkaart
-          meer per les maar mogelijk minder voor ongebruikte capaciteit.
+          Verandert je agenda voortdurend, dan betaal je bij een rittenkaart meer per les maar
+          mogelijk minder voor ongebruikte capaciteit.
         </li>
       </ul>
       <p className="mt-4">
-        Wie nog niet weet welke les of docent past, hoeft dit niet vooraf
-        uit te rekenen. Begin met een introductieperiode en baseer je keuze
-        daarna op wat je werkelijk hebt bezocht. Lees ook{" "}
+        Wie nog niet weet welke les of docent past, hoeft dit niet vooraf uit te rekenen. Begin met
+        een introductieperiode en baseer je keuze daarna op wat je werkelijk hebt bezocht. Lees ook{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{ slug: "yogales-in-amsterdam-waar-moet-je-op-letten-bij-je-keuze" }}
@@ -2515,41 +2336,35 @@ function PrijzenBody() {
       >
         De actuele prijzen van Yoga Zeeburg
       </h2>
-      <p className="mt-4">
-        Yoga Zeeburg werkt op 29 juli 2026 met de volgende hoofdopties:
-      </p>
+      <p className="mt-4">Yoga Zeeburg werkt op 29 juli 2026 met de volgende hoofdopties:</p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
         <li>
-          <strong>14-Day Unlimited Intro Pass:</strong> €30 eenmalig voor 14
-          opeenvolgende dagen; alleen voor nieuwe studenten en stopt
-          automatisch.
+          <strong>14-Day Unlimited Intro Pass:</strong> €30 eenmalig voor 14 opeenvolgende dagen;
+          alleen voor nieuwe studenten en stopt automatisch.
         </li>
         <li>
-          <strong>Weekly Yoga:</strong> €49 per vier weken voor vier lessen;
-          €12,25 per les bij volledig gebruik.
+          <strong>Weekly Yoga:</strong> €49 per vier weken voor vier lessen; €12,25 per les bij
+          volledig gebruik.
         </li>
         <li>
-          <strong>Yoga Plus:</strong> €69 per vier weken voor acht lessen;
-          €8,63 per les bij volledig gebruik.
+          <strong>Yoga Plus:</strong> €69 per vier weken voor acht lessen; €8,63 per les bij
+          volledig gebruik.
         </li>
         <li>
-          <strong>Unlimited Yoga:</strong> €89 per vier weken; ongeveer €7,42
-          per les bij drie lessen per week en €5,56 bij vier lessen per
-          week.
+          <strong>Unlimited Yoga:</strong> €89 per vier weken; ongeveer €7,42 per les bij drie
+          lessen per week en €5,56 bij vier lessen per week.
         </li>
         <li>
-          <strong>10-Class Pass:</strong> €180 voor tien lessen, drie maanden
-          geldig; €18 per les.
+          <strong>10-Class Pass:</strong> €180 voor tien lessen, drie maanden geldig; €18 per les.
         </li>
         <li>
           <strong>Single Class:</strong> €25, één maand geldig.
         </li>
       </ul>
       <p className="mt-4">
-        De reguliere vierweekse abonnementen hebben momenteel een minimale
-        looptijd van drie maanden en zijn daarna maandelijks opzegbaar. Voor
-        langere commitment bestaan afzonderlijke jaaropties. Bekijk voor
-        alle actuele bedragen, voorwaarden en eventuele acties altijd de{" "}
+        De reguliere vierweekse abonnementen hebben momenteel een minimale looptijd van drie maanden
+        en zijn daarna maandelijks opzegbaar. Voor langere commitment bestaan afzonderlijke
+        jaaropties. Bekijk voor alle actuele bedragen, voorwaarden en eventuele acties altijd de{" "}
         <Link
           to="/pricing"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
@@ -2572,15 +2387,11 @@ function PrijzenBody() {
         <li>Verdubbel dat aantal voor een realistische periode van vier weken.</li>
         <li>Vergelijk de bijpassende abonnementsprijs met een rittenkaart.</li>
         <li>Controleer looptijd, geldigheid en opzegvoorwaarden.</li>
-        <li>
-          Kies de kleinste optie die je normale ritme dekt; je kunt later
-          altijd opschalen.
-        </li>
+        <li>Kies de kleinste optie die je normale ritme dekt; je kunt later altijd opschalen.</li>
       </ol>
       <p className="mt-4">
-        De beste prijs is niet het laagste bedrag op de website. Het is het
-        bedrag waarbij je lessen gebruikt, graag terugkomt en yoga zonder
-        gedoe in je week past.
+        De beste prijs is niet het laagste bedrag op de website. Het is het bedrag waarbij je lessen
+        gebruikt, graag terugkomt en yoga zonder gedoe in je week past.
       </p>
 
       <h2
@@ -2590,16 +2401,15 @@ function PrijzenBody() {
         Conclusie
       </h2>
       <p className="mt-4">
-        Yoga in Amsterdam kost in actuele voorbeelden ongeveer €8 tot €25
-        per gevolgde groepsles. Flexibiliteit maakt een losse les of
-        rittenkaart duurder; regelmaat maakt een abonnement voordeliger.
-        Bereken altijd wat je per werkelijk gevolgde les betaalt en neem
-        geldigheid, looptijd en bereikbaarheid mee.
+        Yoga in Amsterdam kost in actuele voorbeelden ongeveer €8 tot €25 per gevolgde groepsles.
+        Flexibiliteit maakt een losse les of rittenkaart duurder; regelmaat maakt een abonnement
+        voordeliger. Bereken altijd wat je per werkelijk gevolgde les betaalt en neem geldigheid,
+        looptijd en bereikbaarheid mee.
       </p>
       <p className="mt-4">
-        Ben je nieuw, gebruik dan eerst een introductieaanbod om je echte
-        ritme te ontdekken. Pas daarna weet je of één les per week, twee
-        lessen of onbeperkt yoga financieel én praktisch bij je past.
+        Ben je nieuw, gebruik dan eerst een introductieaanbod om je echte ritme te ontdekken. Pas
+        daarna weet je of één les per week, twee lessen of onbeperkt yoga financieel én praktisch
+        bij je past.
       </p>
     </>
   );
@@ -2707,11 +2517,10 @@ function WaterBody() {
         </h2>
         <div className="mt-3 space-y-3 text-foreground">
           <p>
-            Yoga Zeeburg ligt aan de Cruquiusweg 96F in Amsterdam Oost, boven
-            CrossFit Zeeburg en direct bij het water in Cruquius. De plek biedt
-            een rustige overgang tussen een drukke dag en je yogales, terwijl de
-            les, docent en het tijdstip uiteindelijk bepalen of de ervaring echt
-            bij je past.
+            Yoga Zeeburg ligt aan de Cruquiusweg 96F in Amsterdam Oost, boven CrossFit Zeeburg en
+            direct bij het water in Cruquius. De plek biedt een rustige overgang tussen een drukke
+            dag en je yogales, terwijl de les, docent en het tijdstip uiteindelijk bepalen of de
+            ervaring echt bij je past.
           </p>
         </div>
       </section>
@@ -2723,24 +2532,21 @@ function WaterBody() {
         Wat betekent yoga aan het water in Amsterdam Oost?
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg zit aan de Cruquiusweg 96F in Amsterdam Oost, boven
-        CrossFit Zeeburg en direct bij het water in Cruquius. Het is geen
-        afgelegen retraite buiten de stad. Je bent nog steeds in Amsterdam, in
-        de buurt van Zeeburg en de Oostelijke Eilanden, maar de omgeving voelt
+        Yoga Zeeburg zit aan de Cruquiusweg 96F in Amsterdam Oost, boven CrossFit Zeeburg en direct
+        bij het water in Cruquius. Het is geen afgelegen retraite buiten de stad. Je bent nog steeds
+        in Amsterdam, in de buurt van Zeeburg en de Oostelijke Eilanden, maar de omgeving voelt
         anders dan een drukke winkelstraat of een volle sportschool.
       </p>
       <p className="mt-4">
-        Dat verschil zit vooral in de overgang. Je verlaat je werkdag, fietst of
-        loopt richting de Cruquiusweg en komt aan op een plek waar water en
-        ruimte deel zijn van de directe omgeving. De studio zelf is klein en
-        persoonlijk. Daardoor kan het gemakkelijker zijn om van stadsritme naar
-        lestempo te schakelen.
+        Dat verschil zit vooral in de overgang. Je verlaat je werkdag, fietst of loopt richting de
+        Cruquiusweg en komt aan op een plek waar water en ruimte deel zijn van de directe omgeving.
+        De studio zelf is klein en persoonlijk. Daardoor kan het gemakkelijker zijn om van
+        stadsritme naar lestempo te schakelen.
       </p>
       <p className="mt-4">
-        Verwacht daarbij geen garantie op stilte, een bepaald uitzicht vanuit
-        iedere plek in de zaal of een automatisch ontspannen gevoel. Yoga blijft
-        een activiteit in een levende stadsbuurt. De locatie ondersteunt het
-        moment; de les en wat jij die dag nodig hebt blijven minstens zo
+        Verwacht daarbij geen garantie op stilte, een bepaald uitzicht vanuit iedere plek in de zaal
+        of een automatisch ontspannen gevoel. Yoga blijft een activiteit in een levende stadsbuurt.
+        De locatie ondersteunt het moment; de les en wat jij die dag nodig hebt blijven minstens zo
         belangrijk.
       </p>
 
@@ -2751,25 +2557,21 @@ function WaterBody() {
         Waarom kan de omgeving verschil maken?
       </h2>
       <p className="mt-4">
-        Een vaste plek kan een praktisch signaal worden: hier begint mijn
-        yogamoment. Dat hoeft niet ingewikkeld of spiritueel te zijn. Alleen al
-        bewust aankomen, je telefoon wegleggen en een paar minuten niet
-        doorrennen kan helpen om met meer aandacht aan de les te beginnen.
+        Een vaste plek kan een praktisch signaal worden: hier begint mijn yogamoment. Dat hoeft niet
+        ingewikkeld of spiritueel te zijn. Alleen al bewust aankomen, je telefoon wegleggen en een
+        paar minuten niet doorrennen kan helpen om met meer aandacht aan de les te beginnen.
       </p>
       <p className="mt-4">
-        Een locatie aan het water kan prettig zijn wanneer je veel binnen werkt
-        of de hele dag van afspraak naar afspraak gaat. Niet omdat water op
-        zichzelf een bepaalde uitkomst garandeert, maar omdat de omgeving je
-        uitnodigt om even uit je gebruikelijke patroon te stappen. Heb je tijd,
-        dan kun je voor of na de les kort langs het water lopen. Heb je haast,
-        dan is het nog steeds waardevol dat de studio op een herkenbare, rustige
-        plek in Amsterdam Oost ligt.
+        Een locatie aan het water kan prettig zijn wanneer je veel binnen werkt of de hele dag van
+        afspraak naar afspraak gaat. Niet omdat water op zichzelf een bepaalde uitkomst garandeert,
+        maar omdat de omgeving je uitnodigt om even uit je gebruikelijke patroon te stappen. Heb je
+        tijd, dan kun je voor of na de les kort langs het water lopen. Heb je haast, dan is het nog
+        steeds waardevol dat de studio op een herkenbare, rustige plek in Amsterdam Oost ligt.
       </p>
       <p className="mt-4">
-        De beste locatie is uiteindelijk de locatie waar je daadwerkelijk
-        naartoe gaat. Een studio kan prachtig liggen, maar als de reistijd,
-        lestijden of sfeer niet bij je passen, wordt een vaste routine lastig.
-        Lees daarom ook hoe je{" "}
+        De beste locatie is uiteindelijk de locatie waar je daadwerkelijk naartoe gaat. Een studio
+        kan prachtig liggen, maar als de reistijd, lestijden of sfeer niet bij je passen, wordt een
+        vaste routine lastig. Lees daarom ook hoe je{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
@@ -2787,39 +2589,30 @@ function WaterBody() {
         Rust komt niet alleen van de plek
       </h2>
       <p className="mt-4">
-        De omgeving is één onderdeel van je ervaring. Het tempo van de les, de
-        manier waarop een docent uitlegt, de groepsgrootte en je eigen energie
-        spelen ook mee. De ene dag heb je behoefte aan langzamer bewegen en meer
-        pauzes. Op een andere dag helpt een actievere les juist om uit je hoofd
-        te komen.
+        De omgeving is één onderdeel van je ervaring. Het tempo van de les, de manier waarop een
+        docent uitlegt, de groepsgrootte en je eigen energie spelen ook mee. De ene dag heb je
+        behoefte aan langzamer bewegen en meer pauzes. Op een andere dag helpt een actievere les
+        juist om uit je hoofd te komen.
       </p>
       <p className="mt-4">
-        Kijk daarom niet alleen naar de woorden ‘aan het water’ of ‘rustige
-        locatie’. Controleer de lesbeschrijving en vraag jezelf af wat je die
-        dag zoekt:
+        Kijk daarom niet alleen naar de woorden ‘aan het water’ of ‘rustige locatie’. Controleer de
+        lesbeschrijving en vraag jezelf af wat je die dag zoekt:
       </p>
       <ul className="mt-4 space-y-3 pl-5 [list-style-type:disc]">
+        <li>Wil je vertragen na een volle werkdag? Kies dan een rustiger lestempo.</li>
+        <li>Wil je bewegen en je aandacht verleggen? Een actievere flow kan beter passen.</li>
         <li>
-          Wil je vertragen na een volle werkdag? Kies dan een rustiger
-          lestempo.
+          Ben je nieuw met yoga? Kies een duidelijk beschreven, toegankelijke les en laat de docent
+          weten dat het je eerste keer is.
         </li>
         <li>
-          Wil je bewegen en je aandacht verleggen? Een actievere flow kan beter
-          passen.
-        </li>
-        <li>
-          Ben je nieuw met yoga? Kies een duidelijk beschreven, toegankelijke
-          les en laat de docent weten dat het je eerste keer is.
-        </li>
-        <li>
-          Heb je een blessure, ben je zwanger of twijfel je over wat verstandig
-          is? Overleg met een bevoegde zorgprofessional en informeer de docent
-          vóór de les.
+          Heb je een blessure, ben je zwanger of twijfel je over wat verstandig is? Overleg met een
+          bevoegde zorgprofessional en informeer de docent vóór de les.
         </li>
       </ul>
       <p className="mt-4">
-        Het actuele aanbod kan veranderen. Bekijk daarom altijd het huidige
-        rooster en de actuele beschikbaarheid voordat je vertrekt.
+        Het actuele aanbod kan veranderen. Bekijk daarom altijd het huidige rooster en de actuele
+        beschikbaarheid voordat je vertrekt.
       </p>
 
       <h2
@@ -2829,16 +2622,15 @@ function WaterBody() {
         Past de studio praktisch in je week?
       </h2>
       <p className="mt-4">
-        Yoga werkt meestal beter als je niet iedere les opnieuw hoeft te
-        organiseren. Controleer daarom vooraf hoe je bij de Cruquiusweg komt,
-        hoeveel marge je nodig hebt en welke lestijden echt haalbaar zijn. Een
-        les die theoretisch perfect klinkt maar structureel botst met werk of
-        gezin, wordt zelden een ontspannen gewoonte.
+        Yoga werkt meestal beter als je niet iedere les opnieuw hoeft te organiseren. Controleer
+        daarom vooraf hoe je bij de Cruquiusweg komt, hoeveel marge je nodig hebt en welke lestijden
+        echt haalbaar zijn. Een les die theoretisch perfect klinkt maar structureel botst met werk
+        of gezin, wordt zelden een ontspannen gewoonte.
       </p>
       <p className="mt-4">
-        Plan bij een eerste bezoek wat extra tijd. Dan hoef je niet gehaast
-        binnen te komen, kun je rustig uitzoeken waar je moet zijn en heb je
-        tijd om iets aan de docent te vragen. In het artikel over een{" "}
+        Plan bij een eerste bezoek wat extra tijd. Dan hoef je niet gehaast binnen te komen, kun je
+        rustig uitzoeken waar je moet zijn en heb je tijd om iets aan de docent te vragen. In het
+        artikel over een{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
@@ -2849,11 +2641,10 @@ function WaterBody() {
         lees je stap voor stap wat je kunt verwachten.
       </p>
       <p className="mt-4">
-        Let ook op de reis na afloop. Kun je rustig naar huis fietsen of lopen?
-        Ligt de studio op een logische route vanaf werk? Zou je de les aan een
-        vaste avond of ochtend kunnen koppelen? Zulke eenvoudige vragen zeggen
-        vaak meer over de kans dat je blijft komen dan een lange lijst
-        faciliteiten.
+        Let ook op de reis na afloop. Kun je rustig naar huis fietsen of lopen? Ligt de studio op
+        een logische route vanaf werk? Zou je de les aan een vaste avond of ochtend kunnen koppelen?
+        Zulke eenvoudige vragen zeggen vaak meer over de kans dat je blijft komen dan een lange
+        lijst faciliteiten.
       </p>
 
       <h2
@@ -2863,30 +2654,23 @@ function WaterBody() {
         Zo maak je van aankomen een rustmoment
       </h2>
       <p className="mt-4">
-        Je hoeft niet lang van tevoren aanwezig te zijn om bewuster te beginnen.
-        Met een paar kleine keuzes maak je de overgang al duidelijker:
+        Je hoeft niet lang van tevoren aanwezig te zijn om bewuster te beginnen. Met een paar kleine
+        keuzes maak je de overgang al duidelijker:
       </p>
       <ol className="mt-4 space-y-2 pl-5 [list-style-type:decimal]">
         <li>Vertrek met voldoende marge, zodat de reis geen race wordt.</li>
         <li>Zet meldingen uit voordat de les begint.</li>
+        <li>Draag kleding waarin je vrij kunt bewegen en waarin je je prettig voelt.</li>
+        <li>Vertel de docent kort dat je nieuw bent of ergens rekening mee moet houden.</li>
         <li>
-          Draag kleding waarin je vrij kunt bewegen en waarin je je prettig
-          voelt.
-        </li>
-        <li>
-          Vertel de docent kort dat je nieuw bent of ergens rekening mee moet
-          houden.
-        </li>
-        <li>
-          Kies na afloop, als je tijd hebt, voor een rustige route langs het
-          water in plaats van direct weer in je telefoon te duiken.
+          Kies na afloop, als je tijd hebt, voor een rustige route langs het water in plaats van
+          direct weer in je telefoon te duiken.
         </li>
       </ol>
       <p className="mt-4">
-        Dit zijn geen regels die je perfect moet uitvoeren. Ze maken het alleen
-        eenvoudiger om de les niet als nog een afspraak op je lijst te beleven.
-        Kom je toch gehaast aan, dan ben je nog steeds welkom. Je hoeft niet
-        eerst rustig te zijn om yoga te mogen doen.
+        Dit zijn geen regels die je perfect moet uitvoeren. Ze maken het alleen eenvoudiger om de
+        les niet als nog een afspraak op je lijst te beleven. Kom je toch gehaast aan, dan ben je
+        nog steeds welkom. Je hoeft niet eerst rustig te zijn om yoga te mogen doen.
       </p>
 
       <h2
@@ -2896,23 +2680,21 @@ function WaterBody() {
         Welke les past bij jouw moment?
       </h2>
       <p className="mt-4">
-        Bij Yoga Zeeburg staan actievere en rustigere lessen op het rooster.
-        Denk niet te veel in ‘goed’ of ‘fout’. Kies op basis van je ervaring,
-        energie en agenda. Een duidelijke lesbeschrijving helpt je vooraf
-        inschatten wat je kunt verwachten. Voor actuele tijden, wijzigingen en
-        beschikbare plekken gebruik je het rooster en Sportbit.
+        Bij Yoga Zeeburg staan actievere en rustigere lessen op het rooster. Denk niet te veel in
+        ‘goed’ of ‘fout’. Kies op basis van je ervaring, energie en agenda. Een duidelijke
+        lesbeschrijving helpt je vooraf inschatten wat je kunt verwachten. Voor actuele tijden,
+        wijzigingen en beschikbare plekken gebruik je het rooster en Sportbit.
       </p>
       <p className="mt-4">
-        Twijfel je tussen meerdere lessen, dan is vergelijken in de praktijk
-        vaak nuttiger dan eindeloos lezen. Met de{" "}
+        Twijfel je tussen meerdere lessen, dan is vergelijken in de praktijk vaak nuttiger dan
+        eindeloos lezen. Met de{" "}
         <a
           href="/trial"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           14-daagse Intro Pass
         </a>{" "}
-        kun je verschillende lessen, docenten en tijden proberen voordat je een
-        vast ritme kiest.
+        kun je verschillende lessen, docenten en tijden proberen voordat je een vast ritme kiest.
       </p>
       <p className="mt-4">
         Wie net begint, hoeft niet eerst lenig of ervaren te zijn. In{" "}
@@ -2933,18 +2715,16 @@ function WaterBody() {
         Een kleine yogastudio in Cruquius
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg is een kleine, persoonlijke studio in Amsterdam Oost. De
-        locatie boven CrossFit Zeeburg, aan de Cruquiusweg en bij het water,
-        geeft de studio een duidelijke plek in de buurt. De benadering is
-        nuchter: bewegen, ademen en ontdekken welke les bij je lichaam en week
-        past, zonder druk om iets te bewijzen.
+        Yoga Zeeburg is een kleine, persoonlijke studio in Amsterdam Oost. De locatie boven CrossFit
+        Zeeburg, aan de Cruquiusweg en bij het water, geeft de studio een duidelijke plek in de
+        buurt. De benadering is nuchter: bewegen, ademen en ontdekken welke les bij je lichaam en
+        week past, zonder druk om iets te bewijzen.
       </p>
       <p className="mt-4">
-        Dat lokale karakter is belangrijker dan een groot gebaar. Je weet waar
-        je naartoe gaat, kunt verschillende lessen proberen en bouwt stap voor
-        stap een routine op. De rust midden in de stad ontstaat zo niet alleen
-        door de ligging, maar door de combinatie van plek, begeleiding en een
-        moment dat je regelmatig voor jezelf vrijmaakt.
+        Dat lokale karakter is belangrijker dan een groot gebaar. Je weet waar je naartoe gaat, kunt
+        verschillende lessen proberen en bouwt stap voor stap een routine op. De rust midden in de
+        stad ontstaat zo niet alleen door de ligging, maar door de combinatie van plek, begeleiding
+        en een moment dat je regelmatig voor jezelf vrijmaakt.
       </p>
     </>
   );
@@ -2970,9 +2750,7 @@ export function getArticlesByCategory(categorySlug: string): Article[] {
 }
 
 export function getArticlesSortedByNewest(): Article[] {
-  return [...ARTICLES].sort((a, b) =>
-    b.publishedAt.localeCompare(a.publishedAt),
-  );
+  return [...ARTICLES].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
 export function getRecommendedArticles(limit = 3): Article[] {

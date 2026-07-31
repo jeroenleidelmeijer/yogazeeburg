@@ -10,7 +10,6 @@ const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-
 const INTRO_URL = "/trial";
 
 export function SiteHeader() {

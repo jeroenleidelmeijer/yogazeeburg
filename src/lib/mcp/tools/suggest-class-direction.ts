@@ -70,8 +70,7 @@ export default defineTool({
     const result = {
       direction: pick.q,
       suggestion: pick.a,
-      next_step:
-        "Start with the 14-Day Unlimited Intro Pass and try a few different classes.",
+      next_step: "Start with the 14-Day Unlimited Intro Pass and try a few different classes.",
       signup_url: "https://www.yogazeeburg.com/trial",
       note: "General guidance only — not medical advice. If you have pregnancy, injury, pain or any medical uncertainty, tell the teacher and check with a medical professional.",
     };
