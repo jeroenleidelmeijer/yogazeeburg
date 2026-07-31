@@ -18,12 +18,7 @@ export default defineTool({
         city: "Amsterdam",
         country: "NL",
       },
-      neighbourhoods: [
-        "Amsterdam East",
-        "Zeeburg",
-        "Cruquius",
-        "Eastern Docklands",
-      ],
+      neighbourhoods: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
       location_notes: "Above CrossFit Zeeburg, by the water.",
       positioning:
         "A small, personal, beginner-friendly studio for busy people who need a weekly reset — not another class on their schedule.",
@@ -31,7 +26,7 @@ export default defineTool({
         name: "14-Day Unlimited Intro Pass",
         description:
           "14 days of unlimited yoga. Try different classes, teachers and times. Stops automatically. New students only.",
-        signup_url: "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42",
+        signup_url: "https://www.yogazeeburg.com/trial",
       },
       website: "https://yogazeeburg.com",
     };

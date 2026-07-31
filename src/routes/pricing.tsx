@@ -7,8 +7,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 /* ------------------------------------------------------------------
    Sportbit checkout links
    ------------------------------------------------------------------ */
-const INTRO_PASS_URL =
-  "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
+const INTRO_PASS_URL = "/trial";
 
 const SPORTBIT_WEEKLY_YOGA_URL =
   "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=45";
@@ -138,17 +137,15 @@ function Hero() {
           Pricing · Yoga Zeeburg
         </span>
         <h1 className="mx-auto mt-7 max-w-4xl font-display text-[2.25rem] leading-[1.05] tracking-tight text-foreground sm:text-[3.25rem] md:text-[4rem]">
-          Choose the yoga routine{" "}
-          <span className="text-primary italic">that fits your life.</span>
+          Choose the yoga routine <span className="text-primary italic">that fits your life.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
-          Start with the 14-Day Unlimited Intro Pass, then choose the
-          membership or pass that fits your week. The more yoga becomes part of
-          your routine, the better the value gets.
+          Start with the 14-Day Unlimited Intro Pass, then choose the membership or pass that fits
+          your week. The more yoga becomes part of your routine, the better the value gets.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
-            {...sportbitLinkProps(INTRO_PASS_URL)}
+            href={INTRO_PASS_URL}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start Intro Pass
@@ -162,8 +159,7 @@ function Hero() {
           </a>
         </div>
         <p className="mt-5 text-sm text-muted-foreground">
-          14-Day Unlimited Intro Pass · memberships every 4 weeks · simple,
-          transparent pricing
+          14-Day Unlimited Intro Pass · memberships every 4 weeks · simple, transparent pricing
         </p>
       </div>
     </section>
@@ -205,22 +201,17 @@ function IntroPass() {
                 14-Day Unlimited Intro Pass
               </h2>
               <div className="mt-6 flex items-baseline gap-3">
-                <span className="font-display text-5xl text-foreground md:text-6xl">
-                  €30
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  one-time · 14 days
-                </span>
+                <span className="font-display text-5xl text-foreground md:text-6xl">€30</span>
+                <span className="text-sm text-muted-foreground">one-time · 14 days</span>
               </div>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Unlimited yoga for 14 consecutive days. New students only.
-                Stops automatically. Try different classes, teachers and times,
-                then choose the routine that fits your body, energy and
-                schedule.
+                Unlimited yoga for 14 consecutive days. New students only. Stops automatically. Try
+                different classes, teachers and times, then choose the routine that fits your body,
+                energy and schedule.
               </p>
               <div className="mt-8">
                 <a
-                  {...sportbitLinkProps(INTRO_PASS_URL)}
+                  href={INTRO_PASS_URL}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
                 >
                   Start with 14 days unlimited
@@ -308,7 +299,8 @@ function RegularMemberships() {
             Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Start with the membership that fits your week. {REGULAR_TERMS} They are the most flexible membership route, without the annual discount.
+            Start with the membership that fits your week. {REGULAR_TERMS} They are the most
+            flexible membership route, without the annual discount.
           </p>
         </div>
 
@@ -330,9 +322,7 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
     <div
       className={
         "relative flex flex-col rounded-[1.5rem] border p-7 transition-colors " +
-        (recommended
-          ? "border-primary/30 bg-secondary/40"
-          : "border-border/60 bg-background")
+        (recommended ? "border-primary/30 bg-secondary/40" : "border-border/60 bg-background")
       }
     >
       {recommended && (
@@ -358,9 +348,7 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
         Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.
       </p>
 
-      <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">
-        {plan.bestFor}
-      </p>
+      <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">{plan.bestFor}</p>
 
       <div className="mt-auto pt-6">
         <a
@@ -482,8 +470,8 @@ function DiscountCodePanel() {
             How to claim your first 4 weeks free
           </h3>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-            The first 4 weeks are not applied automatically. You must enter the
-            discount code during Sportbit checkout.
+            The first 4 weeks are not applied automatically. You must enter the discount code during
+            Sportbit checkout.
           </p>
           <ol className="mt-6 space-y-3">
             {DISCOUNT_STEPS.map((step, i) => (
@@ -516,14 +504,12 @@ function DiscountCodePanel() {
             </button>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-foreground/80">
-            Enter {DISCOUNT_CODE} during Sportbit checkout and tap Apply. Your
-            first four-week period will be €0; the regular four-weekly fee
-            applies afterwards.
+            Enter {DISCOUNT_CODE} during Sportbit checkout and tap Apply. Your first four-week
+            period will be €0; the regular four-weekly fee applies afterwards.
           </p>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            The code is only valid for the three Annual four-weekly
-            memberships. It does not apply to regular memberships or
-            Pay-in-Full.
+            The code is only valid for the three Annual four-weekly memberships. It does not apply
+            to regular memberships or Pay-in-Full.
           </p>
         </div>
       </div>
@@ -547,16 +533,16 @@ function AnnualRoutineBuilder() {
             Want annual value, but keep paying every 4 weeks?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you know you want yoga to become part of your year, Annual Routine Builder gives you better first-year value while you keep paying every 4 weeks. 12-month commitment. Paid every 4 weeks. First 4 weeks free when you enter code {DISCOUNT_CODE} during checkout. One included pause and one early plan switch.
+            If you know you want yoga to become part of your year, Annual Routine Builder gives you
+            better first-year value while you keep paying every 4 weeks. 12-month commitment. Paid
+            every 4 weeks. First 4 weeks free when you enter code {DISCOUNT_CODE} during checkout.
+            One included pause and one early plan switch.
           </p>
         </div>
 
         <ul className="mt-10 grid gap-3 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur sm:grid-cols-2 sm:p-8 md:grid-cols-3">
           {ANNUAL_TERMS.map((t) => (
-            <li
-              key={t}
-              className="flex items-start gap-3 text-[15px] text-foreground/90"
-            >
+            <li key={t} className="flex items-start gap-3 text-[15px] text-foreground/90">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span>{t}</span>
             </li>
@@ -618,14 +604,11 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
 
       <div className="mt-5 rounded-xl border border-clay/30 bg-clay/5 px-4 py-3 text-sm leading-relaxed text-foreground/85">
         <span className="font-medium text-foreground">Enter {DISCOUNT_CODE} during checkout.</span>{" "}
-        Your first four-week period will be €0; the regular four-weekly fee
-        applies afterwards.
+        Your first four-week period will be €0; the regular four-weekly fee applies afterwards.
       </div>
 
       {plan.routine && (
-        <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">
-          {plan.routine}
-        </p>
+        <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">{plan.routine}</p>
       )}
 
       <div className="mt-auto pt-7">
@@ -662,15 +645,20 @@ function PayInFullNote() {
               Pay once. Practice all year.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-primary-foreground/95">
-              Yoga Plus Annual Pay-in-Full is one upfront payment for a full year — 104 classes, valid for 52 weeks. Built for a steady twice-a-week rhythm: enough to feel the difference, simple enough to keep up.
+              Yoga Plus Annual Pay-in-Full is one upfront payment for a full year — 104 classes,
+              valid for 52 weeks. Built for a steady twice-a-week rhythm: enough to feel the
+              difference, simple enough to keep up.
             </p>
             <p className="mt-4 text-base leading-relaxed text-primary-foreground/90">
-              A clear commitment to your routine — and the best value if you know you want to keep showing up twice a week.
+              A clear commitment to your routine — and the best value if you know you want to keep
+              showing up twice a week.
             </p>
           </div>
 
           <div className="rounded-[1.75rem] border border-primary-foreground/15 bg-primary-foreground/10 p-7 sm:p-8">
-            <h3 className="font-display text-xl text-primary-foreground">Yoga Plus Annual Pay-in-Full</h3>
+            <h3 className="font-display text-xl text-primary-foreground">
+              Yoga Plus Annual Pay-in-Full
+            </h3>
             <div className="mt-5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="font-display text-[2.5rem] leading-none text-primary-foreground">
                 {PAY_IN_FULL_PRICE}
@@ -700,7 +688,8 @@ function PayInFullNote() {
               </a>
             </div>
             <p className="mt-5 text-xs leading-relaxed text-primary-foreground/85">
-              The {DISCOUNT_CODE} discount code does not apply to Pay-in-Full. New students can start with the Intro Pass first.
+              The {DISCOUNT_CODE} discount code does not apply to Pay-in-Full. New students can
+              start with the Intro Pass first.
             </p>
           </div>
         </div>
@@ -755,8 +744,8 @@ function FlexibleOptions() {
             Need more flexibility?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Membership is the best value when yoga becomes part of your week.
-            If your schedule changes a lot, these options are here too.
+            Membership is the best value when yoga becomes part of your week. If your schedule
+            changes a lot, these options are here too.
           </p>
         </div>
 
@@ -767,13 +756,9 @@ function FlexibleOptions() {
               className="flex flex-col gap-4 rounded-2xl border border-border/60 bg-background/70 p-6 sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="min-w-0">
-                <h3 className="font-display text-lg text-foreground">
-                  {p.name}
-                </h3>
+                <h3 className="font-display text-lg text-foreground">{p.name}</h3>
                 <div className="mt-1 flex flex-wrap items-baseline gap-x-3">
-                  <span className="font-display text-2xl text-foreground">
-                    {p.perClass}
-                  </span>
+                  <span className="font-display text-2xl text-foreground">{p.perClass}</span>
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {p.price} · {p.meta}
@@ -801,7 +786,10 @@ function FlexibleOptions() {
 const CHOOSER = [
   { q: "New here?", a: "Start with the Intro Pass." },
   { q: "Want a simple flexible routine?", a: "Choose Yoga Plus." },
-  { q: "Want annual value but prefer paying every 4 weeks?", a: "Choose Yoga Plus Annual — enter YOGA4WEEKS at checkout for the first 4 weeks free." },
+  {
+    q: "Want annual value but prefer paying every 4 weeks?",
+    a: "Choose Yoga Plus Annual — enter YOGA4WEEKS at checkout for the first 4 weeks free.",
+  },
   { q: "Want the best one-payment annual value?", a: "Choose Yoga Plus Annual Pay-in-Full." },
   { q: "Coming 3+ times per week?", a: "Choose Unlimited Yoga." },
   { q: "Need maximum flexibility?", a: "Choose the 10-Class Pass." },
@@ -829,9 +817,7 @@ function PlanChooser() {
               key={c.q}
               className="grid grid-cols-1 items-baseline gap-2 py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] md:gap-14"
             >
-              <h3 className="font-display text-xl text-foreground md:text-2xl">
-                {c.q}
-              </h3>
+              <h3 className="font-display text-xl text-foreground md:text-2xl">{c.q}</h3>
               <p className="text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
                 {c.a}
               </p>
@@ -911,16 +897,11 @@ function FAQ() {
             <div
               key={f.q}
               className={
-                "border-t border-border/70 py-8 " +
-                (i === FAQ_ITEMS.length - 1 ? "border-b" : "")
+                "border-t border-border/70 py-8 " + (i === FAQ_ITEMS.length - 1 ? "border-b" : "")
               }
             >
-              <dt className="font-display text-xl text-foreground md:text-2xl">
-                {f.q}
-              </dt>
-              <dd className="mt-3 text-base leading-relaxed text-foreground">
-                {f.a}
-              </dd>
+              <dt className="font-display text-xl text-foreground md:text-2xl">{f.q}</dt>
+              <dd className="mt-3 text-base leading-relaxed text-foreground">{f.a}</dd>
             </div>
           ))}
         </dl>
@@ -937,17 +918,15 @@ function FinalCTA() {
     <section className="px-4 pb-24 sm:px-6 md:pb-32 lg:px-8">
       <div className="mx-auto max-w-5xl rounded-[2rem] border border-border/60 bg-secondary/60 px-8 py-14 text-center sm:px-12 md:py-20">
         <h2 className="font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[3rem]">
-          Start simple.{" "}
-          <span className="text-primary italic">Choose your routine after.</span>
+          Start simple. <span className="text-primary italic">Choose your routine after.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different
-          classes, find what fits your week and choose the plan that helps you
-          keep showing up.
+          Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, find what
+          fits your week and choose the plan that helps you keep showing up.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
-            {...sportbitLinkProps(INTRO_PASS_URL)}
+            href={INTRO_PASS_URL}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start with 14 days unlimited

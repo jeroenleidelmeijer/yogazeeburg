@@ -4,9 +4,8 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const INTRO_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=42";
-const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Cruquiusweg+96F+Amsterdam";
+const INTRO_URL = "/trial";
+const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=Cruquiusweg+96F+Amsterdam";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,7 +51,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-
 function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -92,15 +90,13 @@ function Hero() {
           <span className="text-primary italic">That's probably why you need it.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
-          For weeks that feel too full, shoulders that won't unclench, and a
-          head that won't switch off. A calm, down-to-earth yoga studio in
-          Amsterdam East where you move, breathe and land back in your body.
+          For weeks that feel too full, shoulders that won't unclench, and a head that won't switch
+          off. A calm, down-to-earth yoga studio in Amsterdam East where you move, breathe and land
+          back in your body.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
             href={INTRO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start with 14 days unlimited
@@ -130,7 +126,6 @@ function Hero() {
   );
 }
 
-
 /* ============================================================
    BENEFITS — editorial numbered list, not tiny cards
    ============================================================ */
@@ -157,8 +152,8 @@ function Benefits() {
               <span className="text-primary italic">You need a weekly reset.</span>
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-              A calm hour on the mat that changes the rest of your week.
-              No perfect poses, no performance — just space to slow down.
+              A calm hour on the mat that changes the rest of your week. No perfect poses, no
+              performance — just space to slow down.
             </p>
           </div>
 
@@ -213,7 +208,10 @@ function IntroPass() {
             aria-hidden
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-clay/15 blur-3xl"
           />
-          <div className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-sage/20 blur-3xl" aria-hidden />
+          <div
+            className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-sage/20 blur-3xl"
+            aria-hidden
+          />
 
           <div className="relative">
             <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
@@ -223,26 +221,18 @@ function IntroPass() {
               14 days of unlimited yoga. Then you'll know.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Start with 14 days of unlimited yoga at Yoga Zeeburg. Try
-              different classes, teachers and times, then discover what fits
-              your body, energy and schedule.
+              Start with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, teachers
+              and times, then discover what fits your body, energy and schedule.
             </p>
 
             <ol className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
               {INTRO_STEPS.map((s) => (
-                <li
-                  key={s.label}
-                  className="border-t border-border/70 pt-5"
-                >
+                <li key={s.label} className="border-t border-border/70 pt-5">
                   <span className="text-xs font-medium uppercase tracking-wide text-clay">
                     {s.label}
                   </span>
-                  <h3 className="mt-2 font-display text-xl text-foreground">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-                    {s.body}
-                  </p>
+                  <h3 className="mt-2 font-display text-xl text-foreground">{s.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{s.body}</p>
                 </li>
               ))}
             </ol>
@@ -250,8 +240,6 @@ function IntroPass() {
             <div className="mt-12 flex flex-wrap items-center gap-6">
               <a
                 href={INTRO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
                 Start with 14 days unlimited
@@ -295,22 +283,18 @@ function WhyUs() {
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/90">
             <p>
-              Yoga Zeeburg is a small, personal studio in Amsterdam East,
-              tucked above CrossFit Zeeburg on Cruquiusweg — a quiet corner
-              of the Eastern Docklands, right by the water.
+              Yoga Zeeburg is a small, personal studio in Amsterdam East, tucked above CrossFit
+              Zeeburg on Cruquiusweg — a quiet corner of the Eastern Docklands, right by the water.
             </p>
             <p className="text-muted-foreground">
-              You'll find beginner-friendly classes, clear descriptions of what
-              each class actually is, and teachers who guide without preaching.
-              No spiritual performance. No pressure. Just down-to-earth yoga
-              for real bodies and real weeks.
+              You'll find beginner-friendly classes, clear descriptions of what each class actually
+              is, and teachers who guide without preaching. No spiritual performance. No pressure.
+              Just down-to-earth yoga for real bodies and real weeks.
             </p>
           </div>
           <div className="mt-8">
             <a
               href={INTRO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-base font-medium text-primary hover:underline"
             >
               Come try a class
@@ -326,9 +310,8 @@ function WhyUs() {
               In the neighbourhood
             </div>
             <p className="mt-3 text-[15.5px] leading-relaxed text-foreground/85">
-              A small studio you'll get to know quickly — familiar faces at the
-              door, calm teachers on the mat, and a room that feels like a
-              little exhale from the city.
+              A small studio you'll get to know quickly — familiar faces at the door, calm teachers
+              on the mat, and a room that feels like a little exhale from the city.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {WHY_POINTS.map((p) => (
@@ -344,8 +327,8 @@ function WhyUs() {
               <div className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <div>
-                  <span className="text-foreground">Cruquiusweg 96F</span>, Amsterdam East ·
-                  Zeeburg / Cruquius · Eastern Docklands · above CrossFit Zeeburg
+                  <span className="text-foreground">Cruquiusweg 96F</span>, Amsterdam East · Zeeburg
+                  / Cruquius · Eastern Docklands · above CrossFit Zeeburg
                 </div>
               </div>
             </div>
@@ -383,24 +366,23 @@ function ClassDirections() {
     <section className="px-4 py-24 sm:px-6 md:py-32 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
-            Classes
-          </span>
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">Classes</span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
             Choose based on what you need today.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Some weeks call for stillness, others for motion. Pick the direction
-            that matches how you actually feel — not how you're supposed to feel.
+            Some weeks call for stillness, others for motion. Pick the direction that matches how
+            you actually feel — not how you're supposed to feel.
           </p>
         </div>
 
         <ul className="mt-14 divide-y divide-border/70 border-y border-border/70">
           {DIRECTIONS.map((d) => (
-            <li key={d.q} className="grid grid-cols-1 items-baseline gap-3 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-14">
-              <h3 className="font-display text-2xl text-foreground md:text-3xl">
-                {d.q}
-              </h3>
+            <li
+              key={d.q}
+              className="grid grid-cols-1 items-baseline gap-3 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-14"
+            >
+              <h3 className="font-display text-2xl text-foreground md:text-3xl">{d.q}</h3>
               <p className="text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
                 {d.a}
               </p>
@@ -441,9 +423,8 @@ function PricingTeaser() {
               A single class can help for a day. A routine can change your week.
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Start with the Intro Pass, then choose the routine that fits your
-              life. Regular memberships are designed for people who want yoga
-              to become part of their week.
+              Start with the Intro Pass, then choose the routine that fits your life. Regular
+              memberships are designed for people who want yoga to become part of their week.
             </p>
           </div>
           <Link
@@ -467,17 +448,14 @@ function Location() {
     <section className="bg-[color-mix(in_oklab,var(--color-sage)_10%,var(--color-background))] px-4 py-24 sm:px-6 md:py-32 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-[1fr_1fr] md:items-center md:gap-20">
         <div>
-          <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
-            Find us
-          </span>
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-clay">Find us</span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
             A calm room, just away from the noise.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-            Yoga Zeeburg sits above CrossFit Zeeburg on Cruquiusweg — a quiet
-            corner of Amsterdam East where Zeeburg meets Cruquius, right by
-            the water in the Eastern Docklands. Easy to reach, easy to leave
-            the day behind.
+            Yoga Zeeburg sits above CrossFit Zeeburg on Cruquiusweg — a quiet corner of Amsterdam
+            East where Zeeburg meets Cruquius, right by the water in the Eastern Docklands. Easy to
+            reach, easy to leave the day behind.
           </p>
         </div>
 
@@ -499,18 +477,13 @@ function Location() {
           </div>
           <ul className="mt-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
             {["Amsterdam East", "Zeeburg", "Eastern Docklands"].map((t) => (
-              <li
-                key={t}
-                className="rounded-full border border-border bg-background px-3 py-1"
-              >
+              <li key={t} className="rounded-full border border-border bg-background px-3 py-1">
                 {t}
               </li>
             ))}
           </ul>
           <a
             href={MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 sm:w-auto"
           >
             Open in Google Maps
@@ -521,7 +494,6 @@ function Location() {
     </section>
   );
 }
-
 
 /* ============================================================
    FINAL CTA — warm invitation, not a loud banner
@@ -542,20 +514,16 @@ function FinalCTA() {
           <h2 className="mx-auto max-w-3xl font-display text-[2.25rem] leading-[1.08] sm:text-5xl md:text-[3.25rem]">
             Start where you are.
             <br />
-            <span className="italic text-primary-foreground/90">
-              Build a routine that lasts.
-            </span>
+            <span className="italic text-primary-foreground/90">Build a routine that lasts.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
-            Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different
-            classes, find what fits your week, and take the first step toward
-            feeling calmer, more confident and more at home in your body.
+            Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, find what
+            fits your week, and take the first step toward feeling calmer, more confident and more
+            at home in your body.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={INTRO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 sm:w-auto"
             >
               Start with 14 days unlimited
