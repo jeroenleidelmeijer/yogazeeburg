@@ -2862,8 +2862,8 @@ function LocatieBody() {
         dagelijkse fietsroute ligt.
       </p>
       <p className="mt-4">
-        Onderzoek naar de gebouwde omgeving en bewegen laat vooral verbanden zien: betere toegang tot
-        recreatieve voorzieningen hangt in verschillende studies samen met meer lichamelijke
+        Onderzoek naar de gebouwde omgeving en bewegen laat vooral verbanden zien: betere toegang
+        tot recreatieve voorzieningen hangt in verschillende studies samen met meer lichamelijke
         activiteit. Dat bewijst niet dat nabijheid op zichzelf een routine veroorzaakt. Het
         ondersteunt wel het praktische idee dat een toegankelijke omgeving het makkelijker maakt om
         regelmatig te bewegen.
@@ -2876,16 +2876,16 @@ function LocatieBody() {
         Hoe een handige locatie de drempel verlaagt
       </h2>
       <p className="mt-4">
-        Iedere geplande les kent een beslismoment. Ga je direct na je werk, of eerst naar huis? Fiets
-        je door de regen, of stel je het uit? Als de route eenvoudig is, hoeft dat besluit minder
-        energie te kosten. Je kunt vertrekken op een vast tijdstip en hoeft niet iedere week opnieuw
-        te puzzelen.
+        Iedere geplande les kent een beslismoment. Ga je direct na je werk, of eerst naar huis?
+        Fiets je door de regen, of stel je het uit? Als de route eenvoudig is, hoeft dat besluit
+        minder energie te kosten. Je kunt vertrekken op een vast tijdstip en hoeft niet iedere week
+        opnieuw te puzzelen.
       </p>
       <p className="mt-4">
         Een handige locatie helpt vooral op dagen waarop je motivatie middelmatig is. Op een
         enthousiaste zaterdag reis je misschien met plezier de hele stad door. Op een donkere
-        maandagavond wint gemak vaak. Juist die gewone dagen bepalen of je na drie maanden nog steeds
-        gaat.
+        maandagavond wint gemak vaak. Juist die gewone dagen bepalen of je na drie maanden nog
+        steeds gaat.
       </p>
       <p className="mt-4">
         Dat betekent niet dat de dichtstbijzijnde studio automatisch de beste keuze is. Een passend
@@ -2933,9 +2933,9 @@ function LocatieBody() {
         >
           actuele lesrooster
         </Link>
-        . Controleer tijden altijd opnieuw voordat je vertrekt, want een rooster kan veranderen. Kies
-        liever één moment dat structureel haalbaar is dan drie ambitieuze opties die steeds botsen
-        met de rest van je week.
+        . Controleer tijden altijd opnieuw voordat je vertrekt, want een rooster kan veranderen.
+        Kies liever één moment dat structureel haalbaar is dan drie ambitieuze opties die steeds
+        botsen met de rest van je week.
       </p>
 
       <h2
@@ -2946,8 +2946,8 @@ function LocatieBody() {
       </h2>
       <p className="mt-4">
         Een proefperiode is niet alleen bedoeld om verschillende yogastijlen te vergelijken. Gebruik
-        die periode ook om de hele routine te testen. Vertrek op het tijdstip waarop je later meestal
-        zou gaan. Let op de route, je aankomst en de overgang terug naar huis.
+        die periode ook om de hele routine te testen. Vertrek op het tijdstip waarop je later
+        meestal zou gaan. Let op de route, je aankomst en de overgang terug naar huis.
       </p>
       <p className="mt-4">
         Stel jezelf na afloop een paar concrete vragen. Moest je haasten? Was de les gemakkelijk te
@@ -2976,12 +2976,12 @@ function LocatieBody() {
       </h2>
       <p className="mt-4">
         Kies niet uitsluitend op afstand. Als de sfeer niet prettig is, de instructie niet bij je
-        past of het rooster te beperkt is, helpt nabijheid maar weinig. Een iets langere route kan een
-        betere keuze zijn wanneer je daar graag terugkomt en de lestijden beter aansluiten.
+        past of het rooster te beperkt is, helpt nabijheid maar weinig. Een iets langere route kan
+        een betere keuze zijn wanneer je daar graag terugkomt en de lestijden beter aansluiten.
       </p>
       <p className="mt-4">
-        Gebruik daarom een eenvoudige volgorde. Maak eerst een kleine selectie op locatie en rooster.
-        Vergelijk daarna lesstijl, docent, sfeer en voorwaarden. Het artikel{" "}
+        Gebruik daarom een eenvoudige volgorde. Maak eerst een kleine selectie op locatie en
+        rooster. Vergelijk daarna lesstijl, docent, sfeer en voorwaarden. Het artikel{" "}
         <Link
           to="/nl/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
@@ -2994,8 +2994,8 @@ function LocatieBody() {
       <p className="mt-4">
         Geef een studio meer dan één kans als de eerste ervaring niet duidelijk negatief was. Een
         andere docent, lesstijl of dag kan anders voelen. Tegelijk hoef je jezelf niet te overtuigen
-        van een plek waar je je niet op je gemak voelt. Volhouden vraagt weinig praktische frictie én
-        voldoende vertrouwen in de omgeving.
+        van een plek waar je je niet op je gemak voelt. Volhouden vraagt weinig praktische frictie
+        én voldoende vertrouwen in de omgeving.
       </p>
 
       <h2
@@ -3012,8 +3012,8 @@ function LocatieBody() {
       </p>
       <p className="mt-4">
         De studio is klein, persoonlijk en gericht op toegankelijke, nuchtere yoga. Er staan
-        rustigere en actievere lessen op het rooster. Controleer de actuele tijden en beschikbaarheid
-        vooraf; verzin geen routine rond een lestijd die in de praktijk niet past.
+        rustigere en actievere lessen op het rooster. Controleer de actuele tijden en
+        beschikbaarheid vooraf; verzin geen routine rond een lestijd die in de praktijk niet past.
       </p>
       <p className="mt-4">
         Ga je voor het eerst? Plan wat extra aankomsttijd en lees wat je kunt verwachten van een{" "}
@@ -3041,8 +3041,8 @@ function LocatieBody() {
       </p>
       <p className="mt-4">
         Begin bescheiden. Eén haalbare les per week is een sterker vertrekpunt dan een ambitieus
-        schema dat je na twee weken loslaat. Als het ritme vanzelfsprekender wordt, kun je altijd een
-        tweede moment toevoegen.
+        schema dat je na twee weken loslaat. Als het ritme vanzelfsprekender wordt, kun je altijd
+        een tweede moment toevoegen.
       </p>
       <p className="mt-4">
         De beste yogastudio dichtbij is uiteindelijk de studio die drie tests doorstaat: je kunt er
@@ -3065,7 +3065,6 @@ export const ARTICLES: Article[] = [
   waterArticle,
   locatieArticle,
 ];
-
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug);
