@@ -6,11 +6,7 @@
 
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
-import {
-  legacyArticleToRef,
-  listLegacyRefs,
-  CATEGORY_META,
-} from "@/lib/kennisbank/registry";
+import { legacyArticleToRef, listLegacyRefs, CATEGORY_META } from "@/lib/kennisbank/registry";
 import {
   pillars,
   sortByNewest,
@@ -36,18 +32,17 @@ function fakeDbRef(overrides: Partial<ArticleRef> = {}): ArticleRef {
     updatedAt: "2026-08-05",
     pillar: false,
     source: "db",
-    searchText:
-      "yoga in amsterdam oost voor drukke professionals praktische gids na werk",
+    searchText: "yoga in amsterdam oost voor drukke professionals praktische gids na werk",
     filters: ["beginner"],
   };
   return { ...base, ...overrides };
 }
 
-describe("Yoga Gids — legacy regression (articles 1–8)", () => {
+describe("Yoga Gids — legacy regression (articles 1–9)", () => {
   const legacy = listLegacyRefs();
 
-  it("exposes exactly the eight seeded legacy articles", () => {
-    expect(legacy).toHaveLength(8);
+  it("exposes exactly the nine seeded legacy articles", () => {
+    expect(legacy).toHaveLength(9);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -59,6 +54,7 @@ describe("Yoga Gids — legacy regression (articles 1–8)", () => {
         "yoga-voor-kantoormedewerkers-in-amsterdam-oost",
         "yogales-in-amsterdam-waar-moet-je-op-letten-bij-je-keuze",
         "yoga-aan-het-water-in-amsterdam-oost-rust-midden-in-de-stad",
+        "yoga-dicht-bij-huis-waarom-locatie-helpt-om-vol-te-houden",
       ].sort(),
     );
   });
@@ -74,7 +70,7 @@ describe("Yoga Gids — legacy regression (articles 1–8)", () => {
 
   it("keeps every legacy article discoverable via case-insensitive search", () => {
     const hits = searchAndFilter(legacy, "Amsterdam Oost", null);
-    expect(hits).toHaveLength(8);
+    expect(hits).toHaveLength(9);
   });
 });
 
@@ -145,10 +141,7 @@ describe("Yoga Gids — DB refs merge and dedupe", () => {
     // Reproduce data.server.ts merge semantics: skip DB rows whose slug is
     // already present in legacy.
     const legacySlugs = new Set(legacy.map((r) => r.slug));
-    const merged = [
-      ...legacy,
-      ...(legacySlugs.has(colliding.slug) ? [] : [colliding]),
-    ];
+    const merged = [...legacy, ...(legacySlugs.has(colliding.slug) ? [] : [colliding])];
     const winner = merged.find((r) => r.slug === legacy[0].slug)!;
     expect(winner.source).toBe("legacy");
     expect(winner.title).not.toBe("SHOULD NOT WIN");
@@ -159,9 +152,7 @@ describe("SafeMarkdownBody — untrusted content safety", () => {
   const render = (md: string) => renderToStaticMarkup(<SafeMarkdownBody markdown={md} />);
 
   it("never emits <script> tags from raw HTML input", () => {
-    const out = render(
-      "## Titel\n\nHallo <script>alert('xss')</script> wereld",
-    );
+    const out = render("## Titel\n\nHallo <script>alert('xss')</script> wereld");
     expect(out).not.toContain("<script");
     expect(out).toContain("alert");
     // The literal script text is preserved as escaped text content.
@@ -183,17 +174,13 @@ describe("SafeMarkdownBody — untrusted content safety", () => {
     // context we don't provide in this pure renderer test; that path is
     // covered by the runtime route test. Here we assert the same-site
     // https branch renders as a raw <a>.
-    const out = render(
-      "[site](https://www.yogazeeburg.com/nl/kennisbank/x)",
-    );
+    const out = render("[site](https://www.yogazeeburg.com/nl/kennisbank/x)");
     expect(out).toContain("yogazeeburg.com/nl/kennisbank/x");
     expect(out).toMatch(/<a[^>]+href="https:\/\/www\.yogazeeburg\.com/);
   });
 
   it("renders headings, lists and paragraphs", () => {
-    const out = render(
-      "## Kop\n\nEen zin.\n\n- een\n- twee\n\n1. eerst\n2. dan",
-    );
+    const out = render("## Kop\n\nEen zin.\n\n- een\n- twee\n\n1. eerst\n2. dan");
     expect(out).toContain("<h2");
     expect(out).toContain("<ul");
     expect(out).toContain("<ol");

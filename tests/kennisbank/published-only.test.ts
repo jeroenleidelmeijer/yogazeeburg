@@ -6,10 +6,10 @@
 // through a mocked server-only Supabase admin client.
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-type Route = (state: {
-  table: string;
-  filters: [string, unknown][];
-}) => { data: unknown; error: unknown };
+type Route = (state: { table: string; filters: [string, unknown][] }) => {
+  data: unknown;
+  error: unknown;
+};
 
 function makeSupabase(route: Route) {
   return {
@@ -27,7 +27,10 @@ function makeSupabase(route: Route) {
         maybeSingle() {
           return Promise.resolve(route(state));
         },
-        then(res: (v: { data: unknown; error: unknown }) => unknown, rej?: (e: unknown) => unknown) {
+        then(
+          res: (v: { data: unknown; error: unknown }) => unknown,
+          rej?: (e: unknown) => unknown,
+        ) {
           return Promise.resolve(route(state)).then(res, rej);
         },
       };
@@ -81,7 +84,10 @@ function dbRow(status: "draft" | "preview" | "published", slug: string, title: s
   };
 }
 
-async function withRows(rows: ReturnType<typeof dbRow>[], captureFilters?: (f: [string, unknown][]) => void) {
+async function withRows(
+  rows: ReturnType<typeof dbRow>[],
+  captureFilters?: (f: [string, unknown][]) => void,
+) {
   vi.doMock("@/integrations/supabase/client.server", () => ({
     supabaseAdmin: makeSupabase((s) => {
       if (s.table !== "kennisbank_placements") return { data: null, error: null };
@@ -128,13 +134,15 @@ describe("listPublishedRefs — published-only merge", () => {
     expect(slugs).not.toContain("preview-only-fake");
 
     // The DB read pinned placement_status='published' at the query level.
-    expect(capturedFilters.some(([c, v]) => c === "placement_status" && v === "published")).toBe(true);
+    expect(capturedFilters.some(([c, v]) => c === "placement_status" && v === "published")).toBe(
+      true,
+    );
   });
 
   it("preserves legacy articles when the DB has zero rows", async () => {
     const { listPublishedRefs } = await withRows([]);
     const refs = await listPublishedRefs();
-    expect(refs).toHaveLength(8);
+    expect(refs).toHaveLength(9);
     for (const r of refs) expect(r.source).toBe("legacy");
   });
 });
