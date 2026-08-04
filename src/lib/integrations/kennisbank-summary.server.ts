@@ -5,6 +5,8 @@
  * and the non-published `kennisbank_placements` rows are admin-scoped by RLS.
  * Callers MUST verify the X-Api-Key header before invoking this module.
  */
+import { projectUpcomingSlotDates } from "@/lib/publications/scheduler/cadence";
+
 
 export type RecentPublished = {
   final_title: string | null;
