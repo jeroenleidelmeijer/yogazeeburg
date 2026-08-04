@@ -15,7 +15,11 @@ export type RecentPublished = {
 };
 
 export type NextScheduled = {
+  planning_number: number;
   final_title: string | null;
+  /** Working title from the planning sheet; set before final_title exists. */
+  original_title: string | null;
+  status: string;
   scheduled_at: string | null;
   primary_keyword: string | null;
 };
@@ -74,7 +78,7 @@ export async function buildKennisbankSummary(): Promise<KennisbankSummary> {
     supabaseAdmin
       .from("publication_articles")
       .select(
-        "planning_number, final_title, slug, status, category, cluster, primary_keyword, published_at, scheduled_at",
+        "planning_number, final_title, original_title, slug, status, category, cluster, primary_keyword, published_at, scheduled_at",
       )
       .order("planning_number", { ascending: true }),
     supabaseAdmin
@@ -129,7 +133,10 @@ export async function buildKennisbankSummary(): Promise<KennisbankSummary> {
     .filter((a) => upcoming.has(a.status))
     .slice(0, 3)
     .map((a) => ({
+      planning_number: a.planning_number,
       final_title: nullable(a.final_title),
+      original_title: nullable(a.original_title),
+      status: a.status,
       scheduled_at: a.scheduled_at ?? null,
       primary_keyword: nullable(a.primary_keyword),
     }));

@@ -8,15 +8,13 @@ export const Route = createFileRoute("/api/v1/kennisbank-summary")({
   server: {
     handlers: {
       OPTIONS: async () => {
-        const { handleKennisbankSummaryOptions } = await import(
-          "@/lib/integrations/kennisbank-summary-endpoint.server"
-        );
+        const { handleKennisbankSummaryOptions } =
+          await import("@/lib/integrations/kennisbank-summary-endpoint.server");
         return handleKennisbankSummaryOptions();
       },
       GET: async ({ request }) => {
-        const { handleKennisbankSummaryRequest } = await import(
-          "@/lib/integrations/kennisbank-summary-endpoint.server"
-        );
+        const { handleKennisbankSummaryRequest } =
+          await import("@/lib/integrations/kennisbank-summary-endpoint.server");
         return handleKennisbankSummaryRequest(request);
       },
     },
