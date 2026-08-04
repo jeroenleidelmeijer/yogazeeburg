@@ -2606,6 +2606,10 @@ function WaterBody() {
         .
       </p>
 
+      <ArticleFigure image={WATER_INLINE_IMAGE} className="mt-10" />
+
+
+
       <h2
         id="rust-komt-niet-alleen-van-de-plek"
         className="mt-14 font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
