@@ -2522,7 +2522,9 @@ const waterArticle: Article = {
     showSources: true,
     showRelated: true,
   },
+  heroImage: WATER_HERO_IMAGE,
   body: () => <WaterBody />,
+
 };
 
 function WaterBody() {
