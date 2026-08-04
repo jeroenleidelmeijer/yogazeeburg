@@ -119,3 +119,48 @@ export function evaluateCadence(input: CadenceInput): CadenceDecision {
   }
   return { allowed: true, phase, slot: dow };
 }
+
+// -- forward projection ---------------------------------------------------
+
+const WEEKDAY_NAMES: Weekday[] = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
+
+/** Calendar date (Europe/Amsterdam) as YYYY-MM-DD. */
+function toYmdString(dayIndex: number): string {
+  const d = new Date(dayIndex * 86_400_000);
+  return d.toISOString().slice(0, 10);
+}
+
+/**
+ * Projects the next `count` publication dates (Europe/Amsterdam, YYYY-MM-DD),
+ * starting from the first cadence slot on or after `now`.
+ *
+ * When `automationStartDate` is null the phase window is anchored on `now`,
+ * so projection falls back to the phase-1 rhythm (monday/wednesday/friday).
+ */
+export function projectUpcomingSlotDates(
+  count: number,
+  now: Date,
+  automationStartDate: Date | null = null,
+): string[] {
+  if (count <= 0) return [];
+  const anchor = automationStartDate ?? now;
+  const startDay = tzDayIndex(now, AMSTERDAM_TZ);
+  const anchorDay = tzDayIndex(anchor, AMSTERDAM_TZ);
+  const out: string[] = [];
+  for (let day = startDay; out.length < count && day < startDay + 3650; day += 1) {
+    const weekIndex = day >= anchorDay ? Math.floor((day - anchorDay) / 7) : -1;
+    if (weekIndex < 0) continue;
+    const allowed = allowedSlotsForPhase(phaseForWeek(weekIndex));
+    const dow = WEEKDAY_NAMES[new Date(day * 86_400_000).getUTCDay()]!;
+    if ((allowed as Weekday[]).includes(dow)) out.push(toYmdString(day));
+  }
+  return out;
+}
