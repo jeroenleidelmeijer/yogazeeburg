@@ -2,6 +2,26 @@ import type { LucideIcon } from "lucide-react";
 import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
+import waterHeroAsset from "@/assets/yoga-aan-het-water-hero.webp.asset.json";
+import waterInlineAsset from "@/assets/yogamat-bolster-water.webp.asset.json";
+
+const WATER_HERO_IMAGE: ArticleImageRef = {
+  url: waterHeroAsset.url,
+  alt: "Illustratie van een yogamat aan het water in Amsterdam Oost bij avondlicht.",
+  width: 1600,
+  height: 900,
+};
+
+const WATER_INLINE_IMAGE: ArticleImageRef = {
+  url: waterInlineAsset.url,
+  alt: "Illustratie van een rustige yogamat met bolster en uitzicht over het water.",
+  width: 1600,
+  height: 900,
+};
+
+export type { ArticleImageRef };
+
 
 export type ArticleCategory = {
   slug: string;
