@@ -129,17 +129,19 @@ export async function buildKennisbankSummary(): Promise<KennisbankSummary> {
     }));
 
   const upcoming = new Set<string>(UPCOMING_STATUSES);
-  const next_scheduled: NextScheduled[] = articles
-    .filter((a) => upcoming.has(a.status))
-    .slice(0, 3)
-    .map((a) => ({
-      planning_number: a.planning_number,
-      final_title: nullable(a.final_title),
-      original_title: nullable(a.original_title),
-      status: a.status,
-      scheduled_at: a.scheduled_at ?? null,
-      primary_keyword: nullable(a.primary_keyword),
-    }));
+  const upcomingArticles = articles.filter((a) => upcoming.has(a.status)).slice(0, 3);
+  // External consumers need concrete dates: fall back to the standard cadence
+  // projection when the pipeline has not stamped `scheduled_at` yet.
+  const projected = projectUpcomingSlotDates(upcomingArticles.length, new Date());
+  const next_scheduled: NextScheduled[] = upcomingArticles.map((a, i) => ({
+    planning_number: a.planning_number,
+    final_title: nullable(a.final_title),
+    original_title: nullable(a.original_title),
+    status: a.status,
+    scheduled_at: a.scheduled_at ?? projected[i] ?? null,
+    primary_keyword: nullable(a.primary_keyword),
+  }));
+
 
   const failed_runs = runs.filter((r) => r.final_status === "failed").length;
   const retry_pending_runs = runs.filter((r) => r.final_status === "retry_pending").length;
