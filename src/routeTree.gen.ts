@@ -29,10 +29,12 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as NlKennisbankIndexRouteImport } from './routes/nl.kennisbank.index'
 import { Route as NlKennisbankAlleArtikelenRouteImport } from './routes/nl.kennisbank.alle-artikelen'
 import { Route as NlKennisbankSlugRouteImport } from './routes/nl.kennisbank.$slug'
+import { Route as ApiV1KennisbankSummaryRouteImport } from './routes/api/v1/kennisbank-summary'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as NlKennisbankCategorieIndexRouteImport } from './routes/nl.kennisbank.categorie.index'
 import { Route as NlKennisbankPreviewArticleIdRouteImport } from './routes/nl.kennisbank.preview.$articleId'
 import { Route as NlKennisbankCategorieSlugRouteImport } from './routes/nl.kennisbank.categorie.$slug'
+import { Route as ApiPublicV1KennisbankSummaryRouteImport } from './routes/api/public/v1/kennisbank-summary'
 
 const YogaStylesRoute = YogaStylesRouteImport.update({
   id: '/yoga-styles',
@@ -138,6 +140,11 @@ const NlKennisbankSlugRoute = NlKennisbankSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => NlKennisbankRoute,
 } as any)
+const ApiV1KennisbankSummaryRoute = ApiV1KennisbankSummaryRouteImport.update({
+  id: '/api/v1/kennisbank-summary',
+  path: '/api/v1/kennisbank-summary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
@@ -162,6 +169,12 @@ const NlKennisbankCategorieSlugRoute =
     path: '/categorie/$slug',
     getParentRoute: () => NlKennisbankRoute,
   } as any)
+const ApiPublicV1KennisbankSummaryRoute =
+  ApiPublicV1KennisbankSummaryRouteImport.update({
+    id: '/api/public/v1/kennisbank-summary',
+    path: '/api/public/v1/kennisbank-summary',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -182,9 +195,11 @@ export interface FileRoutesByFullPath {
   '/admin/kennisbank-publicaties': typeof AdminKennisbankPublicatiesRoute
   '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/v1/kennisbank-summary': typeof ApiV1KennisbankSummaryRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank/': typeof NlKennisbankIndexRoute
+  '/api/public/v1/kennisbank-summary': typeof ApiPublicV1KennisbankSummaryRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
   '/nl/kennisbank/preview/$articleId': typeof NlKennisbankPreviewArticleIdRoute
   '/nl/kennisbank/categorie/': typeof NlKennisbankCategorieIndexRoute
@@ -207,9 +222,11 @@ export interface FileRoutesByTo {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/kennisbank-publicaties': typeof AdminKennisbankPublicatiesRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/v1/kennisbank-summary': typeof ApiV1KennisbankSummaryRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank': typeof NlKennisbankIndexRoute
+  '/api/public/v1/kennisbank-summary': typeof ApiPublicV1KennisbankSummaryRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
   '/nl/kennisbank/preview/$articleId': typeof NlKennisbankPreviewArticleIdRoute
   '/nl/kennisbank/categorie': typeof NlKennisbankCategorieIndexRoute
@@ -234,9 +251,11 @@ export interface FileRoutesById {
   '/admin/kennisbank-publicaties': typeof AdminKennisbankPublicatiesRoute
   '/nl/kennisbank': typeof NlKennisbankRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/v1/kennisbank-summary': typeof ApiV1KennisbankSummaryRoute
   '/nl/kennisbank/$slug': typeof NlKennisbankSlugRoute
   '/nl/kennisbank/alle-artikelen': typeof NlKennisbankAlleArtikelenRoute
   '/nl/kennisbank/': typeof NlKennisbankIndexRoute
+  '/api/public/v1/kennisbank-summary': typeof ApiPublicV1KennisbankSummaryRoute
   '/nl/kennisbank/categorie/$slug': typeof NlKennisbankCategorieSlugRoute
   '/nl/kennisbank/preview/$articleId': typeof NlKennisbankPreviewArticleIdRoute
   '/nl/kennisbank/categorie/': typeof NlKennisbankCategorieIndexRoute
@@ -262,9 +281,11 @@ export interface FileRouteTypes {
     | '/admin/kennisbank-publicaties'
     | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/v1/kennisbank-summary'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank/'
+    | '/api/public/v1/kennisbank-summary'
     | '/nl/kennisbank/categorie/$slug'
     | '/nl/kennisbank/preview/$articleId'
     | '/nl/kennisbank/categorie/'
@@ -287,9 +308,11 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/kennisbank-publicaties'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/v1/kennisbank-summary'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank'
+    | '/api/public/v1/kennisbank-summary'
     | '/nl/kennisbank/categorie/$slug'
     | '/nl/kennisbank/preview/$articleId'
     | '/nl/kennisbank/categorie'
@@ -313,9 +336,11 @@ export interface FileRouteTypes {
     | '/admin/kennisbank-publicaties'
     | '/nl/kennisbank'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/v1/kennisbank-summary'
     | '/nl/kennisbank/$slug'
     | '/nl/kennisbank/alle-artikelen'
     | '/nl/kennisbank/'
+    | '/api/public/v1/kennisbank-summary'
     | '/nl/kennisbank/categorie/$slug'
     | '/nl/kennisbank/preview/$articleId'
     | '/nl/kennisbank/categorie/'
@@ -340,6 +365,8 @@ export interface RootRouteChildren {
   AdminKennisbankPublicatiesRoute: typeof AdminKennisbankPublicatiesRoute
   NlKennisbankRoute: typeof NlKennisbankRouteWithChildren
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiV1KennisbankSummaryRoute: typeof ApiV1KennisbankSummaryRoute
+  ApiPublicV1KennisbankSummaryRoute: typeof ApiPublicV1KennisbankSummaryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -484,6 +511,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NlKennisbankSlugRouteImport
       parentRoute: typeof NlKennisbankRoute
     }
+    '/api/v1/kennisbank-summary': {
+      id: '/api/v1/kennisbank-summary'
+      path: '/api/v1/kennisbank-summary'
+      fullPath: '/api/v1/kennisbank-summary'
+      preLoaderRoute: typeof ApiV1KennisbankSummaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
       path: '/.mcp/invoke-tool/$tool'
@@ -511,6 +545,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/nl/kennisbank/categorie/$slug'
       preLoaderRoute: typeof NlKennisbankCategorieSlugRouteImport
       parentRoute: typeof NlKennisbankRoute
+    }
+    '/api/public/v1/kennisbank-summary': {
+      id: '/api/public/v1/kennisbank-summary'
+      path: '/api/public/v1/kennisbank-summary'
+      fullPath: '/api/public/v1/kennisbank-summary'
+      preLoaderRoute: typeof ApiPublicV1KennisbankSummaryRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -557,6 +598,8 @@ const rootRouteChildren: RootRouteChildren = {
   AdminKennisbankPublicatiesRoute: AdminKennisbankPublicatiesRoute,
   NlKennisbankRoute: NlKennisbankRouteWithChildren,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiV1KennisbankSummaryRoute: ApiV1KennisbankSummaryRoute,
+  ApiPublicV1KennisbankSummaryRoute: ApiPublicV1KennisbankSummaryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
