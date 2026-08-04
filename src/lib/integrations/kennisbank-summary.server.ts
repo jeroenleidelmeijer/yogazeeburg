@@ -6,6 +6,7 @@
  * Callers MUST verify the X-Api-Key header before invoking this module.
  */
 import { projectUpcomingSlotDates } from "@/lib/publications/scheduler/cadence";
+import { countActiveRuns } from "./pipeline-health";
 
 
 export type RecentPublished = {
@@ -80,14 +81,16 @@ export async function buildKennisbankSummary(): Promise<KennisbankSummary> {
     supabaseAdmin
       .from("publication_articles")
       .select(
-        "planning_number, final_title, original_title, slug, status, category, cluster, primary_keyword, published_at, scheduled_at",
+        "id, planning_number, final_title, original_title, slug, status, category, cluster, primary_keyword, published_at, scheduled_at",
       )
       .order("planning_number", { ascending: true }),
     supabaseAdmin
       .from("kennisbank_placements")
       .select("slug, placement_status, published_at")
       .eq("placement_status", "published"),
-    supabaseAdmin.from("publication_runs").select("final_status"),
+    supabaseAdmin
+      .from("publication_runs")
+      .select("article_id, final_status, started_at, finished_at, created_at"),
     supabaseAdmin
       .from("publication_articles")
       .select("planning_number, last_error_category, last_error_summary, updated_at")
@@ -145,8 +148,12 @@ export async function buildKennisbankSummary(): Promise<KennisbankSummary> {
   }));
 
 
-  const failed_runs = runs.filter((r) => r.final_status === "failed").length;
-  const retry_pending_runs = runs.filter((r) => r.final_status === "retry_pending").length;
+  // Historical failures for articles that are now published are audit data,
+  // not active incidents.
+  const publishedArticleIds = new Set<string>(
+    articles.filter((a) => a.status === "published").map((a) => a.id),
+  );
+  const { failed_runs, retry_pending_runs } = countActiveRuns(runs, publishedArticleIds);
   const articles_failed = articles.filter((a) => a.status === "failed").length;
   const articles_retry_pending = articles.filter((a) => a.status === "retry_pending").length;
   const articles_blocked = articles.filter((a) => a.status === "blocked").length;
