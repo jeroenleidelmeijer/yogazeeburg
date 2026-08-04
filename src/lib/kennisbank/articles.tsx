@@ -22,7 +22,6 @@ const WATER_INLINE_IMAGE: ArticleImageRef = {
 
 export type { ArticleImageRef };
 
-
 export type ArticleCategory = {
   slug: string;
   title: string;
@@ -62,7 +61,6 @@ export type Article = {
   heroImage?: ArticleImageRef;
   body: () => ReactNode;
 };
-
 
 const CATEGORY_AMSTERDAM_OOST: ArticleCategory = {
   slug: "yoga-amsterdam-oost",
@@ -2524,7 +2522,6 @@ const waterArticle: Article = {
   },
   heroImage: WATER_HERO_IMAGE,
   body: () => <WaterBody />,
-
 };
 
 function WaterBody() {
@@ -2609,10 +2606,6 @@ function WaterBody() {
       </p>
 
       <ArticleFigure image={WATER_INLINE_IMAGE} className="mt-10" />
-
-
-
-
 
       <h2
         id="rust-komt-niet-alleen-van-de-plek"
