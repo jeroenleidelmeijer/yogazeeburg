@@ -2,6 +2,25 @@ import type { LucideIcon } from "lucide-react";
 import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
+import waterHeroAsset from "@/assets/yoga-aan-het-water-hero.webp.asset.json";
+import waterInlineAsset from "@/assets/yogamat-bolster-water.webp.asset.json";
+
+const WATER_HERO_IMAGE: ArticleImageRef = {
+  url: waterHeroAsset.url,
+  alt: "Illustratie van een yogamat aan het water in Amsterdam Oost bij avondlicht.",
+  width: 1600,
+  height: 900,
+};
+
+const WATER_INLINE_IMAGE: ArticleImageRef = {
+  url: waterInlineAsset.url,
+  alt: "Illustratie van een rustige yogamat met bolster en uitzicht over het water.",
+  width: 1600,
+  height: 900,
+};
+
+export type { ArticleImageRef };
 
 export type ArticleCategory = {
   slug: string;
@@ -37,6 +56,9 @@ export type Article = {
   faqs: ArticleFAQ[];
   sources?: { title: string; url: string }[];
   template: ArticleTemplateOptions;
+  /** Optional hero image, rendered after the header/meta and before the TOC.
+   *  Also used for og:image, twitter:image and Article JSON-LD `image`. */
+  heroImage?: ArticleImageRef;
   body: () => ReactNode;
 };
 
@@ -2498,6 +2520,7 @@ const waterArticle: Article = {
     showSources: true,
     showRelated: true,
   },
+  heroImage: WATER_HERO_IMAGE,
   body: () => <WaterBody />,
 };
 
@@ -2581,6 +2604,8 @@ function WaterBody() {
         </Link>
         .
       </p>
+
+      <ArticleFigure image={WATER_INLINE_IMAGE} className="mt-10" />
 
       <h2
         id="rust-komt-niet-alleen-van-de-plek"

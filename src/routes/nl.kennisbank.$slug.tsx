@@ -8,6 +8,7 @@ import { related as relatedRefs } from "@/lib/kennisbank/compose";
 import type { ArticleRef, ArticleResolvedRef, DbArticleViewModel } from "@/lib/kennisbank/types";
 import { ArticleCard } from "@/components/kennisbank/ArticleCard";
 import { SafeMarkdownBody } from "@/components/kennisbank/SafeMarkdownBody";
+import { ArticleFigure } from "@/components/kennisbank/ArticleFigure";
 
 const BASE = "https://www.yogazeeburg.com";
 const INTRO_URL = "/trial";
@@ -65,6 +66,12 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: seo.seoTitle },
         { name: "twitter:description", content: seo.description },
+        ...(seo.heroImageUrl
+          ? [
+              { property: "og:image", content: seo.heroImageUrl },
+              { name: "twitter:image", content: seo.heroImageUrl },
+            ]
+          : []),
       ],
       links: [{ rel: "canonical", href: canonical }],
       scripts: [
@@ -75,6 +82,7 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
             "@type": "Article",
             headline: seo.h1,
             description: seo.description,
+            ...(seo.heroImageUrl ? { image: [seo.heroImageUrl] } : {}),
             inLanguage: "nl-NL",
             datePublished: seo.publishedAt,
             dateModified: seo.updatedAt,
@@ -142,6 +150,8 @@ type SeoView = {
   categoryTitle: string;
   categorySlug: string;
   faqs: { question: string; answer: string }[];
+  /** Absolute production URL of the hero image, when the article has one. */
+  heroImageUrl: string | null;
 };
 
 function seoFor(resolved: ArticleResolvedRef): SeoView | null {
@@ -158,6 +168,7 @@ function seoFor(resolved: ArticleResolvedRef): SeoView | null {
       categoryTitle: a.category.title,
       categorySlug: a.category.slug,
       faqs: a.template.showFAQ ? a.faqs : [],
+      heroImageUrl: a.heroImage ? `${BASE}${a.heroImage.url}` : null,
     };
   }
   const v = resolved.view;
@@ -171,6 +182,7 @@ function seoFor(resolved: ArticleResolvedRef): SeoView | null {
     categoryTitle: v.category.title,
     categorySlug: v.category.slug,
     faqs: v.template.showFAQ ? v.faqs : [],
+    heroImageUrl: null,
   };
 }
 
@@ -203,6 +215,7 @@ function ArticleShell({
   updatedAt,
   readingTimeMin,
   intro,
+  hero,
   children,
 }: {
   categoryTitle: string;
@@ -213,6 +226,7 @@ function ArticleShell({
   updatedAt: string;
   readingTimeMin: number;
   intro?: string;
+  hero?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -279,6 +293,7 @@ function ArticleShell({
           </header>
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
             <div className="text-[17px] leading-relaxed text-foreground/90">
+              {hero}
               {children}
               <FinalCta />
               <BackLink updatedAt={updatedAt} />
@@ -430,6 +445,9 @@ function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRe
       intro={
         a.intro ??
         "Praktische, warme uitleg over hoe een eerste yogales in Amsterdam Oost werkt — zonder marketingtaal en zonder prestatiedruk."
+      }
+      hero={
+        a.heroImage ? <ArticleFigure image={a.heroImage} priority className="mb-10" /> : undefined
       }
     >
       {a.template.showTOC && <TocBlock toc={a.toc} />}
