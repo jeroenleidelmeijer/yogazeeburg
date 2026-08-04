@@ -37,8 +37,12 @@ export type Article = {
   faqs: ArticleFAQ[];
   sources?: { title: string; url: string }[];
   template: ArticleTemplateOptions;
+  /** Optional hero image, rendered after the header/meta and before the TOC.
+   *  Also used for og:image, twitter:image and Article JSON-LD `image`. */
+  heroImage?: ArticleImageRef;
   body: () => ReactNode;
 };
+
 
 const CATEGORY_AMSTERDAM_OOST: ArticleCategory = {
   slug: "yoga-amsterdam-oost",
