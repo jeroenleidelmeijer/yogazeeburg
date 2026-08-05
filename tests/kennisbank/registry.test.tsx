@@ -38,11 +38,11 @@ function fakeDbRef(overrides: Partial<ArticleRef> = {}): ArticleRef {
   return { ...base, ...overrides };
 }
 
-describe("Yoga Gids — legacy regression (articles 1–9)", () => {
+describe("Yoga Gids — legacy regression (articles 1–10)", () => {
   const legacy = listLegacyRefs();
 
-  it("exposes exactly the nine seeded legacy articles", () => {
-    expect(legacy).toHaveLength(9);
+  it("exposes exactly the ten seeded legacy articles", () => {
+    expect(legacy).toHaveLength(10);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -55,6 +55,7 @@ describe("Yoga Gids — legacy regression (articles 1–9)", () => {
         "yogales-in-amsterdam-waar-moet-je-op-letten-bij-je-keuze",
         "yoga-aan-het-water-in-amsterdam-oost-rust-midden-in-de-stad",
         "yoga-dicht-bij-huis-waarom-locatie-helpt-om-vol-te-houden",
+        "yoga-in-ijburg-of-zeeburg-welke-locatie-past-beter",
       ].sort(),
     );
   });
@@ -70,7 +71,7 @@ describe("Yoga Gids — legacy regression (articles 1–9)", () => {
 
   it("keeps every legacy article discoverable via case-insensitive search", () => {
     const hits = searchAndFilter(legacy, "Amsterdam Oost", null);
-    expect(hits).toHaveLength(9);
+    expect(hits).toHaveLength(10);
   });
 });
 
