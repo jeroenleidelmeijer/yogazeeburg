@@ -14,14 +14,17 @@ export type ArticleImageRef = {
 export function ArticleFigure({
   image,
   priority = false,
+  caption,
   className = "",
 }: {
   image: ArticleImageRef;
   priority?: boolean;
+  /** Optional visible caption, rendered below the image. */
+  caption?: string;
   className?: string;
 }) {
   return (
-    <figure className={`overflow-hidden rounded-2xl ${className}`}>
+    <figure className={className}>
       <img
         src={image.url}
         alt={image.alt}
@@ -30,8 +33,12 @@ export function ArticleFigure({
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
         decoding={priority ? "sync" : "async"}
-        className="aspect-video h-auto w-full object-cover"
+        className="aspect-video h-auto w-full rounded-2xl object-cover"
       />
+      {caption && (
+        <figcaption className="mt-3 text-sm text-muted-foreground">{caption}</figcaption>
+      )}
     </figure>
   );
 }
+

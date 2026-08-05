@@ -5,6 +5,8 @@ import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import waterHeroAsset from "@/assets/yoga-aan-het-water-hero.webp.asset.json";
 import waterInlineAsset from "@/assets/yogamat-bolster-water.webp.asset.json";
+import ijburgHeroAsset from "@/assets/yoga-ijburg-of-zeeburg-hoofdbeeld.webp.asset.json";
+import ijburgInlineAsset from "@/assets/yoga-ijburg-of-zeeburg-route-en-yogamat.webp.asset.json";
 
 const WATER_HERO_IMAGE: ArticleImageRef = {
   url: waterHeroAsset.url,
@@ -19,6 +21,21 @@ const WATER_INLINE_IMAGE: ArticleImageRef = {
   width: 1600,
   height: 900,
 };
+
+const IJBURG_HERO_IMAGE: ArticleImageRef = {
+  url: ijburgHeroAsset.url,
+  alt: "Illustratie van IJburg en Zeeburg aan het water met een lege yogamat en yogablokken",
+  width: 1600,
+  height: 900,
+};
+
+const IJBURG_INLINE_IMAGE: ArticleImageRef = {
+  url: ijburgInlineAsset.url,
+  alt: "Illustratie van een fiets, routekaart, yogamat en yogablokken aan het water in Amsterdam Oost",
+  width: 1600,
+  height: 900,
+};
+
 
 export type { ArticleImageRef };
 
