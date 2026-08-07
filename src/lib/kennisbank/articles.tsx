@@ -3781,6 +3781,7 @@ export const ARTICLES: Article[] = [
   waterArticle,
   locatieArticle,
   ijburgArticle,
+  indischeBuurtArticle,
 ];
 
 
