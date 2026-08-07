@@ -7,6 +7,8 @@ import waterHeroAsset from "@/assets/yoga-aan-het-water-hero.webp.asset.json";
 import waterInlineAsset from "@/assets/yogamat-bolster-water.webp.asset.json";
 import ijburgHeroAsset from "@/assets/yoga-ijburg-of-zeeburg-hoofdbeeld.webp.asset.json";
 import ijburgInlineAsset from "@/assets/yoga-ijburg-of-zeeburg-route-en-yogamat.webp.asset.json";
+import indischeHeroAsset from "@/assets/yoga-indische-buurt-hoofdbeeld.webp.asset.json";
+import indischeInlineAsset from "@/assets/yoga-indische-buurt-yogamat-route.webp.asset.json";
 
 const WATER_HERO_IMAGE: ArticleImageRef = {
   url: waterHeroAsset.url,
@@ -35,6 +37,22 @@ const IJBURG_INLINE_IMAGE: ArticleImageRef = {
   width: 1600,
   height: 900,
 };
+
+const INDISCHE_HERO_IMAGE: ArticleImageRef = {
+  url: indischeHeroAsset.url,
+  alt: "Illustratie van een rustige straat aan het water in Amsterdam Oost met yogamat en kurkblokken.",
+  width: 1600,
+  height: 900,
+};
+
+const INDISCHE_INLINE_IMAGE: ArticleImageRef = {
+  url: indischeInlineAsset.url,
+  alt: "Illustratie van een yogamat, bolster en routekaart in een lichte ruimte in Amsterdam Oost.",
+  width: 1600,
+  height: 900,
+};
+
+
 
 
 export type { ArticleImageRef };
