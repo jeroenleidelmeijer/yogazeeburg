@@ -32,8 +32,8 @@ const SCHEDULE: Day[] = [
   {
     day: "Thursday",
     lessons: [
-      { time: "08:00–09:15", name: "Pilates Fusion", teacher: "Kelsey van Os" },
-      { time: "18:00–19:15", name: "Strength & Stretch Yoga", teacher: "Veronica Torri" },
+      { time: "08:00–09:15", name: "Pilates Fusion", teacher: "Mila Vasina" },
+      { time: "18:00–19:15", name: "Pilates Fusion", teacher: "Mila Vasina" },
     ],
   },
   {
