@@ -11,6 +11,8 @@ import indischeHeroAsset from "@/assets/yoga-indische-buurt-hoofdbeeld.webp.asse
 import indischeInlineAsset from "@/assets/yoga-indische-buurt-yogamat-route.webp.asset.json";
 import expatsHeroAsset from "@/assets/yoga-expats-amsterdam-east-hoofdbeeld.webp.asset.json";
 import expatsInlineAsset from "@/assets/yoga-expats-nieuw-thuis-amsterdam.webp.asset.json";
+import cruquiusHeroAsset from "@/assets/yoga-cruquius-amsterdam-hoofdbeeld.webp.asset.json";
+import cruquiusInlineAsset from "@/assets/yoga-cruquius-dichtbij-huis.webp.asset.json";
 
 const WATER_HERO_IMAGE: ArticleImageRef = {
   url: waterHeroAsset.url,
@@ -64,6 +66,20 @@ const EXPATS_HERO_IMAGE: ArticleImageRef = {
 const EXPATS_INLINE_IMAGE: ArticleImageRef = {
   url: expatsInlineAsset.url,
   alt: "Illustratie van yogaprops en een verhuisdoos in een lichte woning in Amsterdam.",
+  width: 1600,
+  height: 900,
+};
+
+const CRUQUIUS_HERO_IMAGE: ArticleImageRef = {
+  url: cruquiusHeroAsset.url,
+  alt: "Illustratie van een yogamat en kurkblok aan het water in een rustige Cruquius-omgeving.",
+  width: 1600,
+  height: 900,
+};
+
+const CRUQUIUS_INLINE_IMAGE: ArticleImageRef = {
+  url: cruquiusInlineAsset.url,
+  alt: "Illustratie van yogaspullen die klaarstaan bij de voordeur met uitzicht op het water.",
   width: 1600,
   height: 900,
 };
