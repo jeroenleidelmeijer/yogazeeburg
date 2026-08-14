@@ -13,6 +13,8 @@ import expatsHeroAsset from "@/assets/yoga-expats-amsterdam-east-hoofdbeeld.webp
 import expatsInlineAsset from "@/assets/yoga-expats-nieuw-thuis-amsterdam.webp.asset.json";
 import cruquiusHeroAsset from "@/assets/yoga-cruquius-amsterdam-hoofdbeeld.webp.asset.json";
 import cruquiusInlineAsset from "@/assets/yoga-cruquius-dichtbij-huis.webp.asset.json";
+import niveauHeroAsset from "@/assets/yoga-zeeburg-beginners-gevorderden-hoofdbeeld.webp.asset.json";
+import niveauInlineAsset from "@/assets/yoga-zeeburg-les-op-jouw-niveau.webp.asset.json";
 
 const WATER_HERO_IMAGE: ArticleImageRef = {
   url: waterHeroAsset.url,
@@ -80,6 +82,20 @@ const CRUQUIUS_HERO_IMAGE: ArticleImageRef = {
 const CRUQUIUS_INLINE_IMAGE: ArticleImageRef = {
   url: cruquiusInlineAsset.url,
   alt: "Illustratie van yogaspullen die klaarstaan bij de voordeur met uitzicht op het water.",
+  width: 1600,
+  height: 900,
+};
+
+const NIVEAU_HERO_IMAGE: ArticleImageRef = {
+  url: niveauHeroAsset.url,
+  alt: "Illustratie van twee lege yogamatten met verschillende yogaprops aan het water in Zeeburg.",
+  width: 1600,
+  height: 900,
+};
+
+const NIVEAU_INLINE_IMAGE: ArticleImageRef = {
+  url: niveauInlineAsset.url,
+  alt: "Bovenaanzicht van twee lege yogamatten met blokken, een riem en een bolster voor verschillende lesniveaus.",
   width: 1600,
   height: 900,
 };
