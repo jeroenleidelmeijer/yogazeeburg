@@ -310,10 +310,6 @@ function WhyUs() {
             <div className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
               In the neighbourhood
             </div>
-            <p className="mt-3 text-[15.5px] leading-relaxed text-foreground/85">
-              A small studio you'll get to know quickly — familiar faces at the door, calm teachers
-              on the mat, and a room that feels like a little exhale from the city.
-            </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {WHY_POINTS.map((p) => (
                 <li
