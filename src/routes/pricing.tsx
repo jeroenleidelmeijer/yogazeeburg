@@ -643,12 +643,8 @@ function PayInFullNote() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-primary-foreground/95">
               Yoga Plus Annual Pay-in-Full is one upfront payment for a full year — 104 classes,
-              valid for 52 weeks. Built for a steady twice-a-week rhythm: enough to feel the
-              difference, simple enough to keep up.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-primary-foreground/90">
-              A clear commitment to your routine — and the best value if you know you want to keep
-              showing up twice a week.
+              valid for 52 weeks. Built for a steady twice-a-week rhythm, and the best value if you
+              know you want to keep showing up.
             </p>
           </div>
 
