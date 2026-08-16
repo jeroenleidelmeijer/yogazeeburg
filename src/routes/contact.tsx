@@ -118,8 +118,7 @@ function ContactInfo() {
         Get in touch
       </h2>
       <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-        Questions about the Intro Pass, memberships, classes, the schedule or something
-        practical? Use the form or email us directly.
+        New to the studio or already practising with us — use the form or email us directly.
       </p>
 
       <div className="mt-10 space-y-8">
