@@ -108,7 +108,13 @@ function sportbitLinkProps(href: string) {
   };
 }
 
-function SportbitNotice({ className = "" }: { className?: string }) {
+function SportbitNotice({
+  className = "",
+  short = false,
+}: {
+  className?: string;
+  short?: boolean;
+}) {
   return (
     <p
       className={
@@ -116,7 +122,7 @@ function SportbitNotice({ className = "" }: { className?: string }) {
         className
       }
     >
-      {SPORTBIT_NOTICE}
+      {short ? SPORTBIT_REMINDER : SPORTBIT_NOTICE}
     </p>
   );
 }
