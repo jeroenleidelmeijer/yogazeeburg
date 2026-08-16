@@ -447,9 +447,8 @@ function Location() {
             A calm room, just away from the noise.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-            Yoga Zeeburg sits above CrossFit Zeeburg on Cruquiusweg — a quiet corner of Amsterdam
-            East where Zeeburg meets Cruquius, right by the water in the Eastern Docklands. Easy to
-            reach, easy to leave the day behind.
+            Our yoga studio is above CrossFit Zeeburg, by the water in Cruquius. It is easy to reach
+            from Zeeburg, Amsterdam East and the Eastern Docklands.
           </p>
         </div>
 
