@@ -342,15 +342,15 @@ function WhyUs() {
 const DIRECTIONS = [
   {
     q: "Need to slow down?",
-    a: "Gentle, grounding classes for when your head is full and your body needs to exhale.",
+    a: "Gentle, grounding classes for when your head feels full and your body needs to exhale.",
   },
   {
     q: "Want to move?",
-    a: "More active classes for energy, focus and a healthy sweat.",
+    a: "More active yoga classes for energy, focus and a healthy sweat.",
   },
   {
     q: "Feeling stiff?",
-    a: "Slower sessions to release tension and create more space in your body.",
+    a: "Slower sessions that create more space and ease in your body.",
   },
   {
     q: "New to yoga?",
