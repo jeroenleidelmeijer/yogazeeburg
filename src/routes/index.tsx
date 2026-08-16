@@ -150,13 +150,13 @@ function Benefits() {
               What changes when you show up
             </span>
             <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-              You don't need another class.
+              You don't need more pressure.
               <br />
               <span className="text-primary italic">You need a weekly reset.</span>
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-              A calm hour on the mat that changes the rest of your week. No perfect poses, no
-              performance — just space to slow down.
+              A calm hour on the mat can change the rest of your week. No perfect poses or pressure
+              to perform — just space to slow down, move and breathe.
             </p>
           </div>
 
