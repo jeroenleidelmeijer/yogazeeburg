@@ -735,16 +735,25 @@ function ScheduleLink() {
           Found a class that suits you?
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          See when your chosen class is on the schedule and find a moment that fits your
-          week.
+          The easiest way to try it is the 14-Day Unlimited Intro Pass: 14 days of unlimited
+          classes, so you can test different classes, teachers and times before you commit.
         </p>
-        <Link
-          to="/schedule"
-          className="mt-6 inline-flex items-center gap-1.5 text-base font-medium text-foreground underline-offset-4 hover:underline"
-        >
-          View the weekly schedule
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href="/trial"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+          >
+            Start with 14 days unlimited
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <Link
+            to="/schedule"
+            className="inline-flex items-center gap-1.5 text-base font-medium text-foreground underline-offset-4 hover:underline"
+          >
+            View the weekly schedule
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );
