@@ -280,17 +280,17 @@ function WhyUs() {
             Why Yoga Zeeburg
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            A neighbourhood yoga studio for people who live here.
+            A small yoga studio in Amsterdam East, made for real life.
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/90">
             <p>
-              Yoga Zeeburg is a small, personal studio in Amsterdam East, tucked above CrossFit
-              Zeeburg on Cruquiusweg — a quiet corner of the Eastern Docklands, right by the water.
+              Yoga Zeeburg is at Cruquiusweg 96F, above CrossFit Zeeburg in Cruquius — where Zeeburg
+              meets the Eastern Docklands, right by the water.
             </p>
             <p className="text-muted-foreground">
-              You'll find beginner-friendly classes, clear descriptions of what each class actually
-              is, and teachers who guide without preaching. No spiritual performance. No pressure.
-              Just down-to-earth yoga for real bodies and real weeks.
+              The studio is small, personal and beginner-friendly. Teachers guide clearly and
+              without pressure, while class descriptions tell you what to expect before booking.
+              Practical, down-to-earth yoga for real bodies and busy weeks.
             </p>
           </div>
           <div className="mt-8">
