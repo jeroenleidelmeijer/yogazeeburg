@@ -600,10 +600,9 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
         <p>{plan.usage}</p>
       </div>
 
-      <div className="mt-5 rounded-xl border border-clay/30 bg-clay/5 px-4 py-3 text-sm leading-relaxed text-foreground/85">
-        <span className="font-medium text-foreground">Enter {DISCOUNT_CODE} during checkout.</span>{" "}
-        Your first four-week period will be €0; the regular four-weekly fee applies afterwards.
-      </div>
+      <p className="mt-5 text-sm font-medium leading-relaxed text-foreground/85">
+        First 4 weeks free with code {DISCOUNT_CODE}.
+      </p>
 
       {plan.routine && (
         <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">{plan.routine}</p>
