@@ -206,9 +206,9 @@ function IntroPass() {
                 <span className="text-sm text-muted-foreground">one-time · 14 days</span>
               </div>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Unlimited yoga for 14 consecutive days. New students only. Stops automatically. Try
+                Unlimited yoga for 14 consecutive days. New students only, stops automatically. Try
                 different classes, teachers and times, then choose the routine that fits your body,
-                energy and schedule.
+                energy and week.
               </p>
               <div className="mt-8">
                 <a
