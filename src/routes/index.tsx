@@ -224,8 +224,9 @@ function IntroPass() {
               14 days of unlimited yoga. Then you'll know.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Start with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, teachers
-              and times, then discover what fits your body, energy and schedule.
+              The 14-Day Unlimited Intro Pass lets new students try different classes, teachers and
+              times for 14 consecutive days. Then choose the routine that fits your body, energy and
+              week.
             </p>
 
             <ol className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
