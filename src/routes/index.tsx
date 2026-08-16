@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
           "@type": "ExerciseGym",
           name: "Yoga Zeeburg",
           description:
-            "Down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg / Cruquius. Small, calm and beginner-friendly. Yoga for stress, tension, mobility and relaxation.",
+            "Small, down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg / Cruquius. Beginner-friendly classes, personal guidance and a calm space to move and breathe.",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Cruquiusweg 96F",
@@ -90,9 +90,9 @@ function Hero() {
           <span className="text-primary italic">That's probably why you need it.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
-          For weeks that feel too full, shoulders that won't unclench, and a head that won't switch
-          off. A calm, down-to-earth yoga studio in Amsterdam East where you move, breathe and land
-          back in your body.
+          Yoga Zeeburg is a small, down-to-earth yoga studio in Amsterdam East for busy people who
+          want to move, breathe and land back in their body. Expect beginner-friendly classes,
+          personal guidance and a calm location by the water.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
@@ -130,11 +130,14 @@ function Hero() {
    BENEFITS — editorial numbered list, not tiny cards
    ============================================================ */
 const BENEFITS = [
-  { title: "Feel calmer", body: "Step out of the noise and land back in your body." },
-  { title: "Release tension", body: "Unwind tight shoulders, hips and lower back." },
-  { title: "Move better", body: "Build mobility and ease without forcing it." },
-  { title: "Breathe deeper", body: "Slow down, breathe wider and feel more grounded." },
-  { title: "Build a weekly routine", body: "A rhythm you can actually keep up." },
+  { title: "Feel calmer", body: "Step out of the noise and return to your body." },
+  {
+    title: "Release tension",
+    body: "Give tight shoulders, hips and your lower back room to unwind.",
+  },
+  { title: "Move better", body: "Build mobility and ease without forcing your body." },
+  { title: "Breathe deeper", body: "Slow your breathing and feel more grounded." },
+  { title: "Build a weekly routine", body: "Create a rhythm that fits real life." },
 ];
 
 function Benefits() {
@@ -147,13 +150,13 @@ function Benefits() {
               What changes when you show up
             </span>
             <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-              You don't need another class.
+              You don't need more pressure.
               <br />
               <span className="text-primary italic">You need a weekly reset.</span>
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-              A calm hour on the mat that changes the rest of your week. No perfect poses, no
-              performance — just space to slow down.
+              A calm hour on the mat can change the rest of your week. No perfect poses or pressure
+              to perform — just space to slow down, move and breathe.
             </p>
           </div>
 
@@ -184,18 +187,18 @@ function Benefits() {
 const INTRO_STEPS = [
   {
     label: "Step 1",
-    title: "Start with 14 days unlimited",
-    body: "Book in, roll out your mat, come as you are. No commitment beyond two weeks.",
+    title: "Start your Intro Pass",
+    body: "Book your first class and come as you are. You do not need yoga experience or exceptional flexibility.",
   },
   {
     label: "Step 2",
-    title: "Try different classes and times",
-    body: "Explore slower, calmer sessions and stronger, moving ones. Find teachers you click with.",
+    title: "Try different classes",
+    body: "Explore slower, calming sessions and more active classes with different teachers and times.",
   },
   {
     label: "Step 3",
-    title: "Discover what fits your routine",
-    body: "After 14 days, choose the rhythm that makes sense for your life.",
+    title: "Choose your routine",
+    body: "After 14 days, decide which classes and membership fit your life.",
   },
 ];
 
@@ -221,8 +224,9 @@ function IntroPass() {
               14 days of unlimited yoga. Then you'll know.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Start with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, teachers
-              and times, then discover what fits your body, energy and schedule.
+              The 14-Day Unlimited Intro Pass lets new students try different classes, teachers and
+              times for 14 consecutive days. Then choose the routine that fits your body, energy and
+              week.
             </p>
 
             <ol className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
@@ -246,7 +250,7 @@ function IntroPass() {
                 <ArrowRight className="h-4 w-4" />
               </a>
               <p className="text-sm text-muted-foreground">
-                Easy first step · stops automatically · no hidden subscription
+                Stops automatically · no hidden subscription · new students only
               </p>
             </div>
           </div>
@@ -264,10 +268,7 @@ const WHY_POINTS = [
   "Small & personal",
   "Beginner-friendly",
   "Clear class descriptions",
-  "Calm location by the water",
   "Rooted in Amsterdam East",
-  "No pressure",
-  "No spiritual performance",
 ];
 
 function WhyUs() {
@@ -279,17 +280,17 @@ function WhyUs() {
             Why Yoga Zeeburg
           </span>
           <h2 className="mt-5 font-display text-[2.25rem] leading-[1.05] text-foreground sm:text-5xl md:text-[3.25rem]">
-            A neighbourhood yoga studio for people who live here.
+            A small yoga studio in Amsterdam East, made for real life.
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/90">
             <p>
-              Yoga Zeeburg is a small, personal studio in Amsterdam East, tucked above CrossFit
-              Zeeburg on Cruquiusweg — a quiet corner of the Eastern Docklands, right by the water.
+              Yoga Zeeburg is at Cruquiusweg 96F, above CrossFit Zeeburg in Cruquius — where Zeeburg
+              meets the Eastern Docklands, right by the water.
             </p>
             <p className="text-muted-foreground">
-              You'll find beginner-friendly classes, clear descriptions of what each class actually
-              is, and teachers who guide without preaching. No spiritual performance. No pressure.
-              Just down-to-earth yoga for real bodies and real weeks.
+              The studio is small, personal and beginner-friendly. Teachers guide clearly and
+              without pressure, while class descriptions tell you what to expect before booking.
+              Practical, down-to-earth yoga for real bodies and busy weeks.
             </p>
           </div>
           <div className="mt-8">
@@ -309,10 +310,6 @@ function WhyUs() {
             <div className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
               In the neighbourhood
             </div>
-            <p className="mt-3 text-[15.5px] leading-relaxed text-foreground/85">
-              A small studio you'll get to know quickly — familiar faces at the door, calm teachers
-              on the mat, and a room that feels like a little exhale from the city.
-            </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {WHY_POINTS.map((p) => (
                 <li
@@ -345,15 +342,15 @@ function WhyUs() {
 const DIRECTIONS = [
   {
     q: "Need to slow down?",
-    a: "Gentle, grounding classes for when your head is full and your body needs to exhale.",
+    a: "Gentle, grounding classes for when your head feels full and your body needs to exhale.",
   },
   {
     q: "Want to move?",
-    a: "More active classes for energy, focus and a healthy sweat.",
+    a: "More active yoga classes for energy, focus and a healthy sweat.",
   },
   {
     q: "Feeling stiff?",
-    a: "Slower sessions to release tension and create more space in your body.",
+    a: "Slower sessions that create more space and ease in your body.",
   },
   {
     q: "New to yoga?",
@@ -371,8 +368,8 @@ function ClassDirections() {
             Choose based on what you need today.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Some weeks call for stillness, others for motion. Pick the direction that matches how
-            you actually feel — not how you're supposed to feel.
+            Some days call for stillness; others for movement. Choose a class that matches how you
+            feel.
           </p>
         </div>
 
@@ -417,14 +414,11 @@ function PricingTeaser() {
               Pricing
             </span>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.08] text-foreground sm:text-4xl md:text-[2.75rem]">
-              The more yoga becomes part of your week, the better the value gets.
+              Build a yoga routine that fits your week.
             </h2>
-            <p className="mt-6 max-w-2xl font-display text-2xl italic leading-snug text-primary sm:text-[1.75rem]">
-              A single class can help for a day. A routine can change your week.
-            </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Start with the Intro Pass, then choose the routine that fits your life. Regular
-              memberships are designed for people who want yoga to become part of their week.
+              Start with the Intro Pass. Once you know what works, choose a membership that makes
+              yoga part of your week. The more consistently you practise, the better the value.
             </p>
           </div>
           <Link
@@ -453,9 +447,8 @@ function Location() {
             A calm room, just away from the noise.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-            Yoga Zeeburg sits above CrossFit Zeeburg on Cruquiusweg — a quiet corner of Amsterdam
-            East where Zeeburg meets Cruquius, right by the water in the Eastern Docklands. Easy to
-            reach, easy to leave the day behind.
+            Our yoga studio is above CrossFit Zeeburg, by the water in Cruquius. It is easy to reach
+            from Zeeburg, Amsterdam East and the Eastern Docklands.
           </p>
         </div>
 
@@ -517,9 +510,8 @@ function FinalCTA() {
             <span className="italic text-primary-foreground/90">Build a routine that lasts.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
-            Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, find what
-            fits your week, and take the first step toward feeling calmer, more confident and more
-            at home in your body.
+            Begin with 14 days of unlimited yoga, try different classes and discover the routine
+            that helps you keep showing up.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a

@@ -34,9 +34,10 @@ const SPORTBIT_SINGLE_CLASS_URL =
 const PAY_IN_FULL_PRICE = "€699";
 const DISCOUNT_CODE = "YOGA4WEEKS";
 const REGULAR_TERMS =
-  "Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.";
+  "Paid every 4 weeks, with a 3-month minimum commitment. Cancellable after the 3-month minimum commitment.";
 const SPORTBIT_NOTICE =
   "You’ll continue to Sportbit, our current booking system. Log in or create an account, select Yoga Zeeburg, then choose the membership shown here.";
+const SPORTBIT_REMINDER = "Checkout continues in Sportbit, our booking system.";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -108,7 +109,13 @@ function sportbitLinkProps(href: string) {
   };
 }
 
-function SportbitNotice({ className = "" }: { className?: string }) {
+function SportbitNotice({
+  className = "",
+  short = false,
+}: {
+  className?: string;
+  short?: boolean;
+}) {
   return (
     <p
       className={
@@ -116,7 +123,7 @@ function SportbitNotice({ className = "" }: { className?: string }) {
         className
       }
     >
-      {SPORTBIT_NOTICE}
+      {short ? SPORTBIT_REMINDER : SPORTBIT_NOTICE}
     </p>
   );
 }
@@ -140,8 +147,9 @@ function Hero() {
           Choose the yoga routine <span className="text-primary italic">that fits your life.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
-          Start with the 14-Day Unlimited Intro Pass, then choose the membership or pass that fits
-          your week. The more yoga becomes part of your routine, the better the value gets.
+          Yoga Zeeburg offers a 14-Day Unlimited Intro Pass for new students, four-weekly
+          memberships, annual plans and class passes. Start with the Intro Pass, then choose the
+          option that fits your week.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
@@ -152,7 +160,7 @@ function Hero() {
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href="#annual-routine-builder"
+            href="#four-week-memberships"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
           >
             Compare plans
@@ -205,9 +213,9 @@ function IntroPass() {
                 <span className="text-sm text-muted-foreground">one-time · 14 days</span>
               </div>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Unlimited yoga for 14 consecutive days. New students only. Stops automatically. Try
+                Unlimited yoga for 14 consecutive days. New students only, stops automatically. Try
                 different classes, teachers and times, then choose the routine that fits your body,
-                energy and schedule.
+                energy and week.
               </p>
               <div className="mt-8">
                 <a
@@ -299,12 +307,11 @@ function RegularMemberships() {
             Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Start with the membership that fits your week. {REGULAR_TERMS} They are the most
-            flexible membership route, without the annual discount.
+            {REGULAR_TERMS} This is the most flexible membership route, without the annual discount.
           </p>
         </div>
 
-        <SportbitNotice className="mt-8 max-w-3xl" />
+        <SportbitNotice short className="mt-8 max-w-3xl" />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3 md:items-stretch">
           {REGULAR_PLANS.map((p) => (
@@ -344,9 +351,6 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       {plan.extraPerClass && (
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
-      <p className="mt-4 rounded-lg border border-border/40 bg-secondary/50 px-3 py-2 text-sm font-medium text-foreground/80">
-        Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.
-      </p>
 
       <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">{plan.bestFor}</p>
 
@@ -438,9 +442,7 @@ const ANNUAL_TERMS = [
 ];
 
 const DISCOUNT_STEPS = [
-  "Open your chosen Annual membership.",
-  "Log in to Sportbit and select Yoga Zeeburg.",
-  "Choose the matching Annual plan.",
+  "Open your chosen Annual membership and log in to Sportbit.",
   `Enter discount code ${DISCOUNT_CODE} and tap Apply.`,
   "Check that the first payment shows €0 before continuing.",
 ];
@@ -470,8 +472,7 @@ function DiscountCodePanel() {
             How to claim your first 4 weeks free
           </h3>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-            The first 4 weeks are not applied automatically. You must enter the discount code during
-            Sportbit checkout.
+            The first 4 weeks are not free automatically: enter the code during Sportbit checkout.
           </p>
           <ol className="mt-6 space-y-3">
             {DISCOUNT_STEPS.map((step, i) => (
@@ -504,12 +505,11 @@ function DiscountCodePanel() {
             </button>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-foreground/80">
-            Enter {DISCOUNT_CODE} during Sportbit checkout and tap Apply. Your first four-week
-            period will be €0; the regular four-weekly fee applies afterwards.
+            Your first four-week period will be €0; the regular four-weekly fee applies afterwards.
           </p>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            The code is only valid for the three Annual four-weekly memberships. It does not apply
-            to regular memberships or Pay-in-Full.
+            Valid only on the three Annual four-weekly memberships — not on regular memberships,
+            passes, the Intro Pass or Pay-in-Full.
           </p>
         </div>
       </div>
@@ -533,10 +533,8 @@ function AnnualRoutineBuilder() {
             Want annual value, but keep paying every 4 weeks?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you know you want yoga to become part of your year, Annual Routine Builder gives you
-            better first-year value while you keep paying every 4 weeks. 12-month commitment. Paid
-            every 4 weeks. First 4 weeks free when you enter code {DISCOUNT_CODE} during checkout.
-            One included pause and one early plan switch.
+            Annual Routine Builder gives you better first-year value while you keep paying every 4
+            weeks. The details are below.
           </p>
         </div>
 
@@ -551,7 +549,7 @@ function AnnualRoutineBuilder() {
 
         <DiscountCodePanel />
 
-        <SportbitNotice className="mt-8" />
+        <SportbitNotice short className="mt-8" />
 
         <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
           {ANNUAL_PLANS.map((p) => (
@@ -602,10 +600,9 @@ function AnnualCard({ plan }: { plan: AnnualPlan }) {
         <p>{plan.usage}</p>
       </div>
 
-      <div className="mt-5 rounded-xl border border-clay/30 bg-clay/5 px-4 py-3 text-sm leading-relaxed text-foreground/85">
-        <span className="font-medium text-foreground">Enter {DISCOUNT_CODE} during checkout.</span>{" "}
-        Your first four-week period will be €0; the regular four-weekly fee applies afterwards.
-      </div>
+      <p className="mt-5 text-sm font-medium leading-relaxed text-foreground/85">
+        First 4 weeks free with code {DISCOUNT_CODE}.
+      </p>
 
       {plan.routine && (
         <p className="mt-4 text-[15.5px] leading-relaxed text-foreground/85">{plan.routine}</p>
@@ -646,12 +643,8 @@ function PayInFullNote() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-primary-foreground/95">
               Yoga Plus Annual Pay-in-Full is one upfront payment for a full year — 104 classes,
-              valid for 52 weeks. Built for a steady twice-a-week rhythm: enough to feel the
-              difference, simple enough to keep up.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-primary-foreground/90">
-              A clear commitment to your routine — and the best value if you know you want to keep
-              showing up twice a week.
+              valid for 52 weeks. Built for a steady twice-a-week rhythm, and the best value if you
+              know you want to keep showing up.
             </p>
           </div>
 
@@ -804,10 +797,10 @@ function PlanChooser() {
             Not sure?
           </span>
           <h2 className="mt-5 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-            Still unsure? Here’s the simple version.
+            The simple version.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Most people do not need every option. They need the next right step.
+            You do not need every option — just the next right step.
           </p>
         </div>
 
@@ -834,48 +827,28 @@ function PlanChooser() {
    ------------------------------------------------------------------ */
 const FAQ_ITEMS = [
   {
-    q: "Does the Intro Pass renew automatically?",
-    a: "No. The 14-Day Unlimited Intro Pass stops automatically after 14 days.",
-  },
-  {
-    q: "Can I try different classes?",
-    a: "Yes. That is the point. Use the Intro Pass to try different classes, teachers and times.",
+    q: "Does the Intro Pass renew, and can I try different classes?",
+    a: "The 14-Day Unlimited Intro Pass stops automatically after 14 days and does not renew. Use those 14 days to try different classes, teachers and times.",
   },
   {
     q: "Can beginners join?",
     a: "Yes. Check the class name and description before booking, and start with a class that fits how you feel today.",
   },
   {
-    q: "What is the minimum commitment for regular 4-week memberships?",
-    a: "Regular memberships are paid every 4 weeks with a minimum commitment of 3 months. After that, they are monthly cancellable and continue every 4 weeks until you cancel.",
+    q: "How do regular 4-week memberships work?",
+    a: "Regular memberships are paid every 4 weeks with a minimum commitment of 3 months. After that minimum commitment they are cancellable and continue every 4 weeks until you cancel.",
   },
   {
-    q: "How do I claim the first 4 weeks free on Annual plans?",
-    a: "The first 4 weeks free are not automatic. During Sportbit checkout for one of the three Annual four-weekly memberships, enter the discount code YOGA4WEEKS and press Apply. Check that the first payment shows €0 before continuing.",
-  },
-  {
-    q: "Does the YOGA4WEEKS code work on every plan?",
-    a: "No. The code is valid only on the three Annual four-weekly memberships (Weekly Yoga Annual, Yoga Plus Annual, Unlimited Yoga Annual). It does not apply to regular 4-week memberships, the 10-Class Pass, single classes, the Intro Pass or Pay-in-Full.",
-  },
-  {
-    q: "Do memberships continue automatically?",
-    a: "Yes. Regular memberships continue every 4 weeks after the 3-month minimum until you cancel. Annual Routine Builder plans have a 12-month commitment and continue every 4 weeks afterwards according to the existing cancellation terms.",
+    q: "How do I claim YOGA4WEEKS, and where does it apply?",
+    a: "During Sportbit checkout for one of the three Annual four-weekly memberships (Weekly Yoga Annual, Yoga Plus Annual, Unlimited Yoga Annual), enter the code YOGA4WEEKS, press Apply and check that the first payment shows €0. The code does not apply to regular 4-week memberships, the 10-Class Pass, single classes, the Intro Pass or Pay-in-Full.",
   },
   {
     q: "What is the difference between Annual Routine Builder and Pay-in-Full?",
-    a: "Annual Routine Builder is a 12-month commitment where you keep paying every 4 weeks and can claim the first 4 weeks free with code YOGA4WEEKS. Pay-in-Full is one upfront yearly payment of €699 for Yoga Plus Annual (104 classes, valid 52 weeks).",
+    a: "Annual Routine Builder is a 12-month commitment where you keep paying every 4 weeks, with the first 4 weeks free via code YOGA4WEEKS, and it continues every 4 weeks after the commitment according to the existing cancellation terms. Pay-in-Full is one upfront yearly payment of €699 for Yoga Plus Annual (104 classes, valid 52 weeks) and does not renew automatically.",
   },
   {
-    q: "Can I pause my annual membership?",
-    a: "The Annual Routine Builder includes one 4-week pause.",
-  },
-  {
-    q: "Can I switch plans?",
-    a: "The Annual Routine Builder includes one plan switch in the first 8 weeks.",
-  },
-  {
-    q: "What if I am pregnant, injured or unsure?",
-    a: "Always tell the teacher before class. If there is pain, injury, pregnancy or medical uncertainty, check with a medical professional if needed.",
+    q: "Can I pause or switch my annual plan?",
+    a: "The Annual Routine Builder includes one 4-week pause and one plan switch in the first 8 weeks.",
   },
 ];
 
@@ -933,7 +906,7 @@ function FinalCTA() {
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href="#annual-routine-builder"
+            href="#four-week-memberships"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
           >
             Compare memberships

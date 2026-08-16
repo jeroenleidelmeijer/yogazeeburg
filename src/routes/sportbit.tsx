@@ -122,9 +122,8 @@ function Hero() {
           How to use Sportbit at Yoga Zeeburg
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Sportbit is the booking system for Yoga Zeeburg. This page walks you
-          through choosing the right schedule, booking a class, using the
-          waiting list, and cancelling on time — so your routine stays simple.
+          Sportbit is our booking system: book a class, join the waiting list and cancel up to two
+          hours before class. Here is how it works, step by step.
         </p>
       </div>
     </section>
@@ -304,8 +303,7 @@ function FinalCTA() {
             Ready to book your next class?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Have a look at the weekly schedule and pick a moment that fits
-            your week.
+            Pick a moment in the weekly schedule that fits your week.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link

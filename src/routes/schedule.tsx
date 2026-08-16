@@ -138,8 +138,8 @@ function Hero() {
           Find a class that fits your week.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Whether you want to move, slow down or release some tension, there is a class for
-          you throughout the week.
+          Yoga Zeeburg runs classes seven days a week at Cruquiusweg 96F in Amsterdam East, from
+          early mornings to evenings. Below is our regular weekly timetable.
         </p>
       </div>
     </section>
@@ -195,8 +195,8 @@ function SportbitNotice() {
             Always check Sportbit
           </h2>
           <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-            This page shows our regular weekly timetable. For the latest schedule changes,
-            availability and reservations, current members always use Sportbit.
+            For the latest schedule changes, availability and reservations, current members always
+            use Sportbit.
           </p>
         </div>
       </div>
@@ -215,8 +215,8 @@ function ClassesLink() {
           Not sure which class suits you?
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          From energising Vinyasa to calming Yin and Nidra, every class has its own pace and
-          focus. Explore our classes to find the one that matches what you need.
+          Every class has its own pace and focus, from energising Vinyasa to calming Yin and Nidra.
+          Explore our classes to find the one that matches what you need.
         </p>
         <Link
           to="/classes"
