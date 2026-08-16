@@ -195,8 +195,8 @@ function SportbitNotice() {
             Always check Sportbit
           </h2>
           <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-            This page shows our regular weekly timetable. For the latest schedule changes,
-            availability and reservations, current members always use Sportbit.
+            For the latest schedule changes, availability and reservations, current members always
+            use Sportbit.
           </p>
         </div>
       </div>
