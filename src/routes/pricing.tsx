@@ -34,7 +34,7 @@ const SPORTBIT_SINGLE_CLASS_URL =
 const PAY_IN_FULL_PRICE = "€699";
 const DISCOUNT_CODE = "YOGA4WEEKS";
 const REGULAR_TERMS =
-  "Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.";
+  "Paid every 4 weeks, with a 3-month minimum commitment. Cancellable after the 3-month minimum commitment.";
 const SPORTBIT_NOTICE =
   "You’ll continue to Sportbit, our current booking system. Log in or create an account, select Yoga Zeeburg, then choose the membership shown here.";
 
