@@ -549,7 +549,7 @@ function AnnualRoutineBuilder() {
 
         <DiscountCodePanel />
 
-        <SportbitNotice className="mt-8" />
+        <SportbitNotice short className="mt-8" />
 
         <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
           {ANNUAL_PLANS.map((p) => (
