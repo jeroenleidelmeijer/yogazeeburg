@@ -14,7 +14,8 @@ export function IntroPassCTA() {
           Start with 14 days unlimited.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
-          Try different classes, teachers and times before choosing the routine that works for you.
+          Try different classes, teachers and times, then choose the membership that fits your week.
+          It stops automatically after 14 days. New students only.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
           <a
