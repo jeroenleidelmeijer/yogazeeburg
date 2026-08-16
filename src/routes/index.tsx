@@ -368,8 +368,8 @@ function ClassDirections() {
             Choose based on what you need today.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Some weeks call for stillness, others for motion. Pick the direction that matches how
-            you actually feel — not how you're supposed to feel.
+            Some days call for stillness; others for movement. Choose a class that matches how you
+            feel.
           </p>
         </div>
 
