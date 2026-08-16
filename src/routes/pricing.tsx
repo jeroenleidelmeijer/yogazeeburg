@@ -533,10 +533,8 @@ function AnnualRoutineBuilder() {
             Want annual value, but keep paying every 4 weeks?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            If you know you want yoga to become part of your year, Annual Routine Builder gives you
-            better first-year value while you keep paying every 4 weeks. 12-month commitment. Paid
-            every 4 weeks. First 4 weeks free when you enter code {DISCOUNT_CODE} during checkout.
-            One included pause and one early plan switch.
+            Annual Routine Builder gives you better first-year value while you keep paying every 4
+            weeks. The details are below.
           </p>
         </div>
 
