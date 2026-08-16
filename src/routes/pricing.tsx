@@ -442,9 +442,7 @@ const ANNUAL_TERMS = [
 ];
 
 const DISCOUNT_STEPS = [
-  "Open your chosen Annual membership.",
-  "Log in to Sportbit and select Yoga Zeeburg.",
-  "Choose the matching Annual plan.",
+  "Open your chosen Annual membership and log in to Sportbit.",
   `Enter discount code ${DISCOUNT_CODE} and tap Apply.`,
   "Check that the first payment shows €0 before continuing.",
 ];
