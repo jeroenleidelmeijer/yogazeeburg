@@ -797,10 +797,10 @@ function PlanChooser() {
             Not sure?
           </span>
           <h2 className="mt-5 font-display text-[2rem] leading-[1.05] text-foreground sm:text-4xl md:text-[2.75rem]">
-            Still unsure? Here’s the simple version.
+            The simple version.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Most people do not need every option. They need the next right step.
+            You do not need every option — just the next right step.
           </p>
         </div>
 
