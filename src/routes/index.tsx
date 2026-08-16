@@ -510,9 +510,8 @@ function FinalCTA() {
             <span className="italic text-primary-foreground/90">Build a routine that lasts.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
-            Begin with 14 days of unlimited yoga at Yoga Zeeburg. Try different classes, find what
-            fits your week, and take the first step toward feeling calmer, more confident and more
-            at home in your body.
+            Begin with 14 days of unlimited yoga, try different classes and discover the routine
+            that helps you keep showing up.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
