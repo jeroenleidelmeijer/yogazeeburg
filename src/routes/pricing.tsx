@@ -472,8 +472,7 @@ function DiscountCodePanel() {
             How to claim your first 4 weeks free
           </h3>
           <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-            The first 4 weeks are not applied automatically. You must enter the discount code during
-            Sportbit checkout.
+            The first 4 weeks are not free automatically: enter the code during Sportbit checkout.
           </p>
           <ol className="mt-6 space-y-3">
             {DISCOUNT_STEPS.map((step, i) => (
