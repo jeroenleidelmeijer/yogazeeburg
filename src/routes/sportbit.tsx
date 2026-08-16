@@ -303,8 +303,7 @@ function FinalCTA() {
             Ready to book your next class?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Have a look at the weekly schedule and pick a moment that fits
-            your week.
+            Pick a moment in the weekly schedule that fits your week.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
