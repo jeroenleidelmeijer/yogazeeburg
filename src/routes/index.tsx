@@ -268,10 +268,7 @@ const WHY_POINTS = [
   "Small & personal",
   "Beginner-friendly",
   "Clear class descriptions",
-  "Calm location by the water",
   "Rooted in Amsterdam East",
-  "No pressure",
-  "No spiritual performance",
 ];
 
 function WhyUs() {
