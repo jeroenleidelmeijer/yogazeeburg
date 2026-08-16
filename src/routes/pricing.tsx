@@ -140,8 +140,9 @@ function Hero() {
           Choose the yoga routine <span className="text-primary italic">that fits your life.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
-          Start with the 14-Day Unlimited Intro Pass, then choose the membership or pass that fits
-          your week. The more yoga becomes part of your routine, the better the value gets.
+          Yoga Zeeburg offers a 14-Day Unlimited Intro Pass for new students, four-weekly
+          memberships, annual plans and class passes. Start with the Intro Pass, then choose the
+          option that fits your week.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
