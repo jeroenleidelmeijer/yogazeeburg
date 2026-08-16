@@ -311,7 +311,7 @@ function RegularMemberships() {
           </p>
         </div>
 
-        <SportbitNotice className="mt-8 max-w-3xl" />
+        <SportbitNotice short className="mt-8 max-w-3xl" />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3 md:items-stretch">
           {REGULAR_PLANS.map((p) => (
