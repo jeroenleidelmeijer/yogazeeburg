@@ -153,7 +153,7 @@ function Hero() {
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href="#annual-routine-builder"
+            href="#four-week-memberships"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
           >
             Compare plans
