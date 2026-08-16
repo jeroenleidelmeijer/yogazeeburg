@@ -827,48 +827,28 @@ function PlanChooser() {
    ------------------------------------------------------------------ */
 const FAQ_ITEMS = [
   {
-    q: "Does the Intro Pass renew automatically?",
-    a: "No. The 14-Day Unlimited Intro Pass stops automatically after 14 days.",
-  },
-  {
-    q: "Can I try different classes?",
-    a: "Yes. That is the point. Use the Intro Pass to try different classes, teachers and times.",
+    q: "Does the Intro Pass renew, and can I try different classes?",
+    a: "The 14-Day Unlimited Intro Pass stops automatically after 14 days and does not renew. Use those 14 days to try different classes, teachers and times.",
   },
   {
     q: "Can beginners join?",
     a: "Yes. Check the class name and description before booking, and start with a class that fits how you feel today.",
   },
   {
-    q: "What is the minimum commitment for regular 4-week memberships?",
-    a: "Regular memberships are paid every 4 weeks with a minimum commitment of 3 months. After that, they are monthly cancellable and continue every 4 weeks until you cancel.",
+    q: "How do regular 4-week memberships work?",
+    a: "Regular memberships are paid every 4 weeks with a minimum commitment of 3 months. After that minimum commitment they are cancellable and continue every 4 weeks until you cancel.",
   },
   {
-    q: "How do I claim the first 4 weeks free on Annual plans?",
-    a: "The first 4 weeks free are not automatic. During Sportbit checkout for one of the three Annual four-weekly memberships, enter the discount code YOGA4WEEKS and press Apply. Check that the first payment shows €0 before continuing.",
-  },
-  {
-    q: "Does the YOGA4WEEKS code work on every plan?",
-    a: "No. The code is valid only on the three Annual four-weekly memberships (Weekly Yoga Annual, Yoga Plus Annual, Unlimited Yoga Annual). It does not apply to regular 4-week memberships, the 10-Class Pass, single classes, the Intro Pass or Pay-in-Full.",
-  },
-  {
-    q: "Do memberships continue automatically?",
-    a: "Yes. Regular memberships continue every 4 weeks after the 3-month minimum until you cancel. Annual Routine Builder plans have a 12-month commitment and continue every 4 weeks afterwards according to the existing cancellation terms.",
+    q: "How do I claim YOGA4WEEKS, and where does it apply?",
+    a: "During Sportbit checkout for one of the three Annual four-weekly memberships (Weekly Yoga Annual, Yoga Plus Annual, Unlimited Yoga Annual), enter the code YOGA4WEEKS, press Apply and check that the first payment shows €0. The code does not apply to regular 4-week memberships, the 10-Class Pass, single classes, the Intro Pass or Pay-in-Full.",
   },
   {
     q: "What is the difference between Annual Routine Builder and Pay-in-Full?",
-    a: "Annual Routine Builder is a 12-month commitment where you keep paying every 4 weeks and can claim the first 4 weeks free with code YOGA4WEEKS. Pay-in-Full is one upfront yearly payment of €699 for Yoga Plus Annual (104 classes, valid 52 weeks).",
+    a: "Annual Routine Builder is a 12-month commitment where you keep paying every 4 weeks, with the first 4 weeks free via code YOGA4WEEKS, and it continues every 4 weeks after the commitment according to the existing cancellation terms. Pay-in-Full is one upfront yearly payment of €699 for Yoga Plus Annual (104 classes, valid 52 weeks) and does not renew automatically.",
   },
   {
-    q: "Can I pause my annual membership?",
-    a: "The Annual Routine Builder includes one 4-week pause.",
-  },
-  {
-    q: "Can I switch plans?",
-    a: "The Annual Routine Builder includes one plan switch in the first 8 weeks.",
-  },
-  {
-    q: "What if I am pregnant, injured or unsure?",
-    a: "Always tell the teacher before class. If there is pain, injury, pregnancy or medical uncertainty, check with a medical professional if needed.",
+    q: "Can I pause or switch my annual plan?",
+    a: "The Annual Routine Builder includes one 4-week pause and one plan switch in the first 8 weeks.",
   },
 ];
 
