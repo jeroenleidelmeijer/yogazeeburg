@@ -505,12 +505,11 @@ function DiscountCodePanel() {
             </button>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-foreground/80">
-            Enter {DISCOUNT_CODE} during Sportbit checkout and tap Apply. Your first four-week
-            period will be €0; the regular four-weekly fee applies afterwards.
+            Your first four-week period will be €0; the regular four-weekly fee applies afterwards.
           </p>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            The code is only valid for the three Annual four-weekly memberships. It does not apply
-            to regular memberships or Pay-in-Full.
+            Valid only on the three Annual four-weekly memberships — not on regular memberships,
+            passes, the Intro Pass or Pay-in-Full.
           </p>
         </div>
       </div>
