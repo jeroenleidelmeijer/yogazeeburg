@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
           "@type": "ExerciseGym",
           name: "Yoga Zeeburg",
           description:
-            "Down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg / Cruquius. Small, calm and beginner-friendly. Yoga for stress, tension, mobility and relaxation.",
+            "Small, down-to-earth yoga studio in Amsterdam East, by the water in Zeeburg / Cruquius. Beginner-friendly classes, personal guidance and a calm space to move and breathe.",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Cruquiusweg 96F",
