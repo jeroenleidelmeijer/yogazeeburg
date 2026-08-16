@@ -215,8 +215,8 @@ function ClassesLink() {
           Not sure which class suits you?
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          From energising Vinyasa to calming Yin and Nidra, every class has its own pace and
-          focus. Explore our classes to find the one that matches what you need.
+          Every class has its own pace and focus, from energising Vinyasa to calming Yin and Nidra.
+          Explore our classes to find the one that matches what you need.
         </p>
         <Link
           to="/classes"
