@@ -90,9 +90,9 @@ function Hero() {
           <span className="text-primary italic">That's probably why you need it.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
-          For weeks that feel too full, shoulders that won't unclench, and a head that won't switch
-          off. A calm, down-to-earth yoga studio in Amsterdam East where you move, breathe and land
-          back in your body.
+          Yoga Zeeburg is a small, down-to-earth yoga studio in Amsterdam East for busy people who
+          want to move, breathe and land back in their body. Expect beginner-friendly classes,
+          personal guidance and a calm location by the water.
         </p>
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
           <a
