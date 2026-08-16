@@ -92,8 +92,8 @@ function Hero() {
           Questions? We're happy to help.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Whether you're new to Yoga Zeeburg or already practise with us, send us a message
-          and we'll point you in the right direction.
+          Email hello@yogazeeburg.com or use the form below for questions about the Intro Pass,
+          memberships, classes or the schedule. We usually reply within one working day.
         </p>
       </div>
     </section>
