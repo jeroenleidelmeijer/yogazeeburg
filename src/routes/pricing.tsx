@@ -300,8 +300,7 @@ function RegularMemberships() {
             Choose your 4-week rhythm.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Start with the membership that fits your week. {REGULAR_TERMS} They are the most
-            flexible membership route, without the annual discount.
+            {REGULAR_TERMS} This is the most flexible membership route, without the annual discount.
           </p>
         </div>
 
