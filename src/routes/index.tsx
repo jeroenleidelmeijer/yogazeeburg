@@ -250,7 +250,7 @@ function IntroPass() {
                 <ArrowRight className="h-4 w-4" />
               </a>
               <p className="text-sm text-muted-foreground">
-                Easy first step · stops automatically · no hidden subscription
+                Stops automatically · no hidden subscription · new students only
               </p>
             </div>
           </div>
