@@ -187,18 +187,18 @@ function Benefits() {
 const INTRO_STEPS = [
   {
     label: "Step 1",
-    title: "Start with 14 days unlimited",
-    body: "Book in, roll out your mat, come as you are. No commitment beyond two weeks.",
+    title: "Start your Intro Pass",
+    body: "Book your first class and come as you are. You do not need yoga experience or exceptional flexibility.",
   },
   {
     label: "Step 2",
-    title: "Try different classes and times",
-    body: "Explore slower, calmer sessions and stronger, moving ones. Find teachers you click with.",
+    title: "Try different classes",
+    body: "Explore slower, calming sessions and more active classes with different teachers and times.",
   },
   {
     label: "Step 3",
-    title: "Discover what fits your routine",
-    body: "After 14 days, choose the rhythm that makes sense for your life.",
+    title: "Choose your routine",
+    body: "After 14 days, decide which classes and membership fit your life.",
   },
 ];
 
