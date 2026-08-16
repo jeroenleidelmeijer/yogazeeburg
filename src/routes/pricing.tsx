@@ -37,6 +37,7 @@ const REGULAR_TERMS =
   "Paid every 4 weeks, with a 3-month minimum commitment. Cancellable after the 3-month minimum commitment.";
 const SPORTBIT_NOTICE =
   "You’ll continue to Sportbit, our current booking system. Log in or create an account, select Yoga Zeeburg, then choose the membership shown here.";
+const SPORTBIT_REMINDER = "Checkout continues in Sportbit, our booking system.";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
