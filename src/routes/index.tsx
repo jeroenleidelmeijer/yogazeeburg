@@ -130,11 +130,14 @@ function Hero() {
    BENEFITS — editorial numbered list, not tiny cards
    ============================================================ */
 const BENEFITS = [
-  { title: "Feel calmer", body: "Step out of the noise and land back in your body." },
-  { title: "Release tension", body: "Unwind tight shoulders, hips and lower back." },
-  { title: "Move better", body: "Build mobility and ease without forcing it." },
-  { title: "Breathe deeper", body: "Slow down, breathe wider and feel more grounded." },
-  { title: "Build a weekly routine", body: "A rhythm you can actually keep up." },
+  { title: "Feel calmer", body: "Step out of the noise and return to your body." },
+  {
+    title: "Release tension",
+    body: "Give tight shoulders, hips and your lower back room to unwind.",
+  },
+  { title: "Move better", body: "Build mobility and ease without forcing your body." },
+  { title: "Breathe deeper", body: "Slow your breathing and feel more grounded." },
+  { title: "Build a weekly routine", body: "Create a rhythm that fits real life." },
 ];
 
 function Benefits() {
