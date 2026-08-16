@@ -441,8 +441,9 @@ function Hero() {
           Find the class that fits what you need.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Some days call for movement and energy. Others call for stillness and rest. Use
-          the Class Finder or explore all twelve classes to find what feels right today.
+          Yoga Zeeburg offers twelve weekly classes in Amsterdam East, from deeply restful Yin and
+          Nidra to balanced Vinyasa, Pilates Fusion and stronger flows. Most classes are
+          beginner-friendly. Use the Class Finder below to see which one fits you today.
         </p>
       </div>
     </section>
