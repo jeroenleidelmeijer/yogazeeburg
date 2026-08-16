@@ -344,9 +344,6 @@ function RegularCard({ plan }: { plan: RegularPlan }) {
       {plan.extraPerClass && (
         <p className="mt-1 text-sm text-muted-foreground">{plan.extraPerClass}</p>
       )}
-      <p className="mt-4 rounded-lg border border-border/40 bg-secondary/50 px-3 py-2 text-sm font-medium text-foreground/80">
-        Paid every 4 weeks. Minimum commitment: 3 months. Monthly cancellable afterwards.
-      </p>
 
       <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">{plan.bestFor}</p>
 
