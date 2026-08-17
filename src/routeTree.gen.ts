@@ -15,6 +15,7 @@ import { Route as SportbitRouteImport } from './routes/sportbit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as RoosterRouteImport } from './routes/rooster'
+import { Route as PrijzenRouteImport } from './routes/prijzen'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as McpRouteImport } from './routes/mcp'
@@ -73,6 +74,11 @@ const ScheduleRoute = ScheduleRouteImport.update({
 const RoosterRoute = RoosterRouteImport.update({
   id: '/rooster',
   path: '/rooster',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrijzenRoute = PrijzenRouteImport.update({
+  id: '/prijzen',
+  path: '/prijzen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -238,6 +244,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
+  '/prijzen': typeof PrijzenRoute
   '/rooster': typeof RoosterRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -274,6 +281,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
+  '/prijzen': typeof PrijzenRoute
   '/rooster': typeof RoosterRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -312,6 +320,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
+  '/prijzen': typeof PrijzenRoute
   '/rooster': typeof RoosterRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -351,6 +360,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/prices'
     | '/pricing'
+    | '/prijzen'
     | '/rooster'
     | '/schedule'
     | '/sitemap.xml'
@@ -387,6 +397,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/prices'
     | '/pricing'
+    | '/prijzen'
     | '/rooster'
     | '/schedule'
     | '/sitemap.xml'
@@ -424,6 +435,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/prices'
     | '/pricing'
+    | '/prijzen'
     | '/rooster'
     | '/schedule'
     | '/sitemap.xml'
@@ -462,6 +474,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PricesRoute: typeof PricesRoute
   PricingRoute: typeof PricingRoute
+  PrijzenRoute: typeof PrijzenRoute
   RoosterRoute: typeof RoosterRoute
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -526,6 +539,13 @@ declare module '@tanstack/react-router' {
       path: '/rooster'
       fullPath: '/rooster'
       preLoaderRoute: typeof RoosterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prijzen': {
+      id: '/prijzen'
+      path: '/prijzen'
+      fullPath: '/prijzen'
+      preLoaderRoute: typeof PrijzenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -766,6 +786,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PricesRoute: PricesRoute,
   PricingRoute: PricingRoute,
+  PrijzenRoute: PrijzenRoute,
   RoosterRoute: RoosterRoute,
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
