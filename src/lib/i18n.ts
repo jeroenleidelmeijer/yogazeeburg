@@ -26,7 +26,7 @@ export const COMMERCIAL_PATHS: Record<Locale, Record<CommercialPage, string>> = 
     sportbit: "/sportbit",
   },
   en: {
-    home: "/en/",
+    home: "/en",
     pricing: "/en/pricing",
     classes: "/en/classes",
     schedule: "/en/schedule",

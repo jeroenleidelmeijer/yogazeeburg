@@ -15,7 +15,7 @@ const NAV = {
     { to: "/contact", label: "Contact" },
   ],
   en: [
-    { to: "/en/", label: "Home" },
+    { to: "/en", label: "Home" },
     { to: "/en/pricing", label: "Pricing" },
     { to: "/en/classes", label: "Classes" },
     { to: "/en/schedule", label: "Schedule" },
@@ -39,7 +39,7 @@ export function SiteHeader({
   const nav = NAV[locale];
   const copy = COPY[locale];
   const altHref = switchUrl(locale, page);
-  const homeTo = locale === "nl" ? "/" : "/en/";
+  const homeTo = locale === "nl" ? "/" : "/en";
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">

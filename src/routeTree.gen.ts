@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YogaStylesRouteImport } from './routes/yoga-styles'
 import { Route as TrialRouteImport } from './routes/trial'
+import { Route as SportbitRouteImport } from './routes/sportbit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as RoosterRouteImport } from './routes/rooster'
@@ -18,9 +19,11 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as KennisbankRouteImport } from './routes/kennisbank'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ClassScheduleRouteImport } from './routes/class-schedule'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as NlIndexRouteImport } from './routes/nl.index'
 import { Route as KennisbankIndexRouteImport } from './routes/kennisbank.index'
 import { Route as EnIndexRouteImport } from './routes/en.index'
@@ -50,6 +53,11 @@ const YogaStylesRoute = YogaStylesRouteImport.update({
 const TrialRoute = TrialRouteImport.update({
   id: '/trial',
   path: '/trial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SportbitRoute = SportbitRouteImport.update({
+  id: '/sportbit',
+  path: '/sportbit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -87,6 +95,11 @@ const KennisbankRoute = KennisbankRouteImport.update({
   path: '/kennisbank',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClassesRoute = ClassesRouteImport.update({
   id: '/classes',
   path: '/classes',
@@ -100,6 +113,11 @@ const ClassScheduleRoute = ClassScheduleRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NlIndexRoute = NlIndexRouteImport.update({
@@ -211,9 +229,11 @@ const ApiPublicV1KennisbankSummaryRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
+  '/contact': typeof ContactRoute
   '/kennisbank': typeof KennisbankRouteWithChildren
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
@@ -221,6 +241,7 @@ export interface FileRoutesByFullPath {
   '/rooster': typeof RoosterRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sportbit': typeof SportbitRoute
   '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -245,15 +266,18 @@ export interface FileRoutesByFullPath {
   '/api/public/v1/kennisbank-summary': typeof ApiPublicV1KennisbankSummaryRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
+  '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
   '/rooster': typeof RoosterRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sportbit': typeof SportbitRoute
   '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -279,9 +303,11 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
+  '/contact': typeof ContactRoute
   '/kennisbank': typeof KennisbankRouteWithChildren
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
@@ -289,6 +315,7 @@ export interface FileRoutesById {
   '/rooster': typeof RoosterRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sportbit': typeof SportbitRoute
   '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -315,9 +342,11 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/auth'
     | '/class-schedule'
     | '/classes'
+    | '/contact'
     | '/kennisbank'
     | '/mcp'
     | '/prices'
@@ -325,6 +354,7 @@ export interface FileRouteTypes {
     | '/rooster'
     | '/schedule'
     | '/sitemap.xml'
+    | '/sportbit'
     | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
@@ -349,15 +379,18 @@ export interface FileRouteTypes {
     | '/api/public/v1/kennisbank-summary'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/auth'
     | '/class-schedule'
     | '/classes'
+    | '/contact'
     | '/mcp'
     | '/prices'
     | '/pricing'
     | '/rooster'
     | '/schedule'
     | '/sitemap.xml'
+    | '/sportbit'
     | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
@@ -382,9 +415,11 @@ export interface FileRouteTypes {
     | '/api/public/v1/kennisbank-summary'
   id:
     | '__root__'
+    | '/'
     | '/auth'
     | '/class-schedule'
     | '/classes'
+    | '/contact'
     | '/kennisbank'
     | '/mcp'
     | '/prices'
@@ -392,6 +427,7 @@ export interface FileRouteTypes {
     | '/rooster'
     | '/schedule'
     | '/sitemap.xml'
+    | '/sportbit'
     | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
@@ -417,9 +453,11 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   ClassScheduleRoute: typeof ClassScheduleRoute
   ClassesRoute: typeof ClassesRoute
+  ContactRoute: typeof ContactRoute
   KennisbankRoute: typeof KennisbankRouteWithChildren
   McpRoute: typeof McpRoute
   PricesRoute: typeof PricesRoute
@@ -427,6 +465,7 @@ export interface RootRouteChildren {
   RoosterRoute: typeof RoosterRoute
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SportbitRoute: typeof SportbitRoute
   TrialRoute: typeof TrialRoute
   YogaStylesRoute: typeof YogaStylesRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -459,6 +498,13 @@ declare module '@tanstack/react-router' {
       path: '/trial'
       fullPath: '/trial'
       preLoaderRoute: typeof TrialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sportbit': {
+      id: '/sportbit'
+      path: '/sportbit'
+      fullPath: '/sportbit'
+      preLoaderRoute: typeof SportbitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -510,6 +556,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KennisbankRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/classes': {
       id: '/classes'
       path: '/classes'
@@ -529,6 +582,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nl/': {
@@ -697,9 +757,11 @@ const KennisbankRouteWithChildren = KennisbankRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   ClassScheduleRoute: ClassScheduleRoute,
   ClassesRoute: ClassesRoute,
+  ContactRoute: ContactRoute,
   KennisbankRoute: KennisbankRouteWithChildren,
   McpRoute: McpRoute,
   PricesRoute: PricesRoute,
@@ -707,6 +769,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoosterRoute: RoosterRoute,
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SportbitRoute: SportbitRoute,
   TrialRoute: TrialRoute,
   YogaStylesRoute: YogaStylesRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,

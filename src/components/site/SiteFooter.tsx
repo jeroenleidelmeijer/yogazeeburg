@@ -107,7 +107,7 @@ export function SiteFooter({ locale = "nl" }: { locale?: Locale }) {
             ) : (
               <>
                 <li>
-                  <Link to="/en/" className={linkClass}>
+                  <Link to="/en" className={linkClass}>
                     {copy.home}
                   </Link>
                 </li>
