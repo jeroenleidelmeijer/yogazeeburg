@@ -408,7 +408,7 @@ function ClassesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="en" page="classes" />
       <main>
         <Hero />
         <ClassFinder
@@ -423,9 +423,9 @@ function ClassesPage() {
         />
         <ClassResults ranked={ranked} />
         <ScheduleLink />
-        <IntroPassCTA />
+        <IntroPassCTA locale="en" />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }

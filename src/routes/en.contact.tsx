@@ -72,13 +72,13 @@ type FieldErrors = Partial<Record<"name" | "email" | "subject" | "message", stri
 function ContactPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="en" page="contact" />
       <main>
         <Hero />
         <ContactSection />
-        <IntroPassCTA />
+        <IntroPassCTA locale="en" />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }

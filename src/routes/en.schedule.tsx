@@ -114,7 +114,7 @@ export const Route = createFileRoute("/en/schedule")({
 function SchedulePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="en" page="schedule" />
       <main>
         <Hero />
         <WeeklySchedule />
@@ -122,7 +122,7 @@ function SchedulePage() {
         <ClassesLink />
         <FinalCTA />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }
@@ -231,6 +231,6 @@ function ClassesLink() {
 }
 
 function FinalCTA() {
-  return <IntroPassCTA />;
+  return <IntroPassCTA locale="en" />;
 }
 

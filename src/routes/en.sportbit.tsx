@@ -100,13 +100,13 @@ export const Route = createFileRoute("/en/sportbit")({
 function SportbitPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="en" page="sportbit" />
       <main>
         <Hero />
         <Steps />
         <FinalCTA />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }

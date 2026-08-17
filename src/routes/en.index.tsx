@@ -54,7 +54,7 @@ export const Route = createFileRoute("/en/")({
 function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="en" page="home" />
       <main>
         <Hero />
         <Benefits />
@@ -65,7 +65,7 @@ function HomePage() {
         <Location />
         <FinalCTA />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }

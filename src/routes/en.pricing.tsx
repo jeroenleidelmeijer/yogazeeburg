@@ -81,7 +81,7 @@ export const Route = createFileRoute("/en/pricing")({
 function PricingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="en" page="pricing" />
       <main>
         <Hero />
         <IntroPass />
@@ -93,7 +93,7 @@ function PricingPage() {
         <FAQ />
         <FinalCTA />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }
