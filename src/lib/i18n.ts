@@ -37,7 +37,9 @@ export const COMMERCIAL_PATHS: Record<Locale, Record<CommercialPage, string>> = 
 
 export function pageUrl(locale: Locale, page: CommercialPage): string {
   const path = COMMERCIAL_PATHS[locale][page];
-  return path === "/" ? `${BASE_URL}/` : `${BASE_URL}${path}`;
+  // Home pages canonicalise with a trailing slash.
+  if (page === "home") return locale === "nl" ? `${BASE_URL}/` : `${BASE_URL}/en/`;
+  return `${BASE_URL}${path}`;
 }
 
 /** Self-referencing canonical + nl-NL / en / x-default hreflang set. */
