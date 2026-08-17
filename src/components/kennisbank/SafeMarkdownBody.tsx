@@ -102,11 +102,12 @@ const INTERNAL_HOST = "www.yogazeeburg.com";
 const INTRO_HOSTNAME = "crossfitzeeburg.sportbitapp.nl";
 const ALLOWED_INTERNAL_PATH_PREFIXES = [
   "/kennisbank",
-  "/pricing",
-  "/classes",
-  "/schedule",
+  "/prijzen",
+  "/lessen",
+  "/rooster",
   "/contact",
   "/sportbit",
+  "/en",
 ];
 
 /** Classify a link URL against the allowlist. Returns `null` when disallowed.
