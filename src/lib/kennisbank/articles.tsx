@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { MapPin } from "lucide-react";
+import { MapPin, Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
@@ -15,6 +15,8 @@ import cruquiusHeroAsset from "@/assets/yoga-cruquius-amsterdam-hoofdbeeld.webp.
 import cruquiusInlineAsset from "@/assets/yoga-cruquius-dichtbij-huis.webp.asset.json";
 import niveauHeroAsset from "@/assets/yoga-zeeburg-beginners-gevorderden-hoofdbeeld.webp.asset.json";
 import niveauInlineAsset from "@/assets/yoga-zeeburg-les-op-jouw-niveau.webp.asset.json";
+import goedeStudioHeroAsset from "@/assets/yoga-goede-yogastudio-hoofdbeeld.webp.asset.json";
+import goedeStudioInlineAsset from "@/assets/yoga-goede-yogastudio-kwaliteitskenmerken.webp.asset.json";
 
 const WATER_HERO_IMAGE: ArticleImageRef = {
   url: waterHeroAsset.url,
@@ -145,10 +147,30 @@ export type Article = {
   body: () => ReactNode;
 };
 
+const GOEDE_STUDIO_HERO_IMAGE: ArticleImageRef = {
+  url: goedeStudioHeroAsset.url,
+  alt: "Rustige, verzorgde yogaruimte met twee lege matten, blokken, dekens en bolsters bij daglicht.",
+  width: 1600,
+  height: 900,
+};
+
+const GOEDE_STUDIO_INLINE_IMAGE: ArticleImageRef = {
+  url: goedeStudioInlineAsset.url,
+  alt: "Netjes opgeborgen yogablokken, dekens, riemen en bolsters naast een schone yogamat.",
+  width: 1600,
+  height: 900,
+};
+
 const CATEGORY_AMSTERDAM_OOST: ArticleCategory = {
   slug: "yoga-amsterdam-oost",
   title: "Yoga in Amsterdam Oost",
   icon: MapPin,
+};
+
+const CATEGORY_BEGINNEN_MET_YOGA: ArticleCategory = {
+  slug: "beginnen-met-yoga",
+  title: "Beginnen met yoga",
+  icon: Sparkles,
 };
 
 const proeflesArticle: Article = {
