@@ -3,54 +3,55 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { IntroPassCTA } from "@/components/site/IntroPassCTA";
+import { commercialLinks } from "@/lib/i18n";
 
 type Lesson = { time: string; name: string; teacher: string };
 type Day = { day: string; lessons: Lesson[] };
 
 const SCHEDULE: Day[] = [
   {
-    day: "Monday",
+    day: "Maandag",
     lessons: [
       { time: "18:00–19:15", name: "Vinyasa & Aroma", teacher: "Csenge van der Heijden" },
       { time: "19:30–20:45", name: "Slow Flow & Soundbath", teacher: "Csenge van der Heijden" },
     ],
   },
   {
-    day: "Tuesday",
+    day: "Dinsdag",
     lessons: [
       { time: "18:45–20:00", name: "Strong Flow", teacher: "Csenge van der Heijden" },
       { time: "20:15–21:30", name: "Restorative & Reiki & Aroma", teacher: "Csenge van der Heijden" },
     ],
   },
   {
-    day: "Wednesday",
+    day: "Woensdag",
     lessons: [
       { time: "17:30–18:45", name: "Stress Release (Yin style)", teacher: "Nicky Kuiper" },
-      { time: "19:00–20:30", name: "Relax Yin & Nidra (1,5 hour class)", teacher: "Nicky Kuiper" },
+      { time: "19:00–20:30", name: "Relax Yin & Nidra (1,5 uur les)", teacher: "Nicky Kuiper" },
     ],
   },
   {
-    day: "Thursday",
+    day: "Donderdag",
     lessons: [
       { time: "08:00–09:15", name: "Pilates Fusion", teacher: "Mila Vasina" },
       { time: "18:00–19:15", name: "Pilates Fusion", teacher: "Mila Vasina" },
     ],
   },
   {
-    day: "Friday",
+    day: "Vrijdag",
     lessons: [
       { time: "10:00–11:15", name: "Stress Release (Yin style)", teacher: "Nicky Kuiper" },
     ],
   },
   {
-    day: "Saturday",
+    day: "Zaterdag",
     lessons: [
       { time: "09:00–10:15", name: "Weekend Warm-up Flow", teacher: "Veronica Torri" },
       { time: "10:30–11:45", name: "Yin Yang Yoga", teacher: "Veronica Torri" },
     ],
   },
   {
-    day: "Sunday",
+    day: "Zondag",
     lessons: [
       { time: "09:30–10:45", name: "Vinyasa + Somatic Movement", teacher: "Mila Vasina" },
       { time: "11:00–12:15", name: "Deep Stretch Yin & Breathwork", teacher: "Mila Vasina" },
@@ -58,35 +59,35 @@ const SCHEDULE: Day[] = [
   },
 ];
 
-export const Route = createFileRoute("/schedule")({
+export const Route = createFileRoute("/rooster")({
   head: () => ({
     meta: [
-      { title: "Yoga Class Schedule Amsterdam East | Yoga Zeeburg" },
+      { title: "Lesrooster Yoga Amsterdam Oost | Yoga Zeeburg" },
       {
         name: "description",
         content:
-          "View the weekly Yoga Zeeburg schedule in Amsterdam East. Explore Vinyasa, Yin, Pilates Fusion and more, then choose the class that fits your week.",
+          "Bekijk het wekelijkse rooster van Yoga Zeeburg in Amsterdam Oost. Ontdek Vinyasa, Yin, Pilates Fusion en meer, en kies de les die bij jouw week past.",
       },
-      { property: "og:title", content: "Yoga Class Schedule Amsterdam East | Yoga Zeeburg" },
+      { property: "og:title", content: "Lesrooster Yoga Amsterdam Oost | Yoga Zeeburg" },
       {
         property: "og:description",
         content:
-          "View the weekly Yoga Zeeburg schedule in Amsterdam East, with Vinyasa, Yin, Nidra, Pilates Fusion and more.",
+          "Bekijk het wekelijkse rooster van Yoga Zeeburg in Amsterdam Oost, met Vinyasa, Yin, Nidra, Pilates Fusion en meer.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/schedule" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/rooster" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/schedule" }],
+    links: commercialLinks("nl", "schedule"),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Yoga Class Schedule Amsterdam East",
-          url: "https://www.yogazeeburg.com/schedule",
-          inLanguage: "en",
+          name: "Lesrooster Yoga Amsterdam Oost",
+          url: "https://www.yogazeeburg.com/rooster",
+          inLanguage: "nl-NL",
           description:
-            "View the weekly Yoga Zeeburg schedule in Amsterdam East. Explore Vinyasa, Yin, Pilates Fusion and more, then choose the class that fits your week.",
+            "Bekijk het wekelijkse rooster van Yoga Zeeburg in Amsterdam Oost. Ontdek Vinyasa, Yin, Pilates Fusion en meer, en kies de les die bij jouw week past.",
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
@@ -102,7 +103,7 @@ export const Route = createFileRoute("/schedule")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Schedule", item: "https://www.yogazeeburg.com/schedule" },
+            { "@type": "ListItem", position: 2, name: "Rooster", item: "https://www.yogazeeburg.com/rooster" },
           ],
         }),
       },
@@ -114,7 +115,7 @@ export const Route = createFileRoute("/schedule")({
 function SchedulePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="nl" page="schedule" />
       <main>
         <Hero />
         <WeeklySchedule />
@@ -122,7 +123,7 @@ function SchedulePage() {
         <ClassesLink />
         <FinalCTA />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="nl" />
     </div>
   );
 }
@@ -132,14 +133,14 @@ function Hero() {
     <section className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">
-          Weekly schedule
+          Wekelijks rooster
         </p>
         <h1 className="mt-4 font-display text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
-          Find a class that fits your week.
+          Vind een les die bij jouw week past.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Yoga Zeeburg runs classes seven days a week at Cruquiusweg 96F in Amsterdam East, from
-          early mornings to evenings. Below is our regular weekly timetable.
+          Yoga Zeeburg geeft zeven dagen per week les aan de Cruquiusweg 96F in Amsterdam Oost, van
+          vroege ochtenden tot avonden. Hieronder vind je ons vaste weekrooster.
         </p>
       </div>
     </section>
@@ -192,11 +193,11 @@ function SportbitNotice() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-12 lg:px-8">
         <div className="max-w-2xl">
           <h2 className="font-display text-xl text-foreground md:text-2xl">
-            Always check Sportbit
+            Check altijd Sportbit
           </h2>
           <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-            For the latest schedule changes, availability and reservations, current members always
-            use Sportbit.
+            Voor de laatste wijzigingen in het rooster, beschikbaarheid en reserveringen gebruiken
+            huidige leden altijd Sportbit.
           </p>
         </div>
       </div>
@@ -209,20 +210,20 @@ function ClassesLink() {
     <section className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">
-          Choosing your class
+          Jouw les kiezen
         </p>
         <h2 className="mt-3 font-display text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-          Not sure which class suits you?
+          Nog niet zeker welke les bij je past?
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          Every class has its own pace and focus, from energising Vinyasa to calming Yin and Nidra.
-          Explore our classes to find the one that matches what you need.
+          Elke les heeft zijn eigen tempo en focus, van energieke Vinyasa tot rustgevende Yin en
+          Nidra. Bekijk onze lessen en ontdek welke bij jou past.
         </p>
         <Link
-          to="/classes"
+          to="/lessen"
           className="mt-6 inline-flex items-center gap-1.5 text-base font-medium text-foreground underline-offset-4 hover:underline"
         >
-          Explore our classes
+          Bekijk onze lessen
           <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
@@ -231,6 +232,5 @@ function ClassesLink() {
 }
 
 function FinalCTA() {
-  return <IntroPassCTA />;
+  return <IntroPassCTA locale="nl" />;
 }
-

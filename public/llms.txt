@@ -25,12 +25,15 @@ All bookings and membership purchases run through Sportbit, the studio's booking
 
 ## Canonical pages
 
-- [Home](https://www.yogazeeburg.com/)
-- [Pricing](https://www.yogazeeburg.com/pricing)
-- [Classes](https://www.yogazeeburg.com/classes)
-- [Schedule](https://www.yogazeeburg.com/schedule)
-- [Contact](https://www.yogazeeburg.com/contact)
-- [Sportbit guide (how to book, waiting list, cancellation)](https://www.yogazeeburg.com/sportbit)
+The Dutch pages are primary; English translations live under /en.
+
+- [Home (NL)](https://www.yogazeeburg.com/) — [Home (EN)](https://www.yogazeeburg.com/en)
+- [Prijzen / Pricing](https://www.yogazeeburg.com/prijzen) — [EN](https://www.yogazeeburg.com/enpricing)
+- [Lessen / Classes](https://www.yogazeeburg.com/lessen) — [EN](https://www.yogazeeburg.com/enclasses)
+- [Rooster / Schedule](https://www.yogazeeburg.com/rooster) — [EN](https://www.yogazeeburg.com/enschedule)
+- [Contact](https://www.yogazeeburg.com/contact) — [EN](https://www.yogazeeburg.com/encontact)
+- [Sportbit guide (how to book, waiting list, cancellation)](https://www.yogazeeburg.com/sportbit) — [EN](https://www.yogazeeburg.com/ensportbit)
+- [Yoga Gids knowledge base (Dutch)](https://www.yogazeeburg.com/kennisbank)
 
 ## Contact
 

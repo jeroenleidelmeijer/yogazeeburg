@@ -55,7 +55,7 @@ function pkg(finalTitle: string, slug: string) {
     internalLinks: [],
     seoIntents: ["beginner"],
     structuredDataIntents: [],
-    cta: { label: "Boek een proefles", href: "/pricing" },
+    cta: { label: "Boek een proefles", href: "/prijzen" },
   };
 }
 
@@ -165,13 +165,13 @@ describe("sitemap.xml — published-only URL emission", () => {
     const xml = await res.text();
 
     // Published slug present.
-    expect(xml).toContain("/nl/kennisbank/published-only-fake");
+    expect(xml).toContain("/kennisbank/published-only-fake");
     // Draft + preview slugs absent.
-    expect(xml).not.toContain("/nl/kennisbank/draft-only-fake");
-    expect(xml).not.toContain("/nl/kennisbank/preview-only-fake");
+    expect(xml).not.toContain("/kennisbank/draft-only-fake");
+    expect(xml).not.toContain("/kennisbank/preview-only-fake");
     // Legacy 1–3 still present.
-    expect(xml).toContain("/nl/kennisbank/proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten");
+    expect(xml).toContain("/kennisbank/proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten");
     // No category archive URLs (functional archives are noindex, not in sitemap).
-    expect(xml).not.toContain("/nl/kennisbank/categorie/");
+    expect(xml).not.toContain("/kennisbank/categorie/");
   });
 });

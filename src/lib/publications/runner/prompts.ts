@@ -103,7 +103,7 @@ export function sourceValidationPrompt(brief: ArticleBrief): PromptMessages {
     schemaVersion: SCHEMA_VERSION,
     jsonSchemaName: "ValidatedSourcePack",
     system:
-      "Je bent de source-validator. Valideer feiten voor het onderstaande brief-object. First-party feiten komen uitsluitend van yogazeeburg.com/pricing, /schedule, /classes en /contact. Externe claims vereisen een gezaghebbende bron met publisher en capturedAt. Als er conflict of onvoldoende onderbouwing is: zet blocked=true met heldere reden. Verzin nooit prijzen, tijden, docenten of voorzieningen.",
+      "Je bent de source-validator. Valideer feiten voor het onderstaande brief-object. First-party feiten komen uitsluitend van yogazeeburg.com/prijzen, /rooster, /lessen en /contact. Externe claims vereisen een gezaghebbende bron met publisher en capturedAt. Als er conflict of onvoldoende onderbouwing is: zet blocked=true met heldere reden. Verzin nooit prijzen, tijden, docenten of voorzieningen.",
     user: JSON.stringify({
       brief,
       instruction:

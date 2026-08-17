@@ -7,7 +7,7 @@ import { listPublishedArticlesFn } from "@/lib/kennisbank/data.functions";
 import { byCategory } from "@/lib/kennisbank/compose";
 import { CATEGORY_META } from "@/lib/kennisbank/registry";
 
-export const Route = createFileRoute("/nl/kennisbank/categorie/$slug")({
+export const Route = createFileRoute("/kennisbank/categorie/$slug")({
   loader: async ({ params }) => {
     const meta = CATEGORY_META[params.slug];
     const all = await listPublishedArticlesFn();
@@ -65,7 +65,7 @@ function CategoryPage() {
             </ul>
           ) : (
             <div className="text-center">
-              <Link to="/nl/kennisbank" className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">Terug naar Yoga Gids</Link>
+              <Link to="/kennisbank" className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">Terug naar Yoga Gids</Link>
             </div>
           )}
         </section>

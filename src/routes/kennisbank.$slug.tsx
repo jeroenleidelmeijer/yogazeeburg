@@ -23,7 +23,7 @@ type LoaderData = {
   related: ArticleRef[];
 };
 
-export const Route = createFileRoute("/nl/kennisbank/$slug")({
+export const Route = createFileRoute("/kennisbank/$slug")({
   loader: async ({ params }): Promise<LoaderData> => {
     const resolved = await resolveArticleBySlugFn({ data: { slug: params.slug } });
     if (!resolved) throw notFound();
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
       };
     }
 
-    const canonical = `${BASE}/nl/kennisbank/${params.slug}`;
+    const canonical = `${BASE}/kennisbank/${params.slug}`;
     return {
       meta: [
         { title: seo.seoTitle },
@@ -102,13 +102,13 @@ export const Route = createFileRoute("/nl/kennisbank/$slug")({
                 "@type": "ListItem",
                 position: 2,
                 name: "Yoga Gids",
-                item: `${BASE}/nl/kennisbank`,
+                item: `${BASE}/kennisbank`,
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: seo.categoryTitle,
-                item: `${BASE}/nl/kennisbank/categorie/${seo.categorySlug}`,
+                item: `${BASE}/kennisbank/categorie/${seo.categorySlug}`,
               },
               { "@type": "ListItem", position: 4, name: seo.title, item: canonical },
             ],
@@ -239,14 +239,14 @@ function ArticleShell({
               <nav aria-label="Kruimelpad" className="text-sm text-muted-foreground">
                 <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   <li>
-                    <Link to="/nl/kennisbank" className="hover:text-foreground">
+                    <Link to="/kennisbank" className="hover:text-foreground">
                       Yoga Gids
                     </Link>
                   </li>
                   <li aria-hidden="true">›</li>
                   <li>
                     <Link
-                      to="/nl/kennisbank/categorie/$slug"
+                      to="/kennisbank/categorie/$slug"
                       params={{ slug: categorySlug }}
                       className="hover:text-foreground"
                     >
@@ -343,7 +343,7 @@ function BackLink({ updatedAt }: { updatedAt: string }) {
       </p>
       <div className="mt-4">
         <Link
-          to="/nl/kennisbank"
+          to="/kennisbank"
           className="inline-flex items-center gap-2 text-primary hover:underline"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -550,7 +550,7 @@ function ArticleNotFound() {
           </p>
           <div className="mt-8">
             <Link
-              to="/nl/kennisbank"
+              to="/kennisbank"
               className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
               Terug naar Yoga Gids
@@ -584,7 +584,7 @@ function ArticleError({ reset }: { reset: () => void }) {
               Opnieuw proberen
             </button>
             <Link
-              to="/nl/kennisbank"
+              to="/kennisbank"
               className="inline-flex min-h-[44px] items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted"
             >
               Terug naar Yoga Gids

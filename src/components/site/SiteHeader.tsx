@@ -1,24 +1,50 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-
-const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/classes", label: "Classes" },
-  { to: "/schedule", label: "Schedule" },
-  { to: "/contact", label: "Contact" },
-] as const;
+import { Menu, X, Globe } from "lucide-react";
+import type { CommercialPage, Locale } from "@/lib/i18n";
+import { switchUrl } from "@/lib/i18n";
 
 const INTRO_URL = "/trial";
 
-export function SiteHeader() {
+const NAV = {
+  nl: [
+    { to: "/", label: "Home" },
+    { to: "/prijzen", label: "Prijzen" },
+    { to: "/lessen", label: "Lessen" },
+    { to: "/rooster", label: "Rooster" },
+    { to: "/contact", label: "Contact" },
+  ],
+  en: [
+    { to: "/en", label: "Home" },
+    { to: "/en/pricing", label: "Pricing" },
+    { to: "/en/classes", label: "Classes" },
+    { to: "/en/schedule", label: "Schedule" },
+    { to: "/en/contact", label: "Contact" },
+  ],
+} as const;
+
+const COPY = {
+  nl: { cta: "Start Intro Pass", menu: "Menu openen of sluiten", switchLabel: "EN", switchTitle: "Switch to English" },
+  en: { cta: "Start Intro Pass", menu: "Toggle menu", switchLabel: "NL", switchTitle: "Bekijk deze pagina in het Nederlands" },
+} as const;
+
+export function SiteHeader({
+  locale = "nl",
+  page = "home",
+}: {
+  locale?: Locale;
+  page?: CommercialPage;
+}) {
   const [open, setOpen] = useState(false);
+  const nav = NAV[locale];
+  const copy = COPY[locale];
+  const altHref = switchUrl(locale, page);
+  const homeTo = locale === "nl" ? "/" : "/en";
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-5 sm:px-6 md:py-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3">
+        <Link to={homeTo} className="flex min-w-0 items-center gap-3">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary font-display text-xl text-primary-foreground">
             y
           </span>
@@ -28,7 +54,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
@@ -39,10 +65,18 @@ export function SiteHeader() {
             </Link>
           ))}
           <a
-            href={INTRO_URL}
-            className="ml-3 inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-[15px] font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            href={altHref}
+            title={copy.switchTitle}
+            className="ml-1 inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-[15px] text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
           >
-            Start Intro Pass
+            <Globe className="h-4 w-4" aria-hidden="true" />
+            {copy.switchLabel}
+          </a>
+          <a
+            href={INTRO_URL}
+            className="ml-2 inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-[15px] font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+          >
+            {copy.cta}
           </a>
         </nav>
 
@@ -50,7 +84,7 @@ export function SiteHeader() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-muted md:hidden"
-          aria-label="Toggle menu"
+          aria-label={copy.menu}
           aria-expanded={open}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -60,7 +94,7 @@ export function SiteHeader() {
       {open && (
         <div className="border-t border-border/60 bg-background md:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">
-            {NAV.map((item) => (
+            {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
@@ -71,10 +105,18 @@ export function SiteHeader() {
               </Link>
             ))}
             <a
+              href={altHref}
+              title={copy.switchTitle}
+              className="inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-base text-foreground/90 hover:bg-muted"
+            >
+              <Globe className="h-4 w-4" aria-hidden="true" />
+              {copy.switchLabel}
+            </a>
+            <a
               href={INTRO_URL}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
             >
-              Start Intro Pass
+              {copy.cta}
             </a>
           </nav>
         </div>

@@ -231,7 +231,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     audiences: [],
     featured: structuredDataIntents.includes("featured"),
     cta: pkg.cta as DbArticleViewModel["cta"],
-    canonicalUrl: `${CANONICAL_BASE}/nl/kennisbank/${row.slug}`,
+    canonicalUrl: `${CANONICAL_BASE}/kennisbank/${row.slug}`,
     template: {
       showTOC: true,
       showFAQ: faq.length > 0,

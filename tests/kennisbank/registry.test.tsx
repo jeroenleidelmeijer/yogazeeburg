@@ -180,8 +180,8 @@ describe("SafeMarkdownBody — untrusted content safety", () => {
     // context we don't provide in this pure renderer test; that path is
     // covered by the runtime route test. Here we assert the same-site
     // https branch renders as a raw <a>.
-    const out = render("[site](https://www.yogazeeburg.com/nl/kennisbank/x)");
-    expect(out).toContain("yogazeeburg.com/nl/kennisbank/x");
+    const out = render("[site](https://www.yogazeeburg.com/kennisbank/x)");
+    expect(out).toContain("yogazeeburg.com/kennisbank/x");
     expect(out).toMatch(/<a[^>]+href="https:\/\/www\.yogazeeburg\.com/);
   });
 

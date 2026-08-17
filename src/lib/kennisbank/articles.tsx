@@ -291,7 +291,7 @@ function ProeflesBody() {
       <p className="mt-4">
         Bekijk het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster van Yoga Zeeburg
@@ -441,14 +441,14 @@ function ProeflesBody() {
       <p className="mt-4">
         Meer weten over de buurt en welke lessen op welk moment aansluiten? Bekijk het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster
         </a>{" "}
         of blader door de andere onderwerpen in de{" "}
         <a
-          href="/nl/kennisbank"
+          href="/kennisbank"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Yoga Gids
@@ -653,7 +653,7 @@ function WelkeStudioBody() {
       <p className="mt-4">
         Bekijk daarom altijd het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster
@@ -678,7 +678,7 @@ function WelkeStudioBody() {
         vier lessen laten zien wat de studio structureel is. Voor een uitgebreidere uitleg over hoe
         zo'n eerste les eruitziet, zie ons artikel over{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -781,7 +781,7 @@ function WelkeStudioBody() {
       <p className="mt-4">
         Blader gerust ook door de{" "}
         <Link
-          to="/nl/kennisbank"
+          to="/kennisbank"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Yoga Gids
@@ -943,7 +943,7 @@ function BeginnersBody() {
         een intro pass kun je later andere stijlen en docenten toetsen. Voor een uitgebreidere
         vergelijking van studio's kun je ons artikel over{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -1010,7 +1010,7 @@ function BeginnersBody() {
         Combineer waar mogelijk één rustigere en één dynamischere les. Zo krijg je afwisseling én
         zie je zelf welke vorm je op de lange termijn prettiger vindt. Bekijk het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesrooster
@@ -1098,7 +1098,7 @@ function BeginnersBody() {
         <li>
           <strong>Bekijk het rooster.</strong> Zoek in het{" "}
           <a
-            href="/schedule"
+            href="/rooster"
             className="font-medium text-primary underline underline-offset-4 hover:no-underline"
           >
             actuele lesrooster
@@ -1122,7 +1122,7 @@ function BeginnersBody() {
       <p className="mt-4">
         Meer weten over hoe zo'n eerste les er concreet uitziet? Lees ons artikel over{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{
             slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten",
           }}
@@ -1160,7 +1160,7 @@ function BeginnersBody() {
       <p className="mt-4">
         Meer achtergrond over yoga in de buurt? Blader door de{" "}
         <Link
-          to="/nl/kennisbank"
+          to="/kennisbank"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Yoga Gids
@@ -1419,10 +1419,10 @@ function KantoorBody() {
       <p className="mt-4">
         Bekijk voor vertrek altijd het actuele lesrooster via{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
-          /schedule
+          /rooster
         </Link>
         . Zo kies je een les die past bij je werkdag en voorkom je haast.
       </p>
@@ -1689,10 +1689,10 @@ function KeuzeBody() {
       <p className="mt-4">
         Bekijk het actuele rooster via{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
-          /schedule
+          /rooster
         </Link>
         . Begin liever met één realistisch moment per week dan met een ambitieus plan dat na twee
         weken niet meer past.
@@ -1791,7 +1791,7 @@ function KeuzeBody() {
       <p className="mt-4">
         Wil je vooraf meer lokale opties vergelijken, blader dan door de{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -2036,7 +2036,7 @@ function TaalBody() {
         Een les die qua tijd, locatie en niveau in je week past, houd je gemakkelijker vol. Kies
         daarom niet uitsluitend op taal. Bekijk ook het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster
@@ -2093,7 +2093,7 @@ function TaalBody() {
       <p className="mt-4">
         Wil je weten welke taal tijdens een specifieke les wordt gebruikt? Bekijk het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster
@@ -2105,7 +2105,7 @@ function TaalBody() {
       <p className="mt-4">
         Meer praktische informatie en artikelen voor je eerste lessen vind je in de{" "}
         <Link
-          to="/nl/kennisbank"
+          to="/kennisbank"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           Yoga Gids
@@ -2193,7 +2193,7 @@ const prijzenArticle: Article = {
   sources: [
     {
       title: "Yoga Zeeburg — actuele prijzen en voorwaarden",
-      url: "https://www.yogazeeburg.com/pricing",
+      url: "https://www.yogazeeburg.com/prijzen",
     },
     {
       title: "Thrive Yoga & Pilates Zeeburg — tarieven",
@@ -2440,7 +2440,7 @@ function PrijzenBody() {
         Wie nog niet weet welke les of docent past, hoeft dit niet vooraf uit te rekenen. Begin met
         een introductieperiode en baseer je keuze daarna op wat je werkelijk hebt bezocht. Lees ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yogales-in-amsterdam-waar-moet-je-op-letten-bij-je-keuze" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -2448,7 +2448,7 @@ function PrijzenBody() {
         </Link>{" "}
         en{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -2493,7 +2493,7 @@ function PrijzenBody() {
         en zijn daarna maandelijks opzegbaar. Voor langere commitment bestaan afzonderlijke
         jaaropties. Bekijk voor alle actuele bedragen, voorwaarden en eventuele acties altijd de{" "}
         <Link
-          to="/pricing"
+          to="/prijzen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           prijspagina van Yoga Zeeburg
@@ -2616,7 +2616,7 @@ const waterArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — actueel lesrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -2701,7 +2701,7 @@ function WaterBody() {
         kan prachtig liggen, maar als de reistijd, lestijden of sfeer niet bij je passen, wordt een
         vaste routine lastig. Lees daarom ook hoe je{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -2762,7 +2762,7 @@ function WaterBody() {
         rustig uitzoeken waar je moet zijn en heb je tijd om iets aan de docent te vragen. In het
         artikel over een{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -2829,7 +2829,7 @@ function WaterBody() {
       <p className="mt-4">
         Wie net begint, hoeft niet eerst lenig of ervaren te zijn. In{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-voor-beginners-in-amsterdam-oost-zo-start-je" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3058,7 +3058,7 @@ function LocatieBody() {
       <p className="mt-4">
         Bekijk vervolgens het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesrooster
@@ -3113,7 +3113,7 @@ function LocatieBody() {
         Gebruik daarom een eenvoudige volgorde. Maak eerst een kleine selectie op locatie en
         rooster. Vergelijk daarna lesstijl, docent, sfeer en voorwaarden. Het artikel{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3148,7 +3148,7 @@ function LocatieBody() {
       <p className="mt-4">
         Ga je voor het eerst? Plan wat extra aankomsttijd en lees wat je kunt verwachten van een{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3258,7 +3258,7 @@ const ijburgArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — actueel rooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -3327,7 +3327,7 @@ function IjburgBody() {
       <p className="mt-4">
         Wil je uitgebreider kijken naar locatie, lesstijl, docent en sfeer? Lees dan ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3375,7 +3375,7 @@ function IjburgBody() {
         begeleiding. De ligging is alleen een voordeel als route en lestijden werken. Bekijk daarom
         het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster
@@ -3470,7 +3470,7 @@ function IjburgBody() {
       <p className="mt-4">
         Dit sluit aan bij een bredere regel:{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-dicht-bij-huis-waarom-locatie-helpt-om-vol-te-houden" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3598,7 +3598,7 @@ const indischeBuurtArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -3667,7 +3667,7 @@ function IndischeBuurtBody() {
       <p className="mt-4">
         Wil je eerst breder vergelijken? Lees dan ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3694,7 +3694,7 @@ function IndischeBuurtBody() {
         Neem ook het laatste stuk mee: waar parkeer je je fiets, hoe vind je de ingang en hoeveel
         speling heb je nodig? In{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-dicht-bij-huis-waarom-locatie-helpt-om-vol-te-houden" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -3734,7 +3734,7 @@ function IndischeBuurtBody() {
         intensiteit. Een goede beschrijving vertelt of een les actief of rustig is, hoeveel ervaring
         je nodig hebt en wat je ongeveer kunt verwachten. Bekijk daarom vóór je boekt de{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesmogelijkheden en tijden
@@ -3913,11 +3913,11 @@ const expatsArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — lesbeschrijvingen",
-      url: "https://www.yogazeeburg.com/classes",
+      url: "https://www.yogazeeburg.com/lessen",
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -3986,7 +3986,7 @@ function ExpatsBody() {
       <p className="mt-4">
         Meer nuance vind je in{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "nederlandse-of-engelse-yogales-in-amsterdam-wat-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4011,7 +4011,7 @@ function ExpatsBody() {
         Bij Yoga Zeeburg vind je op de Engelse website beschrijvingen van rustige, gebalanceerde en
         actievere lessen. Het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           reguliere weekrooster
@@ -4060,7 +4060,7 @@ function ExpatsBody() {
         omdat je verschillende momenten en docenten kunt proberen. Daarna kun je bepalen of een losse
         kaart of abonnement bij je verwachte ritme past. In{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "wat-kost-yoga-in-amsterdam-en-waar-betaal-je-voor" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4097,7 +4097,7 @@ function ExpatsBody() {
       <p className="mt-4">
         Een uitgebreider stappenplan staat in{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4255,7 +4255,7 @@ const cruquiusArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
     {
       title: "Yoga Zeeburg — contact en adres",
@@ -4326,7 +4326,7 @@ function CruquiusBody() {
       <p className="mt-4">
         In{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-dicht-bij-huis-waarom-locatie-helpt-om-vol-te-houden" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4376,7 +4376,7 @@ function CruquiusBody() {
       <p className="mt-4">
         Op het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           reguliere rooster van Yoga Zeeburg
@@ -4455,7 +4455,7 @@ function CruquiusBody() {
       <p className="mt-4">
         Een volledig stappenplan vind je in{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4483,7 +4483,7 @@ function CruquiusBody() {
       <p className="mt-4">
         Vergelijk je breder in Amsterdam Oost? Lees dan ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4585,11 +4585,11 @@ const niveauArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — lesbeschrijvingen",
-      url: "https://www.yogazeeburg.com/classes",
+      url: "https://www.yogazeeburg.com/lessen",
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -4659,7 +4659,7 @@ function NiveauBody() {
       <p className="mt-4">
         Meer voorbereiding vind je in{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-voor-beginners-in-amsterdam-oost-zo-start-je" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4733,14 +4733,14 @@ function NiveauBody() {
       <p className="mt-4">
         Bekijk de{" "}
         <Link
-          to="/classes"
+          to="/lessen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           lesbeschrijvingen van Yoga Zeeburg
         </Link>{" "}
         en het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           reguliere weekrooster
@@ -4798,7 +4798,7 @@ function NiveauBody() {
       <p className="mt-4">
         Wil je weten hoe een eerste bezoek verloopt? Lees{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4826,7 +4826,7 @@ function NiveauBody() {
       <p className="mt-4">
         Vergelijk je verschillende studio’s in de buurt? Gebruik dan ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -4959,15 +4959,15 @@ const goedeStudioArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — lesbeschrijvingen",
-      url: "https://www.yogazeeburg.com/classes",
+      url: "https://www.yogazeeburg.com/lessen",
     },
     {
       title: "Yoga Zeeburg — regulier rooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
     {
       title: "Yoga Zeeburg — prijzen en voorwaarden",
-      url: "https://www.yogazeeburg.com/pricing",
+      url: "https://www.yogazeeburg.com/prijzen",
     },
   ],
   template: {
@@ -5038,7 +5038,7 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Lees voor het verschil tussen persoonlijke voorkeur en algemene kwaliteit ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -5188,7 +5188,7 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Bekijk daarom altijd het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster van Yoga Zeeburg
@@ -5215,7 +5215,7 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Bekijk de{" "}
         <Link
-          to="/pricing"
+          to="/prijzen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele prijzen en voorwaarden
@@ -5245,7 +5245,7 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Zo beoordeel je niet alleen de lesinhoud, maar de hele ervaring. Lees ook{" "}
         <Link
-          to="/nl/kennisbank/$slug"
+          to="/kennisbank/$slug"
           params={{ slug: "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten" }}
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
@@ -5359,14 +5359,14 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Bekijk vooraf de{" "}
         <Link
-          to="/classes"
+          to="/lessen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           lesbeschrijvingen
         </Link>
         , kies enkele haalbare momenten in het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster

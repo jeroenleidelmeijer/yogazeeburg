@@ -1,83 +1,83 @@
+import { commercialLinks } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Smartphone, Calendar, Clock, ListChecks, Mail, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { commercialLinks } from "@/lib/i18n";
 
 const SPORTBIT_WEB_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 
-export const Route = createFileRoute("/sportbit")({
+export const Route = createFileRoute("/en/sportbit")({
   head: () => ({
     meta: [
-      { title: "Sportbit-uitleg — Zo boek je een les | Yoga Zeeburg" },
+      { title: "Sportbit Guide — How to Book Classes | Yoga Zeeburg" },
       {
         name: "description",
         content:
-          "Zo gebruik je Sportbit bij Yoga Zeeburg: kies het juiste rooster, boek je les, gebruik de wachtlijst en zeg op tijd af.",
+          "How to use Sportbit at Yoga Zeeburg: choose the Yoga Zeeburg schedule, book classes, use the waiting list and cancel on time.",
       },
-      { property: "og:title", content: "Sportbit-uitleg — Yoga Zeeburg" },
+      { property: "og:title", content: "Sportbit Guide — Yoga Zeeburg" },
       {
         property: "og:description",
         content:
-          "Een rustige, duidelijke gids om je yogalessen bij Yoga Zeeburg te boeken via Sportbit.",
+          "A calm, clear guide to booking your yoga classes at Yoga Zeeburg through Sportbit.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/sportbit" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/sportbit" },
     ],
-    links: commercialLinks("nl", "sportbit"),
+    links: commercialLinks("en", "sportbit"),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "HowTo",
-          name: "Zo gebruik je Sportbit bij Yoga Zeeburg",
+          name: "How to use Sportbit at Yoga Zeeburg",
           description:
-            "Sportbit is het boekingssysteem van Yoga Zeeburg. Op deze pagina lees je stap voor stap hoe je het juiste rooster kiest, een les boekt, de wachtlijst gebruikt en op tijd afzegt — zodat het simpel blijft.",
-          inLanguage: "nl-NL",
-          url: "https://www.yogazeeburg.com/sportbit",
+            "Sportbit is the booking system for Yoga Zeeburg. This page walks you through choosing the right schedule, booking a class, using the waiting list, and cancelling on time — so your routine stays simple.",
+          inLanguage: "en",
+          url: "https://www.yogazeeburg.com/en/sportbit",
           step: [
             {
               "@type": "HowToStep",
               position: 1,
-              name: "Download Sportbit of gebruik de webversie",
-              text: "Je kunt de Sportbit-app gebruiken op iPhone of Android, of Sportbit openen in je browser. Beide werken hetzelfde — kies wat het beste bij je past.",
-              url: "https://www.yogazeeburg.com/sportbit#01",
+              name: "Download Sportbit or use the web version",
+              text: "You can use the Sportbit app on iPhone or Android, or open Sportbit in your browser. Both work the same way — pick whichever fits your routine.",
+              url: "https://www.yogazeeburg.com/en/sportbit#01",
             },
             {
               "@type": "HowToStep",
               position: 2,
-              name: "Kies het rooster van Yoga Zeeburg",
-              text: "In Sportbit vind je ook de roosters van CrossFit Zeeburg. Wissel bovenin de app eerst naar Yoga Zeeburg voordat je iets boekt. Dit is de meest gemaakte fout — check het elke keer.",
-              url: "https://www.yogazeeburg.com/sportbit#02",
+              name: "Select the Yoga Zeeburg schedule",
+              text: "Sportbit also contains the CrossFit Zeeburg schedules. Before you book anything, switch to Yoga Zeeburg at the top of the app. This is the most common source of mistaken bookings — check it every time.",
+              url: "https://www.yogazeeburg.com/en/sportbit#02",
             },
             {
               "@type": "HowToStep",
               position: 3,
-              name: "Boek je les",
-              text: "Je kunt lessen tot twee weken van tevoren boeken. Elke dag komt dezelfde weekdag twee weken later beschikbaar — een dinsdag opent dus elke dinsdag.",
-              url: "https://www.yogazeeburg.com/sportbit#03",
+              name: "Book your class",
+              text: "Classes can be booked up to two weeks in advance. Each day, the same weekday two weeks ahead becomes available — so a Tuesday opens up every Tuesday.",
+              url: "https://www.yogazeeburg.com/en/sportbit#03",
             },
             {
               "@type": "HowToStep",
               position: 4,
-              name: "Gebruik de wachtlijst",
-              text: "Is een les vol, zet je dan op de wachtlijst. Er komen vaker plekken vrij dan je denkt. Meer dan 2 uur van tevoren: als iemand afzegt, schuift de eerste op de wachtlijst automatisch door naar de les. Minder dan 2 uur van tevoren: iedereen op de wachtlijst krijgt een melding en e-mail. Wie het eerst boekt, heeft de plek.",
-              url: "https://www.yogazeeburg.com/sportbit#04",
+              name: "Use the waiting list",
+              text: "If a class is full, join the waiting list. Places open up more often than you think. More than 2 hours before class: if someone cancels, the first person on the waiting list is moved into the class automatically. Less than 2 hours before class: everyone on the waiting list gets a notification and email. The first person to book gets the spot.",
+              url: "https://www.yogazeeburg.com/en/sportbit#04",
             },
             {
               "@type": "HowToStep",
               position: 5,
-              name: "Zeg zo vroeg mogelijk af",
-              text: "Je kunt tot twee uur van tevoren afzeggen zonder een credit te verliezen. Afzeggen binnen twee uur kost een credit. Zeg zo vroeg mogelijk af, zodat iemand op de wachtlijst mee kan doen.",
-              url: "https://www.yogazeeburg.com/sportbit#05",
+              name: "Cancel as early as possible",
+              text: "You can cancel without losing a credit up to two hours before class. Cancelling within two hours costs a credit. Please cancel as early as you can, so someone on the waiting list gets to join.",
+              url: "https://www.yogazeeburg.com/en/sportbit#05",
             },
             {
               "@type": "HowToStep",
               position: 6,
-              name: "Hulp nodig?",
-              text: "Loop je vast bij het boeken, je lidmaatschap of inloggen in Sportbit? Stuur ons een kort berichtje, dan helpen we je verder. E-mail hello@yogazeeburg.com.",
-              url: "https://www.yogazeeburg.com/sportbit#06",
+              name: "Need help?",
+              text: "Stuck on a booking, membership or Sportbit login? Send us a short message and we’ll help you sort it. Email hello@yogazeeburg.com.",
+              url: "https://www.yogazeeburg.com/en/sportbit#06",
             },
           ],
         }),
@@ -88,8 +88,8 @@ export const Route = createFileRoute("/sportbit")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Sportbit", item: "https://www.yogazeeburg.com/sportbit" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 2, name: "Sportbit", item: "https://www.yogazeeburg.com/en/sportbit" },
           ],
         }),
       },
@@ -101,13 +101,13 @@ export const Route = createFileRoute("/sportbit")({
 function SportbitPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader locale="nl" page="sportbit" />
+      <SiteHeader locale="en" page="sportbit" />
       <main>
         <Hero />
         <Steps />
         <FinalCTA />
       </main>
-      <SiteFooter locale="nl" />
+      <SiteFooter locale="en" />
     </div>
   );
 }
@@ -117,14 +117,14 @@ function Hero() {
     <section className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">
-          Sportbit-uitleg
+          Sportbit guide
         </p>
         <h1 className="mt-4 font-display text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
-          Zo gebruik je Sportbit bij Yoga Zeeburg
+          How to use Sportbit at Yoga Zeeburg
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Sportbit is ons boekingssysteem: boek een les, zet jezelf op de wachtlijst en zeg tot
-          twee uur van tevoren af. Zo werkt het, stap voor stap.
+          Sportbit is our booking system: book a class, join the waiting list and cancel up to two
+          hours before class. Here is how it works, step by step.
         </p>
       </div>
     </section>
@@ -143,13 +143,13 @@ function Steps() {
     {
       n: "01",
       icon: Smartphone,
-      title: "Download Sportbit of gebruik de webversie",
+      title: "Download Sportbit or use the web version",
       body: (
         <>
           <p>
-            Je kunt de Sportbit-app gebruiken op iPhone of Android, of Sportbit
-            openen in je browser. Beide werken hetzelfde — kies wat het beste
-            bij je past.
+            You can use the Sportbit app on iPhone or Android, or open Sportbit
+            in your browser. Both work the same way — pick whichever fits your
+            routine.
           </p>
           <div className="mt-5">
             <a
@@ -158,7 +158,7 @@ function Steps() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Open Sportbit in je browser
+              Open Sportbit in your browser
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
@@ -168,17 +168,18 @@ function Steps() {
     {
       n: "02",
       icon: MapPin,
-      title: "Kies het rooster van Yoga Zeeburg",
+      title: "Select the Yoga Zeeburg schedule",
       body: (
         <>
           <p>
-            In Sportbit vind je ook de roosters van CrossFit Zeeburg. Wissel
-            bovenin de app eerst naar <strong className="font-medium text-foreground">Yoga Zeeburg</strong> voordat
-            je iets boekt. Dit is de meest gemaakte fout — check het elke keer.
+            Sportbit also contains the CrossFit Zeeburg schedules. Before you
+            book anything, switch to <strong className="font-medium text-foreground">Yoga Zeeburg</strong> at
+            the top of the app. This is the most common source of mistaken
+            bookings — check it every time.
           </p>
           <div className="mt-5 rounded-lg border-l-2 border-accent bg-secondary/60 px-5 py-4 text-sm text-foreground/90">
-            Tip: zie je CrossFit-lessen? Dan sta je nog op het verkeerde
-            rooster. Tik bovenin op de roosternaam en kies Yoga Zeeburg.
+            Tip: if you see CrossFit classes, you are still on the wrong
+            schedule. Tap the schedule name at the top and choose Yoga Zeeburg.
           </div>
         </>
       ),
@@ -186,35 +187,35 @@ function Steps() {
     {
       n: "03",
       icon: Calendar,
-      title: "Boek je les",
+      title: "Book your class",
       body: (
         <p>
-          Je kunt lessen tot twee weken van tevoren boeken. Elke dag komt
-          dezelfde weekdag twee weken later beschikbaar — een dinsdag opent dus
-          elke dinsdag.
+          Classes can be booked up to two weeks in advance. Each day, the same
+          weekday two weeks ahead becomes available — so a Tuesday opens up
+          every Tuesday.
         </p>
       ),
     },
     {
       n: "04",
       icon: ListChecks,
-      title: "Gebruik de wachtlijst",
+      title: "Use the waiting list",
       body: (
         <>
           <p>
-            Is een les vol, zet je dan op de wachtlijst. Er komen vaker plekken
-            vrij dan je denkt.
+            If a class is full, join the waiting list. Places open up more
+            often than you think.
           </p>
           <ul className="mt-4 space-y-2 text-foreground/90">
             <li>
-              <span className="font-medium text-foreground">Meer dan 2 uur van tevoren:</span>{" "}
-              als iemand afzegt, schuift de eerste op de wachtlijst automatisch
-              door naar de les.
+              <span className="font-medium text-foreground">More than 2 hours before class:</span>{" "}
+              if someone cancels, the first person on the waiting list is
+              moved into the class automatically.
             </li>
             <li>
-              <span className="font-medium text-foreground">Minder dan 2 uur van tevoren:</span>{" "}
-              iedereen op de wachtlijst krijgt een melding en e-mail. Wie het
-              eerst boekt, heeft de plek.
+              <span className="font-medium text-foreground">Less than 2 hours before class:</span>{" "}
+              everyone on the waiting list gets a notification and email. The
+              first person to book gets the spot.
             </li>
           </ul>
         </>
@@ -223,16 +224,16 @@ function Steps() {
     {
       n: "05",
       icon: Clock,
-      title: "Zeg zo vroeg mogelijk af",
+      title: "Cancel as early as possible",
       body: (
         <>
           <p>
-            Je kunt tot twee uur van tevoren afzeggen zonder een credit te
-            verliezen. Afzeggen binnen twee uur kost een credit.
+            You can cancel without losing a credit up to two hours before
+            class. Cancelling within two hours costs a credit.
           </p>
           <p className="mt-3">
-            Zeg zo vroeg mogelijk af, zodat iemand op de wachtlijst mee kan
-            doen.
+            Please cancel as early as you can, so someone on the waiting list
+            gets to join.
           </p>
         </>
       ),
@@ -240,19 +241,19 @@ function Steps() {
     {
       n: "06",
       icon: Mail,
-      title: "Hulp nodig?",
+      title: "Need help?",
       body: (
         <>
           <p>
-            Loop je vast bij het boeken, je lidmaatschap of inloggen in
-            Sportbit? Stuur ons een kort berichtje, dan helpen we je verder.
+            Stuck on a booking, membership or Sportbit login? Send us a short
+            message and we’ll help you sort it.
           </p>
           <div className="mt-5">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Mail naar {CONTACT_EMAIL}
+              Email {CONTACT_EMAIL}
             </a>
           </div>
         </>
@@ -300,24 +301,24 @@ function FinalCTA() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-            Klaar om je volgende les te boeken?
+            Ready to book your next class?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            Kies een moment in het weekrooster dat bij jouw week past.
+            Pick a moment in the weekly schedule that fits your week.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              to="/rooster"
+              to="/en/schedule"
               className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Bekijk het rooster
+              View the schedule
               <ArrowUpRight className="h-4 w-4" />
             </Link>
             <Link
-              to="/lessen"
+              to="/en/classes"
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Ontdek onze lessen
+              Explore our classes
             </Link>
           </div>
         </div>

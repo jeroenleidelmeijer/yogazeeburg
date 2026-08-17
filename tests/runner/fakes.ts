@@ -68,7 +68,7 @@ export function buildFinalPackage(
       "# Yin yoga\n\nEen rustige stijl waarin je houdingen langer vasthoudt. ".repeat(20),
     toc: [{ id: "intro", label: "Introductie" }],
     faqs: [{ question: "Voor wie is yin yoga?", answer: "Iedereen die wil onthaasten." }],
-    sources: [{ title: "Yoga Zeeburg tarieven", url: "https://www.yogazeeburg.com/pricing" }],
+    sources: [{ title: "Yoga Zeeburg tarieven", url: "https://www.yogazeeburg.com/prijzen" }],
     internalLinks: [{ slug: "wat-is-yoga", anchor: "wat is yoga" }],
     template: { showTOC: true, showFAQ: true, showSources: true, showRelated: true },
     cta: { ...FIXED_CTA },
@@ -108,7 +108,7 @@ export function buildBrief(over: Partial<ArticleBrief> = {}): ArticleBrief {
     sourceFlags: [],
     allowedStudioFacts: ["studio in Cruquius", "14-daagse intro pass 30 euro"],
     validatedLinkTargets: [
-      { url: "https://www.yogazeeburg.com/pricing", rationale: "intro pass detailpagina" },
+      { url: "https://www.yogazeeburg.com/prijzen", rationale: "intro pass detailpagina" },
     ],
     relatedPublishedArticles: [{ slug: "wat-is-yoga", title: "Wat is yoga?" }],
     ctaRule: "fixed-intro-pass",
@@ -125,13 +125,13 @@ export function buildSources(over: Partial<ValidatedSourcePack> = {}): Validated
     firstPartyFacts: [
       {
         fact: "Intro pass kost 30 euro voor 14 dagen onbeperkt.",
-        url: "https://www.yogazeeburg.com/pricing",
+        url: "https://www.yogazeeburg.com/prijzen",
         capturedAt: "2026-07-27T09:00:00.000Z",
       },
     ],
     externalSources: [],
     claimSourceMap: [
-      { claim: "Intro pass kost 30 euro.", supportingUrls: ["https://www.yogazeeburg.com/pricing"] },
+      { claim: "Intro pass kost 30 euro.", supportingUrls: ["https://www.yogazeeburg.com/prijzen"] },
     ],
     conflicts: [],
     missingSubstantiation: [],

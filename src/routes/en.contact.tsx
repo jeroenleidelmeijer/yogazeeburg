@@ -1,3 +1,4 @@
+import { commercialLinks } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -5,34 +6,33 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { IntroPassCTA } from "@/components/site/IntroPassCTA";
 import { sendContactMessage } from "@/lib/contact.functions";
-import { commercialLinks } from "@/lib/i18n";
 
 const SUBJECTS = [
   "Intro Pass",
-  "Abonnementen en tarieven",
-  "Lessen en rooster",
-  "Vraag als huidig lid",
-  "Iets anders",
+  "Memberships and pricing",
+  "Classes and schedule",
+  "Current member question",
+  "Something else",
 ] as const;
 
-export const Route = createFileRoute("/contact")({
+export const Route = createFileRoute("/en/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Yoga Zeeburg | Amsterdam Oost" },
+      { title: "Contact Yoga Zeeburg | Amsterdam East" },
       {
         name: "description",
         content:
-          "Neem contact op met Yoga Zeeburg in Amsterdam Oost over de Intro Pass, abonnementen, lessen of Sportbit. We helpen je graag verder.",
+          "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes or Sportbit. We’ll help you find the right next step.",
       },
-      { property: "og:title", content: "Contact Yoga Zeeburg | Amsterdam Oost" },
+      { property: "og:title", content: "Contact Yoga Zeeburg | Amsterdam East" },
       {
         property: "og:description",
         content:
-          "Neem contact op met Yoga Zeeburg in Amsterdam Oost over de Intro Pass, abonnementen, lessen, het rooster of praktische vragen.",
+          "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes, the schedule or practical questions.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/contact" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/contact" },
     ],
-    links: commercialLinks("nl", "contact"),
+    links: commercialLinks("en", "contact"),
     scripts: [
       {
         type: "application/ld+json",
@@ -40,16 +40,16 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "ContactPage",
           name: "Contact Yoga Zeeburg",
-          url: "https://www.yogazeeburg.com/contact",
-          inLanguage: "nl-NL",
+          url: "https://www.yogazeeburg.com/en/contact",
+          inLanguage: "en",
           description:
-            "Neem contact op met Yoga Zeeburg in Amsterdam Oost over de Intro Pass, abonnementen, lessen of Sportbit. We helpen je graag verder.",
+            "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes or Sportbit. We’ll help you find the right next step.",
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
-            url: "https://www.yogazeeburg.com/",
+            url: "https://www.yogazeeburg.com/en/",
           },
-          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/en/" },
         }),
       },
       {
@@ -58,8 +58,8 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.yogazeeburg.com/contact" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.yogazeeburg.com/en/contact" },
           ],
         }),
       },
@@ -73,13 +73,13 @@ type FieldErrors = Partial<Record<"name" | "email" | "subject" | "message", stri
 function ContactPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader locale="nl" page="contact" />
+      <SiteHeader locale="en" page="contact" />
       <main>
         <Hero />
         <ContactSection />
-        <IntroPassCTA locale="nl" />
+        <IntroPassCTA locale="en" />
       </main>
-      <SiteFooter locale="nl" />
+      <SiteFooter locale="en" />
     </div>
   );
 }
@@ -90,11 +90,11 @@ function Hero() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">Contact</p>
         <h1 className="mt-4 font-display text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
-          Vragen? We helpen je graag.
+          Questions? We're happy to help.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Mail naar hello@yogazeeburg.com of gebruik het formulier hieronder voor vragen over de Intro
-          Pass, abonnementen, lessen of het rooster.
+          Email hello@yogazeeburg.com or use the form below for questions about the Intro Pass,
+          memberships, classes or the schedule.
         </p>
       </div>
     </section>
@@ -116,15 +116,15 @@ function ContactInfo() {
   return (
     <div>
       <h2 className="font-display text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-        Neem contact op
+        Get in touch
       </h2>
       <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-        Nieuw in de studio of oefen je al bij ons — gebruik het formulier of mail ons direct.
+        New to the studio or already practising with us — use the form or email us directly.
       </p>
 
       <div className="mt-10 space-y-8">
         <div>
-          <div className="text-sm font-medium uppercase tracking-[0.14em] text-accent">E-mail</div>
+          <div className="text-sm font-medium uppercase tracking-[0.14em] text-accent">Email</div>
           <a
             href="mailto:hello@yogazeeburg.com"
             className="mt-2 inline-block text-lg text-foreground underline-offset-4 hover:underline"
@@ -134,14 +134,14 @@ function ContactInfo() {
         </div>
 
         <div>
-          <div className="text-sm font-medium uppercase tracking-[0.14em] text-accent">Bezoekadres</div>
+          <div className="text-sm font-medium uppercase tracking-[0.14em] text-accent">Visit us</div>
           <address className="mt-2 text-base not-italic leading-relaxed text-foreground">
             Yoga Zeeburg<br />
             Cruquiusweg 96F<br />
             1019 AH Amsterdam
           </address>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Boven CrossFit Zeeburg, aan het water in Amsterdam Oost.
+            Above CrossFit Zeeburg, by the water in Amsterdam East.
           </p>
         </div>
       </div>
@@ -170,11 +170,11 @@ function ContactForm() {
     const email = values.email.trim();
     const subject = values.subject.trim();
     const message = values.message.trim();
-    if (name.length < 2 || name.length > 100) e.name = "Vul je naam in (2–100 tekens).";
-    if (!email || email.length > 254 || !EMAIL_RE.test(email)) e.email = "Vul een geldig e-mailadres in.";
-    if (!SUBJECTS.includes(subject as (typeof SUBJECTS)[number])) e.subject = "Kies een onderwerp.";
+    if (name.length < 2 || name.length > 100) e.name = "Please enter your name (2–100 characters).";
+    if (!email || email.length > 254 || !EMAIL_RE.test(email)) e.email = "Please enter a valid email address.";
+    if (!SUBJECTS.includes(subject as (typeof SUBJECTS)[number])) e.subject = "Please choose a subject.";
     if (message.length < 10 || message.length > 3000)
-      e.message = "Schrijf een bericht tussen de 10 en 3000 tekens.";
+      e.message = "Please write a message between 10 and 3000 characters.";
     return e;
   }
 
@@ -213,7 +213,7 @@ function ContactForm() {
       }
     } catch (err) {
       console.error(err);
-      setErrorMessage("Er ging iets mis. Probeer het opnieuw.");
+      setErrorMessage("Something went wrong. Please try again.");
       setStatus("error");
     }
   }
@@ -236,17 +236,17 @@ function ContactForm() {
       <div className="rounded-2xl border border-border/70 bg-secondary/40 p-6 sm:p-8">
         <div role="status" aria-live="polite">
           <h2 className="font-display text-2xl leading-tight tracking-tight text-foreground md:text-3xl">
-            Bedankt — je bericht is verzonden.
+            Thanks — your message has been sent.
           </h2>
           <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-            We nemen zo snel mogelijk contact met je op.
+            We'll get back to you as soon as we can.
           </p>
           <button
             type="button"
             onClick={reset}
             className="mt-6 inline-flex min-h-[44px] items-center rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
           >
-            Nog een bericht sturen
+            Send another message
           </button>
         </div>
       </div>
@@ -259,7 +259,7 @@ function ContactForm() {
         {/* Honeypot */}
         <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
           <label>
-            Bedrijf
+            Company
             <input
               type="text"
               name="company"
@@ -272,7 +272,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="c-name" className={labelCls}>Naam</label>
+          <label htmlFor="c-name" className={labelCls}>Name</label>
           <input
             ref={nameRef}
             id="c-name"
@@ -290,7 +290,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="c-email" className={labelCls}>E-mail</label>
+          <label htmlFor="c-email" className={labelCls}>Email</label>
           <input
             ref={emailRef}
             id="c-email"
@@ -308,7 +308,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="c-subject" className={labelCls}>Waar kunnen we je mee helpen?</label>
+          <label htmlFor="c-subject" className={labelCls}>What can we help you with?</label>
           <select
             ref={subjectRef}
             id="c-subject"
@@ -320,7 +320,7 @@ function ContactForm() {
             aria-describedby={errors.subject ? "c-subject-err" : undefined}
             className={`${inputBase} mt-1.5 ${values.subject ? "" : "text-muted-foreground"}`}
           >
-            <option value="" disabled>Kies een onderwerp</option>
+            <option value="" disabled>Choose a subject</option>
             {SUBJECTS.map((s) => (
               <option key={s} value={s} className="text-foreground">{s}</option>
             ))}
@@ -329,7 +329,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="c-message" className={labelCls}>Bericht</label>
+          <label htmlFor="c-message" className={labelCls}>Message</label>
           <textarea
             ref={messageRef}
             id="c-message"
@@ -347,11 +347,11 @@ function ContactForm() {
 
         {status === "error" && errorMessage && (
           <div role="alert" aria-live="assertive" className="rounded-md border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-foreground">
-            Er ging iets mis. Probeer het opnieuw of mail{" "}
+            Something went wrong. Please try again or email{" "}
             <a href="mailto:hello@yogazeeburg.com" className="font-medium underline underline-offset-4">
               hello@yogazeeburg.com
             </a>{" "}
-            direct.
+            directly.
           </div>
         )}
 
@@ -361,10 +361,10 @@ function ContactForm() {
             disabled={status === "sending"}
             className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           >
-            {status === "sending" ? "Bezig met verzenden…" : "Verstuur bericht"}
+            {status === "sending" ? "Sending…" : "Send message"}
           </button>
           <p className="mt-3 text-sm text-muted-foreground">
-            We gebruiken je gegevens alleen om te reageren op je bericht.
+            We only use your details to reply to your message.
           </p>
         </div>
       </form>

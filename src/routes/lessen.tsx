@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { IntroPassCTA } from "@/components/site/IntroPassCTA";
+import { commercialLinks } from "@/lib/i18n";
 
 type ClassPace = "gentle" | "balanced" | "dynamic";
 type ClassExperience =
@@ -45,12 +46,12 @@ const CLASSES: YogaClass[] = [
     needs: ["calm-mind", "release-tension", "deep-rest"],
     order: 1,
     shortDescription:
-      "A gentle slow flow that settles into a reclining soundbath, creating a calm and deeply relaxing end to the day.",
+      "Een zachte slow flow die overgaat in een liggende soundbath, voor een rustige en diep ontspannende afsluiting van de dag.",
     matchReason:
-      "A good match when you want gentle movement followed by a long, quiet landing.",
+      "Fijn als je op zoek bent naar zachte beweging, gevolgd door een lange, stille landing.",
     whatToExpect: [
-      "The class begins with mindful, unhurried movement connected to the breath. The slow flow gently wakes up the body before gradually moving towards stillness.",
-      "You then settle into a comfortable reclining position for a soundbath using different instruments. The atmosphere is quiet and restorative, with no previous yoga experience required.",
+      "De les begint met aandachtige, ongehaaste beweging die verbonden is met de adem. De slow flow maakt het lichaam langzaam wakker en beweegt geleidelijk richting stilte.",
+      "Daarna ga je liggend in een comfortabele houding voor een soundbath met verschillende instrumenten. De sfeer is rustig en herstellend, er is geen yoga-ervaring nodig.",
     ],
   },
   {
@@ -62,12 +63,12 @@ const CLASSES: YogaClass[] = [
     needs: ["deep-rest", "calm-mind", "release-tension"],
     order: 2,
     shortDescription:
-      "A deeply restful class combining supported restorative poses, essential oils and optional Reiki elements, with plenty of time to slow down.",
+      "Een diep ontspannende les met ondersteunde restorative houdingen, etherische oliën en optioneel Reiki, met alle tijd om te vertragen.",
     matchReason:
-      "A good match when your priority is deep rest with minimal physical effort.",
+      "Fijn als diepe rust met minimale fysieke inspanning je grootste prioriteit is.",
     whatToExpect: [
-      "You rest in comfortable, fully supported restorative poses for longer periods while essential oils help create a calm and nurturing atmosphere.",
-      "The teacher may offer optional Reiki, which can include light physical touch. You can always choose not to be touched by letting the teacher know. No previous yoga experience is needed.",
+      "Je rust langere tijd in comfortabele, volledig ondersteunde restorative houdingen, terwijl etherische oliën zorgen voor een rustige, koesterende sfeer.",
+      "De docent kan optioneel Reiki aanbieden, wat licht fysiek contact kan inhouden. Je kunt altijd aangeven dat je liever niet wordt aangeraakt. Geen yoga-ervaring nodig.",
     ],
   },
   {
@@ -79,12 +80,12 @@ const CLASSES: YogaClass[] = [
     needs: ["release-tension", "calm-mind", "stretch-mobility"],
     order: 3,
     shortDescription:
-      "Longer-held Yin poses, breath and stillness create space to soften tension and move from a busy head into a calmer body.",
+      "Langer aangehouden Yin houdingen, adem en stilte geven ruimte om spanning los te laten en van een druk hoofd naar een rustiger lichaam te gaan.",
     matchReason:
-      "A good match when tension and a busy mind make it hard to switch off.",
+      "Fijn als spanning en een druk hoofd het moeilijk maken om te schakelen.",
     whatToExpect: [
-      "The pace is deliberately slow. Yin poses are usually held for several minutes, with props available so you can settle into each position without forcing the stretch.",
-      "Breath awareness, meditation and quiet restorative moments are woven into the class. It is suitable for different levels of mobility and yoga experience.",
+      "Het tempo is bewust laag. Yin houdingen worden meestal enkele minuten aangehouden, met props zodat je in elke positie kunt zakken zonder de rek te forceren.",
+      "Ademwerk, meditatie en rustige, herstellende momenten zijn door de les heen verweven. Geschikt voor verschillende niveaus van lenigheid en yoga-ervaring.",
     ],
   },
   {
@@ -96,11 +97,11 @@ const CLASSES: YogaClass[] = [
     needs: ["deep-rest", "calm-mind", "release-tension"],
     order: 4,
     shortDescription:
-      "Gentle Yin followed by guided Yoga Nidra: a 90-minute class for deep rest, mental quiet and a full-body pause.",
-    matchReason: "A good match when you want the deepest rest on the schedule.",
+      "Zachte Yin gevolgd door begeleide Yoga Nidra: een les van 90 minuten voor diepe rust, een stille geest en een volledige pauze voor lichaam en geest.",
+    matchReason: "Fijn als je de diepste rust op het rooster zoekt.",
     whatToExpect: [
-      "The first part consists of approximately 60 minutes of gentle Yin Yoga, with soft poses held for longer periods and plenty of support from props.",
-      "The final 30 minutes are dedicated to Yoga Nidra, a guided relaxation practised while lying comfortably in Shavasana. No previous yoga experience is required.",
+      "Het eerste deel bestaat uit ongeveer 60 minuten zachte Yin Yoga, met zachte houdingen die langer worden aangehouden en veel ondersteuning van props.",
+      "De laatste 30 minuten zijn gewijd aan Yoga Nidra, een begeleide ontspanning die je liggend en comfortabel in Shavasana beoefent. Geen yoga-ervaring vereist.",
     ],
   },
   {
@@ -112,12 +113,12 @@ const CLASSES: YogaClass[] = [
     needs: ["stretch-mobility", "release-tension", "calm-mind"],
     order: 5,
     shortDescription:
-      "Breathwork, long Yin stretches and a generous final relaxation, with props and options for tight or less flexible bodies.",
+      "Ademwerk, lange Yin stretches en een uitgebreide eindontspanning, met props en opties voor stijve of minder lenige lichamen.",
     matchReason:
-      "A good match when stiffness or tight muscles are your main reason for coming.",
+      "Fijn als stijfheid of gespannen spieren jouw belangrijkste reden zijn om te komen.",
     whatToExpect: [
-      "The class starts with gentle meditation and breathwork before moving into longer-held Yin poses. Straps and other props help you adjust the depth of each position.",
-      "The practice is especially useful when your body often feels tight from sitting, running, strength training or other sports. It ends with a long Shavasana.",
+      "De les begint met zachte meditatie en ademwerk, gevolgd door langer aangehouden Yin houdingen. Riemen en andere props helpen je de diepte van elke positie aan te passen.",
+      "De les is vooral fijn als je lichaam vaak stijf aanvoelt door zitten, hardlopen, krachttraining of andere sporten. Ze eindigt met een lange Shavasana.",
     ],
   },
   {
@@ -129,12 +130,12 @@ const CLASSES: YogaClass[] = [
     needs: ["move-energise", "calm-mind", "stretch-mobility"],
     order: 6,
     shortDescription:
-      "A breath-led Vinyasa flow with aroma, mindful movement and accessible challenge to help you get out of your head and into your body.",
+      "Een op de adem gerichte Vinyasa flow met aroma, aandachtige beweging en een toegankelijke uitdaging om uit je hoofd en in je lichaam te komen.",
     matchReason:
-      "A good match when you want mindful movement with enough flow to feel energised, not overwhelmed.",
+      "Fijn als je aandachtige beweging zoekt met genoeg flow om je energiek te voelen, zonder overweldigd te raken.",
     whatToExpect: [
-      "Movement and breath are linked through a flowing sequence, while scent adds an extra sensory element to the practice.",
-      "The class offers space to move with attention, build confidence and explore manageable challenges. Options are provided, making it accessible to beginners as well as more experienced students.",
+      "Beweging en adem worden verbonden in een vloeiende opeenvolging, terwijl geur een extra zintuiglijk element aan de les toevoegt.",
+      "De les biedt ruimte om met aandacht te bewegen, zelfvertrouwen op te bouwen en behapbare uitdagingen te verkennen. Er zijn opties, waardoor de les toegankelijk is voor beginners én ervaren leerlingen.",
     ],
   },
   {
@@ -146,12 +147,12 @@ const CLASSES: YogaClass[] = [
     needs: ["build-strength", "stretch-mobility", "release-tension"],
     order: 7,
     shortDescription:
-      "A two-part class: mindful flow to build mobility and strength, followed by longer-held Yin poses for release and relaxation.",
+      "Een les in twee delen: een aandachtige flow voor mobiliteit en kracht, gevolgd door langer aangehouden Yin houdingen om los te laten en te ontspannen.",
     matchReason:
-      "A good match when you want both active movement and a slower recovery phase.",
+      "Fijn als je zowel actieve beweging als een rustiger herstelmoment wilt.",
     whatToExpect: [
-      "The first part uses mindful Vinyasa-inspired movement to develop mobility, strength and flexibility while staying connected to the breath.",
-      "The second part slows down into longer-held Yin postures. This combination offers both active movement and a calm, restorative finish.",
+      "Het eerste deel gebruikt aandachtige, op Vinyasa geïnspireerde beweging om mobiliteit, kracht en lenigheid te ontwikkelen, terwijl je verbonden blijft met de adem.",
+      "Het tweede deel vertraagt naar langer aangehouden Yin houdingen. Deze combinatie biedt zowel actieve beweging als een rustige, herstellende afsluiting.",
     ],
   },
   {
@@ -163,12 +164,12 @@ const CLASSES: YogaClass[] = [
     needs: ["move-energise", "stretch-mobility", "calm-mind"],
     order: 8,
     shortDescription:
-      "A grounded morning flow that builds gradually into energising standing sequences before finishing with calmer, Yin-inspired postures.",
+      "Een geaarde ochtendflow die geleidelijk opbouwt naar energieke staande reeksen, om af te sluiten met rustigere, Yin-geïnspireerde houdingen.",
     matchReason:
-      "A good match when you want to start the weekend energised but grounded.",
+      "Fijn als je het weekend energiek maar geaard wilt beginnen.",
     whatToExpect: [
-      "The class begins slowly and develops into a breath-centred Vinyasa sequence with standing poses, balanced strength and mobility.",
-      "Variations and props allow you to adapt the practice to your level. The class closes with quieter, Yin-inspired postures and time to settle.",
+      "De les begint langzaam en ontwikkelt zich tot een op de adem gerichte Vinyasa reeks met staande houdingen, in balans tussen kracht en mobiliteit.",
+      "Variaties en props laten je de les op je eigen niveau aanpassen. De les sluit af met rustigere, Yin-geïnspireerde houdingen en tijd om te landen.",
     ],
   },
   {
@@ -180,11 +181,11 @@ const CLASSES: YogaClass[] = [
     needs: ["move-energise", "calm-mind", "stretch-mobility"],
     order: 9,
     shortDescription:
-      "A balanced mix of active Yang flow and slower Yin poses, combining energy, strength, flexibility and a calm finish.",
-    matchReason: "A good match when you want equal parts movement and stillness.",
+      "Een uitgebalanceerde mix van actieve Yang flow en langzamere Yin houdingen, met energie, kracht, lenigheid en een rustige afsluiting.",
+    matchReason: "Fijn als je evenveel beweging als stilte wilt.",
     whatToExpect: [
-      "The practice starts with grounding movement before building into a more active Yang sequence of standing and flowing poses.",
-      "The second part slows down into longer-held Yin shapes. Variations and props are available throughout, making the class accessible to different experience levels.",
+      "De les begint met aardende beweging voordat ze opbouwt naar een actievere Yang reeks van staande en vloeiende houdingen.",
+      "Het tweede deel vertraagt naar langer aangehouden Yin vormen. Variaties en props zijn steeds beschikbaar, waardoor de les toegankelijk is voor verschillende ervaringsniveaus.",
     ],
   },
   {
@@ -196,12 +197,12 @@ const CLASSES: YogaClass[] = [
     needs: ["move-energise", "build-strength", "stretch-mobility"],
     order: 10,
     shortDescription:
-      "An energising breath-led Vinyasa flow that builds heat, strength and confidence through stronger transitions and safe challenge.",
+      "Een energieke, op de adem gerichte Vinyasa flow die warmte, kracht en zelfvertrouwen opbouwt met stevigere overgangen en veilige uitdagingen.",
     matchReason:
-      "A good match when you want to build heat, strength and confidence in a stronger flow.",
+      "Fijn als je warmte, kracht en zelfvertrouwen wilt opbouwen in een stevigere flow.",
     whatToExpect: [
-      "This is a more active Vinyasa class with fluid movement, intentional breathing and sequences designed to build heat and strength.",
-      "The pace and transitions are stronger than in the gentler flow classes. Some previous experience with common yoga poses and transitions is recommended.",
+      "Dit is een actievere Vinyasa les met vloeiende beweging, bewuste ademhaling en reeksen die warmte en kracht opbouwen.",
+      "Het tempo en de overgangen zijn steviger dan bij de zachtere flowlessen. Enige ervaring met gangbare yogahoudingen en overgangen wordt aangeraden.",
     ],
   },
   {
@@ -213,12 +214,12 @@ const CLASSES: YogaClass[] = [
     needs: ["build-strength", "stretch-mobility", "move-energise"],
     order: 11,
     shortDescription:
-      "A beginner-friendly blend of Pilates precision and yoga mobility, with core strength, posture work and a balanced, open finish.",
+      "Een beginnersvriendelijke mix van Pilates-precisie en yoga-mobiliteit, met kernkracht, houdingswerk en een gebalanceerde, open afsluiting.",
     matchReason:
-      "A good match when you want core strength, posture and mobility without an advanced yoga class.",
+      "Fijn als je kernkracht, houding en mobiliteit wilt zonder een gevorderde yogales.",
     whatToExpect: [
-      "The class combines controlled Pilates-inspired exercises with the fluidity and mobility work of yoga. After warming up, the main focus shifts towards core strength, stability and posture.",
-      "The practice finishes with flexibility and mobility work. It is suitable for beginners in both Pilates and yoga.",
+      "De les combineert gecontroleerde, op Pilates geïnspireerde oefeningen met de vloeiendheid en het mobiliteitswerk van yoga. Na het opwarmen verschuift de focus naar kernkracht, stabiliteit en houding.",
+      "De les eindigt met lenigheid en mobiliteitswerk. Geschikt voor beginners in zowel Pilates als yoga.",
     ],
   },
   {
@@ -230,23 +231,23 @@ const CLASSES: YogaClass[] = [
     needs: ["move-energise", "release-tension", "build-strength"],
     order: 12,
     shortDescription:
-      "An energising Vinyasa practice with somatic and free movement plus breathwork to build stability while releasing tension.",
+      "Een energieke Vinyasa-beoefening met somatische en vrije beweging plus ademwerk, om stabiliteit op te bouwen en spanning los te laten.",
     matchReason:
-      "A good match when you want a more expressive, energising practice that still helps you release tension.",
+      "Fijn als je een meer expressieve, energieke beoefening zoekt die je toch helpt spanning los te laten.",
     whatToExpect: [
-      "The class combines structured Vinyasa sequences with free movement, gentle shaking, somatic exercises and guided breathwork.",
-      "Expect an active and expressive practice that develops strength and stability while creating room for less structured movement. Some familiarity with basic Vinyasa poses and transitions is recommended.",
+      "De les combineert gestructureerde Vinyasa reeksen met vrije beweging, zachte shaking, somatische oefeningen en begeleid ademwerk.",
+      "Verwacht een actieve en expressieve beoefening die kracht en stabiliteit ontwikkelt en tegelijk ruimte biedt voor minder gestructureerde beweging. Enige bekendheid met basale Vinyasa-houdingen en overgangen wordt aangeraden.",
     ],
   },
 ];
 
 const NEED_LABELS: Record<ClassNeed, string> = {
-  "calm-mind": "Calm my mind",
-  "release-tension": "Release stress & tension",
-  "move-energise": "Move & energise",
-  "build-strength": "Build strength & stability",
-  "stretch-mobility": "Stretch & move better",
-  "deep-rest": "Rest deeply & switch off",
+  "calm-mind": "Mijn hoofd tot rust brengen",
+  "release-tension": "Stress & spanning loslaten",
+  "move-energise": "Bewegen & energie opdoen",
+  "build-strength": "Kracht & stabiliteit opbouwen",
+  "stretch-mobility": "Rekken & soepeler bewegen",
+  "deep-rest": "Diep uitrusten & afschakelen",
 };
 
 const NEED_ORDER: ClassNeed[] = [
@@ -259,21 +260,21 @@ const NEED_ORDER: ClassNeed[] = [
 ];
 
 const PACE_LABELS: Record<ClassPace, string> = {
-  gentle: "Gentle",
-  balanced: "Balanced",
-  dynamic: "Dynamic",
+  gentle: "Zacht",
+  balanced: "Gebalanceerd",
+  dynamic: "Dynamisch",
 };
 
 const EXPERIENCE_LABELS: Record<ClassExperience, string> = {
-  "beginner-friendly": "Beginner-friendly",
-  "all-levels": "All levels",
-  "some-experience-recommended": "Some experience recommended",
+  "beginner-friendly": "Beginnersvriendelijk",
+  "all-levels": "Alle niveaus",
+  "some-experience-recommended": "Enige ervaring aangeraden",
 };
 
 const GROUP_LABELS: Record<ClassGroup, string> = {
-  "slow-restorative": "Slow & restorative",
-  "balanced-mindful": "Balanced & mindful",
-  "active-strengthening": "Active & strengthening",
+  "slow-restorative": "Langzaam & herstellend",
+  "balanced-mindful": "Gebalanceerd & aandachtig",
+  "active-strengthening": "Actief & versterkend",
 };
 
 const GROUP_ORDER: ClassGroup[] = [
@@ -284,35 +285,35 @@ const GROUP_ORDER: ClassGroup[] = [
 
 type PaceChoice = ClassPace | "no-preference";
 
-export const Route = createFileRoute("/classes")({
+export const Route = createFileRoute("/lessen")({
   head: () => ({
     meta: [
-      { title: "Yoga Classes Amsterdam East | Yoga Zeeburg" },
+      { title: "Yogalessen Amsterdam Oost | Yoga Zeeburg" },
       {
         name: "description",
         content:
-          "Explore Yoga Zeeburg classes in Amsterdam East and find the right fit, from relaxing Yin and Nidra to Vinyasa, Pilates and stronger flows.",
+          "Ontdek de lessen van Yoga Zeeburg in Amsterdam Oost en vind wat bij je past, van ontspannen Yin en Nidra tot Vinyasa, Pilates en stevigere flows.",
       },
-      { property: "og:title", content: "Yoga Classes Amsterdam East | Yoga Zeeburg" },
+      { property: "og:title", content: "Yogalessen Amsterdam Oost | Yoga Zeeburg" },
       {
         property: "og:description",
         content:
-          "Explore Yoga Zeeburg classes in Amsterdam East and find the right fit, from relaxing Yin and Nidra to Vinyasa, Pilates and stronger flows.",
+          "Ontdek de lessen van Yoga Zeeburg in Amsterdam Oost en vind wat bij je past, van ontspannen Yin en Nidra tot Vinyasa, Pilates en stevigere flows.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/classes" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/lessen" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/classes" }],
+    links: commercialLinks("nl", "classes"),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Yoga Classes Amsterdam East",
-          url: "https://www.yogazeeburg.com/classes",
-          inLanguage: "en",
+          name: "Yogalessen Amsterdam Oost",
+          url: "https://www.yogazeeburg.com/lessen",
+          inLanguage: "nl-NL",
           description:
-            "Explore Yoga Zeeburg classes in Amsterdam East and find the right fit, from relaxing Yin and Nidra to Vinyasa, Pilates and stronger flows.",
+            "Ontdek de lessen van Yoga Zeeburg in Amsterdam Oost en vind wat bij je past, van ontspannen Yin en Nidra tot Vinyasa, Pilates en stevigere flows.",
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
@@ -328,7 +329,7 @@ export const Route = createFileRoute("/classes")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Classes", item: "https://www.yogazeeburg.com/classes" },
+            { "@type": "ListItem", position: 2, name: "Lessen", item: "https://www.yogazeeburg.com/lessen" },
           ],
         }),
       },
@@ -408,7 +409,7 @@ function ClassesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader locale="nl" page="classes" />
       <main>
         <Hero />
         <ClassFinder
@@ -423,9 +424,9 @@ function ClassesPage() {
         />
         <ClassResults ranked={ranked} />
         <ScheduleLink />
-        <IntroPassCTA />
+        <IntroPassCTA locale="nl" />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="nl" />
     </div>
   );
 }
@@ -435,15 +436,16 @@ function Hero() {
     <section className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">
-          Our classes
+          Onze lessen
         </p>
         <h1 className="mt-4 font-display text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
-          Find the class that fits what you need.
+          Vind de les die bij jou past.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Yoga Zeeburg offers twelve weekly classes in Amsterdam East, from deeply restful Yin and
-          Nidra to balanced Vinyasa, Pilates Fusion and stronger flows. Most classes are
-          beginner-friendly. Use the Class Finder below to see which one fits you today.
+          Yoga Zeeburg biedt twaalf wekelijkse lessen in Amsterdam Oost, van diep ontspannende
+          Yin en Nidra tot gebalanceerde Vinyasa, Pilates Fusion en stevigere flows. De meeste
+          lessen zijn beginnersvriendelijk. Gebruik de Lesfinder hieronder om te zien wat
+          vandaag bij je past.
         </p>
       </div>
     </section>
@@ -473,10 +475,10 @@ function ClassFinder({
 }: FinderProps) {
   const twoSelected = needs.length >= 2;
   const paceOptions: Array<{ value: PaceChoice; label: string }> = [
-    { value: "gentle", label: "Gentle" },
-    { value: "balanced", label: "Balanced" },
-    { value: "dynamic", label: "Dynamic" },
-    { value: "no-preference", label: "No preference" },
+    { value: "gentle", label: "Zacht" },
+    { value: "balanced", label: "Gebalanceerd" },
+    { value: "dynamic", label: "Dynamisch" },
+    { value: "no-preference", label: "Geen voorkeur" },
   ];
 
   return (
@@ -484,22 +486,22 @@ function ClassFinder({
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <div className="rounded-3xl border border-border/60 bg-background/80 p-6 shadow-sm sm:p-8 md:p-10">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">
-            Class finder
+            Lesfinder
           </p>
           <h2 className="mt-3 font-display text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-            Start with what you need today.
+            Begin bij wat je vandaag nodig hebt.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Choose what you are looking for and how active you want to be. We will bring
-            the strongest matches to the top while keeping every class available.
+            Kies waar je naar op zoek bent en hoe actief je wilt zijn. Wij zetten de beste
+            matches bovenaan, terwijl elke les beschikbaar blijft.
           </p>
 
           <div className="mt-10">
             <div className="flex items-baseline justify-between gap-4">
               <h3 className="font-display text-xl text-foreground md:text-2xl">
-                What do you need today?
+                Wat heb je vandaag nodig?
               </h3>
-              <span className="text-sm text-muted-foreground">Choose up to two.</span>
+              <span className="text-sm text-muted-foreground">Kies maximaal twee.</span>
             </div>
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {NEED_ORDER.map((n) => {
@@ -530,7 +532,7 @@ function ClassFinder({
 
           <div className="mt-10">
             <h3 className="font-display text-xl text-foreground md:text-2xl">
-              How active do you want to be?
+              Hoe actief wil je zijn?
             </h3>
             <div className="mt-5 flex flex-wrap gap-3">
               {paceOptions.map((opt) => {
@@ -566,7 +568,7 @@ function ClassFinder({
                     : "border-border/70 bg-background text-foreground/80 hover:bg-muted",
                 ].join(" ")}
               >
-                I’m new to yoga
+                Ik ben nieuw met yoga
               </button>
             </div>
           </div>
@@ -578,7 +580,7 @@ function ClassFinder({
                 onClick={onClear}
                 className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
               >
-                Clear choices
+                Keuzes wissen
               </button>
             </div>
           )}
@@ -595,7 +597,7 @@ function ClassResults({ ranked }: { ranked: YogaClass[] | null }) {
     <section className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-20 lg:px-8">
         <div aria-live="polite" className="sr-only">
-          {isActive ? "Showing your three strongest matches." : ""}
+          {isActive ? "De drie sterkste matches worden getoond." : ""}
         </div>
 
         {!isActive
@@ -622,7 +624,7 @@ function ClassResults({ ranked }: { ranked: YogaClass[] | null }) {
               return (
                 <>
                   <h2 className="font-display text-2xl text-foreground md:text-3xl">
-                    Your best matches
+                    Jouw beste matches
                   </h2>
                   <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                     {top.map((c) => (
@@ -630,7 +632,7 @@ function ClassResults({ ranked }: { ranked: YogaClass[] | null }) {
                     ))}
                   </div>
                   <h2 className="mt-14 font-display text-2xl text-foreground md:text-3xl">
-                    Explore all classes
+                    Ontdek alle lessen
                   </h2>
                   <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                     {rest.map((c) => (
@@ -671,13 +673,13 @@ function ClassCard({
       <dl className="mt-5 space-y-3 text-sm">
         <div>
           <dt className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Pace
+            Tempo
           </dt>
           <dd className="mt-1 text-foreground">{PACE_LABELS[yogaClass.pace]}</dd>
         </div>
         <div>
           <dt className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Good for
+            Goed voor
           </dt>
           <dd className="mt-1 flex flex-wrap gap-1.5">
             {goodFor.map((n) => (
@@ -692,7 +694,7 @@ function ClassCard({
         </div>
         <div>
           <dt className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Experience
+            Ervaring
           </dt>
           <dd className="mt-1 text-foreground">
             {EXPERIENCE_LABELS[yogaClass.experience]}
@@ -702,8 +704,8 @@ function ClassCard({
 
       <details className="group mt-5 border-t border-border/50 pt-4">
         <summary className="cursor-pointer list-none text-sm font-medium text-foreground underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
-          <span className="group-open:hidden">What to expect</span>
-          <span className="hidden group-open:inline">Hide details</span>
+          <span className="group-open:hidden">Wat je kunt verwachten</span>
+          <span className="hidden group-open:inline">Verberg details</span>
         </summary>
         <div className="mt-3 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
           <p>{yogaClass.whatToExpect[0]}</p>
@@ -713,10 +715,10 @@ function ClassCard({
 
       <div className="mt-5 pt-1">
         <Link
-          to="/schedule"
+          to="/rooster"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
         >
-          View weekly schedule
+          Bekijk het weekrooster
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
@@ -729,28 +731,29 @@ function ScheduleLink() {
     <section className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">
-          Ready to practise?
+          Klaar om te beoefenen?
         </p>
         <h2 className="mt-3 font-display text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-          Found a class that suits you?
+          Een les gevonden die bij je past?
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          The easiest way to try it is the 14-Day Unlimited Intro Pass: 14 days of unlimited
-          classes, so you can test different classes, teachers and times before you commit.
+          De makkelijkste manier om te proberen is de 14-daagse Onbeperkte Introductiepas: 14
+          dagen onbeperkt lessen volgen, zodat je verschillende lessen, docenten en tijden kunt
+          uitproberen voordat je je vastlegt.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href="/trial"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
-            Start with 14 days unlimited
+            Start met 14 dagen onbeperkt
             <ArrowRight className="h-4 w-4" />
           </a>
           <Link
-            to="/schedule"
+            to="/rooster"
             className="inline-flex items-center gap-1.5 text-base font-medium text-foreground underline-offset-4 hover:underline"
           >
-            View the weekly schedule
+            Bekijk het weekrooster
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

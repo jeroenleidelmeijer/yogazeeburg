@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { htmlLang, localeFromPathname } from "../lib/i18n";
 import { Analytics } from "../components/site/Analytics";
 import { ConsentBanner } from "../components/site/ConsentBanner";
 
@@ -79,19 +81,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Yoga Zeeburg | Down-to-Earth Yoga in Amsterdam East" },
+      { title: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
       {
         name: "description",
         content:
-          "Calm, down-to-earth yoga in Amsterdam East. Start with 14 days unlimited and build a weekly routine that fits your life.",
+          "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past.",
       },
       { property: "og:site_name", content: "Yoga Zeeburg" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Yoga Zeeburg | Down-to-Earth Yoga in Amsterdam East" },
-      { name: "twitter:title", content: "Yoga Zeeburg | Down-to-Earth Yoga in Amsterdam East" },
-      { property: "og:description", content: "Calm, down-to-earth yoga in Amsterdam East. Start with 14 days unlimited and build a weekly routine that fits your life." },
-      { name: "twitter:description", content: "Calm, down-to-earth yoga in Amsterdam East. Start with 14 days unlimited and build a weekly routine that fits your life." },
+      { property: "og:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
+      { name: "twitter:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
+      { property: "og:description", content: "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past." },
+      { name: "twitter:description", content: "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -111,8 +113,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const locale = localeFromPathname(pathname);
+
   return (
-    <html lang="en">
+    <html lang={htmlLang(locale)}>
       <head>
         <HeadContent />
       </head>
