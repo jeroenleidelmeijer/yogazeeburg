@@ -4,11 +4,17 @@ const BASE_URL = "https://www.yogazeeburg.com";
 
 const STATIC_PATHS: { path: string; lastmod?: string }[] = [
   { path: "/" },
-  { path: "/pricing" },
-  { path: "/classes" },
-  { path: "/schedule" },
+  { path: "/prijzen" },
+  { path: "/lessen" },
+  { path: "/rooster" },
   { path: "/contact" },
   { path: "/sportbit" },
+  { path: "/en/" },
+  { path: "/en/pricing" },
+  { path: "/en/classes" },
+  { path: "/en/schedule" },
+  { path: "/en/contact" },
+  { path: "/en/sportbit" },
   { path: "/kennisbank" },
   { path: "/kennisbank/alle-artikelen" },
 ];
