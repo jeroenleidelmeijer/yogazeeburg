@@ -14,7 +14,7 @@ import type { DbArticleViewModel } from "@/lib/kennisbank/types";
  * The optional `?token=` query parameter is defence-in-depth only. A token
  * without a valid admin session is refused.
  */
-export const Route = createFileRoute("/nl/kennisbank/preview/$articleId")({
+export const Route = createFileRoute("/kennisbank/preview/$articleId")({
   validateSearch: (search: Record<string, unknown>) => ({
     token: typeof search.token === "string" ? search.token : undefined,
   }),
@@ -144,7 +144,7 @@ function PreviewNotFound() {
           <h1 className="font-display text-3xl font-medium tracking-tight text-foreground">Voorvertoning niet beschikbaar</h1>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Er is geen voorvertoning voor dit artikel, of je hebt geen rechten om het te bekijken.</p>
           <div className="mt-8">
-            <Link to="/nl/kennisbank" className="inline-flex items-center gap-2 text-primary hover:underline">
+            <Link to="/kennisbank" className="inline-flex items-center gap-2 text-primary hover:underline">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Terug naar Yoga Gids
             </Link>

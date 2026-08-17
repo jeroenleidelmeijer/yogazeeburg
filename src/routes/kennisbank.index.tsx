@@ -15,7 +15,7 @@ import {
 } from "@/lib/kennisbank/compose";
 
 const INTRO_URL = "/trial";
-const CANONICAL = "https://www.yogazeeburg.com/nl/kennisbank";
+const CANONICAL = "https://www.yogazeeburg.com/kennisbank";
 
 type QuickChoice = { value: QuickFilter; label: string };
 
@@ -107,7 +107,7 @@ const CATEGORIES: CategoryDisplay[] = [
   },
 ];
 
-export const Route = createFileRoute("/nl/kennisbank/")({
+export const Route = createFileRoute("/kennisbank/")({
   loader: () => listPublishedArticlesFn(),
   head: () => ({
     meta: [
@@ -323,7 +323,7 @@ function KennisbankPage() {
                   return (
                     <li key={c.slug}>
                       <Link
-                        to="/nl/kennisbank/categorie/$slug"
+                        to="/kennisbank/categorie/$slug"
                         params={{ slug: c.slug }}
                         className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
@@ -417,7 +417,7 @@ function KennisbankPage() {
               </ul>
               <div className="mt-8 text-center">
                 <Link
-                  to="/nl/kennisbank/alle-artikelen"
+                  to="/kennisbank/alle-artikelen"
                   className="inline-flex min-h-[44px] items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted"
                 >
                   Alle artikelen bekijken →

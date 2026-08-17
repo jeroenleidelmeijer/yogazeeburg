@@ -12,7 +12,7 @@ export function ArticleCard({ article: a }: { article: ArticleRef }) {
   return (
     <li>
       <Link
-        to="/nl/kennisbank/$slug"
+        to="/kennisbank/$slug"
         params={{ slug: a.slug }}
         className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >

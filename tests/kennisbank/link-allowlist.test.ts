@@ -38,9 +38,9 @@ describe("classifyLink allowlist", () => {
   });
 
   it("accepts a relative kennisbank path", () => {
-    expect(classifyLink("/nl/kennisbank/wat-is-yoga")).toEqual({
+    expect(classifyLink("/kennisbank/wat-is-yoga")).toEqual({
       kind: "internal",
-      to: "/nl/kennisbank/wat-is-yoga",
+      to: "/kennisbank/wat-is-yoga",
     });
     expect(classifyLink("/pricing")).toEqual({ kind: "internal", to: "/pricing" });
   });

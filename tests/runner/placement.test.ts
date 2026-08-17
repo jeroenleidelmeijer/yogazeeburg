@@ -259,7 +259,7 @@ describe("placeArticle validation & idempotency", () => {
         package: pkg,
         reviews: PASSING_REVIEWS,
         preview: {
-          previewUrl: "https://preview.example/nl/kennisbank/yin-yoga-drukke-mensen-amsterdam-oost",
+          previewUrl: "https://preview.example/kennisbank/yin-yoga-drukke-mensen-amsterdam-oost",
           previewToken: derivePreviewToken(articleId, pkg.contentHash),
         },
       },

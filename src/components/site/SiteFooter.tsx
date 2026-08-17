@@ -57,7 +57,7 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/nl/kennisbank" className="text-muted-foreground hover:text-foreground">
+              <Link to="/kennisbank" className="text-muted-foreground hover:text-foreground">
                 Yoga Gids
               </Link>
             </li>

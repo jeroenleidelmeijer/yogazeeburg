@@ -101,7 +101,7 @@ function tokenizeInline(s: string): InlineToken[] {
 const INTERNAL_HOST = "www.yogazeeburg.com";
 const INTRO_HOSTNAME = "crossfitzeeburg.sportbitapp.nl";
 const ALLOWED_INTERNAL_PATH_PREFIXES = [
-  "/nl/kennisbank",
+  "/kennisbank",
   "/pricing",
   "/classes",
   "/schedule",
