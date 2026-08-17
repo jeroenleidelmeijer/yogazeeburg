@@ -1,3 +1,4 @@
+import { commercialLinks } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -31,7 +32,7 @@ export const Route = createFileRoute("/en/contact")({
       },
       { property: "og:url", content: "https://www.yogazeeburg.com/en/contact" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/contact" }],
+    links: commercialLinks("en", "contact"),
     scripts: [
       {
         type: "application/ld+json",

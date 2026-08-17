@@ -19,6 +19,7 @@ import { Route as PrijzenRouteImport } from './routes/prijzen'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as LessenRouteImport } from './routes/lessen'
 import { Route as KennisbankRouteImport } from './routes/kennisbank'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
@@ -94,6 +95,11 @@ const PricesRoute = PricesRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LessenRoute = LessenRouteImport.update({
+  id: '/lessen',
+  path: '/lessen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KennisbankRoute = KennisbankRouteImport.update({
@@ -241,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/kennisbank': typeof KennisbankRouteWithChildren
+  '/lessen': typeof LessenRoute
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
@@ -278,6 +285,7 @@ export interface FileRoutesByTo {
   '/class-schedule': typeof ClassScheduleRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/lessen': typeof LessenRoute
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
@@ -317,6 +325,7 @@ export interface FileRoutesById {
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/kennisbank': typeof KennisbankRouteWithChildren
+  '/lessen': typeof LessenRoute
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
   '/pricing': typeof PricingRoute
@@ -357,6 +366,7 @@ export interface FileRouteTypes {
     | '/classes'
     | '/contact'
     | '/kennisbank'
+    | '/lessen'
     | '/mcp'
     | '/prices'
     | '/pricing'
@@ -394,6 +404,7 @@ export interface FileRouteTypes {
     | '/class-schedule'
     | '/classes'
     | '/contact'
+    | '/lessen'
     | '/mcp'
     | '/prices'
     | '/pricing'
@@ -432,6 +443,7 @@ export interface FileRouteTypes {
     | '/classes'
     | '/contact'
     | '/kennisbank'
+    | '/lessen'
     | '/mcp'
     | '/prices'
     | '/pricing'
@@ -471,6 +483,7 @@ export interface RootRouteChildren {
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
   KennisbankRoute: typeof KennisbankRouteWithChildren
+  LessenRoute: typeof LessenRoute
   McpRoute: typeof McpRoute
   PricesRoute: typeof PricesRoute
   PricingRoute: typeof PricingRoute
@@ -567,6 +580,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lessen': {
+      id: '/lessen'
+      path: '/lessen'
+      fullPath: '/lessen'
+      preLoaderRoute: typeof LessenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kennisbank': {
@@ -783,6 +803,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
   KennisbankRoute: KennisbankRouteWithChildren,
+  LessenRoute: LessenRoute,
   McpRoute: McpRoute,
   PricesRoute: PricesRoute,
   PricingRoute: PricingRoute,

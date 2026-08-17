@@ -1,3 +1,4 @@
+import { commercialLinks } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Check, Copy, Sparkles } from "lucide-react";
 import { useState } from "react";
@@ -59,7 +60,7 @@ export const Route = createFileRoute("/en/pricing")({
       },
       { property: "og:url", content: "https://www.yogazeeburg.com/en/pricing" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/pricing" }],
+    links: commercialLinks("en", "pricing"),
     scripts: [
       {
         type: "application/ld+json",

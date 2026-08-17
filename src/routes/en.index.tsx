@@ -1,3 +1,4 @@
+import { commercialLinks } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/en/")({
       },
       { property: "og:url", content: "https://www.yogazeeburg.com/en/" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/" }],
+    links: commercialLinks("en", "home"),
     scripts: [
       {
         type: "application/ld+json",

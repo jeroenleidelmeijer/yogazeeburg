@@ -1,3 +1,4 @@
+import { commercialLinks } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -75,7 +76,7 @@ export const Route = createFileRoute("/en/schedule")({
       },
       { property: "og:url", content: "https://www.yogazeeburg.com/en/schedule" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/schedule" }],
+    links: commercialLinks("en", "schedule"),
     scripts: [
       {
         type: "application/ld+json",
