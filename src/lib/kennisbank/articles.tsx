@@ -291,7 +291,7 @@ function ProeflesBody() {
       <p className="mt-4">
         Bekijk het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster van Yoga Zeeburg
@@ -441,7 +441,7 @@ function ProeflesBody() {
       <p className="mt-4">
         Meer weten over de buurt en welke lessen op welk moment aansluiten? Bekijk het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster
@@ -653,7 +653,7 @@ function WelkeStudioBody() {
       <p className="mt-4">
         Bekijk daarom altijd het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster
@@ -1010,7 +1010,7 @@ function BeginnersBody() {
         Combineer waar mogelijk één rustigere en één dynamischere les. Zo krijg je afwisseling én
         zie je zelf welke vorm je op de lange termijn prettiger vindt. Bekijk het{" "}
         <a
-          href="/schedule"
+          href="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesrooster
@@ -1098,7 +1098,7 @@ function BeginnersBody() {
         <li>
           <strong>Bekijk het rooster.</strong> Zoek in het{" "}
           <a
-            href="/schedule"
+            href="/rooster"
             className="font-medium text-primary underline underline-offset-4 hover:no-underline"
           >
             actuele lesrooster
@@ -1419,7 +1419,7 @@ function KantoorBody() {
       <p className="mt-4">
         Bekijk voor vertrek altijd het actuele lesrooster via{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           /schedule
@@ -1689,7 +1689,7 @@ function KeuzeBody() {
       <p className="mt-4">
         Bekijk het actuele rooster via{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           /schedule
@@ -2036,7 +2036,7 @@ function TaalBody() {
         Een les die qua tijd, locatie en niveau in je week past, houd je gemakkelijker vol. Kies
         daarom niet uitsluitend op taal. Bekijk ook het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster
@@ -2093,7 +2093,7 @@ function TaalBody() {
       <p className="mt-4">
         Wil je weten welke taal tijdens een specifieke les wordt gebruikt? Bekijk het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster
@@ -2493,7 +2493,7 @@ function PrijzenBody() {
         en zijn daarna maandelijks opzegbaar. Voor langere commitment bestaan afzonderlijke
         jaaropties. Bekijk voor alle actuele bedragen, voorwaarden en eventuele acties altijd de{" "}
         <Link
-          to="/pricing"
+          to="/prijzen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           prijspagina van Yoga Zeeburg
@@ -3058,7 +3058,7 @@ function LocatieBody() {
       <p className="mt-4">
         Bekijk vervolgens het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesrooster
@@ -3375,7 +3375,7 @@ function IjburgBody() {
         begeleiding. De ligging is alleen een voordeel als route en lestijden werken. Bekijk daarom
         het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster
@@ -3734,7 +3734,7 @@ function IndischeBuurtBody() {
         intensiteit. Een goede beschrijving vertelt of een les actief of rustig is, hoeveel ervaring
         je nodig hebt en wat je ongeveer kunt verwachten. Bekijk daarom vóór je boekt de{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele lesmogelijkheden en tijden
@@ -4011,7 +4011,7 @@ function ExpatsBody() {
         Bij Yoga Zeeburg vind je op de Engelse website beschrijvingen van rustige, gebalanceerde en
         actievere lessen. Het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           reguliere weekrooster
@@ -4376,7 +4376,7 @@ function CruquiusBody() {
       <p className="mt-4">
         Op het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           reguliere rooster van Yoga Zeeburg
@@ -4733,14 +4733,14 @@ function NiveauBody() {
       <p className="mt-4">
         Bekijk de{" "}
         <Link
-          to="/classes"
+          to="/lessen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           lesbeschrijvingen van Yoga Zeeburg
         </Link>{" "}
         en het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           reguliere weekrooster
@@ -5188,7 +5188,7 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Bekijk daarom altijd het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele rooster van Yoga Zeeburg
@@ -5215,7 +5215,7 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Bekijk de{" "}
         <Link
-          to="/pricing"
+          to="/prijzen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           actuele prijzen en voorwaarden
@@ -5359,14 +5359,14 @@ function GoedeStudioBody() {
       <p className="mt-4">
         Bekijk vooraf de{" "}
         <Link
-          to="/classes"
+          to="/lessen"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           lesbeschrijvingen
         </Link>
         , kies enkele haalbare momenten in het{" "}
         <Link
-          to="/schedule"
+          to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
           rooster
