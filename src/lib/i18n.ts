@@ -38,7 +38,7 @@ export const COMMERCIAL_PATHS: Record<Locale, Record<CommercialPage, string>> = 
 export function pageUrl(locale: Locale, page: CommercialPage): string {
   const path = COMMERCIAL_PATHS[locale][page];
   // Home pages canonicalise with a trailing slash.
-  if (page === "home") return locale === "nl" ? `${BASE_URL}/` : `${BASE_URL}/en/`;
+  if (page === "home") return locale === "nl" ? `${BASE_URL}/` : `${BASE_URL}/en`;
   return `${BASE_URL}${path}`;
 }
 
@@ -46,9 +46,9 @@ export function pageUrl(locale: Locale, page: CommercialPage): string {
 export function commercialLinks(locale: Locale, page: CommercialPage) {
   return [
     { rel: "canonical", href: pageUrl(locale, page) },
-    { rel: "alternate", hrefLang: "nl-NL", href: pageUrl("nl", page) },
-    { rel: "alternate", hrefLang: "en", href: pageUrl("en", page) },
-    { rel: "alternate", hrefLang: "x-default", href: pageUrl("nl", page) },
+    { rel: "alternate", hreflang: "nl-NL", href: pageUrl("nl", page) },
+    { rel: "alternate", hreflang: "en", href: pageUrl("en", page) },
+    { rel: "alternate", hreflang: "x-default", href: pageUrl("nl", page) },
   ];
 }
 

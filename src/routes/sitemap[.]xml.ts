@@ -9,7 +9,7 @@ const STATIC_PATHS: { path: string; lastmod?: string }[] = [
   { path: "/rooster" },
   { path: "/contact" },
   { path: "/sportbit" },
-  { path: "/en/" },
+  { path: "/en" },
   { path: "/en/pricing" },
   { path: "/en/classes" },
   { path: "/en/schedule" },

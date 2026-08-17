@@ -23,7 +23,7 @@ export const Route = createFileRoute("/en/")({
         content:
           "Calm, down-to-earth yoga in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/en/" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en" },
     ],
     links: commercialLinks("en", "home"),
     scripts: [
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/en/")({
             addressCountry: "NL",
           },
           areaServed: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
-          url: "https://www.yogazeeburg.com/en/",
+          url: "https://www.yogazeeburg.com/en",
           email: "hello@yogazeeburg.com",
         }),
       },
