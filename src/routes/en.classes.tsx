@@ -284,7 +284,7 @@ const GROUP_ORDER: ClassGroup[] = [
 
 type PaceChoice = ClassPace | "no-preference";
 
-export const Route = createFileRoute("/classes")({
+export const Route = createFileRoute("/en/classes")({
   head: () => ({
     meta: [
       { title: "Yoga Classes Amsterdam East | Yoga Zeeburg" },
@@ -299,9 +299,9 @@ export const Route = createFileRoute("/classes")({
         content:
           "Explore Yoga Zeeburg classes in Amsterdam East and find the right fit, from relaxing Yin and Nidra to Vinyasa, Pilates and stronger flows.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/classes" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/classes" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/classes" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/classes" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -309,16 +309,16 @@ export const Route = createFileRoute("/classes")({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "Yoga Classes Amsterdam East",
-          url: "https://www.yogazeeburg.com/classes",
+          url: "https://www.yogazeeburg.com/en/classes",
           inLanguage: "en",
           description:
             "Explore Yoga Zeeburg classes in Amsterdam East and find the right fit, from relaxing Yin and Nidra to Vinyasa, Pilates and stronger flows.",
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
-            url: "https://www.yogazeeburg.com/",
+            url: "https://www.yogazeeburg.com/en/",
           },
-          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/en/" },
         }),
       },
       {
@@ -327,8 +327,8 @@ export const Route = createFileRoute("/classes")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Classes", item: "https://www.yogazeeburg.com/classes" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 2, name: "Classes", item: "https://www.yogazeeburg.com/en/classes" },
           ],
         }),
       },
@@ -713,7 +713,7 @@ function ClassCard({
 
       <div className="mt-5 pt-1">
         <Link
-          to="/schedule"
+          to="/en/schedule"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
         >
           View weekly schedule
@@ -747,7 +747,7 @@ function ScheduleLink() {
             <ArrowRight className="h-4 w-4" />
           </a>
           <Link
-            to="/schedule"
+            to="/en/schedule"
             className="inline-flex items-center gap-1.5 text-base font-medium text-foreground underline-offset-4 hover:underline"
           >
             View the weekly schedule

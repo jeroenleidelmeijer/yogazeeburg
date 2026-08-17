@@ -14,7 +14,7 @@ const SUBJECTS = [
   "Something else",
 ] as const;
 
-export const Route = createFileRoute("/contact")({
+export const Route = createFileRoute("/en/contact")({
   head: () => ({
     meta: [
       { title: "Contact Yoga Zeeburg | Amsterdam East" },
@@ -29,9 +29,9 @@ export const Route = createFileRoute("/contact")({
         content:
           "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes, the schedule or practical questions.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/contact" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/contact" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/contact" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/contact" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -39,16 +39,16 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "ContactPage",
           name: "Contact Yoga Zeeburg",
-          url: "https://www.yogazeeburg.com/contact",
+          url: "https://www.yogazeeburg.com/en/contact",
           inLanguage: "en",
           description:
             "Contact Yoga Zeeburg in Amsterdam East about the Intro Pass, memberships, classes or Sportbit. We’ll help you find the right next step.",
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
-            url: "https://www.yogazeeburg.com/",
+            url: "https://www.yogazeeburg.com/en/",
           },
-          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/en/" },
         }),
       },
       {
@@ -57,8 +57,8 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.yogazeeburg.com/contact" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.yogazeeburg.com/en/contact" },
           ],
         }),
       },

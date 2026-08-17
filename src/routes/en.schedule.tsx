@@ -58,7 +58,7 @@ const SCHEDULE: Day[] = [
   },
 ];
 
-export const Route = createFileRoute("/schedule")({
+export const Route = createFileRoute("/en/schedule")({
   head: () => ({
     meta: [
       { title: "Yoga Class Schedule Amsterdam East | Yoga Zeeburg" },
@@ -73,9 +73,9 @@ export const Route = createFileRoute("/schedule")({
         content:
           "View the weekly Yoga Zeeburg schedule in Amsterdam East, with Vinyasa, Yin, Nidra, Pilates Fusion and more.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/schedule" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/schedule" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/schedule" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/schedule" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -83,16 +83,16 @@ export const Route = createFileRoute("/schedule")({
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: "Yoga Class Schedule Amsterdam East",
-          url: "https://www.yogazeeburg.com/schedule",
+          url: "https://www.yogazeeburg.com/en/schedule",
           inLanguage: "en",
           description:
             "View the weekly Yoga Zeeburg schedule in Amsterdam East. Explore Vinyasa, Yin, Pilates Fusion and more, then choose the class that fits your week.",
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
-            url: "https://www.yogazeeburg.com/",
+            url: "https://www.yogazeeburg.com/en/",
           },
-          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/" },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/en/" },
         }),
       },
       {
@@ -101,8 +101,8 @@ export const Route = createFileRoute("/schedule")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Schedule", item: "https://www.yogazeeburg.com/schedule" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 2, name: "Schedule", item: "https://www.yogazeeburg.com/en/schedule" },
           ],
         }),
       },
@@ -219,7 +219,7 @@ function ClassesLink() {
           Explore our classes to find the one that matches what you need.
         </p>
         <Link
-          to="/classes"
+          to="/en/classes"
           className="mt-6 inline-flex items-center gap-1.5 text-base font-medium text-foreground underline-offset-4 hover:underline"
         >
           Explore our classes

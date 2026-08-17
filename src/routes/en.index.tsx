@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 const INTRO_URL = "/trial";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=Cruquiusweg+96F+Amsterdam";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/en/")({
   head: () => ({
     meta: [
       { title: "Yoga Zeeburg | Down-to-Earth Yoga in Amsterdam East" },
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/")({
         content:
           "Calm, down-to-earth yoga in Amsterdam East, by the water in Zeeburg/Cruquius. Start with 14 days unlimited yoga.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
             addressCountry: "NL",
           },
           areaServed: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
-          url: "https://www.yogazeeburg.com/",
+          url: "https://www.yogazeeburg.com/en/",
           email: "hello@yogazeeburg.com",
         }),
       },
@@ -103,7 +103,7 @@ function Hero() {
             <ArrowRight className="h-4 w-4" />
           </a>
           <Link
-            to="/pricing"
+            to="/en/pricing"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-muted"
           >
             View pricing
@@ -389,7 +389,7 @@ function ClassDirections() {
 
         <div className="mt-10">
           <Link
-            to="/classes"
+            to="/en/classes"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3.5 text-base font-medium text-foreground transition-colors hover:bg-muted"
           >
             View all classes
@@ -422,7 +422,7 @@ function PricingTeaser() {
             </p>
           </div>
           <Link
-            to="/pricing"
+            to="/en/pricing"
             className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             View pricing
@@ -522,7 +522,7 @@ function FinalCTA() {
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
-              to="/pricing"
+              to="/en/pricing"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-4 text-base font-medium text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto"
             >
               View pricing

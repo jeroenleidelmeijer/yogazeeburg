@@ -39,7 +39,7 @@ const SPORTBIT_NOTICE =
   "You’ll continue to Sportbit, our current booking system. Log in or create an account, select Yoga Zeeburg, then choose the membership shown here.";
 const SPORTBIT_REMINDER = "Checkout continues in Sportbit, our booking system.";
 
-export const Route = createFileRoute("/pricing")({
+export const Route = createFileRoute("/en/pricing")({
   head: () => ({
     meta: [
       { title: "Yoga Zeeburg Pricing | Yoga Memberships in Amsterdam East" },
@@ -57,9 +57,9 @@ export const Route = createFileRoute("/pricing")({
         content:
           "Intro Pass, memberships and class passes at Yoga Zeeburg — down-to-earth yoga in Amsterdam East, by the water in Zeeburg / Cruquius.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/pricing" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/pricing" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/pricing" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/pricing" }],
     scripts: [
       {
         type: "application/ld+json",

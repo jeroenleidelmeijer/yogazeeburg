@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 const SPORTBIT_WEB_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 
-export const Route = createFileRoute("/sportbit")({
+export const Route = createFileRoute("/en/sportbit")({
   head: () => ({
     meta: [
       { title: "Sportbit Guide — How to Book Classes | Yoga Zeeburg" },
@@ -21,9 +21,9 @@ export const Route = createFileRoute("/sportbit")({
         content:
           "A calm, clear guide to booking your yoga classes at Yoga Zeeburg through Sportbit.",
       },
-      { property: "og:url", content: "https://www.yogazeeburg.com/sportbit" },
+      { property: "og:url", content: "https://www.yogazeeburg.com/en/sportbit" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/sportbit" }],
+    links: [{ rel: "canonical", href: "https://www.yogazeeburg.com/en/sportbit" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -34,49 +34,49 @@ export const Route = createFileRoute("/sportbit")({
           description:
             "Sportbit is the booking system for Yoga Zeeburg. This page walks you through choosing the right schedule, booking a class, using the waiting list, and cancelling on time — so your routine stays simple.",
           inLanguage: "en",
-          url: "https://www.yogazeeburg.com/sportbit",
+          url: "https://www.yogazeeburg.com/en/sportbit",
           step: [
             {
               "@type": "HowToStep",
               position: 1,
               name: "Download Sportbit or use the web version",
               text: "You can use the Sportbit app on iPhone or Android, or open Sportbit in your browser. Both work the same way — pick whichever fits your routine.",
-              url: "https://www.yogazeeburg.com/sportbit#01",
+              url: "https://www.yogazeeburg.com/en/sportbit#01",
             },
             {
               "@type": "HowToStep",
               position: 2,
               name: "Select the Yoga Zeeburg schedule",
               text: "Sportbit also contains the CrossFit Zeeburg schedules. Before you book anything, switch to Yoga Zeeburg at the top of the app. This is the most common source of mistaken bookings — check it every time.",
-              url: "https://www.yogazeeburg.com/sportbit#02",
+              url: "https://www.yogazeeburg.com/en/sportbit#02",
             },
             {
               "@type": "HowToStep",
               position: 3,
               name: "Book your class",
               text: "Classes can be booked up to two weeks in advance. Each day, the same weekday two weeks ahead becomes available — so a Tuesday opens up every Tuesday.",
-              url: "https://www.yogazeeburg.com/sportbit#03",
+              url: "https://www.yogazeeburg.com/en/sportbit#03",
             },
             {
               "@type": "HowToStep",
               position: 4,
               name: "Use the waiting list",
               text: "If a class is full, join the waiting list. Places open up more often than you think. More than 2 hours before class: if someone cancels, the first person on the waiting list is moved into the class automatically. Less than 2 hours before class: everyone on the waiting list gets a notification and email. The first person to book gets the spot.",
-              url: "https://www.yogazeeburg.com/sportbit#04",
+              url: "https://www.yogazeeburg.com/en/sportbit#04",
             },
             {
               "@type": "HowToStep",
               position: 5,
               name: "Cancel as early as possible",
               text: "You can cancel without losing a credit up to two hours before class. Cancelling within two hours costs a credit. Please cancel as early as you can, so someone on the waiting list gets to join.",
-              url: "https://www.yogazeeburg.com/sportbit#05",
+              url: "https://www.yogazeeburg.com/en/sportbit#05",
             },
             {
               "@type": "HowToStep",
               position: 6,
               name: "Need help?",
               text: "Stuck on a booking, membership or Sportbit login? Send us a short message and we’ll help you sort it. Email hello@yogazeeburg.com.",
-              url: "https://www.yogazeeburg.com/sportbit#06",
+              url: "https://www.yogazeeburg.com/en/sportbit#06",
             },
           ],
         }),
@@ -87,8 +87,8 @@ export const Route = createFileRoute("/sportbit")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Sportbit", item: "https://www.yogazeeburg.com/sportbit" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 2, name: "Sportbit", item: "https://www.yogazeeburg.com/en/sportbit" },
           ],
         }),
       },
@@ -307,14 +307,14 @@ function FinalCTA() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              to="/schedule"
+              to="/en/schedule"
               className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               View the schedule
               <ArrowUpRight className="h-4 w-4" />
             </Link>
             <Link
-              to="/classes"
+              to="/en/classes"
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Explore our classes
