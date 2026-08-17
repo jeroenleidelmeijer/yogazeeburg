@@ -271,7 +271,7 @@ describe("runArticlePreviewOnce — placement is always preview, never published
     expect(store.rows).toHaveLength(1);
     expect(store.rows[0].placementStatus).toBe("preview");
     expect(store.rows[0].publishedAt).toBeNull();
-    expect(store.rows[0].previewUrl).toMatch(/^https?:\/\/.+\/nl\/kennisbank\/preview\//);
+    expect(store.rows[0].previewUrl).toMatch(/^https?:\/\/.+\/kennisbank\/preview\//);
   });
 
   it("is idempotent: a second call reuses the same row (upsert count still 1)", async () => {
