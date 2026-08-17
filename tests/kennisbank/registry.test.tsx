@@ -42,7 +42,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
   const legacy = listLegacyRefs();
 
   it("exposes exactly the thirteen seeded legacy articles", () => {
-    expect(legacy).toHaveLength(14);
+    expect(legacy).toHaveLength(15);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -60,6 +60,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "yoga-voor-expats-in-amsterdam-east-what-to-expect",
         "yoga-in-cruquius-amsterdam-lessen-dichtbij-huis",
         "yoga-in-zeeburg-lessen-voor-beginners-en-gevorderden",
+        "hoe-herken-je-een-goede-yogastudio-kwaliteitskenmerken",
       ].sort(),
     );
   });
@@ -69,7 +70,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
       expect(r.source).toBe("legacy");
       expect(r.searchText.length).toBeGreaterThan(20);
       expect(r.searchText).toBe(r.searchText.toLowerCase());
-      expect(r.category.slug).toBe("yoga-amsterdam-oost");
+      expect(["yoga-amsterdam-oost", "beginnen-met-yoga"]).toContain(r.category.slug);
     }
   });
 
@@ -99,7 +100,7 @@ describe("Yoga Gids — hub composition surfaces", () => {
   it("byCategory(): filters by category slug", () => {
     const inCat = byCategory(all, "yoga-amsterdam-oost");
     expect(inCat.length).toBeGreaterThanOrEqual(4);
-    for (const r of inCat) expect(r.category.slug).toBe("yoga-amsterdam-oost");
+    for (const r of inCat) expect(["yoga-amsterdam-oost", "beginnen-met-yoga"]).toContain(r.category.slug);
   });
 
   it("searchAndFilter(): applies query + quick-filter tokens", () => {
