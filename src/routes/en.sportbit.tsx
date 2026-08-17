@@ -88,7 +88,7 @@ export const Route = createFileRoute("/en/sportbit")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en" },
             { "@type": "ListItem", position: 2, name: "Sportbit", item: "https://www.yogazeeburg.com/en/sportbit" },
           ],
         }),
