@@ -5393,6 +5393,7 @@ export const ARTICLES: Article[] = [
   expatsArticle,
   cruquiusArticle,
   niveauArticle,
+  goedeStudioArticle,
 ];
 
 
