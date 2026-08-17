@@ -12,13 +12,19 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as YogaStylesRouteImport } from './routes/yoga-styles'
 import { Route as TrialRouteImport } from './routes/trial'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as RoosterRouteImport } from './routes/rooster'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as KennisbankRouteImport } from './routes/kennisbank'
+import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ClassScheduleRouteImport } from './routes/class-schedule'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as NlIndexRouteImport } from './routes/nl.index'
 import { Route as KennisbankIndexRouteImport } from './routes/kennisbank.index'
 import { Route as EnIndexRouteImport } from './routes/en.index'
+import { Route as NlSplatRouteImport } from './routes/nl.$'
 import { Route as KennisbankAlleArtikelenRouteImport } from './routes/kennisbank.alle-artikelen'
 import { Route as KennisbankSlugRouteImport } from './routes/kennisbank.$slug'
 import { Route as EnSportbitRouteImport } from './routes/en.sportbit'
@@ -51,6 +57,21 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoosterRoute = RoosterRouteImport.update({
+  id: '/rooster',
+  path: '/rooster',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricesRoute = PricesRouteImport.update({
   id: '/prices',
   path: '/prices',
@@ -66,6 +87,11 @@ const KennisbankRoute = KennisbankRouteImport.update({
   path: '/kennisbank',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClassesRoute = ClassesRouteImport.update({
+  id: '/classes',
+  path: '/classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClassScheduleRoute = ClassScheduleRouteImport.update({
   id: '/class-schedule',
   path: '/class-schedule',
@@ -76,6 +102,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NlIndexRoute = NlIndexRouteImport.update({
+  id: '/nl/',
+  path: '/nl/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KennisbankIndexRoute = KennisbankIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -84,6 +115,11 @@ const KennisbankIndexRoute = KennisbankIndexRouteImport.update({
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/en/',
   path: '/en/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NlSplatRoute = NlSplatRouteImport.update({
+  id: '/nl/$',
+  path: '/nl/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KennisbankAlleArtikelenRoute = KennisbankAlleArtikelenRouteImport.update({
@@ -177,9 +213,13 @@ const ApiPublicV1KennisbankSummaryRoute =
 export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
+  '/classes': typeof ClassesRoute
   '/kennisbank': typeof KennisbankRouteWithChildren
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
+  '/pricing': typeof PricingRoute
+  '/rooster': typeof RoosterRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
@@ -193,8 +233,10 @@ export interface FileRoutesByFullPath {
   '/en/sportbit': typeof EnSportbitRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/kennisbank/alle-artikelen': typeof KennisbankAlleArtikelenRoute
+  '/nl/$': typeof NlSplatRoute
   '/en/': typeof EnIndexRoute
   '/kennisbank/': typeof KennisbankIndexRoute
+  '/nl/': typeof NlIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/v1/kennisbank-summary': typeof ApiV1KennisbankSummaryRoute
   '/kennisbank/categorie/$slug': typeof KennisbankCategorieSlugRoute
@@ -205,8 +247,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
+  '/classes': typeof ClassesRoute
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
+  '/pricing': typeof PricingRoute
+  '/rooster': typeof RoosterRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
@@ -220,8 +266,10 @@ export interface FileRoutesByTo {
   '/en/sportbit': typeof EnSportbitRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/kennisbank/alle-artikelen': typeof KennisbankAlleArtikelenRoute
+  '/nl/$': typeof NlSplatRoute
   '/en': typeof EnIndexRoute
   '/kennisbank': typeof KennisbankIndexRoute
+  '/nl': typeof NlIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/v1/kennisbank-summary': typeof ApiV1KennisbankSummaryRoute
   '/kennisbank/categorie/$slug': typeof KennisbankCategorieSlugRoute
@@ -233,9 +281,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/auth': typeof AuthRoute
   '/class-schedule': typeof ClassScheduleRoute
+  '/classes': typeof ClassesRoute
   '/kennisbank': typeof KennisbankRouteWithChildren
   '/mcp': typeof McpRoute
   '/prices': typeof PricesRoute
+  '/pricing': typeof PricingRoute
+  '/rooster': typeof RoosterRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
@@ -249,8 +301,10 @@ export interface FileRoutesById {
   '/en/sportbit': typeof EnSportbitRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/kennisbank/alle-artikelen': typeof KennisbankAlleArtikelenRoute
+  '/nl/$': typeof NlSplatRoute
   '/en/': typeof EnIndexRoute
   '/kennisbank/': typeof KennisbankIndexRoute
+  '/nl/': typeof NlIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/v1/kennisbank-summary': typeof ApiV1KennisbankSummaryRoute
   '/kennisbank/categorie/$slug': typeof KennisbankCategorieSlugRoute
@@ -263,9 +317,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/auth'
     | '/class-schedule'
+    | '/classes'
     | '/kennisbank'
     | '/mcp'
     | '/prices'
+    | '/pricing'
+    | '/rooster'
+    | '/schedule'
     | '/sitemap.xml'
     | '/trial'
     | '/yoga-styles'
@@ -279,8 +337,10 @@ export interface FileRouteTypes {
     | '/en/sportbit'
     | '/kennisbank/$slug'
     | '/kennisbank/alle-artikelen'
+    | '/nl/$'
     | '/en/'
     | '/kennisbank/'
+    | '/nl/'
     | '/.mcp/invoke-tool/$tool'
     | '/api/v1/kennisbank-summary'
     | '/kennisbank/categorie/$slug'
@@ -291,8 +351,12 @@ export interface FileRouteTypes {
   to:
     | '/auth'
     | '/class-schedule'
+    | '/classes'
     | '/mcp'
     | '/prices'
+    | '/pricing'
+    | '/rooster'
+    | '/schedule'
     | '/sitemap.xml'
     | '/trial'
     | '/yoga-styles'
@@ -306,8 +370,10 @@ export interface FileRouteTypes {
     | '/en/sportbit'
     | '/kennisbank/$slug'
     | '/kennisbank/alle-artikelen'
+    | '/nl/$'
     | '/en'
     | '/kennisbank'
+    | '/nl'
     | '/.mcp/invoke-tool/$tool'
     | '/api/v1/kennisbank-summary'
     | '/kennisbank/categorie/$slug'
@@ -318,9 +384,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/auth'
     | '/class-schedule'
+    | '/classes'
     | '/kennisbank'
     | '/mcp'
     | '/prices'
+    | '/pricing'
+    | '/rooster'
+    | '/schedule'
     | '/sitemap.xml'
     | '/trial'
     | '/yoga-styles'
@@ -334,8 +404,10 @@ export interface FileRouteTypes {
     | '/en/sportbit'
     | '/kennisbank/$slug'
     | '/kennisbank/alle-artikelen'
+    | '/nl/$'
     | '/en/'
     | '/kennisbank/'
+    | '/nl/'
     | '/.mcp/invoke-tool/$tool'
     | '/api/v1/kennisbank-summary'
     | '/kennisbank/categorie/$slug'
@@ -347,9 +419,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ClassScheduleRoute: typeof ClassScheduleRoute
+  ClassesRoute: typeof ClassesRoute
   KennisbankRoute: typeof KennisbankRouteWithChildren
   McpRoute: typeof McpRoute
   PricesRoute: typeof PricesRoute
+  PricingRoute: typeof PricingRoute
+  RoosterRoute: typeof RoosterRoute
+  ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TrialRoute: typeof TrialRoute
   YogaStylesRoute: typeof YogaStylesRoute
@@ -361,7 +437,9 @@ export interface RootRouteChildren {
   EnPricingRoute: typeof EnPricingRoute
   EnScheduleRoute: typeof EnScheduleRoute
   EnSportbitRoute: typeof EnSportbitRoute
+  NlSplatRoute: typeof NlSplatRoute
   EnIndexRoute: typeof EnIndexRoute
+  NlIndexRoute: typeof NlIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiV1KennisbankSummaryRoute: typeof ApiV1KennisbankSummaryRoute
   ApiPublicV1KennisbankSummaryRoute: typeof ApiPublicV1KennisbankSummaryRoute
@@ -390,6 +468,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooster': {
+      id: '/rooster'
+      path: '/rooster'
+      fullPath: '/rooster'
+      preLoaderRoute: typeof RoosterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/prices': {
       id: '/prices'
       path: '/prices'
@@ -411,6 +510,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KennisbankRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/classes': {
+      id: '/classes'
+      path: '/classes'
+      fullPath: '/classes'
+      preLoaderRoute: typeof ClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/class-schedule': {
       id: '/class-schedule'
       path: '/class-schedule'
@@ -425,6 +531,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nl/': {
+      id: '/nl/'
+      path: '/nl'
+      fullPath: '/nl/'
+      preLoaderRoute: typeof NlIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kennisbank/': {
       id: '/kennisbank/'
       path: '/'
@@ -437,6 +550,13 @@ declare module '@tanstack/react-router' {
       path: '/en'
       fullPath: '/en/'
       preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nl/$': {
+      id: '/nl/$'
+      path: '/nl/$'
+      fullPath: '/nl/$'
+      preLoaderRoute: typeof NlSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kennisbank/alle-artikelen': {
@@ -579,9 +699,13 @@ const KennisbankRouteWithChildren = KennisbankRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ClassScheduleRoute: ClassScheduleRoute,
+  ClassesRoute: ClassesRoute,
   KennisbankRoute: KennisbankRouteWithChildren,
   McpRoute: McpRoute,
   PricesRoute: PricesRoute,
+  PricingRoute: PricingRoute,
+  RoosterRoute: RoosterRoute,
+  ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TrialRoute: TrialRoute,
   YogaStylesRoute: YogaStylesRoute,
@@ -594,7 +718,9 @@ const rootRouteChildren: RootRouteChildren = {
   EnPricingRoute: EnPricingRoute,
   EnScheduleRoute: EnScheduleRoute,
   EnSportbitRoute: EnSportbitRoute,
+  NlSplatRoute: NlSplatRoute,
   EnIndexRoute: EnIndexRoute,
+  NlIndexRoute: NlIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiV1KennisbankSummaryRoute: ApiV1KennisbankSummaryRoute,
   ApiPublicV1KennisbankSummaryRoute: ApiPublicV1KennisbankSummaryRoute,
