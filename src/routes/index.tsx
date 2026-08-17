@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Rustige, down-to-earth yoga in Amsterdam Oost bij Yoga Zeeburg. Start met 14 dagen onbeperkt yoga en bouw een wekelijk ritme dat bij je leven past.",
+          "Rustige, down-to-earth yoga in Amsterdam Oost bij Yoga Zeeburg. Start met 14 dagen onbeperkt yoga en bouw een wekelijks ritme dat bij je leven past.",
       },
       { property: "og:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
       {

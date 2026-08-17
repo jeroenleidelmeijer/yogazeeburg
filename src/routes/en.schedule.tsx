@@ -91,9 +91,9 @@ export const Route = createFileRoute("/en/schedule")({
           isPartOf: {
             "@type": "WebSite",
             name: "Yoga Zeeburg",
-            url: "https://www.yogazeeburg.com/en/",
+            url: "https://www.yogazeeburg.com/en",
           },
-          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/en/" },
+          about: { "@type": "ExerciseGym", name: "Yoga Zeeburg", url: "https://www.yogazeeburg.com/en" },
         }),
       },
       {
@@ -102,7 +102,7 @@ export const Route = createFileRoute("/en/schedule")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/en" },
             { "@type": "ListItem", position: 2, name: "Schedule", item: "https://www.yogazeeburg.com/en/schedule" },
           ],
         }),
