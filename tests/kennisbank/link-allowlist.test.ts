@@ -11,12 +11,12 @@ describe("classifyLink allowlist", () => {
     "https://evil.example/www.yogazeeburg.com",
     "https://crossfitzeeburg.sportbitapp.nl.evil.example/x",
     "//evil.example/x",
-    "//www.yogazeeburg.com/pricing",
-    "http://www.yogazeeburg.com/pricing",
+    "//www.yogazeeburg.com/prijzen",
+    "http://www.yogazeeburg.com/prijzen",
     "javascript:alert(1)",
     "data:text/html,<script>",
     "ftp://www.yogazeeburg.com/x",
-    "/pricingx",
+    "/prijzenx",
     "/../etc/passwd",
     "",
     "not-a-url",
@@ -28,8 +28,8 @@ describe("classifyLink allowlist", () => {
   }
 
   it("accepts an internal same-origin absolute URL with exact host", () => {
-    const r = classifyLink("https://www.yogazeeburg.com/pricing");
-    expect(r).toEqual({ kind: "same-site", href: "https://www.yogazeeburg.com/pricing" });
+    const r = classifyLink("https://www.yogazeeburg.com/prijzen");
+    expect(r).toEqual({ kind: "same-site", href: "https://www.yogazeeburg.com/prijzen" });
   });
 
   it("accepts the intro-pass host with exact match", () => {
@@ -42,10 +42,10 @@ describe("classifyLink allowlist", () => {
       kind: "internal",
       to: "/kennisbank/wat-is-yoga",
     });
-    expect(classifyLink("/pricing")).toEqual({ kind: "internal", to: "/pricing" });
+    expect(classifyLink("/prijzen")).toEqual({ kind: "internal", to: "/prijzen" });
   });
 
-  it("rejects prefix-adjacent internal paths (no /pricingx)", () => {
-    expect(classifyLink("/pricingx")).toBeNull();
+  it("rejects prefix-adjacent internal paths (no /prijzenx)", () => {
+    expect(classifyLink("/prijzenx")).toBeNull();
   });
 });

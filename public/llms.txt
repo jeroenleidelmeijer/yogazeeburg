@@ -26,9 +26,9 @@ All bookings and membership purchases run through Sportbit, the studio's booking
 ## Canonical pages
 
 - [Home](https://www.yogazeeburg.com/)
-- [Pricing](https://www.yogazeeburg.com/pricing)
-- [Classes](https://www.yogazeeburg.com/classes)
-- [Schedule](https://www.yogazeeburg.com/schedule)
+- [Pricing](https://www.yogazeeburg.com/prijzen)
+- [Classes](https://www.yogazeeburg.com/lessen)
+- [Schedule](https://www.yogazeeburg.com/rooster)
 - [Contact](https://www.yogazeeburg.com/contact)
 - [Sportbit guide (how to book, waiting list, cancellation)](https://www.yogazeeburg.com/sportbit)
 

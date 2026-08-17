@@ -55,7 +55,7 @@ function pkg(finalTitle: string, slug: string) {
     internalLinks: [],
     seoIntents: ["beginner"],
     structuredDataIntents: [],
-    cta: { label: "Boek een proefles", href: "/pricing" },
+    cta: { label: "Boek een proefles", href: "/prijzen" },
   };
 }
 

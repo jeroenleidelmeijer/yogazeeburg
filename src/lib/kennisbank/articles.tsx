@@ -1422,7 +1422,7 @@ function KantoorBody() {
           to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
-          /schedule
+          /rooster
         </Link>
         . Zo kies je een les die past bij je werkdag en voorkom je haast.
       </p>
@@ -1692,7 +1692,7 @@ function KeuzeBody() {
           to="/rooster"
           className="font-medium text-primary underline underline-offset-4 hover:no-underline"
         >
-          /schedule
+          /rooster
         </Link>
         . Begin liever met één realistisch moment per week dan met een ambitieus plan dat na twee
         weken niet meer past.
@@ -2193,7 +2193,7 @@ const prijzenArticle: Article = {
   sources: [
     {
       title: "Yoga Zeeburg — actuele prijzen en voorwaarden",
-      url: "https://www.yogazeeburg.com/pricing",
+      url: "https://www.yogazeeburg.com/prijzen",
     },
     {
       title: "Thrive Yoga & Pilates Zeeburg — tarieven",
@@ -2616,7 +2616,7 @@ const waterArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — actueel lesrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -3258,7 +3258,7 @@ const ijburgArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — actueel rooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -3598,7 +3598,7 @@ const indischeBuurtArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -3913,11 +3913,11 @@ const expatsArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — lesbeschrijvingen",
-      url: "https://www.yogazeeburg.com/classes",
+      url: "https://www.yogazeeburg.com/lessen",
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -4255,7 +4255,7 @@ const cruquiusArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
     {
       title: "Yoga Zeeburg — contact en adres",
@@ -4585,11 +4585,11 @@ const niveauArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — lesbeschrijvingen",
-      url: "https://www.yogazeeburg.com/classes",
+      url: "https://www.yogazeeburg.com/lessen",
     },
     {
       title: "Yoga Zeeburg — regulier weekrooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
   ],
   template: {
@@ -4959,15 +4959,15 @@ const goedeStudioArticle: Article = {
     },
     {
       title: "Yoga Zeeburg — lesbeschrijvingen",
-      url: "https://www.yogazeeburg.com/classes",
+      url: "https://www.yogazeeburg.com/lessen",
     },
     {
       title: "Yoga Zeeburg — regulier rooster",
-      url: "https://www.yogazeeburg.com/schedule",
+      url: "https://www.yogazeeburg.com/rooster",
     },
     {
       title: "Yoga Zeeburg — prijzen en voorwaarden",
-      url: "https://www.yogazeeburg.com/pricing",
+      url: "https://www.yogazeeburg.com/prijzen",
     },
   ],
   template: {
