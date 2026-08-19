@@ -5738,6 +5738,7 @@ export const ARTICLES: Article[] = [
   cruquiusArticle,
   niveauArticle,
   goedeStudioArticle,
+  proeflesPasArticle,
 ];
 
 
