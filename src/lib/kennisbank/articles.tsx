@@ -17,6 +17,22 @@ import niveauHeroAsset from "@/assets/yoga-zeeburg-beginners-gevorderden-hoofdbe
 import niveauInlineAsset from "@/assets/yoga-zeeburg-les-op-jouw-niveau.webp.asset.json";
 import goedeStudioHeroAsset from "@/assets/yoga-goede-yogastudio-hoofdbeeld.webp.asset.json";
 import goedeStudioInlineAsset from "@/assets/yoga-goede-yogastudio-kwaliteitskenmerken.webp.asset.json";
+import proeflesPasHeroAsset from "@/assets/yoga-proefles-introductiepas-hoofdbeeld.webp.asset.json";
+import proeflesPasInlineAsset from "@/assets/yoga-proefles-introductiepas-vergelijken.webp.asset.json";
+
+const PROEFLES_PAS_HERO_IMAGE: ArticleImageRef = {
+  url: proeflesPasHeroAsset.url,
+  alt: "Lege yogamat met één kurkblok en meerdere yogaprops in een rustige ruimte aan het water.",
+  width: 1600,
+  height: 900,
+};
+
+const PROEFLES_PAS_INLINE_IMAGE: ArticleImageRef = {
+  url: proeflesPasInlineAsset.url,
+  alt: "Bovenaanzicht van één yogamat naast een uitgebreidere set matten, blokken, bolster, deken en riem.",
+  width: 1600,
+  height: 900,
+};
 
 const WATER_HERO_IMAGE: ArticleImageRef = {
   url: waterHeroAsset.url,
