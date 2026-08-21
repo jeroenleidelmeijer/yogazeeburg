@@ -42,7 +42,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
   const legacy = listLegacyRefs();
 
   it("exposes exactly the thirteen seeded legacy articles", () => {
-    expect(legacy).toHaveLength(16);
+    expect(legacy).toHaveLength(17);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -62,6 +62,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "yoga-in-zeeburg-lessen-voor-beginners-en-gevorderden",
         "hoe-herken-je-een-goede-yogastudio-kwaliteitskenmerken",
         "yoga-proefles-of-introductiepas-wat-is-slimmer",
+        "rustige-yoga-voor-beginners-welke-les-past-het-beste",
       ].sort(),
     );
   });
