@@ -19,6 +19,24 @@ import goedeStudioHeroAsset from "@/assets/yoga-goede-yogastudio-hoofdbeeld.webp
 import goedeStudioInlineAsset from "@/assets/yoga-goede-yogastudio-kwaliteitskenmerken.webp.asset.json";
 import proeflesPasHeroAsset from "@/assets/yoga-proefles-introductiepas-hoofdbeeld.webp.asset.json";
 import proeflesPasInlineAsset from "@/assets/yoga-proefles-introductiepas-vergelijken.webp.asset.json";
+import rustigeHeroAsset from "@/assets/rustige-yoga-voor-beginners-hoofdbeeld.webp.asset.json";
+import rustigeInlineAsset from "@/assets/rustige-yoga-voor-beginners-leskeuze.webp.asset.json";
+
+const RUSTIGE_HERO_IMAGE: ArticleImageRef = {
+  url: rustigeHeroAsset.url,
+  alt: "Lege groene yogamat met bolster, deken, blokken en yogariem in een rustige ruimte aan het water.",
+  width: 1600,
+  height: 900,
+};
+
+const RUSTIGE_INLINE_IMAGE: ArticleImageRef = {
+  url: rustigeInlineAsset.url,
+  alt: "Drie lege yogamatten met verschillende combinaties van blokken, bolster, deken, riem en meditatiekussen.",
+  width: 1600,
+  height: 900,
+};
+
+
 
 const PROEFLES_PAS_HERO_IMAGE: ArticleImageRef = {
   url: proeflesPasHeroAsset.url,
