@@ -7,13 +7,8 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { IntroPassCTA } from "@/components/site/IntroPassCTA";
 import { sendContactMessage } from "@/lib/contact.functions";
 
-const SUBJECTS = [
-  "Intro Pass",
-  "Memberships and pricing",
-  "Classes and schedule",
-  "Current member question",
-  "Something else",
-] as const;
+
+
 
 export const Route = createFileRoute("/en/contact")({
   head: () => ({

@@ -7,13 +7,8 @@ import { IntroPassCTA } from "@/components/site/IntroPassCTA";
 import { sendContactMessage } from "@/lib/contact.functions";
 import { commercialLinks } from "@/lib/i18n";
 
-const SUBJECTS = [
-  "Intro Pass",
-  "Abonnementen en tarieven",
-  "Lessen en rooster",
-  "Vraag als huidig lid",
-  "Iets anders",
-] as const;
+
+
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
