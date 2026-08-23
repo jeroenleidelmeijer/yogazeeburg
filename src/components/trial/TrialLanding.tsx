@@ -690,8 +690,10 @@ function FinalCta({ locale }: { locale: Locale }) {
         </p>
         <a
           href={`#${FORM_ID}`}
-          className="mt-9 inline-flex items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
+          onClick={scrollToForm}
+          className="mt-9 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
         >
+
           {copy.finalCta}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
