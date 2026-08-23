@@ -276,8 +276,8 @@ function Hero({ locale }: { locale: Locale }) {
   const copy = COPY[locale];
   return (
     <section className="border-b border-border/60 bg-secondary/40">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8">
-        <div>
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:py-16 lg:grid lg:grid-cols-[1.05fr_1fr] lg:gap-x-14 lg:gap-y-10 lg:px-8">
+        <div className="order-1 lg:col-start-1 lg:row-start-1">
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-sm">
             {copy.eyebrow}
           </p>
@@ -295,23 +295,24 @@ function Hero({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-          <img
-            src={TRIAL_IMAGE.url}
-            alt={TRIAL_IMAGE.alt[locale]}
-            width={TRIAL_IMAGE.width}
-            height={TRIAL_IMAGE.height}
-            loading="eager"
-            fetchPriority="high"
-            className="mt-8 aspect-video h-auto w-full rounded-2xl object-cover"
-          />
         </div>
-        <div className="lg:pt-2">
+        <div className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:pt-2">
           <TrialForm locale={locale} />
         </div>
+        <img
+          src={TRIAL_IMAGE.url}
+          alt={TRIAL_IMAGE.alt[locale]}
+          width={TRIAL_IMAGE.width}
+          height={TRIAL_IMAGE.height}
+          loading="lazy"
+          decoding="async"
+          className="order-3 aspect-video h-auto w-full rounded-2xl object-cover lg:col-start-1 lg:row-start-2 lg:self-start"
+        />
       </div>
     </section>
   );
 }
+
 
 type Fields = {
   first_name: string;
