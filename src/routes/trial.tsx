@@ -64,7 +64,6 @@ export const Route = createFileRoute("/trial")({
             priceCurrency: "EUR",
             url: "https://www.yogazeeburg.com/trial",
             availability: "https://schema.org/InStock",
-            eligibleCustomerType: "https://schema.org/NewCustomer",
           },
         }),
       },

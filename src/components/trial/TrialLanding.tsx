@@ -8,6 +8,17 @@ const INTAKE_ENDPOINT = "https://crossfitzeeburgwebsite.lovable.app/api/public/i
 const SPORTBIT_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=45";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 const FORM_ID = "intro-pass-form";
+const FIRST_FIELD_ID = "first_name";
+
+function scrollToForm(event: React.MouseEvent<HTMLAnchorElement>) {
+  if (typeof document === "undefined") return;
+  const form = document.getElementById(FORM_ID);
+  const field = document.getElementById(FIRST_FIELD_ID);
+  if (!form || !field) return;
+  event.preventDefault();
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.setTimeout(() => field.focus({ preventScroll: true }), 450);
+}
 
 export const TRIAL_IMAGE = {
   url: matAsset.url,
@@ -276,8 +287,8 @@ function Hero({ locale }: { locale: Locale }) {
   const copy = COPY[locale];
   return (
     <section className="border-b border-border/60 bg-secondary/40">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8">
-        <div>
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:py-16 lg:grid lg:grid-cols-[1.05fr_1fr] lg:gap-x-14 lg:gap-y-10 lg:px-8">
+        <div className="order-1 lg:col-start-1 lg:row-start-1">
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-sm">
             {copy.eyebrow}
           </p>
@@ -295,19 +306,19 @@ function Hero({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-          <img
-            src={TRIAL_IMAGE.url}
-            alt={TRIAL_IMAGE.alt[locale]}
-            width={TRIAL_IMAGE.width}
-            height={TRIAL_IMAGE.height}
-            loading="eager"
-            fetchPriority="high"
-            className="mt-8 aspect-video h-auto w-full rounded-2xl object-cover"
-          />
         </div>
-        <div className="lg:pt-2">
+        <div className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:pt-2">
           <TrialForm locale={locale} />
         </div>
+        <img
+          src={TRIAL_IMAGE.url}
+          alt={TRIAL_IMAGE.alt[locale]}
+          width={TRIAL_IMAGE.width}
+          height={TRIAL_IMAGE.height}
+          loading="lazy"
+          decoding="async"
+          className="order-3 aspect-video h-auto w-full rounded-2xl object-cover lg:col-start-1 lg:row-start-2 lg:self-start"
+        />
       </div>
     </section>
   );
@@ -410,7 +421,7 @@ function TrialForm({ locale }: { locale: Locale }) {
   return (
     <div
       id={FORM_ID}
-      className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:sticky lg:top-6"
+      className="scroll-mt-20 rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:sticky lg:top-6"
     >
       <h2 className="font-display text-2xl tracking-tight text-foreground">{copy.heading}</h2>
       <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{copy.intro}</p>
@@ -677,7 +688,8 @@ function FinalCta({ locale }: { locale: Locale }) {
         </p>
         <a
           href={`#${FORM_ID}`}
-          className="mt-9 inline-flex items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
+          onClick={scrollToForm}
+          className="mt-9 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
         >
           {copy.finalCta}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
