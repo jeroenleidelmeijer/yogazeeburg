@@ -32,6 +32,7 @@ import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as NlSplatRouteImport } from './routes/nl.$'
 import { Route as KennisbankAlleArtikelenRouteImport } from './routes/kennisbank.alle-artikelen'
 import { Route as KennisbankSlugRouteImport } from './routes/kennisbank.$slug'
+import { Route as EnTrialRouteImport } from './routes/en.trial'
 import { Route as EnSportbitRouteImport } from './routes/en.sportbit'
 import { Route as EnScheduleRouteImport } from './routes/en.schedule'
 import { Route as EnPricingRouteImport } from './routes/en.pricing'
@@ -162,6 +163,11 @@ const KennisbankSlugRoute = KennisbankSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => KennisbankRoute,
 } as any)
+const EnTrialRoute = EnTrialRouteImport.update({
+  id: '/en/trial',
+  path: '/en/trial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnSportbitRoute = EnSportbitRouteImport.update({
   id: '/en/sportbit',
   path: '/en/sportbit',
@@ -266,6 +272,7 @@ export interface FileRoutesByFullPath {
   '/en/pricing': typeof EnPricingRoute
   '/en/schedule': typeof EnScheduleRoute
   '/en/sportbit': typeof EnSportbitRoute
+  '/en/trial': typeof EnTrialRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/kennisbank/alle-artikelen': typeof KennisbankAlleArtikelenRoute
   '/nl/$': typeof NlSplatRoute
@@ -304,6 +311,7 @@ export interface FileRoutesByTo {
   '/en/pricing': typeof EnPricingRoute
   '/en/schedule': typeof EnScheduleRoute
   '/en/sportbit': typeof EnSportbitRoute
+  '/en/trial': typeof EnTrialRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/kennisbank/alle-artikelen': typeof KennisbankAlleArtikelenRoute
   '/nl/$': typeof NlSplatRoute
@@ -344,6 +352,7 @@ export interface FileRoutesById {
   '/en/pricing': typeof EnPricingRoute
   '/en/schedule': typeof EnScheduleRoute
   '/en/sportbit': typeof EnSportbitRoute
+  '/en/trial': typeof EnTrialRoute
   '/kennisbank/$slug': typeof KennisbankSlugRoute
   '/kennisbank/alle-artikelen': typeof KennisbankAlleArtikelenRoute
   '/nl/$': typeof NlSplatRoute
@@ -385,6 +394,7 @@ export interface FileRouteTypes {
     | '/en/pricing'
     | '/en/schedule'
     | '/en/sportbit'
+    | '/en/trial'
     | '/kennisbank/$slug'
     | '/kennisbank/alle-artikelen'
     | '/nl/$'
@@ -423,6 +433,7 @@ export interface FileRouteTypes {
     | '/en/pricing'
     | '/en/schedule'
     | '/en/sportbit'
+    | '/en/trial'
     | '/kennisbank/$slug'
     | '/kennisbank/alle-artikelen'
     | '/nl/$'
@@ -462,6 +473,7 @@ export interface FileRouteTypes {
     | '/en/pricing'
     | '/en/schedule'
     | '/en/sportbit'
+    | '/en/trial'
     | '/kennisbank/$slug'
     | '/kennisbank/alle-artikelen'
     | '/nl/$'
@@ -502,6 +514,7 @@ export interface RootRouteChildren {
   EnPricingRoute: typeof EnPricingRoute
   EnScheduleRoute: typeof EnScheduleRoute
   EnSportbitRoute: typeof EnSportbitRoute
+  EnTrialRoute: typeof EnTrialRoute
   NlSplatRoute: typeof NlSplatRoute
   EnIndexRoute: typeof EnIndexRoute
   NlIndexRoute: typeof NlIndexRoute
@@ -673,6 +686,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KennisbankSlugRouteImport
       parentRoute: typeof KennisbankRoute
     }
+    '/en/trial': {
+      id: '/en/trial'
+      path: '/en/trial'
+      fullPath: '/en/trial'
+      preLoaderRoute: typeof EnTrialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/sportbit': {
       id: '/en/sportbit'
       path: '/en/sportbit'
@@ -823,6 +843,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnPricingRoute: EnPricingRoute,
   EnScheduleRoute: EnScheduleRoute,
   EnSportbitRoute: EnSportbitRoute,
+  EnTrialRoute: EnTrialRoute,
   NlSplatRoute: NlSplatRoute,
   EnIndexRoute: EnIndexRoute,
   NlIndexRoute: NlIndexRoute,

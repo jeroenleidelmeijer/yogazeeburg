@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 /* ------------------------------------------------------------------
    Sportbit checkout links
    ------------------------------------------------------------------ */
-const INTRO_PASS_URL = "/trial";
+const INTRO_PASS_URL = "/en/trial";
 
 const SPORTBIT_WEEKLY_YOGA_URL =
   "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?a=45";
