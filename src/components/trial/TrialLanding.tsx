@@ -423,7 +423,7 @@ function TrialForm({ locale }: { locale: Locale }) {
   return (
     <div
       id={FORM_ID}
-      className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:sticky lg:top-6"
+      className="scroll-mt-20 rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:sticky lg:top-6"
     >
       <h2 className="font-display text-2xl tracking-tight text-foreground">{copy.heading}</h2>
       <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{copy.intro}</p>
