@@ -7,13 +7,8 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { IntroPassCTA } from "@/components/site/IntroPassCTA";
 import { sendContactMessage } from "@/lib/contact.functions";
 
-const SUBJECTS = [
-  "Intro Pass",
-  "Memberships and pricing",
-  "Classes and schedule",
-  "Current member question",
-  "Something else",
-] as const;
+
+
 
 export const Route = createFileRoute("/en/contact")({
   head: () => ({
@@ -154,7 +149,7 @@ function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const subjectRef = useRef<HTMLSelectElement>(null);
+  const subjectRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const [values, setValues] = useState({ name: "", email: "", subject: "", message: "", company: "" });
@@ -168,11 +163,9 @@ function ContactForm() {
     const e: FieldErrors = {};
     const name = values.name.trim();
     const email = values.email.trim();
-    const subject = values.subject.trim();
     const message = values.message.trim();
     if (name.length < 2 || name.length > 100) e.name = "Please enter your name (2–100 characters).";
     if (!email || email.length > 254 || !EMAIL_RE.test(email)) e.email = "Please enter a valid email address.";
-    if (!SUBJECTS.includes(subject as (typeof SUBJECTS)[number])) e.subject = "Please choose a subject.";
     if (message.length < 10 || message.length > 3000)
       e.message = "Please write a message between 10 and 3000 characters.";
     return e;
@@ -308,24 +301,18 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="c-subject" className={labelCls}>What can we help you with?</label>
-          <select
+          <label htmlFor="c-subject" className={labelCls}>Subject (optional)</label>
+          <input
             ref={subjectRef}
             id="c-subject"
             name="subject"
-            required
+            type="text"
+            maxLength={150}
+            autoComplete="off"
             value={values.subject}
             onChange={(e) => setValues((v) => ({ ...v, subject: e.target.value }))}
-            aria-invalid={!!errors.subject}
-            aria-describedby={errors.subject ? "c-subject-err" : undefined}
-            className={`${inputBase} mt-1.5 ${values.subject ? "" : "text-muted-foreground"}`}
-          >
-            <option value="" disabled>Choose a subject</option>
-            {SUBJECTS.map((s) => (
-              <option key={s} value={s} className="text-foreground">{s}</option>
-            ))}
-          </select>
-          {errors.subject && <p id="c-subject-err" className={errorCls}>{errors.subject}</p>}
+            className={`${inputBase} mt-1.5`}
+          />
         </div>
 
         <div>
