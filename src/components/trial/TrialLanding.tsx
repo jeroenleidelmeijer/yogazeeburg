@@ -8,6 +8,18 @@ const INTAKE_ENDPOINT = "https://crossfitzeeburgwebsite.lovable.app/api/public/i
 const SPORTBIT_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=45";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 const FORM_ID = "intro-pass-form";
+const FIRST_FIELD_ID = "first_name";
+
+function scrollToForm(event: React.MouseEvent<HTMLAnchorElement>) {
+  if (typeof document === "undefined") return;
+  const form = document.getElementById(FORM_ID);
+  const field = document.getElementById(FIRST_FIELD_ID);
+  if (!form || !field) return;
+  event.preventDefault();
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.setTimeout(() => field.focus({ preventScroll: true }), 450);
+}
+
 
 export const TRIAL_IMAGE = {
   url: matAsset.url,
