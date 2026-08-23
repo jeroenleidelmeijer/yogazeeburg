@@ -149,7 +149,7 @@ function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const subjectRef = useRef<HTMLSelectElement>(null);
+  const subjectRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const [values, setValues] = useState({ name: "", email: "", subject: "", message: "", company: "" });
@@ -163,11 +163,9 @@ function ContactForm() {
     const e: FieldErrors = {};
     const name = values.name.trim();
     const email = values.email.trim();
-    const subject = values.subject.trim();
     const message = values.message.trim();
     if (name.length < 2 || name.length > 100) e.name = "Vul je naam in (2–100 tekens).";
     if (!email || email.length > 254 || !EMAIL_RE.test(email)) e.email = "Vul een geldig e-mailadres in.";
-    if (!SUBJECTS.includes(subject as (typeof SUBJECTS)[number])) e.subject = "Kies een onderwerp.";
     if (message.length < 10 || message.length > 3000)
       e.message = "Schrijf een bericht tussen de 10 en 3000 tekens.";
     return e;
@@ -303,24 +301,18 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="c-subject" className={labelCls}>Waar kunnen we je mee helpen?</label>
-          <select
+          <label htmlFor="c-subject" className={labelCls}>Onderwerp (optioneel)</label>
+          <input
             ref={subjectRef}
             id="c-subject"
             name="subject"
-            required
+            type="text"
+            maxLength={150}
+            autoComplete="off"
             value={values.subject}
             onChange={(e) => setValues((v) => ({ ...v, subject: e.target.value }))}
-            aria-invalid={!!errors.subject}
-            aria-describedby={errors.subject ? "c-subject-err" : undefined}
-            className={`${inputBase} mt-1.5 ${values.subject ? "" : "text-muted-foreground"}`}
-          >
-            <option value="" disabled>Kies een onderwerp</option>
-            {SUBJECTS.map((s) => (
-              <option key={s} value={s} className="text-foreground">{s}</option>
-            ))}
-          </select>
-          {errors.subject && <p id="c-subject-err" className={errorCls}>{errors.subject}</p>}
+            className={`${inputBase} mt-1.5`}
+          />
         </div>
 
         <div>
