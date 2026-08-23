@@ -1,15 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
 
-const SUBJECTS = [
-  "Intro Pass",
-  "Memberships and pricing",
-  "Classes and schedule",
-  "Current member question",
-  "Something else",
-] as const;
-
-type Subject = (typeof SUBJECTS)[number];
-
 export type ContactInput = {
   name: string;
   email: string;
@@ -20,7 +10,7 @@ export type ContactInput = {
 
 export type ContactResult =
   | { ok: true }
-  | { ok: false; error: string; fieldErrors?: Partial<Record<"name" | "email" | "subject" | "message", string>> };
+  | { ok: false; error: string; fieldErrors?: Partial<Record<"name" | "email" | "message", string>> };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,18 +26,17 @@ function escapeHtml(s: string) {
 function validate(input: ContactInput) {
   const name = (input.name ?? "").trim();
   const email = (input.email ?? "").trim();
-  const subject = (input.subject ?? "").trim();
+  const subject = (input.subject ?? "").trim().slice(0, 150);
   const message = (input.message ?? "").trim();
   const fieldErrors: NonNullable<Extract<ContactResult, { ok: false }>["fieldErrors"]> = {};
 
   if (name.length < 2 || name.length > 100) fieldErrors.name = "Please enter your name (2–100 characters).";
   if (email.length === 0 || email.length > 254 || !EMAIL_RE.test(email))
     fieldErrors.email = "Please enter a valid email address.";
-  if (!SUBJECTS.includes(subject as Subject)) fieldErrors.subject = "Please choose a subject.";
   if (message.length < 10 || message.length > 3000)
     fieldErrors.message = "Please write a message between 10 and 3000 characters.";
 
-  return { fieldErrors, cleaned: { name, email, subject: subject as Subject, message } };
+  return { fieldErrors, cleaned: { name, email, subject, message } };
 }
 
 export const sendContactMessage = createServerFn({ method: "POST" })
@@ -70,13 +59,15 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       return { ok: false, error: "Email service is not configured." };
     }
 
-    const subjectLine = `[Yoga Zeeburg website] ${cleaned.subject} — ${cleaned.name}`;
+    const subjectLine = cleaned.subject
+      ? `[Yoga Zeeburg website] ${cleaned.subject} — ${cleaned.name}`
+      : `[Yoga Zeeburg website] Contactbericht — ${cleaned.name}`;
 
     const html = `<!doctype html><html><body style="font-family:Inter,Arial,sans-serif;color:#1a1a1a;line-height:1.55">
 <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:500;margin:0 0 16px">New contact message</h2>
 <p style="margin:0 0 6px"><strong>Name:</strong> ${escapeHtml(cleaned.name)}</p>
 <p style="margin:0 0 6px"><strong>Email:</strong> ${escapeHtml(cleaned.email)}</p>
-<p style="margin:0 0 6px"><strong>Subject:</strong> ${escapeHtml(cleaned.subject)}</p>
+${cleaned.subject ? `<p style="margin:0 0 6px"><strong>Subject:</strong> ${escapeHtml(cleaned.subject)}</p>` : ""}
 <p style="margin:16px 0 6px"><strong>Message:</strong></p>
 <p style="margin:0 0 16px;white-space:pre-wrap">${escapeHtml(cleaned.message)}</p>
 <hr style="border:none;border-top:1px solid #e5e5e5;margin:20px 0"/>
@@ -88,7 +79,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       ``,
       `Name: ${cleaned.name}`,
       `Email: ${cleaned.email}`,
-      `Subject: ${cleaned.subject}`,
+      ...(cleaned.subject ? [`Subject: ${cleaned.subject}`] : []),
       ``,
       `Message:`,
       cleaned.message,
