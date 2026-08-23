@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YogaStylesRouteImport } from './routes/yoga-styles'
+import { Route as TrialRouteImport } from './routes/trial'
 import { Route as SportbitRouteImport } from './routes/sportbit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScheduleRouteImport } from './routes/schedule'
@@ -49,6 +50,11 @@ import { Route as ApiPublicV1KennisbankSummaryRouteImport } from './routes/api/p
 const YogaStylesRoute = YogaStylesRouteImport.update({
   id: '/yoga-styles',
   path: '/yoga-styles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrialRoute = TrialRouteImport.update({
+  id: '/trial',
+  path: '/trial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SportbitRoute = SportbitRouteImport.update({
@@ -250,6 +256,7 @@ export interface FileRoutesByFullPath {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -287,6 +294,7 @@ export interface FileRoutesByTo {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sportbit': typeof SportbitRoute
+  '/trial': typeof TrialRoute
   '/yoga-styles': typeof YogaStylesRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -366,6 +375,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/sportbit'
+    | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -403,6 +413,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/sportbit'
+    | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -441,6 +452,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/sportbit'
+    | '/trial'
     | '/yoga-styles'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -480,6 +492,7 @@ export interface RootRouteChildren {
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportbitRoute: typeof SportbitRoute
+  TrialRoute: typeof TrialRoute
   YogaStylesRoute: typeof YogaStylesRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -504,6 +517,13 @@ declare module '@tanstack/react-router' {
       path: '/yoga-styles'
       fullPath: '/yoga-styles'
       preLoaderRoute: typeof YogaStylesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trial': {
+      id: '/trial'
+      path: '/trial'
+      fullPath: '/trial'
+      preLoaderRoute: typeof TrialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sportbit': {
@@ -792,6 +812,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportbitRoute: SportbitRoute,
+  TrialRoute: TrialRoute,
   YogaStylesRoute: YogaStylesRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
