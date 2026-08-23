@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const INTRO_URL = "/trial";
+const INTRO_URL = "/en/trial";
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=Cruquiusweg+96F+Amsterdam";
 
 export const Route = createFileRoute("/en/")({

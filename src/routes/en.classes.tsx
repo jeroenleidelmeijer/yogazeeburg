@@ -741,7 +741,7 @@ function ScheduleLink() {
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
-            href="/trial"
+            href="/en/trial"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             Start with 14 days unlimited
