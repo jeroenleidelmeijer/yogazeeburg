@@ -539,7 +539,10 @@ function TrialForm({ locale }: { locale: Locale }) {
         </div>
 
         {general && (
-          <p role="alert" className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-foreground">
+          <p
+            role="alert"
+            className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-foreground"
+          >
             {general}
           </p>
         )}
