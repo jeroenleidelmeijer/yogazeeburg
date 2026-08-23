@@ -220,8 +220,6 @@ export function trialFaq(locale: Locale) {
 }
 
 export function TrialLanding({ locale }: { locale: Locale }) {
-  const copy = COPY[locale];
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <LandingHeader locale={locale} />
@@ -235,7 +233,6 @@ export function TrialLanding({ locale }: { locale: Locale }) {
         <FinalCta locale={locale} />
       </main>
       <LandingFooter locale={locale} />
-      <span className="sr-only">{copy.eyebrow}</span>
     </div>
   );
 }

@@ -14,7 +14,8 @@ export type CommercialPage =
   | "classes"
   | "schedule"
   | "contact"
-  | "sportbit";
+  | "sportbit"
+  | "trial";
 
 export const COMMERCIAL_PATHS: Record<Locale, Record<CommercialPage, string>> = {
   nl: {
@@ -24,6 +25,7 @@ export const COMMERCIAL_PATHS: Record<Locale, Record<CommercialPage, string>> = 
     schedule: "/rooster",
     contact: "/contact",
     sportbit: "/sportbit",
+    trial: "/trial",
   },
   en: {
     home: "/en",
@@ -32,6 +34,7 @@ export const COMMERCIAL_PATHS: Record<Locale, Record<CommercialPage, string>> = 
     schedule: "/en/schedule",
     contact: "/en/contact",
     sportbit: "/en/sportbit",
+    trial: "/en/trial",
   },
 };
 
