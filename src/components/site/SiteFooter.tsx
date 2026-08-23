@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { Locale } from "@/lib/i18n";
 
-const INTRO_URL = "/trial";
+const INTRO_URL = { nl: "/trial", en: "/en/trial" } as const;
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 
 const COPY = {
@@ -150,7 +150,7 @@ export function SiteFooter({ locale = "nl" }: { locale?: Locale }) {
           <div className="text-sm font-medium text-foreground">{copy.start}</div>
           <p className="mt-3 text-sm text-muted-foreground">{copy.startBody}</p>
           <a
-            href={INTRO_URL}
+            href={INTRO_URL[locale]}
             className="mt-4 inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
             {copy.cta}

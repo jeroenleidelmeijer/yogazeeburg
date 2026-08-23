@@ -4,7 +4,7 @@ import { Menu, X, Globe } from "lucide-react";
 import type { CommercialPage, Locale } from "@/lib/i18n";
 import { switchUrl } from "@/lib/i18n";
 
-const INTRO_URL = "/trial";
+const INTRO_URL = { nl: "/trial", en: "/en/trial" } as const;
 
 const NAV = {
   nl: [
@@ -73,7 +73,7 @@ export function SiteHeader({
             {copy.switchLabel}
           </a>
           <a
-            href={INTRO_URL}
+            href={INTRO_URL[locale]}
             className="ml-2 inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-[15px] font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             {copy.cta}
@@ -113,7 +113,7 @@ export function SiteHeader({
               {copy.switchLabel}
             </a>
             <a
-              href={INTRO_URL}
+              href={INTRO_URL[locale]}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
             >
               {copy.cta}
