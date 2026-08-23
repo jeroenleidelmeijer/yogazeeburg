@@ -20,7 +20,6 @@ function scrollToForm(event: React.MouseEvent<HTMLAnchorElement>) {
   window.setTimeout(() => field.focus({ preventScroll: true }), 450);
 }
 
-
 export const TRIAL_IMAGE = {
   url: matAsset.url,
   alt: {
@@ -324,7 +323,6 @@ function Hero({ locale }: { locale: Locale }) {
     </section>
   );
 }
-
 
 type Fields = {
   first_name: string;
@@ -693,7 +691,6 @@ function FinalCta({ locale }: { locale: Locale }) {
           onClick={scrollToForm}
           className="mt-9 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-background px-7 py-4 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-background/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
         >
-
           {copy.finalCta}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
