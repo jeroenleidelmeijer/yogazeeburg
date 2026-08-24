@@ -63,6 +63,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "hoe-herken-je-een-goede-yogastudio-kwaliteitskenmerken",
         "yoga-proefles-of-introductiepas-wat-is-slimmer",
         "rustige-yoga-voor-beginners-welke-les-past-het-beste",
+        "welke-yogastijl-past-bij-mij",
       ].sort(),
     );
   });
