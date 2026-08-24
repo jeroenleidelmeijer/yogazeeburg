@@ -21,6 +21,22 @@ import proeflesPasHeroAsset from "@/assets/yoga-proefles-introductiepas-hoofdbee
 import proeflesPasInlineAsset from "@/assets/yoga-proefles-introductiepas-vergelijken.webp.asset.json";
 import rustigeHeroAsset from "@/assets/rustige-yoga-voor-beginners-hoofdbeeld.webp.asset.json";
 import rustigeInlineAsset from "@/assets/rustige-yoga-voor-beginners-leskeuze.webp.asset.json";
+import yogastijlHeroAsset from "@/assets/welke-yogastijl-past-bij-mij-keuzehulp-hero.webp.asset.json";
+import yogastijlInlineAsset from "@/assets/yogastijlen-rust-balans-beweging.webp.asset.json";
+
+const YOGASTIJL_HERO_IMAGE: ArticleImageRef = {
+  url: yogastijlHeroAsset.url,
+  alt: "Drie lege yogamatten met verschillende hulpmiddelen in een rustige ruimte aan het water",
+  width: 1600,
+  height: 900,
+};
+
+const YOGASTIJL_INLINE_IMAGE: ArticleImageRef = {
+  url: yogastijlInlineAsset.url,
+  alt: "Yogabolster, deken, blokken en yogariem als rustige vergelijking van yogastijlen",
+  width: 1600,
+  height: 900,
+};
 
 const RUSTIGE_HERO_IMAGE: ArticleImageRef = {
   url: rustigeHeroAsset.url,
