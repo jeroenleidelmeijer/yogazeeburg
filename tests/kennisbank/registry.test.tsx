@@ -42,7 +42,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
   const legacy = listLegacyRefs();
 
   it("exposes exactly the thirteen seeded legacy articles", () => {
-    expect(legacy).toHaveLength(18);
+    expect(legacy).toHaveLength(19);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -64,6 +64,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "yoga-proefles-of-introductiepas-wat-is-slimmer",
         "rustige-yoga-voor-beginners-welke-les-past-het-beste",
         "welke-yogastijl-past-bij-mij",
+        "hoe-ziet-een-eerste-yogales-eruit",
       ].sort(),
     );
   });
