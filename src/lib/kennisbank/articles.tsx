@@ -23,6 +23,23 @@ import rustigeHeroAsset from "@/assets/rustige-yoga-voor-beginners-hoofdbeeld.we
 import rustigeInlineAsset from "@/assets/rustige-yoga-voor-beginners-leskeuze.webp.asset.json";
 import yogastijlHeroAsset from "@/assets/welke-yogastijl-past-bij-mij-keuzehulp-hero.webp.asset.json";
 import yogastijlInlineAsset from "@/assets/yogastijlen-rust-balans-beweging.webp.asset.json";
+import eersteLesHeroAsset from "@/assets/eerste-yogales-stap-voor-stap-hero.webp.asset.json";
+import eersteLesInlineAsset from "@/assets/opbouw-eerste-yogales-van-start-tot-savasana.webp.asset.json";
+
+const EERSTE_LES_HERO_IMAGE: ArticleImageRef = {
+  url: eersteLesHeroAsset.url,
+  alt: "Lege yogamat met blokken, bolster en deken klaar voor een eerste yogales aan het water",
+  width: 1600,
+  height: 900,
+};
+
+const EERSTE_LES_INLINE_IMAGE: ArticleImageRef = {
+  url: eersteLesInlineAsset.url,
+  alt: "Yogamat, blokken, riem, bolster en deken als verbeelding van de opbouw van een yogales",
+  width: 1600,
+  height: 900,
+};
+
 
 const YOGASTIJL_HERO_IMAGE: ArticleImageRef = {
   url: yogastijlHeroAsset.url,
