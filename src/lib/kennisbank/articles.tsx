@@ -7459,6 +7459,8 @@ export const ARTICLES: Article[] = [
   rustigeYogaArticle,
   yogastijlArticle,
   eersteLesArticle,
+  actieveYogaArticle,
+
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
