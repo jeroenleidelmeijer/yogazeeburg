@@ -25,6 +25,24 @@ import yogastijlHeroAsset from "@/assets/welke-yogastijl-past-bij-mij-keuzehulp-
 import yogastijlInlineAsset from "@/assets/yogastijlen-rust-balans-beweging.webp.asset.json";
 import eersteLesHeroAsset from "@/assets/eerste-yogales-stap-voor-stap-hero.webp.asset.json";
 import eersteLesInlineAsset from "@/assets/opbouw-eerste-yogales-van-start-tot-savasana.webp.asset.json";
+import actieveHeroAsset from "@/assets/actieve-yoga-beginners-hero.webp.asset.json";
+import actieveInlineAsset from "@/assets/actieve-yoga-beginners-benodigdheden.webp.asset.json";
+
+const ACTIEVE_HERO_IMAGE: ArticleImageRef = {
+  url: actieveHeroAsset.url,
+  alt: "Lege groene yogamat met twee kurkblokken en een gevouwen deken in zacht ochtendlicht.",
+  width: 1536,
+  height: 1024,
+};
+
+const ACTIEVE_INLINE_IMAGE: ArticleImageRef = {
+  url: actieveInlineAsset.url,
+  alt: "Opgerolde blauwe yogamat met kurkblokken en een yogariem, klaar voor een actieve beginnersles.",
+  width: 1536,
+  height: 1024,
+};
+
+
 
 const EERSTE_LES_HERO_IMAGE: ArticleImageRef = {
   url: eersteLesHeroAsset.url,
