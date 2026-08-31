@@ -8012,7 +8012,7 @@ export const ARTICLES: Article[] = [
   yogastijlArticle,
   eersteLesArticle,
   actieveYogaArticle,
-
+  beginnenMetYogaArticle,
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
