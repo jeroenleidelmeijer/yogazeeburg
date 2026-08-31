@@ -27,6 +27,23 @@ import eersteLesHeroAsset from "@/assets/eerste-yogales-stap-voor-stap-hero.webp
 import eersteLesInlineAsset from "@/assets/opbouw-eerste-yogales-van-start-tot-savasana.webp.asset.json";
 import actieveHeroAsset from "@/assets/actieve-yoga-beginners-hero.webp.asset.json";
 import actieveInlineAsset from "@/assets/actieve-yoga-beginners-benodigdheden.webp.asset.json";
+import beginnenHeroAsset from "@/assets/beginnen-met-yoga-hero.webp.asset.json";
+import beginnenInlineAsset from "@/assets/beginnen-met-yoga-eerste-stappen.webp.asset.json";
+
+const BEGINNEN_HERO_IMAGE: ArticleImageRef = {
+  url: beginnenHeroAsset.url,
+  alt: "Een lege yogamat met blokken, deken en riem in een rustige lichte ruimte, klaar voor een eerste yogales.",
+  width: 1536,
+  height: 1024,
+};
+
+const BEGINNEN_INLINE_IMAGE: ArticleImageRef = {
+  url: beginnenInlineAsset.url,
+  alt: "Een opgerolde yogamat, twee blokken, een deken, yogariem en waterfles voor een eerste yogales.",
+  width: 1536,
+  height: 1024,
+};
+
 
 const ACTIEVE_HERO_IMAGE: ArticleImageRef = {
   url: actieveHeroAsset.url,
