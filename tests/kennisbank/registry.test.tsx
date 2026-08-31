@@ -66,6 +66,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "welke-yogastijl-past-bij-mij",
         "hoe-ziet-een-eerste-yogales-eruit",
         "actieve-yoga-voor-beginners-waar-begin-je",
+        "beginnen-met-yoga-alles-wat-je-moet-weten",
 
       ].sort(),
     );
