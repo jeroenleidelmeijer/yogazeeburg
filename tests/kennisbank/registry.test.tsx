@@ -42,7 +42,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
   const legacy = listLegacyRefs();
 
   it("exposes exactly the thirteen seeded legacy articles", () => {
-    expect(legacy).toHaveLength(21);
+    expect(legacy).toHaveLength(22);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -67,6 +67,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "hoe-ziet-een-eerste-yogales-eruit",
         "actieve-yoga-voor-beginners-waar-begin-je",
         "beginnen-met-yoga-alles-wat-je-moet-weten",
+        "hoe-lang-duurt-een-yogales",
 
       ].sort(),
     );
