@@ -29,6 +29,8 @@ import actieveHeroAsset from "@/assets/actieve-yoga-beginners-hero.webp.asset.js
 import actieveInlineAsset from "@/assets/actieve-yoga-beginners-benodigdheden.webp.asset.json";
 import beginnenHeroAsset from "@/assets/beginnen-met-yoga-hero.webp.asset.json";
 import beginnenInlineAsset from "@/assets/beginnen-met-yoga-eerste-stappen.webp.asset.json";
+import lesduurHeroAsset from "@/assets/hoe-lang-duurt-een-yogales-hero.webp.asset.json";
+import lesduurInlineAsset from "@/assets/yogales-duur-opbouw-en-ontspanning.webp.asset.json";
 
 const BEGINNEN_HERO_IMAGE: ArticleImageRef = {
   url: beginnenHeroAsset.url,
@@ -43,6 +45,21 @@ const BEGINNEN_INLINE_IMAGE: ArticleImageRef = {
   width: 1536,
   height: 1024,
 };
+
+const LESDUUR_HERO_IMAGE: ArticleImageRef = {
+  url: lesduurHeroAsset.url,
+  alt: "Lege yogamat met bolster en blokken in zacht daglicht als rustige voorbereiding op een yogales.",
+  width: 1536,
+  height: 1024,
+};
+
+const LESDUUR_INLINE_IMAGE: ArticleImageRef = {
+  url: lesduurInlineAsset.url,
+  alt: "Yogamat, blokken, deken en een zandloper als verbeelding van de duur en opbouw van een yogales.",
+  width: 1536,
+  height: 1024,
+};
+
 
 
 const ACTIEVE_HERO_IMAGE: ArticleImageRef = {
