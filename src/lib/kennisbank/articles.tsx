@@ -31,6 +31,23 @@ import beginnenHeroAsset from "@/assets/beginnen-met-yoga-hero.webp.asset.json";
 import beginnenInlineAsset from "@/assets/beginnen-met-yoga-eerste-stappen.webp.asset.json";
 import lesduurHeroAsset from "@/assets/hoe-lang-duurt-een-yogales-hero.webp.asset.json";
 import lesduurInlineAsset from "@/assets/yogales-duur-opbouw-en-ontspanning.webp.asset.json";
+import aanwezigHeroAsset from "@/assets/hoe-vroeg-aanwezig-yogales-hero.webp.asset.json";
+import aanwezigInlineAsset from "@/assets/yogales-voorbereiding-op-tijd.webp.asset.json";
+
+const AANWEZIG_HERO_IMAGE: ArticleImageRef = {
+  url: aanwezigHeroAsset.url,
+  alt: "Rustige lege entree met een klaargelegde yogamat, blokken en deken vóór een yogales.",
+  width: 1536,
+  height: 1024,
+};
+
+const AANWEZIG_INLINE_IMAGE: ArticleImageRef = {
+  url: aanwezigInlineAsset.url,
+  alt: "Een yogamat, blokken, handdoek, waterfles, tas en sleutels liggen klaar voor vertrek naar een yogales.",
+  width: 1536,
+  height: 1024,
+};
+
 
 const BEGINNEN_HERO_IMAGE: ArticleImageRef = {
   url: beginnenHeroAsset.url,
