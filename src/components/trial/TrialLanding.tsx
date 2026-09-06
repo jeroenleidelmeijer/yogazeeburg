@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Globe } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import matAsset from "@/assets/yogamat-bolster-water.webp.asset.json";
 
-const INTAKE_ENDPOINT = "https://crossfitzeeburgwebsite.lovable.app/api/public/intake/yoga-trial";
+const INTAKE_ENDPOINT = "https://crossfitzeeburg.com/api/public/intake/yoga-trial";
 const SPORTBIT_URL = "https://crossfitzeeburg.sportbitapp.nl/web/nl/registreren/lidmaatschap?r=45";
 const CONTACT_EMAIL = "hello@yogazeeburg.com";
 const FORM_ID = "intro-pass-form";
