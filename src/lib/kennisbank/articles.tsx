@@ -8672,7 +8672,7 @@ const groepsPriveArticle: Article = {
     { id: "bij-yoga-zeeburg", label: "Wat kun je bij Yoga Zeeburg kiezen?" },
     { id: "beslischeck", label: "Een simpele beslischeck" },
     { id: "faq", label: "Veelgestelde vragen" },
-    { id: "conclusie", label: "Klaar om te ervaren wat bij je past?" },
+    { id: "cta-groepsles-of-priveles", label: "Klaar om te ervaren wat bij je past?" },
   ],
   faqs: [
     {
@@ -9030,6 +9030,7 @@ export const ARTICLES: Article[] = [
   beginnenMetYogaArticle,
   lesduurArticle,
   aanwezigArticle,
+  groepsPriveArticle,
 
 ];
 
