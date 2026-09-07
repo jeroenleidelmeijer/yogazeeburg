@@ -33,6 +33,22 @@ import lesduurHeroAsset from "@/assets/hoe-lang-duurt-een-yogales-hero.webp.asse
 import lesduurInlineAsset from "@/assets/yogales-duur-opbouw-en-ontspanning.webp.asset.json";
 import aanwezigHeroAsset from "@/assets/hoe-vroeg-aanwezig-yogales-hero.webp.asset.json";
 import aanwezigInlineAsset from "@/assets/yogales-voorbereiding-op-tijd.webp.asset.json";
+import groepsPriveHeroAsset from "@/assets/groepsles-yoga-of-priveles-hero.webp.asset.json";
+import groepsPriveInlineAsset from "@/assets/groepsles-en-priveyoga-vergeleken.webp.asset.json";
+
+const GROEPS_PRIVE_HERO_IMAGE: ArticleImageRef = {
+  url: groepsPriveHeroAsset.url,
+  alt: "Meerdere lege yogamatten met blokken in een rustige lichte ruimte, klaar voor een groepsles.",
+  width: 1536,
+  height: 1024,
+};
+
+const GROEPS_PRIVE_INLINE_IMAGE: ArticleImageRef = {
+  url: groepsPriveInlineAsset.url,
+  alt: "Een rij yogamatten naast een afzonderlijk ingerichte mat als rustige vergelijking tussen groepsles en privéles.",
+  width: 1536,
+  height: 1024,
+};
 
 const AANWEZIG_HERO_IMAGE: ArticleImageRef = {
   url: aanwezigHeroAsset.url,
