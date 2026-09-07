@@ -279,7 +279,7 @@ export type Article = {
   description: string;
   intro?: string;
   category: ArticleCategory;
-  type: "local-guide" | "explainer" | "how-to";
+  type: "local-guide" | "explainer" | "how-to" | "comparison";
   pillar: boolean;
   publishedAt: string; // ISO date
   updatedAt: string; // ISO date
