@@ -86,7 +86,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
 
   it("keeps every legacy article discoverable via case-insensitive search", () => {
     const hits = searchAndFilter(legacy, "Amsterdam Oost", null);
-    expect(hits).toHaveLength(14);
+    expect(hits).toHaveLength(15);
   });
 });
 
