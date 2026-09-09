@@ -41,12 +41,13 @@ function fakeDbRef(overrides: Partial<ArticleRef> = {}): ArticleRef {
 describe("Yoga Gids — legacy regression (articles 1–14)", () => {
   const legacy = listLegacyRefs();
 
-  it("exposes exactly the thirteen seeded legacy articles", () => {
-    expect(legacy).toHaveLength(24);
+  it("exposes exactly the twenty-five seeded legacy articles", () => {
+    expect(legacy).toHaveLength(25);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
         "nederlandse-of-engelse-yogales-in-amsterdam-wat-past-bij-jou",
+        "kan-ik-alleen-naar-een-yogales-komen",
         "proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten",
         "wat-kost-yoga-in-amsterdam-en-waar-betaal-je-voor",
         "yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou",
