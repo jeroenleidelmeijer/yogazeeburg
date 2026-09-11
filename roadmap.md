@@ -1,5 +1,5 @@
 # Roadmap
 
-- [ ] Publiceer planningartikel 26 atomisch vanuit het gesloten pakket.
-- [ ] Valideer volledige tests, typecheck en productiebuild.
-- [ ] Deploy, voer live-QA uit en rond database-status fail-closed af.
+- [x] Publiceer planningartikel 26 atomisch vanuit het gesloten pakket.
+- [x] Valideer volledige tests, typecheck en productiebuild.
+- [x] Deploy, voer live-QA uit en rond database-status fail-closed af.
