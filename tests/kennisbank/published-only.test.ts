@@ -142,7 +142,7 @@ describe("listPublishedRefs — published-only merge", () => {
   it("preserves legacy articles when the DB has zero rows", async () => {
     const { listPublishedRefs } = await withRows([]);
     const refs = await listPublishedRefs();
-    expect(refs).toHaveLength(25);
+    expect(refs).toHaveLength(26);
     for (const r of refs) expect(r.source).toBe("legacy");
   });
 });
