@@ -16,11 +16,7 @@
 
 import { ARTICLES } from "./articles";
 import { CATEGORY_META, legacyArticleToRef, listLegacyRefs } from "./registry";
-import type {
-  ArticleRef,
-  DbArticleViewModel,
-  LegacyArticleSeo,
-} from "./types";
+import type { ArticleRef, DbArticleViewModel, LegacyArticleSeo } from "./types";
 
 export { CATEGORY_META, legacyArticleToRef, listLegacyRefs };
 
@@ -53,8 +49,7 @@ interface PlacementRowDb {
 
 const ARTICLE_SELECT =
   "id, project_id, category, cluster, primary_keyword, original_title, final_title";
-const ROW_SELECT =
-  `id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(${ARTICLE_SELECT})`;
+const ROW_SELECT = `id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(${ARTICLE_SELECT})`;
 
 /**
  * Read every published placement joined with its publication_articles row
@@ -170,8 +165,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
   const categorySlug =
     (row.publication_articles?.category && String(row.publication_articles.category)) ||
     "yoga-amsterdam-oost";
-  const categoryTitle =
-    CATEGORY_META[categorySlug]?.title ?? "Yoga in Amsterdam Oost";
+  const categoryTitle = CATEGORY_META[categorySlug]?.title ?? "Yoga in Amsterdam Oost";
 
   const faq = Array.isArray(pkg.faq) ? (pkg.faq as { question: string; answer: string }[]) : [];
   const internalLinks = Array.isArray(pkg.internalLinks)
@@ -193,8 +187,8 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     | { sources?: { title?: unknown; url?: unknown; type?: unknown }[] }
     | undefined;
   const sources: { title: string; url: string }[] = Array.isArray(sourcesPack?.sources)
-    ? sourcesPack!.sources!
-        .filter(
+    ? sourcesPack!
+        .sources!.filter(
           (s) =>
             typeof s?.title === "string" &&
             typeof s?.url === "string" &&

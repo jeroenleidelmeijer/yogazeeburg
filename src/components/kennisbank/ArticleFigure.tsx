@@ -35,10 +35,7 @@ export function ArticleFigure({
         decoding={priority ? "sync" : "async"}
         className="aspect-video h-auto w-full rounded-2xl object-cover"
       />
-      {caption && (
-        <figcaption className="mt-3 text-sm text-muted-foreground">{caption}</figcaption>
-      )}
+      {caption && <figcaption className="mt-3 text-sm text-muted-foreground">{caption}</figcaption>}
     </figure>
   );
 }
-

@@ -22,17 +22,13 @@ export function ArticleCard({ article: a }: { article: ArticleRef }) {
         <h3 className="mt-3 font-display text-xl font-medium leading-snug text-foreground">
           {a.title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          {a.description}
-        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.description}</p>
         <div className="mt-5 flex items-center justify-between text-sm">
           <span className="inline-flex items-center gap-1.5 text-muted-foreground">
             <Clock className="h-4 w-4" aria-hidden="true" />
             {a.readingTimeMin} min lezen
           </span>
-          <span className="font-medium text-primary group-hover:underline">
-            Lees artikel →
-          </span>
+          <span className="font-medium text-primary group-hover:underline">Lees artikel →</span>
         </div>
       </Link>
     </li>

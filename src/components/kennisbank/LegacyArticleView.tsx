@@ -18,13 +18,7 @@ import {
   TocBlock,
 } from "@/components/kennisbank/ArticleShell";
 
-export function LegacyArticleView({
-  slug,
-  related,
-}: {
-  slug: string;
-  related: ArticleRef[];
-}) {
+export function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRef[] }) {
   const a = getArticleBySlug(slug);
   if (!a) throw notFound();
   const Body = a.body;
