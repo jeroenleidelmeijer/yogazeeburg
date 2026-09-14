@@ -14,7 +14,7 @@ export const Route = createFileRoute("/sportbit")({
       {
         name: "description",
         content:
-          "Zo gebruik je Sportbit bij Yoga Zeeburg: kies het juiste rooster, boek je les, gebruik de wachtlijst en zeg op tijd af.",
+          "Zo gebruik je Sportbit bij Yoga Zeeburg: kies het juiste rooster, boek je yogales tot twee weken vooruit, gebruik de wachtlijst en zeg op tijd af.",
       },
       { property: "og:title", content: "Sportbit-uitleg — Yoga Zeeburg" },
       {
