@@ -88,8 +88,18 @@ export const Route = createFileRoute("/sportbit")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogazeeburg.com/" },
-            { "@type": "ListItem", position: 2, name: "Sportbit", item: "https://www.yogazeeburg.com/sportbit" },
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.yogazeeburg.com/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Sportbit",
+              item: "https://www.yogazeeburg.com/sportbit",
+            },
           ],
         }),
       },
@@ -123,8 +133,8 @@ function Hero() {
           Zo gebruik je Sportbit bij Yoga Zeeburg
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Sportbit is ons boekingssysteem: boek een les, zet jezelf op de wachtlijst en zeg tot
-          twee uur van tevoren af. Zo werkt het, stap voor stap.
+          Sportbit is ons boekingssysteem: boek een les, zet jezelf op de wachtlijst en zeg tot twee
+          uur van tevoren af. Zo werkt het, stap voor stap.
         </p>
       </div>
     </section>
@@ -147,9 +157,8 @@ function Steps() {
       body: (
         <>
           <p>
-            Je kunt de Sportbit-app gebruiken op iPhone of Android, of Sportbit
-            openen in je browser. Beide werken hetzelfde — kies wat het beste
-            bij je past.
+            Je kunt de Sportbit-app gebruiken op iPhone of Android, of Sportbit openen in je
+            browser. Beide werken hetzelfde — kies wat het beste bij je past.
           </p>
           <div className="mt-5">
             <a
@@ -172,13 +181,13 @@ function Steps() {
       body: (
         <>
           <p>
-            In Sportbit vind je ook de roosters van CrossFit Zeeburg. Wissel
-            bovenin de app eerst naar <strong className="font-medium text-foreground">Yoga Zeeburg</strong> voordat
-            je iets boekt. Dit is de meest gemaakte fout — check het elke keer.
+            In Sportbit vind je ook de roosters van CrossFit Zeeburg. Wissel bovenin de app eerst
+            naar <strong className="font-medium text-foreground">Yoga Zeeburg</strong> voordat je
+            iets boekt. Dit is de meest gemaakte fout — check het elke keer.
           </p>
           <div className="mt-5 rounded-lg border-l-2 border-accent bg-secondary/60 px-5 py-4 text-sm text-foreground/90">
-            Tip: zie je CrossFit-lessen? Dan sta je nog op het verkeerde
-            rooster. Tik bovenin op de roosternaam en kies Yoga Zeeburg.
+            Tip: zie je CrossFit-lessen? Dan sta je nog op het verkeerde rooster. Tik bovenin op de
+            roosternaam en kies Yoga Zeeburg.
           </div>
         </>
       ),
@@ -189,9 +198,8 @@ function Steps() {
       title: "Boek je les",
       body: (
         <p>
-          Je kunt lessen tot twee weken van tevoren boeken. Elke dag komt
-          dezelfde weekdag twee weken later beschikbaar — een dinsdag opent dus
-          elke dinsdag.
+          Je kunt lessen tot twee weken van tevoren boeken. Elke dag komt dezelfde weekdag twee
+          weken later beschikbaar — een dinsdag opent dus elke dinsdag.
         </p>
       ),
     },
@@ -202,19 +210,17 @@ function Steps() {
       body: (
         <>
           <p>
-            Is een les vol, zet je dan op de wachtlijst. Er komen vaker plekken
-            vrij dan je denkt.
+            Is een les vol, zet je dan op de wachtlijst. Er komen vaker plekken vrij dan je denkt.
           </p>
           <ul className="mt-4 space-y-2 text-foreground/90">
             <li>
-              <span className="font-medium text-foreground">Meer dan 2 uur van tevoren:</span>{" "}
-              als iemand afzegt, schuift de eerste op de wachtlijst automatisch
-              door naar de les.
+              <span className="font-medium text-foreground">Meer dan 2 uur van tevoren:</span> als
+              iemand afzegt, schuift de eerste op de wachtlijst automatisch door naar de les.
             </li>
             <li>
               <span className="font-medium text-foreground">Minder dan 2 uur van tevoren:</span>{" "}
-              iedereen op de wachtlijst krijgt een melding en e-mail. Wie het
-              eerst boekt, heeft de plek.
+              iedereen op de wachtlijst krijgt een melding en e-mail. Wie het eerst boekt, heeft de
+              plek.
             </li>
           </ul>
         </>
@@ -227,12 +233,11 @@ function Steps() {
       body: (
         <>
           <p>
-            Je kunt tot twee uur van tevoren afzeggen zonder een credit te
-            verliezen. Afzeggen binnen twee uur kost een credit.
+            Je kunt tot twee uur van tevoren afzeggen zonder een credit te verliezen. Afzeggen
+            binnen twee uur kost een credit.
           </p>
           <p className="mt-3">
-            Zeg zo vroeg mogelijk af, zodat iemand op de wachtlijst mee kan
-            doen.
+            Zeg zo vroeg mogelijk af, zodat iemand op de wachtlijst mee kan doen.
           </p>
         </>
       ),
@@ -244,8 +249,8 @@ function Steps() {
       body: (
         <>
           <p>
-            Loop je vast bij het boeken, je lidmaatschap of inloggen in
-            Sportbit? Stuur ons een kort berichtje, dan helpen we je verder.
+            Loop je vast bij het boeken, je lidmaatschap of inloggen in Sportbit? Stuur ons een kort
+            berichtje, dan helpen we je verder.
           </p>
           <div className="mt-5">
             <a
@@ -267,14 +272,9 @@ function Steps() {
           {steps.map((s) => {
             const Icon = s.icon;
             return (
-              <li
-                key={s.n}
-                className="grid gap-6 md:grid-cols-[8rem_1fr] md:gap-10"
-              >
+              <li key={s.n} className="grid gap-6 md:grid-cols-[8rem_1fr] md:gap-10">
                 <div className="flex items-center gap-3 md:block">
-                  <div className="font-display text-4xl text-accent md:text-5xl">
-                    {s.n}
-                  </div>
+                  <div className="font-display text-4xl text-accent md:text-5xl">{s.n}</div>
                   <Icon className="h-6 w-6 text-muted-foreground md:mt-3" aria-hidden />
                 </div>
                 <div>

@@ -128,14 +128,19 @@ function CategoryPage() {
       <main className="flex-1">
         <section className="border-b border-border/60 bg-secondary/30">
           <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 md:py-16 lg:px-8">
-            <p className="font-sans text-sm font-medium uppercase tracking-widest text-primary">Yoga Gids</p>
-            <h1 className="mt-3 font-display text-4xl font-medium tracking-tight text-foreground sm:text-5xl">{title ?? "Categorie"}</h1>
+            <p className="font-sans text-sm font-medium uppercase tracking-widest text-primary">
+              Yoga Gids
+            </p>
+            <h1 className="mt-3 font-display text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+              {title ?? "Categorie"}
+            </h1>
             {intro && articles.length > 0 && (
               <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{intro}</p>
             )}
             {articles.length === 0 && (
               <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-                We werken aan de artikelen voor deze categorie. Kom binnenkort terug of bekijk de andere onderwerpen in de Yoga Gids.
+                We werken aan de artikelen voor deze categorie. Kom binnenkort terug of bekijk de
+                andere onderwerpen in de Yoga Gids.
               </p>
             )}
           </div>
@@ -143,11 +148,18 @@ function CategoryPage() {
         <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           {articles.length > 0 ? (
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((a: ArticleRef) => <ArticleCard key={a.slug} article={a} />)}
+              {articles.map((a: ArticleRef) => (
+                <ArticleCard key={a.slug} article={a} />
+              ))}
             </ul>
           ) : (
             <div className="text-center">
-              <Link to="/kennisbank" className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">Terug naar Yoga Gids</Link>
+              <Link
+                to="/kennisbank"
+                className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              >
+                Terug naar Yoga Gids
+              </Link>
             </div>
           )}
         </section>

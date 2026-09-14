@@ -40,7 +40,8 @@ export const CATEGORIES: CategoryMeta[] = [
       "Beginnen met yoga zonder stress: lees hoe een eerste les verloopt, wat je nodig hebt, welke les bij je past en hoe je rustig een vaste routine opbouwt.",
     filters: ["beginner"],
     keywords: ["beginner", "starten", "eerste les", "proefles", "basics"],
-    ogImagePath: "/__l5e/assets-v1/bb0a459e-ae0f-409f-8350-cf4e621e57c9/beginnen-met-yoga-hero.webp",
+    ogImagePath:
+      "/__l5e/assets-v1/bb0a459e-ae0f-409f-8350-cf4e621e57c9/beginnen-met-yoga-hero.webp",
   },
   {
     slug: "yogastijlen",
