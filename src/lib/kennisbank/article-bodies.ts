@@ -87,24 +87,31 @@ const promises = new Map<string, Promise<Article | undefined>>();
  * HTML and hydrates the boundary once the body chunk has arrived. No bodies in
  * loaderData, no client-only content and still one chunk per article.
  */
-export async function loadLegacyArticle(slug: string): Promise<Article | undefined> {
-  const cached = cache.get(slug);
-  if (cached) return cached;
-  const inflight = pending.get(slug);
-  if (inflight) return inflight;
+export function loadLegacyArticle(slug: string): Promise<Article | undefined> {
+  const existing = promises.get(slug);
+  if (existing) return existing;
+
   const loader = ARTICLE_BODY_LOADERS[slug];
-  if (!loader) return undefined;
+  if (!loader) {
+    // Cache the miss too: an unknown slug must also return one stable promise,
+    // otherwise a suspending renderer would loop forever instead of reaching
+    // the notFound() branch.
+    const missing = Promise.resolve(undefined);
+    promises.set(slug, missing);
+    return missing;
+  }
+
   const promise = loader()
     .then((mod) => {
       cache.set(slug, mod.article);
-      pending.delete(slug);
       return mod.article as Article | undefined;
     })
     .catch((error: unknown) => {
-      pending.delete(slug);
+      // Allow a retry after a failed chunk load (e.g. a network blip).
+      promises.delete(slug);
       throw error;
     });
-  pending.set(slug, promise);
+  promises.set(slug, promise);
   return promise;
 }
 
@@ -113,11 +120,7 @@ export async function loadLegacyArticle(slug: string): Promise<Article | undefin
  * repeated calls during (re-)render return the identical promise instance.
  */
 export function getLegacyArticlePromise(slug: string): Promise<Article | undefined> {
-  const inflight = pending.get(slug);
-  if (inflight) return inflight;
-  const started = loadLegacyArticle(slug);
-  if (!pending.has(slug)) pending.set(slug, started);
-  return started;
+  return loadLegacyArticle(slug);
 }
 
 /** Synchronous read of an article already loaded by `loadLegacyArticle`. */
