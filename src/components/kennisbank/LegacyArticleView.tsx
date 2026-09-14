@@ -1,13 +1,14 @@
 /**
  * Renderer for the legacy (JSX-body) Yoga Gids articles.
  *
- * This is the ONLY client module that imports `@/lib/kennisbank/articles`, so
- * the large article bodies live in a lazily loaded route-component chunk and
- * never in the initial bundle of commercial pages, the hub or category pages.
- * Rendering behaviour is unchanged.
+ * Reads the article synchronously from the per-slug cache that the route
+ * loader has already filled via `loadLegacyArticle`, so only this one
+ * article's body chunk (and its own image assets) is ever downloaded — never
+ * the other 26 — and SSR still renders the full article HTML without a
+ * Suspense shell. Rendering behaviour is unchanged.
  */
 import { notFound } from "@tanstack/react-router";
-import { getArticleBySlug } from "@/lib/kennisbank/articles";
+import { getLoadedLegacyArticle } from "@/lib/kennisbank/article-bodies";
 import { ArticleFigure } from "@/components/kennisbank/ArticleFigure";
 import type { ArticleRef } from "@/lib/kennisbank/types";
 import {
