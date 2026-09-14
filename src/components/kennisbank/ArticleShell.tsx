@@ -245,7 +245,13 @@ export function TocBlock({ toc }: { toc: { id: string; label: string }[] }) {
   );
 }
 
-export function SourcesList({ sources }: { sources: { title: string; url: string }[] }) {
+export function SourcesList({
+  sources,
+  nofollow = true,
+}: {
+  sources: { title: string; url: string }[];
+  nofollow?: boolean;
+}) {
   if (!sources || sources.length === 0) return null;
   return (
     <section aria-labelledby="bronnen-heading" className="mt-14">
@@ -261,7 +267,7 @@ export function SourcesList({ sources }: { sources: { title: string; url: string
             <a
               href={s.url}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel={nofollow ? "noopener noreferrer nofollow" : "noopener noreferrer"}
               className="text-primary underline underline-offset-4 hover:no-underline"
             >
               {s.title}

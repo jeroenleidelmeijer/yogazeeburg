@@ -50,7 +50,7 @@ export function LegacyArticleView({
       {a.template.showFAQ && <FaqList faqs={a.faqs} />}
       {a.template.showRelated && <RelatedGrid related={related} />}
       {a.template.showSources && a.sources && a.sources.length > 0 && (
-        <SourcesList sources={a.sources} />
+        <SourcesList sources={a.sources} nofollow={false} />
       )}
     </ArticleShell>
   );
