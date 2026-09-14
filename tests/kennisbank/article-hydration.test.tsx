@@ -20,11 +20,10 @@ import { LegacyArticleView } from "@/components/kennisbank/LegacyArticleView";
 const SLUG = "welke-yogastijl-past-bij-mij";
 
 async function freshBodies() {
-  const { default: _ } = { default: null };
-  void _;
-  // Fresh copy of the module so `cache`/`pending` start empty.
-  const mod = await import(`@/lib/kennisbank/article-bodies?cold=${Math.random()}`);
-  return mod as typeof import("@/lib/kennisbank/article-bodies");
+  // Fresh copy of the module so `cache`/`pending` start empty, mirroring the
+  // browser right after hydration.
+  vi.resetModules();
+  return await import("@/lib/kennisbank/article-bodies");
 }
 
 describe("legacy article hydration path", () => {
