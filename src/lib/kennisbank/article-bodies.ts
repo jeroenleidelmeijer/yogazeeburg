@@ -68,7 +68,10 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
 
 const cache = new Map<string, Article>();
-const pending = new Map<string, Promise<Article | undefined>>();
+// One promise per slug, kept forever on success so repeated calls during a
+// (re-)render hand React's `use()` the identical instance. Only a rejected
+// promise is dropped, so a failed chunk load can be retried.
+const promises = new Map<string, Promise<Article | undefined>>();
 
 /**
  * Loads (and caches) one legacy article.
