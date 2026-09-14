@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { listPublishedArticlesFn, resolveArticleBySlugFn } from "@/lib/kennisbank/data.functions";
+import { loadLegacyArticle } from "@/lib/kennisbank/article-bodies";
 import { related as relatedRefs } from "@/lib/kennisbank/compose";
 import type {
   ArticleRef,
