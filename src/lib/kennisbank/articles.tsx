@@ -9788,6 +9788,7 @@ export const ARTICLES: Article[] = [
   groepsPriveArticle,
   alleenArticle,
   onlineOfStudioArticle,
+  vragenEersteLesArticle,
 
 ];
 

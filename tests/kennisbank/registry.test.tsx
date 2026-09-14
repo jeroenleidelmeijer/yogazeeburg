@@ -42,7 +42,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
   const legacy = listLegacyRefs();
 
   it("exposes exactly the twenty-six seeded legacy articles", () => {
-    expect(legacy).toHaveLength(26);
+    expect(legacy).toHaveLength(27);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -72,6 +72,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "hoe-vroeg-moet-je-aanwezig-zijn-voor-een-yogales",
         "groepsles-yoga-of-priveles-wat-past-bij-jou",
         "online-yoga-of-yogales-in-de-studio-voor-en-nadelen",
+        "welke-vragen-stel-je-voor-je-eerste-yogales",
 
       ].sort(),
     );
