@@ -88,8 +88,8 @@ function Hero() {
           Yoga Zeeburg · Amsterdam Oost
         </span>
         <h1 className="mx-auto mt-7 max-w-4xl font-display text-[2.5rem] leading-[1.05] tracking-tight text-foreground sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem]">
-          Te druk voor yoga?{" "}
-          <span className="text-primary italic">Dat is waarschijnlijk precies waarom je het nodig hebt.</span>
+          Yoga Amsterdam Oost.{" "}
+          <span className="text-primary italic">Te druk voor yoga? Dan heb je het waarschijnlijk juist nodig.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:mt-8 md:text-xl">
           Yoga Zeeburg is een kleine, down-to-earth yogastudio in Amsterdam Oost voor drukke mensen
