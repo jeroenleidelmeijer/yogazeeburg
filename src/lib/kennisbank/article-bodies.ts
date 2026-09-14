@@ -68,21 +68,53 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
 
 const cache = new Map<string, Article>();
+const pending = new Map<string, Promise<Article | undefined>>();
 
 /**
- * Loads (and caches) one legacy article. Called from the route loader, which
- * runs on the server during SSR and on the client before render, so the
- * component below can read the article synchronously — no Suspense shell and
- * no client-only content.
+ * Loads (and caches) one legacy article.
+ *
+ * Called from the route loader, which runs on the server during SSR and on the
+ * client for every client-side navigation, so in those paths the renderer can
+ * read the article synchronously from the cache.
+ *
+ * On the very first client render after a hard page load the loader does NOT
+ * re-run (the router hydrates the server's loader data), so the module cache is
+ * empty in the browser. `getLegacyArticlePromise` below covers that path: the
+ * renderer suspends on the same cached promise, React keeps the server-rendered
+ * HTML and hydrates the boundary once the body chunk has arrived. No bodies in
+ * loaderData, no client-only content and still one chunk per article.
  */
 export async function loadLegacyArticle(slug: string): Promise<Article | undefined> {
   const cached = cache.get(slug);
   if (cached) return cached;
+  const inflight = pending.get(slug);
+  if (inflight) return inflight;
   const loader = ARTICLE_BODY_LOADERS[slug];
   if (!loader) return undefined;
-  const mod = await loader();
-  cache.set(slug, mod.article);
-  return mod.article;
+  const promise = loader()
+    .then((mod) => {
+      cache.set(slug, mod.article);
+      pending.delete(slug);
+      return mod.article as Article | undefined;
+    })
+    .catch((error: unknown) => {
+      pending.delete(slug);
+      throw error;
+    });
+  pending.set(slug, promise);
+  return promise;
+}
+
+/**
+ * Stable, cached promise for one article, safe to pass to React's `use()`:
+ * repeated calls during (re-)render return the identical promise instance.
+ */
+export function getLegacyArticlePromise(slug: string): Promise<Article | undefined> {
+  const inflight = pending.get(slug);
+  if (inflight) return inflight;
+  const started = loadLegacyArticle(slug);
+  if (!pending.has(slug)) pending.set(slug, started);
+  return started;
 }
 
 /** Synchronous read of an article already loaded by `loadLegacyArticle`. */
