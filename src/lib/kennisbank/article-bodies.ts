@@ -68,21 +68,59 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
 
 const cache = new Map<string, Article>();
+// One promise per slug, kept forever on success so repeated calls during a
+// (re-)render hand React's `use()` the identical instance. Only a rejected
+// promise is dropped, so a failed chunk load can be retried.
+const promises = new Map<string, Promise<Article | undefined>>();
 
 /**
- * Loads (and caches) one legacy article. Called from the route loader, which
- * runs on the server during SSR and on the client before render, so the
- * component below can read the article synchronously — no Suspense shell and
- * no client-only content.
+ * Loads (and caches) one legacy article.
+ *
+ * Called from the route loader, which runs on the server during SSR and on the
+ * client for every client-side navigation, so in those paths the renderer can
+ * read the article synchronously from the cache.
+ *
+ * On the very first client render after a hard page load the loader does NOT
+ * re-run (the router hydrates the server's loader data), so the module cache is
+ * empty in the browser. `getLegacyArticlePromise` below covers that path: the
+ * renderer suspends on the same cached promise, React keeps the server-rendered
+ * HTML and hydrates the boundary once the body chunk has arrived. No bodies in
+ * loaderData, no client-only content and still one chunk per article.
  */
-export async function loadLegacyArticle(slug: string): Promise<Article | undefined> {
-  const cached = cache.get(slug);
-  if (cached) return cached;
+export function loadLegacyArticle(slug: string): Promise<Article | undefined> {
+  const existing = promises.get(slug);
+  if (existing) return existing;
+
   const loader = ARTICLE_BODY_LOADERS[slug];
-  if (!loader) return undefined;
-  const mod = await loader();
-  cache.set(slug, mod.article);
-  return mod.article;
+  if (!loader) {
+    // Cache the miss too: an unknown slug must also return one stable promise,
+    // otherwise a suspending renderer would loop forever instead of reaching
+    // the notFound() branch.
+    const missing = Promise.resolve(undefined);
+    promises.set(slug, missing);
+    return missing;
+  }
+
+  const promise = loader()
+    .then((mod) => {
+      cache.set(slug, mod.article);
+      return mod.article as Article | undefined;
+    })
+    .catch((error: unknown) => {
+      // Allow a retry after a failed chunk load (e.g. a network blip).
+      promises.delete(slug);
+      throw error;
+    });
+  promises.set(slug, promise);
+  return promise;
+}
+
+/**
+ * Stable, cached promise for one article, safe to pass to React's `use()`:
+ * repeated calls during (re-)render return the identical promise instance.
+ */
+export function getLegacyArticlePromise(slug: string): Promise<Article | undefined> {
+  return loadLegacyArticle(slug);
 }
 
 /** Synchronous read of an article already loaded by `loadLegacyArticle`. */

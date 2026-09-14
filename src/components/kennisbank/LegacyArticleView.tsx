@@ -1,14 +1,22 @@
 /**
  * Renderer for the legacy (JSX-body) Yoga Gids articles.
  *
- * Reads the article synchronously from the per-slug cache that the route
- * loader has already filled via `loadLegacyArticle`, so only this one
- * article's body chunk (and its own image assets) is ever downloaded — never
- * the other 26 — and SSR still renders the full article HTML without a
- * Suspense shell. Rendering behaviour is unchanged.
+ * Only this article's body chunk (and its own image assets) is downloaded —
+ * never the other 26.
+ *
+ * Two read paths, both without serializing bodies into loaderData:
+ *  - Server render and every client-side navigation: the route loader already
+ *    awaited the body module, so the article is read synchronously from the
+ *    module cache and the full HTML is produced in one pass.
+ *  - First client render after a hard page load: the loader does not re-run,
+ *    so the browser's module cache is still empty. We then suspend on the
+ *    per-slug cached promise via `use()`. React keeps the server-rendered HTML
+ *    for this boundary and hydrates it as soon as the chunk arrives, so there
+ *    is no blank shell and no client-only content.
  */
+import { use } from "react";
 import { notFound } from "@tanstack/react-router";
-import { getLoadedLegacyArticle } from "@/lib/kennisbank/article-bodies";
+import { getLegacyArticlePromise, getLoadedLegacyArticle } from "@/lib/kennisbank/article-bodies";
 import { ArticleFigure } from "@/components/kennisbank/ArticleFigure";
 import type { ArticleRef } from "@/lib/kennisbank/types";
 import {
@@ -20,7 +28,8 @@ import {
 } from "@/components/kennisbank/ArticleShell";
 
 export function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRef[] }) {
-  const a = getLoadedLegacyArticle(slug);
+  const preloaded = getLoadedLegacyArticle(slug);
+  const a = preloaded ?? use(getLegacyArticlePromise(slug));
   if (!a) throw notFound();
   const Body = a.body;
   return (

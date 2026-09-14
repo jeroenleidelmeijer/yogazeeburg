@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -181,7 +182,16 @@ function seoFor(resolved: ArticleResolvedRef): SeoView | null {
 function ArticlePage() {
   const { resolved, related } = Route.useLoaderData();
   if (resolved.kind === "legacy") {
-    return <LegacyArticleView slug={resolved.slug} related={related} />;
+    // The boundary is only used on the first client render after a hard load,
+    // where the body chunk is still in flight; React then keeps the
+    // server-rendered HTML instead of showing this fallback. SSR and
+    // client-side navigations never suspend here (the loader awaited the
+    // module), so no fallback is rendered in those paths.
+    return (
+      <Suspense fallback={null}>
+        <LegacyArticleView slug={resolved.slug} related={related} />
+      </Suspense>
+    );
   }
   return <DbArticleView view={resolved.view} related={related} />;
 }
