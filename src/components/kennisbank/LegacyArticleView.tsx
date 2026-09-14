@@ -20,7 +20,7 @@ import {
 } from "@/components/kennisbank/ArticleShell";
 
 export function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRef[] }) {
-  const a = getArticleBySlug(slug);
+  const a = getLoadedLegacyArticle(slug);
   if (!a) throw notFound();
   const Body = a.body;
   return (
