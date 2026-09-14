@@ -135,15 +135,16 @@ function BeginnenMetYogaBody() {
       </h2>
       <p className="mt-4">
         Yoga is geen enkele vaste workout. Het is een verzamelnaam voor uiteenlopende vormen waarin
-        lichaamshoudingen, beweging, adem en aandacht worden gecombineerd. Sommige lessen zijn rustig
-        en werken met langer aangehouden houdingen. Andere zijn vloeiender en fysiek actiever. De
-        precieze ervaring hangt af van de stijl, docent, groep en opbouw van de les.
+        lichaamshoudingen, beweging, adem en aandacht worden gecombineerd. Sommige lessen zijn
+        rustig en werken met langer aangehouden houdingen. Andere zijn vloeiender en fysiek
+        actiever. De precieze ervaring hangt af van de stijl, docent, groep en opbouw van de les.
       </p>
       <p className="mt-4">
         Dat brede aanbod is prettig, maar kan aan het begin verwarrend zijn. Namen als Hatha,
-        Vinyasa, Yin en Restorative vertellen iets over de richting, niet alles over de daadwerkelijke
-        intensiteit. Een rustige Vinyasa kan toegankelijker zijn dan een stevige Hatha. Kijk daarom
-        altijd naar de beschrijving van de specifieke les en naar het aangegeven niveau.
+        Vinyasa, Yin en Restorative vertellen iets over de richting, niet alles over de
+        daadwerkelijke intensiteit. Een rustige Vinyasa kan toegankelijker zijn dan een stevige
+        Hatha. Kijk daarom altijd naar de beschrijving van de specifieke les en naar het aangegeven
+        niveau.
       </p>
       <p className="mt-4">
         Yoga kan bijdragen aan algemeen welzijn, beweging, balans en ontspanning. Het is echter geen
@@ -158,8 +159,8 @@ function BeginnenMetYogaBody() {
         Begin bij wat je nodig hebt
       </h2>
       <p className="mt-4">
-        Veel beginners beginnen met de vraag: welke stijl moet ik kiezen? Een betere eerste vraag is:
-        wat heb ik op dit moment nodig?
+        Veel beginners beginnen met de vraag: welke stijl moet ik kiezen? Een betere eerste vraag
+        is: wat heb ik op dit moment nodig?
       </p>
       <ul className="mt-4 list-disc space-y-2 pl-6">
         <li>
@@ -167,8 +168,8 @@ function BeginnenMetYogaBody() {
           tijd om houdingen te ervaren.
         </li>
         <li>
-          <strong>Soepeler bewegen:</strong> zoek een toegankelijke les die mobiliteit combineert met
-          rustig opgebouwde houdingen.
+          <strong>Soepeler bewegen:</strong> zoek een toegankelijke les die mobiliteit combineert
+          met rustig opgebouwde houdingen.
         </li>
         <li>
           <strong>Kracht en energie:</strong> begin met een beginnersvriendelijke Flow, Vinyasa of
@@ -205,18 +206,19 @@ function BeginnenMetYogaBody() {
         nieuw zijn.
       </p>
       <p className="mt-4">
-        <strong>Vinyasa of Flow</strong> verbindt houdingen in een bewegende reeks. Kies als beginner
-        een toegankelijke variant met herhaling en voldoende uitleg. Een snelle of gevorderde flow kan
-        onnodig overweldigend zijn, ook wanneer je al sportief bent.
+        <strong>Vinyasa of Flow</strong> verbindt houdingen in een bewegende reeks. Kies als
+        beginner een toegankelijke variant met herhaling en voldoende uitleg. Een snelle of
+        gevorderde flow kan onnodig overweldigend zijn, ook wanneer je al sportief bent.
       </p>
       <p className="mt-4">
         <strong>Yin</strong> gebruikt vooral zittende en liggende houdingen die langer worden
-        aangehouden. De les voelt minder dynamisch, maar de duur en sensatie kunnen nog steeds intens
-        zijn. Minder beweging betekent dus niet automatisch makkelijker.
+        aangehouden. De les voelt minder dynamisch, maar de duur en sensatie kunnen nog steeds
+        intens zijn. Minder beweging betekent dus niet automatisch makkelijker.
       </p>
       <p className="mt-4">
-        <strong>Restorative of zeer rustige yoga</strong> gebruikt veel ondersteuning en is gericht op
-        vertragen. Dit kan passen wanneer je veel spanning ervaart of bewust een kalme start zoekt.
+        <strong>Restorative of zeer rustige yoga</strong> gebruikt veel ondersteuning en is gericht
+        op vertragen. Dit kan passen wanneer je veel spanning ervaart of bewust een kalme start
+        zoekt.
       </p>
       <p className="mt-4">
         Wil je stijlen uitgebreider naast elkaar leggen? Gebruik dan de keuzehulp{" "}
@@ -259,10 +261,10 @@ function BeginnenMetYogaBody() {
         respecteert het wanneer je een houding niet doet.
       </p>
       <p className="mt-4">
-        Let ook op praktische zaken. Kun je gemakkelijk boeken? Zijn prijzen en voorwaarden duidelijk?
-        Past de locatie in je werk- of gezinsritme? Voel je je welkom zonder dat je iets hoeft te
-        bewijzen? Een mooie ruimte is fijn, maar een studio wordt pas bruikbaar wanneer begeleiding,
-        bereikbaarheid en rooster samen kloppen.
+        Let ook op praktische zaken. Kun je gemakkelijk boeken? Zijn prijzen en voorwaarden
+        duidelijk? Past de locatie in je werk- of gezinsritme? Voel je je welkom zonder dat je iets
+        hoeft te bewijzen? Een mooie ruimte is fijn, maar een studio wordt pas bruikbaar wanneer
+        begeleiding, bereikbaarheid en rooster samen kloppen.
       </p>
       <p className="mt-4">
         Voor een concrete checklist lees je{" "}
@@ -320,9 +322,9 @@ function BeginnenMetYogaBody() {
         Zo verloopt je eerste les
       </h2>
       <p className="mt-4">
-        Een eerste yogales begint meestal rustig. Je meldt je bij de docent, kiest een plek en legt je
-        mat klaar. De opening kan zittend, liggend of staand zijn, vaak met aandacht voor adem en hoe
-        je lichaam op dat moment voelt.
+        Een eerste yogales begint meestal rustig. Je meldt je bij de docent, kiest een plek en legt
+        je mat klaar. De opening kan zittend, liggend of staand zijn, vaak met aandacht voor adem en
+        hoe je lichaam op dat moment voelt.
       </p>
       <p className="mt-4">
         Daarna volgt een opbouw van houdingen of bewegingen. De docent demonstreert niet
@@ -332,8 +334,8 @@ function BeginnenMetYogaBody() {
       </p>
       <p className="mt-4">
         Aan het einde volgt vaak een rustmoment, meestal liggend op de rug. Na de les ruim je
-        hulpmiddelen op en kun je een korte vraag stellen. Het volledige verloop staat stap voor stap
-        in{" "}
+        hulpmiddelen op en kun je een korte vraag stellen. Het volledige verloop staat stap voor
+        stap in{" "}
         <Link
           to="/kennisbank/$slug"
           params={{ slug: "hoe-ziet-een-eerste-yogales-eruit" }}
@@ -352,13 +354,13 @@ function BeginnenMetYogaBody() {
       </h2>
       <p className="mt-4">
         Lenigheid is geen toegangsbewijs voor yoga. Je komt juist oefenen met het lichaam dat je nu
-        hebt. De vorm van een houding kan per persoon verschillen door botstructuur, bewegingsbereik,
-        ervaring, vermoeidheid en eventuele klachten. Een kleinere beweging kan net zo aandachtig zijn
-        als een grote.
+        hebt. De vorm van een houding kan per persoon verschillen door botstructuur,
+        bewegingsbereik, ervaring, vermoeidheid en eventuele klachten. Een kleinere beweging kan net
+        zo aandachtig zijn als een grote.
       </p>
       <p className="mt-4">
-        Ook conditie is geen algemene voorwaarde. In een actieve les kan je hartslag stijgen, terwijl
-        een rustige les op een andere manier concentratie vraagt. Kies een niveau waarop je
+        Ook conditie is geen algemene voorwaarde. In een actieve les kan je hartslag stijgen,
+        terwijl een rustige les op een andere manier concentratie vraagt. Kies een niveau waarop je
         aanwijzingen kunt blijven volgen en je adem niet voortdurend hoeft vast te zetten.
       </p>
       <p className="mt-4">
@@ -407,13 +409,13 @@ function BeginnenMetYogaBody() {
         aankomen, luisteren en opmerken hoe tempo en begeleiding voelen.
       </p>
       <p className="mt-4">
-        <strong>Week 2: één verschil testen.</strong> Herhaal dezelfde les als die redelijk paste, of
-        verander bewust één factor: bijvoorbeeld rustiger tempo, andere docent of ander tijdstip.
+        <strong>Week 2: één verschil testen.</strong> Herhaal dezelfde les als die redelijk paste,
+        of verander bewust één factor: bijvoorbeeld rustiger tempo, andere docent of ander tijdstip.
         Verander niet alles tegelijk; dan weet je beter waardoor je ervaring verandert.
       </p>
       <p className="mt-4">
-        <strong>Week 3: herkennen.</strong> In een tweede of derde les worden houdingen en woorden al
-        bekender. Let minder op hoe het eruitziet en meer op adem, controle en herstel.
+        <strong>Week 3: herkennen.</strong> In een tweede of derde les worden houdingen en woorden
+        al bekender. Let minder op hoe het eruitziet en meer op adem, controle en herstel.
       </p>
       <p className="mt-4">
         <strong>Week 4: een werkelijk ritme kiezen.</strong> Bepaal welk moment je ook tijdens een
@@ -460,9 +462,9 @@ function BeginnenMetYogaBody() {
       </ol>
       <p className="mt-4">
         Een les hoeft niet onmiddellijk vertrouwd te voelen. Nieuwe woorden, bewegingen en een
-        onbekende ruimte vragen gewenning. Maar je hoort je wel gerespecteerd en veilig te voelen. Als
-        de begeleiding onduidelijk is, grenzen worden genegeerd of je je onder druk gezet voelt, is
-        het verstandig een andere docent of studio te proberen.
+        onbekende ruimte vragen gewenning. Maar je hoort je wel gerespecteerd en veilig te voelen.
+        Als de begeleiding onduidelijk is, grenzen worden genegeerd of je je onder druk gezet voelt,
+        is het verstandig een andere docent of studio te proberen.
       </p>
 
       <h2
@@ -480,8 +482,8 @@ function BeginnenMetYogaBody() {
         vraagt ook nieuwe coördinatie en gewrichtsposities. Geef techniek tijd.
       </p>
       <p className="mt-4">
-        <strong>De persoon naast je kopiëren.</strong> Gebruik anderen hooguit om de richting te zien.
-        Hun bereik zegt niets over wat vandaag voor jou passend is.
+        <strong>De persoon naast je kopiëren.</strong> Gebruik anderen hooguit om de richting te
+        zien. Hun bereik zegt niets over wat vandaag voor jou passend is.
       </p>
       <p className="mt-4">
         <strong>Pijn verwarren met vooruitgang.</strong> Meer sensatie is niet automatisch meer

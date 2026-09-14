@@ -77,7 +77,8 @@ export const article: Article = {
   ],
   sources: [
     {
-      title: "Yoga Zeeburg, “Zo gebruik je Sportbit bij Yoga Zeeburg”, geraadpleegd op 4 september 2026",
+      title:
+        "Yoga Zeeburg, “Zo gebruik je Sportbit bij Yoga Zeeburg”, geraadpleegd op 4 september 2026",
       url: "https://www.yogazeeburg.com/sportbit",
     },
     {
@@ -146,15 +147,15 @@ function AanwezigBody() {
         Kom bij je eerste yogales iets ruimer op tijd
       </h2>
       <p className="mt-4">
-        Voor je eerste bezoek is <strong>15 minuten vooraf</strong> een goede richtlijn. Alles is nog
-        nieuw: de route, het gebouw, de plek voor je spullen en de manier waarop de les is
+        Voor je eerste bezoek is <strong>15 minuten vooraf</strong> een goede richtlijn. Alles is
+        nog nieuw: de route, het gebouw, de plek voor je spullen en de manier waarop de les is
         georganiseerd. Die extra minuten voorkomen dat een kleine vertraging meteen stress oplevert.
       </p>
       <p className="mt-4">
         Yoga Zeeburg zit aan de <strong>Cruquiusweg 96F in Amsterdam Oost</strong>, boven CrossFit
-        Zeeburg. Plan vóór je eerste les je route en kijk niet alleen naar de reistijd, maar ook naar
-        de tijd die je nodig hebt om vanaf je fiets, auto of het openbaar vervoer bij de studio te
-        komen.
+        Zeeburg. Plan vóór je eerste les je route en kijk niet alleen naar de reistijd, maar ook
+        naar de tijd die je nodig hebt om vanaf je fiets, auto of het openbaar vervoer bij de studio
+        te komen.
       </p>
       <p className="mt-4">
         Wil je weten wat er na binnenkomst gebeurt? In{" "}
@@ -172,10 +173,10 @@ function AanwezigBody() {
         Wat bespreek je vóór de les met de docent?
       </h2>
       <p className="mt-4">
-        Je hoeft geen uitgebreid intakegesprek te voeren. Wel is het verstandig om vóór de start kort
-        te zeggen dat het je eerste les is. Meld ook relevante aandachtspunten, bijvoorbeeld dat je
-        zwanger bent, herstelt van een blessure, pijn ervaart of een bepaalde beweging niet kunt
-        doen.
+        Je hoeft geen uitgebreid intakegesprek te voeren. Wel is het verstandig om vóór de start
+        kort te zeggen dat het je eerste les is. Meld ook relevante aandachtspunten, bijvoorbeeld
+        dat je zwanger bent, herstelt van een blessure, pijn ervaart of een bepaalde beweging niet
+        kunt doen.
       </p>
       <p className="mt-4">
         De docent kan dan tijdens de groepsles beter rekening houden met jouw situatie en waar
@@ -196,9 +197,9 @@ function AanwezigBody() {
       </h2>
       <p className="mt-4">
         Ken je de route en de studio, dan is ongeveer <strong>10 minuten vooraf</strong> meestal een
-        comfortabele planning. Je weet waar je moet zijn en hebt minder uitleg nodig. Toch blijft een
-        kleine marge nuttig. Verkeer, een open brug, een vertraagde tram of het zoeken naar een plek
-        voor je fiets kan ook op een bekende route tijd kosten.
+        comfortabele planning. Je weet waar je moet zijn en hebt minder uitleg nodig. Toch blijft
+        een kleine marge nuttig. Verkeer, een open brug, een vertraagde tram of het zoeken naar een
+        plek voor je fiets kan ook op een bekende route tijd kosten.
       </p>
       <p className="mt-4">
         Probeer niet structureel precies op de starttijd binnen te lopen. Dan wordt iedere kleine
@@ -263,9 +264,9 @@ function AanwezigBody() {
         Kun je ook te vroeg zijn?
       </h2>
       <p className="mt-4">
-        Ja. Meer marge is niet altijd beter. Wanneer je 25 of 30 minuten vooraf arriveert, kan er nog
-        een andere les bezig zijn. Gesprekken, deuren en het neerzetten van spullen kunnen dan de
-        eindontspanning van die groep verstoren.
+        Ja. Meer marge is niet altijd beter. Wanneer je 25 of 30 minuten vooraf arriveert, kan er
+        nog een andere les bezig zijn. Gesprekken, deuren en het neerzetten van spullen kunnen dan
+        de eindontspanning van die groep verstoren.
       </p>
       <p className="mt-4">
         Houd daarom ongeveer 10 tot 15 minuten aan, tenzij je reserveringsinformatie iets anders
@@ -306,8 +307,8 @@ function AanwezigBody() {
       <p className="mt-4">
         Voor de meeste yogalessen is 10 tot 15 minuten vooraf een fijne aankomsttijd. Kies bij je
         eerste bezoek voor 15 minuten en houd daarna ongeveer 10 minuten als vaste buffer aan. Zo
-        hoef je niet te haasten, verstoor je de start niet en begint je yogales al met het gevoel dat
-        je echt even ruimte hebt gemaakt.
+        hoef je niet te haasten, verstoor je de start niet en begint je yogales al met het gevoel
+        dat je echt even ruimte hebt gemaakt.
       </p>
 
       <section

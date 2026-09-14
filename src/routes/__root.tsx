@@ -92,8 +92,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
       { name: "twitter:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
-      { property: "og:description", content: "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past." },
-      { name: "twitter:description", content: "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past." },
+      {
+        property: "og:description",
+        content:
+          "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

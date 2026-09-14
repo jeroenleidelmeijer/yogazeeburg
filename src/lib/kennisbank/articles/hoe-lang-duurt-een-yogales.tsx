@@ -103,13 +103,13 @@ function LesduurBody() {
         <strong>Kort antwoord:</strong> de meeste reguliere yogalessen bij Yoga Zeeburg duren{" "}
         <strong>75 minuten</strong>. De les Relax Yin & Nidra duurt <strong>90 minuten</strong>. Tel
         voor je agenda niet alleen de les zelf: plan ook ongeveer 10 tot 15 minuten om rustig aan te
-        komen en 5 tot 10 minuten om na afloop je spullen te pakken. Zo reserveer je voor een les van
-        75 minuten in de praktijk ongeveer anderhalf uur, exclusief reistijd.
+        komen en 5 tot 10 minuten om na afloop je spullen te pakken. Zo reserveer je voor een les
+        van 75 minuten in de praktijk ongeveer anderhalf uur, exclusief reistijd.
       </p>
       <p className="mt-4">
-        Dat klinkt misschien ruim, maar juist die kleine buffer maakt verschil. Je hoeft niet gehaast
-        binnen te komen, kunt je plek rustig inrichten en hoeft de ontspanning aan het einde niet
-        meteen kwijt te raken omdat je volgende afspraak al begint.
+        Dat klinkt misschien ruim, maar juist die kleine buffer maakt verschil. Je hoeft niet
+        gehaast binnen te komen, kunt je plek rustig inrichten en hoeft de ontspanning aan het einde
+        niet meteen kwijt te raken omdat je volgende afspraak al begint.
       </p>
 
       <h2 id="hoeveel-tijd-reserveren" className={h2}>
@@ -155,8 +155,8 @@ function LesduurBody() {
       <p className="mt-4">
         Die laatste minuten horen dus bij de les. Ze zijn geen extraatje dat je probleemloos kunt
         overslaan. Als je direct vóór het einde weg moet, mis je niet alleen een deel van de opbouw,
-        maar verstoor je mogelijk ook de rust voor anderen. Kies daarom liever een les die goed in je
-        agenda past dan een les waarvoor je moet haasten.
+        maar verstoor je mogelijk ook de rust voor anderen. Kies daarom liever een les die goed in
+        je agenda past dan een les waarvoor je moet haasten.
       </p>
       <p className="mt-4">
         Wil je vooraf weten wat er in zo&apos;n les gebeurt? Lees dan ook{" "}
@@ -174,14 +174,14 @@ function LesduurBody() {
         Verschilt de duur per soort yogales?
       </h2>
       <p className="mt-4">
-        Ja. De duur hangt samen met het doel en de opbouw van de les. Op het huidige rooster van Yoga
-        Zeeburg duren de meeste lessen 75 minuten. Dat geldt voor zowel dynamische lessen als Strong
-        Flow en Weekend Flow, als voor rustigere lessen zoals Stress Release en Slow Flow.
+        Ja. De duur hangt samen met het doel en de opbouw van de les. Op het huidige rooster van
+        Yoga Zeeburg duren de meeste lessen 75 minuten. Dat geldt voor zowel dynamische lessen als
+        Strong Flow en Weekend Flow, als voor rustigere lessen zoals Stress Release en Slow Flow.
       </p>
       <p className="mt-4">
         Relax Yin & Nidra duurt 90 minuten. De extra tijd is logisch: rustige yin-houdingen krijgen
-        de ruimte en daarna volgt een langer begeleid Yoga Nidra-gedeelte. Daardoor kan de les zonder
-        haast van bewegen naar diepe rust gaan.
+        de ruimte en daarna volgt een langer begeleid Yoga Nidra-gedeelte. Daardoor kan de les
+        zonder haast van bewegen naar diepe rust gaan.
       </p>
       <p className="mt-4">
         Een langere les is niet automatisch beter en een kortere les is niet automatisch minder

@@ -146,8 +146,8 @@ function VragenEersteLesBody() {
 
       <h3 className={h3}>3. Moet ik een eigen mat of andere spullen meenemen?</h3>
       <p className="mt-4">
-        Vraag of matten en hulpmiddelen aanwezig zijn en of je die moet reserveren. Controleer ook of
-        je een handdoek of warme trui nodig hebt.
+        Vraag of matten en hulpmiddelen aanwezig zijn en of je die moet reserveren. Controleer ook
+        of je een handdoek of warme trui nodig hebt.
       </p>
 
       <h3 className={h3}>4. Hoe vroeg moet ik aanwezig zijn?</h3>
@@ -178,16 +178,16 @@ function VragenEersteLesBody() {
 
       <h3 className={h3}>7. In welke taal wordt de les gegeven?</h3>
       <p className="mt-4">
-        Controleer dit vooral in een internationale stad of als je aanwijzingen liever in een bepaalde
-        taal hoort. Vraag ook of de docent belangrijke instructies kan verduidelijken wanneer je iets
-        niet begrijpt.
+        Controleer dit vooral in een internationale stad of als je aanwijzingen liever in een
+        bepaalde taal hoort. Vraag ook of de docent belangrijke instructies kan verduidelijken
+        wanneer je iets niet begrijpt.
       </p>
 
       <h3 className={h3}>8. Hoe werkt reserveren, annuleren en de wachtlijst?</h3>
       <p className="mt-4">
-        Vraag via welk systeem je boekt, tot wanneer je kunt annuleren en hoe de wachtlijst werkt. Bij
-        Yoga Zeeburg is Sportbit leidend voor actuele wijzigingen, beschikbaarheid en reserveringen
-        naast het{" "}
+        Vraag via welk systeem je boekt, tot wanneer je kunt annuleren en hoe de wachtlijst werkt.
+        Bij Yoga Zeeburg is Sportbit leidend voor actuele wijzigingen, beschikbaarheid en
+        reserveringen naast het{" "}
         <Link to="/rooster" className={link}>
           vaste weekrooster
         </Link>
@@ -221,9 +221,9 @@ function VragenEersteLesBody() {
       </h2>
       <p className="mt-4">Maak je vraag klein en duidelijk:</p>
       <blockquote className="mt-4 border-l-2 border-primary/40 pl-5 italic text-muted-foreground">
-        Hoi, ik wil graag voor het eerst meedoen met [lesnaam]. Ik heb nog geen yoga-ervaring en zoek
-        een [rustige/actieve] les. Is deze les geschikt, wat moet ik meenemen en hoe vroeg kan ik er
-        het beste zijn?
+        Hoi, ik wil graag voor het eerst meedoen met [lesnaam]. Ik heb nog geen yoga-ervaring en
+        zoek een [rustige/actieve] les. Is deze les geschikt, wat moet ik meenemen en hoe vroeg kan
+        ik er het beste zijn?
       </blockquote>
       <p className="mt-4">Voeg alleen een relevante bijzonderheid of voorkeur toe.</p>
 
@@ -250,8 +250,8 @@ function VragenEersteLesBody() {
       <p className="mt-4">
         De beste vraag vóór je eerste yogales is de vraag die jouw grootste drempel wegneemt. Begin
         met geschiktheid, tempo, materiaal en aankomst. Meld relevante bijzonderheden en geef
-        voorkeuren rond aanraking duidelijk aan. Daarna mag je nieuwsgierig binnenstappen: je hoeft je
-        eerste les niet vooraf volledig te begrijpen.
+        voorkeuren rond aanraking duidelijk aan. Daarna mag je nieuwsgierig binnenstappen: je hoeft
+        je eerste les niet vooraf volledig te begrijpen.
       </p>
     </>
   );

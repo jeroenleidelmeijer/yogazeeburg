@@ -109,8 +109,8 @@ function EersteLesBody() {
         Voor de les: binnenkomen en je plek kiezen
       </h2>
       <p className="mt-4">
-        Plan voor je eerste keer ongeveer tien minuten extra. Daardoor hoef je niet gehaast binnen te
-        komen en kun je rustig ontdekken waar je jas, tas en schoenen laat. Meld je even bij de
+        Plan voor je eerste keer ongeveer tien minuten extra. Daardoor hoef je niet gehaast binnen
+        te komen en kun je rustig ontdekken waar je jas, tas en schoenen laat. Meld je even bij de
         docent en zeg dat dit je eerste yogales is. Je hoeft geen uitgebreid verhaal te vertellen;
         één zin is genoeg.
       </p>
@@ -121,10 +121,10 @@ function EersteLesBody() {
         stelt geen medische diagnose.
       </p>
       <p className="mt-4">
-        In de oefenruimte kies je een vrije plek en leg je de mat neer zoals de andere matten liggen.
-        Blokken, een riem, bolster of deken zijn geen teken dat een houding &lsquo;te
-        moeilijk&rsquo; is. Het zijn gewone hulpmiddelen waarmee je een positie beter kunt aanpassen.
-        Zet je telefoon stil en houd water binnen bereik als de studio dat toestaat.
+        In de oefenruimte kies je een vrije plek en leg je de mat neer zoals de andere matten
+        liggen. Blokken, een riem, bolster of deken zijn geen teken dat een houding &lsquo;te
+        moeilijk&rsquo; is. Het zijn gewone hulpmiddelen waarmee je een positie beter kunt
+        aanpassen. Zet je telefoon stil en houd water binnen bereik als de studio dat toestaat.
       </p>
 
       <h2
@@ -140,9 +140,9 @@ function EersteLesBody() {
       </p>
       <p className="mt-4">
         Het doel van deze opening is vooral de overgang van buiten naar de les. Je merkt op hoe je
-        erbij zit, zonder dat meteen te hoeven veranderen. Het kan onwennig zijn om stil te beginnen,
-        zeker na een drukke dag. Dat is normaal. Laat je aandacht gewoon terugkomen bij de stem van
-        de docent of bij je adem.
+        erbij zit, zonder dat meteen te hoeven veranderen. Het kan onwennig zijn om stil te
+        beginnen, zeker na een drukke dag. Dat is normaal. Laat je aandacht gewoon terugkomen bij de
+        stem van de docent of bij je adem.
       </p>
 
       <h2
@@ -153,8 +153,8 @@ function EersteLesBody() {
       </h2>
       <p className="mt-4">
         Na de opening volgen meestal eenvoudige bewegingen. Denk aan het losmaken van schouders en
-        nek, rustig bewegen van de wervelkolom of houdingen op handen en knieën. In een actievere les
-        kan de warming-up sneller opbouwen; in yin of restorative blijft het tempo laag.
+        nek, rustig bewegen van de wervelkolom of houdingen op handen en knieën. In een actievere
+        les kan de warming-up sneller opbouwen; in yin of restorative blijft het tempo laag.
       </p>
       <p className="mt-4">
         De docent noemt de houding, laat soms iets zien en geeft aanwijzingen voor richting, adem en
@@ -170,15 +170,15 @@ function EersteLesBody() {
         Het hoofddeel: houdingen en reeksen
       </h2>
       <p className="mt-4">
-        In het hoofddeel oefen je de houdingen die passen bij de lesstijl. Een rustige les kan vooral
-        zittende of liggende vormen bevatten die langer worden aangehouden. In hatha worden houdingen
-        vaak afzonderlijk opgebouwd. Bij vinyasa of flow worden meerdere houdingen vloeiend met
-        elkaar verbonden.
+        In het hoofddeel oefen je de houdingen die passen bij de lesstijl. Een rustige les kan
+        vooral zittende of liggende vormen bevatten die langer worden aangehouden. In hatha worden
+        houdingen vaak afzonderlijk opgebouwd. Bij vinyasa of flow worden meerdere houdingen
+        vloeiend met elkaar verbonden.
       </p>
       <p className="mt-4">
         Je kunt staande houdingen, balans, zachte draaibewegingen, vooroverbuigingen of eenvoudige
-        krachtmomenten tegenkomen. Niet iedere les bevat alles. De docent bepaalt een logische opbouw
-        en geeft aan wanneer je wisselt, rust of een hulpmiddel gebruikt.
+        krachtmomenten tegenkomen. Niet iedere les bevat alles. De docent bepaalt een logische
+        opbouw en geeft aan wanneer je wisselt, rust of een hulpmiddel gebruikt.
       </p>
       <p className="mt-4">
         Luister meer naar de kwaliteit van je beweging dan naar de vorm die je denkt te moeten
@@ -201,13 +201,14 @@ function EersteLesBody() {
       </h2>
       <p className="mt-4">
         Dan kies je een andere optie, rust je even of sla je de houding over. Dat is een normaal
-        onderdeel van yoga. Een docent kan voorstellen om je knieën te buigen, een blok te gebruiken,
-        minder ver te bewegen of een rusthouding te nemen. Je mag ook zelf uit een positie komen.
+        onderdeel van yoga. Een docent kan voorstellen om je knieën te buigen, een blok te
+        gebruiken, minder ver te bewegen of een rusthouding te nemen. Je mag ook zelf uit een
+        positie komen.
       </p>
       <p className="mt-4">
         Een uitdaging kan inspanning of rek geven, maar scherpe, stekende of plotselinge pijn is een
-        reden om te stoppen. Ook bij duizeligheid, misselijkheid of een onveilig gevoel kom je rustig
-        uit de houding en trek je de aandacht van de docent.
+        reden om te stoppen. Ook bij duizeligheid, misselijkheid of een onveilig gevoel kom je
+        rustig uit de houding en trek je de aandacht van de docent.
       </p>
       <p className="mt-4">
         Fysieke correcties zijn nooit verplicht. Wil een docent je aanraken om een richting aan te
@@ -262,15 +263,15 @@ function EersteLesBody() {
         Na de les: rustig afronden
       </h2>
       <p className="mt-4">
-        Ruim de gebruikte materialen op de plek terug waar je ze vond. Heb je een praktische vraag of
-        voelde een houding niet prettig, stel die dan na afloop aan de docent. Je hoeft de hele les
-        niet meteen te beoordelen.
+        Ruim de gebruikte materialen op de plek terug waar je ze vond. Heb je een praktische vraag
+        of voelde een houding niet prettig, stel die dan na afloop aan de docent. Je hoeft de hele
+        les niet meteen te beoordelen.
       </p>
       <p className="mt-4">
-        Let liever op drie dingen: voelde de uitleg duidelijk, kon je binnen je eigen grenzen oefenen
-        en is de drempel om terug te komen laag? Spiervermoeidheid of stijfheid kan na een nieuwe
-        bewegingsvorm voorkomen. Aanhoudende pijn of klachten horen niet bij een geslaagde eerste les
-        en vragen om passende professionele aandacht.
+        Let liever op drie dingen: voelde de uitleg duidelijk, kon je binnen je eigen grenzen
+        oefenen en is de drempel om terug te komen laag? Spiervermoeidheid of stijfheid kan na een
+        nieuwe bewegingsvorm voorkomen. Aanhoudende pijn of klachten horen niet bij een geslaagde
+        eerste les en vragen om passende professionele aandacht.
       </p>
       <p className="mt-4">
         Eén les vertelt vooral iets over dat moment, die docent en die stijl. Wil je eerlijker

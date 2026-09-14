@@ -138,10 +138,10 @@ function ActieveYogaBody() {
         Toegankelijke Vinyasa of Flow
       </h3>
       <p className="mt-4">
-        Bij Vinyasa en Flow worden houdingen met elkaar verbonden, vaak op het ritme van de adem. Dat
-        maakt de les dynamisch en helpt je aandacht bij de beweging te houden. Voor beginners werkt
-        een rustige of toegankelijke flow het best: korte reeksen, herhaling en voldoende tijd om te
-        kijken en te voelen.
+        Bij Vinyasa en Flow worden houdingen met elkaar verbonden, vaak op het ritme van de adem.
+        Dat maakt de les dynamisch en helpt je aandacht bij de beweging te houden. Voor beginners
+        werkt een rustige of toegankelijke flow het best: korte reeksen, herhaling en voldoende tijd
+        om te kijken en te voelen.
       </p>
       <p className="mt-4">
         Kies niet automatisch de snelste les omdat je al sportief bent. Conditie helpt, maar yoga
@@ -199,8 +199,8 @@ function ActieveYogaBody() {
         </li>
         <li>
           <strong>Hoe wordt het tempo omschreven?</strong> Woorden als rustig opgebouwd, duidelijke
-          flow en opties wijzen op meer begeleiding. Fast-paced en krachtige sequences wijzen meestal
-          op een hogere instapdrempel.
+          flow en opties wijzen op meer begeleiding. Fast-paced en krachtige sequences wijzen
+          meestal op een hogere instapdrempel.
         </li>
         <li>
           <strong>Worden variaties genoemd?</strong> Een les waarin alternatieven en hulpmiddelen
@@ -253,8 +253,8 @@ function ActieveYogaBody() {
       <p className="mt-4">
         Word je duizelig, misselijk of gedesoriënteerd, of ontstaat er scherpe pijn? Stop dan met de
         houding, rust en laat het de docent weten. Yoga geldt voor gezonde mensen doorgaans als een
-        veilige vorm van bewegen wanneer de oefening passend wordt uitgevoerd en goed wordt begeleid,
-        maar blessures kunnen net als bij andere bewegingsvormen voorkomen.
+        veilige vorm van bewegen wanneer de oefening passend wordt uitgevoerd en goed wordt
+        begeleid, maar blessures kunnen net als bij andere bewegingsvormen voorkomen.
       </p>
 
       <h2
@@ -264,19 +264,19 @@ function ActieveYogaBody() {
         Hulpmiddelen maken de les slimmer
       </h2>
       <p className="mt-4">
-        Blokken, een riem en een deken zijn geen noodoplossingen voor mensen die &ldquo;nog niet goed
-        genoeg&rdquo; zijn. Ze veranderen de afstand tot de vloer, geven steun of helpen je een
+        Blokken, een riem en een deken zijn geen noodoplossingen voor mensen die &ldquo;nog niet
+        goed genoeg&rdquo; zijn. Ze veranderen de afstand tot de vloer, geven steun of helpen je een
         houding met meer controle uit te voeren.
       </p>
       <p className="mt-4">
         Een blok onder je hand kan bijvoorbeeld voorkomen dat je in een staande houding moet hangen
-        of draaien om de grond te raken. Een riem kan bereik verlengen zonder dat je aan je schouders
-        of onderrug trekt. Een opgevouwen deken kan knieën of zitbotten ondersteunen.
+        of draaien om de grond te raken. Een riem kan bereik verlengen zonder dat je aan je
+        schouders of onderrug trekt. Een opgevouwen deken kan knieën of zitbotten ondersteunen.
       </p>
       <p className="mt-4">
-        Gebruik hulpmiddelen vroeg, niet pas wanneer je de controle al kwijt bent. Daardoor kun je de
-        bedoelde richting van een houding beter ervaren en houd je energie over voor de rest van de
-        les.
+        Gebruik hulpmiddelen vroeg, niet pas wanneer je de controle al kwijt bent. Daardoor kun je
+        de bedoelde richting van een houding beter ervaren en houd je energie over voor de rest van
+        de les.
       </p>
 
       <ArticleFigure
@@ -303,14 +303,14 @@ function ActieveYogaBody() {
         Les 2: herhaal of vergelijk bewust
       </h3>
       <p className="mt-4">
-        Was de eerste les uitdagend maar overzichtelijk? Herhaal dan dezelfde les of dezelfde docent.
-        Herhaling maakt de volgorde herkenbaarder, waardoor je minder hoeft te kijken en beter kunt
-        voelen.
+        Was de eerste les uitdagend maar overzichtelijk? Herhaal dan dezelfde les of dezelfde
+        docent. Herhaling maakt de volgorde herkenbaarder, waardoor je minder hoeft te kijken en
+        beter kunt voelen.
       </p>
       <p className="mt-4">
-        Was de les te snel of juist te rustig? Kies dan bewust één stap lichter of actiever. Verander
-        niet tegelijk stijl, docent, tijdstip en intensiteit; dan weet je achteraf niet welk verschil
-        je voelde.
+        Was de les te snel of juist te rustig? Kies dan bewust één stap lichter of actiever.
+        Verander niet tegelijk stijl, docent, tijdstip en intensiteit; dan weet je achteraf niet
+        welk verschil je voelde.
       </p>
       <h3 className="mt-8 font-display text-xl font-medium tracking-tight text-foreground">
         Les 3: beoordeel de match
@@ -337,8 +337,8 @@ function ActieveYogaBody() {
         >
           14-daagse introductiepas
         </a>{" "}
-        kun je verschillende lessen, docenten en tijden ontdekken en ervaren welk actief tempo bij je
-        past.
+        kun je verschillende lessen, docenten en tijden ontdekken en ervaren welk actief tempo bij
+        je past.
       </p>
 
       <h2
@@ -359,9 +359,9 @@ function ActieveYogaBody() {
         De persoon naast je volgen
       </h3>
       <p className="mt-4">
-        Andere deelnemers hebben een ander lichaam en mogelijk jaren ervaring. Gebruik hen hooguit om
-        de globale richting te zien. De instructie van de docent en het gevoel in je eigen lichaam
-        zijn belangrijker.
+        Andere deelnemers hebben een ander lichaam en mogelijk jaren ervaring. Gebruik hen hooguit
+        om de globale richting te zien. De instructie van de docent en het gevoel in je eigen
+        lichaam zijn belangrijker.
       </p>
       <h3 className="mt-8 font-display text-xl font-medium tracking-tight text-foreground">
         Rust zien als opgeven
@@ -426,9 +426,9 @@ function ActieveYogaBody() {
         Actief beginnen zonder te forceren
       </h2>
       <p className="mt-4">
-        De beste actieve yogales voor een beginner is niet de les waarin je het meest uitgeput raakt.
-        Het is de les waarin je genoeg uitdaging voelt om betrokken te blijven, terwijl je nog kunt
-        luisteren, ademen en kiezen.
+        De beste actieve yogales voor een beginner is niet de les waarin je het meest uitgeput
+        raakt. Het is de les waarin je genoeg uitdaging voelt om betrokken te blijven, terwijl je
+        nog kunt luisteren, ademen en kiezen.
       </p>
       <p className="mt-4">
         Begin met een toegankelijke Vinyasa-, Flow- of actieve Hatha-les. Let op duidelijke uitleg,

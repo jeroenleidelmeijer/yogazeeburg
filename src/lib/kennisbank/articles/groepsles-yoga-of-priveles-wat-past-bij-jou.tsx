@@ -154,9 +154,7 @@ function GroepsPriveBody() {
             <tr>
               <td className="py-3 pr-4 align-top font-medium text-foreground">Planning</td>
               <td className="py-3 pr-4 align-top">Keuze uit het vaste rooster</td>
-              <td className="py-3 align-top">
-                Vaak in overleg, afhankelijk van docent en locatie
-              </td>
+              <td className="py-3 align-top">Vaak in overleg, afhankelijk van docent en locatie</td>
             </tr>
             <tr>
               <td className="py-3 pr-4 align-top font-medium text-foreground">Kosten</td>

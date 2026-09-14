@@ -112,8 +112,8 @@ function OnlineOfStudioBody() {
       <p className="mt-4">Online yoga kan twee dingen betekenen:</p>
       <ul className="mt-3 list-disc space-y-2 pl-6">
         <li>
-          <strong>Een livestream:</strong> je volgt op een vast tijdstip een docent via video. Wat de
-          docent van jou ziet hangt af van camera, verbinding, groepsgrootte en lesopzet.
+          <strong>Een livestream:</strong> je volgt op een vast tijdstip een docent via video. Wat
+          de docent van jou ziet hangt af van camera, verbinding, groepsgrootte en lesopzet.
         </li>
         <li>
           <strong>Een les op aanvraag:</strong> je start een opname wanneer het uitkomt. Je kunt
@@ -134,35 +134,90 @@ function OnlineOfStudioBody() {
             <tr className="border-b border-border">
               <th className="py-3 pr-4 font-display font-medium text-foreground">Onderdeel</th>
               <th className="py-3 pr-4 font-display font-medium text-foreground">Online yoga</th>
-              <th className="py-3 font-display font-medium text-foreground">Yogales in de studio</th>
+              <th className="py-3 font-display font-medium text-foreground">
+                Yogales in de studio
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Reistijd</td><td className="py-3 pr-4 align-top">Geen</td><td className="py-3 align-top">Wel</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Tijdstip</td><td className="py-3 pr-4 align-top">Zeer flexibel bij opnames; vast bij livestream</td><td className="py-3 align-top">Vast volgens rooster</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Feedback</td><td className="py-3 pr-4 align-top">Beperkt of afwezig</td><td className="py-3 align-top">Docent kan observeren en aanwijzingen geven</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Concentratie</td><td className="py-3 pr-4 align-top">Afhankelijk van je thuisomgeving</td><td className="py-3 align-top">Speciale ruimte helpt om je aandacht bij de les te houden</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Materiaal</td><td className="py-3 pr-4 align-top">Zelf regelen</td><td className="py-3 align-top">Vaak zijn matten en props aanwezig; controleer dit vooraf</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Sociaal contact</td><td className="py-3 pr-4 align-top">Meestal beperkt</td><td className="py-3 align-top">Je oefent met docent en groep in dezelfde ruimte</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Techniek</td><td className="py-3 pr-4 align-top">Afhankelijk van beeld, geluid en camerahoek</td><td className="py-3 align-top">Uitleg en demonstratie zijn direct in de ruimte aanwezig</td></tr>
-            <tr><td className="py-3 pr-4 align-top font-medium text-foreground">Privacy</td><td className="py-3 pr-4 align-top">Je blijft thuis</td><td className="py-3 align-top">Je deelt de ruimte met anderen</td></tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Reistijd</td>
+              <td className="py-3 pr-4 align-top">Geen</td>
+              <td className="py-3 align-top">Wel</td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Tijdstip</td>
+              <td className="py-3 pr-4 align-top">
+                Zeer flexibel bij opnames; vast bij livestream
+              </td>
+              <td className="py-3 align-top">Vast volgens rooster</td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Feedback</td>
+              <td className="py-3 pr-4 align-top">Beperkt of afwezig</td>
+              <td className="py-3 align-top">Docent kan observeren en aanwijzingen geven</td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Concentratie</td>
+              <td className="py-3 pr-4 align-top">Afhankelijk van je thuisomgeving</td>
+              <td className="py-3 align-top">
+                Speciale ruimte helpt om je aandacht bij de les te houden
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Materiaal</td>
+              <td className="py-3 pr-4 align-top">Zelf regelen</td>
+              <td className="py-3 align-top">
+                Vaak zijn matten en props aanwezig; controleer dit vooraf
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Sociaal contact</td>
+              <td className="py-3 pr-4 align-top">Meestal beperkt</td>
+              <td className="py-3 align-top">Je oefent met docent en groep in dezelfde ruimte</td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Techniek</td>
+              <td className="py-3 pr-4 align-top">Afhankelijk van beeld, geluid en camerahoek</td>
+              <td className="py-3 align-top">
+                Uitleg en demonstratie zijn direct in de ruimte aanwezig
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 pr-4 align-top font-medium text-foreground">Privacy</td>
+              <td className="py-3 pr-4 align-top">Je blijft thuis</td>
+              <td className="py-3 align-top">Je deelt de ruimte met anderen</td>
+            </tr>
           </tbody>
         </table>
       </div>
       <p className="mt-4">
-        Je kiest niet alleen een les, maar ook een omgeving. Vraag jezelf daarom af: in welke situatie
-        lukt het mij werkelijk om te beginnen én terug te komen?
+        Je kiest niet alleen een les, maar ook een omgeving. Vraag jezelf daarom af: in welke
+        situatie lukt het mij werkelijk om te beginnen én terug te komen?
       </p>
 
-      <h2 id="voordelen-online" className={h2}>De voordelen van online yoga</h2>
+      <h2 id="voordelen-online" className={h2}>
+        De voordelen van online yoga
+      </h2>
       <h3 className={h3}>1. Je verliest geen tijd aan reizen</h3>
-      <p className="mt-4">Zodra je mat ligt, kun je beginnen. Dat helpt op een drukke dag, bij slecht weer of wanneer reizen lastig is.</p>
+      <p className="mt-4">
+        Zodra je mat ligt, kun je beginnen. Dat helpt op een drukke dag, bij slecht weer of wanneer
+        reizen lastig is.
+      </p>
       <h3 className={h3}>2. Je hebt meer vrijheid in het moment</h3>
-      <p className="mt-4">Bij lessen op aanvraag kies je zelf het moment. Je kunt uitleg terugspoelen, pauzeren en zonder anderen in de ruimte kennismaken met de bewegingen.</p>
+      <p className="mt-4">
+        Bij lessen op aanvraag kies je zelf het moment. Je kunt uitleg terugspoelen, pauzeren en
+        zonder anderen in de ruimte kennismaken met de bewegingen.
+      </p>
       <h3 className={h3}>3. Thuis kan vertrouwd voelen</h3>
-      <p className="mt-4">Thuis bepaal je zelf licht, temperatuur en privacy. Dat kan de eerste drempel verlagen.</p>
+      <p className="mt-4">
+        Thuis bepaal je zelf licht, temperatuur en privacy. Dat kan de eerste drempel verlagen.
+      </p>
       <h3 className={h3}>4. Je hebt veel keuze</h3>
-      <p className="mt-4">Online is er veel keuze in duur, intensiteit en stijl. Kies een docent die het niveau duidelijk benoemt, opties geeft en geen grote gezondheidsbeloften doet.</p>
+      <p className="mt-4">
+        Online is er veel keuze in duur, intensiteit en stijl. Kies een docent die het niveau
+        duidelijk benoemt, opties geeft en geen grote gezondheidsbeloften doet.
+      </p>
 
       <ArticleFigure
         image={ONLINE_THUIS_IMAGE}
@@ -170,39 +225,81 @@ function OnlineOfStudioBody() {
         className="mt-10"
       />
 
-      <h2 id="nadelen-online" className={h2}>De nadelen van online yoga</h2>
+      <h2 id="nadelen-online" className={h2}>
+        De nadelen van online yoga
+      </h2>
       <h3 className={h3}>1. Een docent ziet minder — of helemaal niets</h3>
-      <p className="mt-4">Bij een opname is er geen live feedback. In een livestream ziet een docent alleen wat jouw camera toont. Online aanwijzingen zijn daarom niet hetzelfde als persoonlijke correctie.</p>
+      <p className="mt-4">
+        Bij een opname is er geen live feedback. In een livestream ziet een docent alleen wat jouw
+        camera toont. Online aanwijzingen zijn daarom niet hetzelfde als persoonlijke correctie.
+      </p>
       <h3 className={h3}>2. Je thuisomgeving vraagt zelfdiscipline</h3>
-      <p className="mt-4">Thuis zijn meldingen en taken dichtbij. Een vaste plek, gepland tijdstip en telefoon op stil helpen om de les af te maken.</p>
+      <p className="mt-4">
+        Thuis zijn meldingen en taken dichtbij. Een vaste plek, gepland tijdstip en telefoon op stil
+        helpen om de les af te maken.
+      </p>
       <h3 className={h3}>3. Je moet materiaal en ruimte zelf controleren</h3>
-      <p className="mt-4">Controleer vooraf welke props nodig zijn, of de vloer niet glad is en of je vrij kunt bewegen. Gebruik alleen stabiele alternatieven.</p>
+      <p className="mt-4">
+        Controleer vooraf welke props nodig zijn, of de vloer niet glad is en of je vrij kunt
+        bewegen. Gebruik alleen stabiele alternatieven.
+      </p>
       <h3 className={h3}>4. Techniek kan de les onderbreken</h3>
-      <p className="mt-4">Test vóór een livestream beeld, geluid en batterij. Zet het scherm zo neer dat je niet voortdurend je nek hoeft te draaien.</p>
+      <p className="mt-4">
+        Test vóór een livestream beeld, geluid en batterij. Zet het scherm zo neer dat je niet
+        voortdurend je nek hoeft te draaien.
+      </p>
 
-      <h2 id="voordelen-studio" className={h2}>De voordelen van een yogales in de studio</h2>
+      <h2 id="voordelen-studio" className={h2}>
+        De voordelen van een yogales in de studio
+      </h2>
       <h3 className={h3}>1. De docent is in dezelfde ruimte</h3>
-      <p className="mt-4">Een docent kan de groep bekijken, uitleg verduidelijken en variaties aanbieden. Dat garandeert geen individuele correctie bij iedere beweging, maar biedt meer directe informatie dan een opname. Je kunt bovendien vragen stellen.</p>
+      <p className="mt-4">
+        Een docent kan de groep bekijken, uitleg verduidelijken en variaties aanbieden. Dat
+        garandeert geen individuele correctie bij iedere beweging, maar biedt meer directe
+        informatie dan een opname. Je kunt bovendien vragen stellen.
+      </p>
       <h3 className={h3}>2. De afspraak helpt je een routine op te bouwen</h3>
-      <p className="mt-4">Een gereserveerde les heeft een begin- en eindtijd. Zo&apos;n vaste afspraak kan een bruikbaar anker in je week zijn.</p>
+      <p className="mt-4">
+        Een gereserveerde les heeft een begin- en eindtijd. Zo&apos;n vaste afspraak kan een
+        bruikbaar anker in je week zijn.
+      </p>
       <h3 className={h3}>3. De ruimte is voor yoga ingericht</h3>
-      <p className="mt-4">In een studio liggen geen huishoudelijke taken te wachten. De ruimte en hulpmiddelen zijn voor de les ingericht. Vraag bij een nieuwe studio wel wat je zelf moet meenemen.</p>
+      <p className="mt-4">
+        In een studio liggen geen huishoudelijke taken te wachten. De ruimte en hulpmiddelen zijn
+        voor de les ingericht. Vraag bij een nieuwe studio wel wat je zelf moet meenemen.
+      </p>
       <h3 className={h3}>4. Je oefent samen zonder te hoeven presteren</h3>
       <p className="mt-4">
-        Een groep geeft ritme en gedeelde aandacht. Je hoeft niemand bij te houden; opties en je eigen
-        grens blijven belangrijk. Lees ook hoe een{" "}
-        <Link to="/kennisbank/$slug" params={{ slug: "groepsles-yoga-of-priveles-wat-past-bij-jou" }} className={link}>
+        Een groep geeft ritme en gedeelde aandacht. Je hoeft niemand bij te houden; opties en je
+        eigen grens blijven belangrijk. Lees ook hoe een{" "}
+        <Link
+          to="/kennisbank/$slug"
+          params={{ slug: "groepsles-yoga-of-priveles-wat-past-bij-jou" }}
+          className={link}
+        >
           groepsles en privéles van elkaar verschillen
         </Link>
         .
       </p>
 
-      <h2 id="nadelen-studio" className={h2}>De nadelen van een yogales in de studio</h2>
-      <p className="mt-4">Een studioles vraagt reistijd en moet bij je rooster passen. Je deelt de ruimte met anderen en kunt een les niet pauzeren. Kijk bij een wisselende agenda daarom naar meerdere haalbare lestijden.</p>
+      <h2 id="nadelen-studio" className={h2}>
+        De nadelen van een yogales in de studio
+      </h2>
+      <p className="mt-4">
+        Een studioles vraagt reistijd en moet bij je rooster passen. Je deelt de ruimte met anderen
+        en kunt een les niet pauzeren. Kijk bij een wisselende agenda daarom naar meerdere haalbare
+        lestijden.
+      </p>
 
-      <h2 id="welke-vorm" className={h2}>Welke vorm past bij jou?</h2>
-      <p className="mt-4">Kies niet op basis van het perfecte scenario, maar op basis van je echte week.</p>
-      <p className="mt-4"><strong>Online yoga past waarschijnlijk beter als je:</strong></p>
+      <h2 id="welke-vorm" className={h2}>
+        Welke vorm past bij jou?
+      </h2>
+      <p className="mt-4">
+        Kies niet op basis van het perfecte scenario, maar op basis van je echte week.
+      </p>
+      <p className="mt-4">
+        <strong>Online yoga past waarschijnlijk beter als je:</strong>
+      </p>
       <ul className="mt-3 list-disc space-y-2 pl-6">
         <li>weinig reistijd hebt of vaak van locatie wisselt;</li>
         <li>graag op een zelfgekozen moment oefent;</li>
@@ -210,7 +307,9 @@ function OnlineOfStudioBody() {
         <li>al voldoende ervaring hebt om algemene aanwijzingen goed te vertalen;</li>
         <li>een gemiste studiosessie wilt opvangen met een korte begeleide les.</li>
       </ul>
-      <p className="mt-4"><strong>Een yogales in de studio past waarschijnlijk beter als je:</strong></p>
+      <p className="mt-4">
+        <strong>Een yogales in de studio past waarschijnlijk beter als je:</strong>
+      </p>
       <ul className="mt-3 list-disc space-y-2 pl-6">
         <li>nieuw bent en live uitleg prettig vindt;</li>
         <li>vragen wilt kunnen stellen aan een docent;</li>
@@ -220,32 +319,58 @@ function OnlineOfStudioBody() {
       </ul>
       <p className="mt-4">
         Twijfel je ook nog over het soort les? Gebruik dan de keuzehulp{" "}
-        <Link to="/kennisbank/$slug" params={{ slug: "welke-yogastijl-past-bij-mij" }} className={link}>
+        <Link
+          to="/kennisbank/$slug"
+          params={{ slug: "welke-yogastijl-past-bij-mij" }}
+          className={link}
+        >
           welke yogastijl past bij mij?
         </Link>
       </p>
 
-      <h2 id="combinatie" className={h2}>Een combinatie kan juist praktisch zijn</h2>
-      <p className="mt-4">Je hoeft niet definitief te kiezen. Een studioles kan je vaste basis zijn, met een rustige online les in een drukke week of tijdens een reis.</p>
-      <p className="mt-4">Voorkom versnippering: kies liever één betrouwbaar online aanbod en één vaste studiotijd. Evalueer na enkele weken of je werkelijk komt opdagen, de uitleg begrijpt en grenzen kunt aangeven.</p>
+      <h2 id="combinatie" className={h2}>
+        Een combinatie kan juist praktisch zijn
+      </h2>
+      <p className="mt-4">
+        Je hoeft niet definitief te kiezen. Een studioles kan je vaste basis zijn, met een rustige
+        online les in een drukke week of tijdens een reis.
+      </p>
+      <p className="mt-4">
+        Voorkom versnippering: kies liever één betrouwbaar online aanbod en één vaste studiotijd.
+        Evalueer na enkele weken of je werkelijk komt opdagen, de uitleg begrijpt en grenzen kunt
+        aangeven.
+      </p>
 
-      <h2 id="yoga-zeeburg" className={h2}>Online yoga en Yoga Zeeburg</h2>
+      <h2 id="yoga-zeeburg" className={h2}>
+        Online yoga en Yoga Zeeburg
+      </h2>
       <p className="mt-4">
         Yoga Zeeburg publiceert fysieke groepslessen aan de Cruquiusweg 96F in Amsterdam Oost. Op de
-        lespagina staan twaalf wekelijkse lessen, van rustige Yin en Nidra tot Vinyasa, Pilates Fusion
-        en sterkere flows; de meeste zijn beginnersvriendelijk. Controleer het{" "}
-        <Link to="/rooster" className={link}>weekrooster</Link>{" "}
+        lespagina staan twaalf wekelijkse lessen, van rustige Yin en Nidra tot Vinyasa, Pilates
+        Fusion en sterkere flows; de meeste zijn beginnersvriendelijk. Controleer het{" "}
+        <Link to="/rooster" className={link}>
+          weekrooster
+        </Link>{" "}
         en Sportbit voor actuele wijzigingen en beschikbaarheid.
       </p>
       <p className="mt-4">
         Er staat geen online lesaanbod op de openbare website. Met de{" "}
-        <Link to="/trial" className={link}>14-daagse Intro Pass</Link>{" "}
+        <Link to="/trial" className={link}>
+          14-daagse Intro Pass
+        </Link>{" "}
         kun je verschillende studiolessen, docenten en tijden proberen. De pas kost volgens de
         actuele prijspagina €30, is alleen voor nieuwe leerlingen en stopt automatisch.
       </p>
 
-      <h2 id="conclusie" className={h2}>Conclusie</h2>
-      <p className="mt-4">Online yoga wint op flexibiliteit, privacy en geen reistijd. De studio biedt de directe aanwezigheid van een docent, een vaste afspraak en een ingerichte lesruimte. Voor beginners die live uitleg willen, is de studio vaak een overzichtelijke eerste test. De doorslaggevende vraag: bij welke vorm blijf jij aandachtig en regelmatig oefenen?</p>
+      <h2 id="conclusie" className={h2}>
+        Conclusie
+      </h2>
+      <p className="mt-4">
+        Online yoga wint op flexibiliteit, privacy en geen reistijd. De studio biedt de directe
+        aanwezigheid van een docent, een vaste afspraak en een ingerichte lesruimte. Voor beginners
+        die live uitleg willen, is de studio vaak een overzichtelijke eerste test. De
+        doorslaggevende vraag: bij welke vorm blijf jij aandachtig en regelmatig oefenen?
+      </p>
     </>
   );
 }

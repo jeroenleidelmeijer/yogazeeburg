@@ -106,8 +106,9 @@ function AlleenBody() {
         Alleen binnenkomen voelt groter dan het is
       </h2>
       <p className="mt-4">
-        De lastigste minuut is vaak niet de yogales, maar het moment vóór de deur. Misschien verwacht
-        je een hechte groep of weet je niet waar je moet staan en wat je met je spullen doet.
+        De lastigste minuut is vaak niet de yogales, maar het moment vóór de deur. Misschien
+        verwacht je een hechte groep of weet je niet waar je moet staan en wat je met je spullen
+        doet.
       </p>
       <p className="mt-4">
         Voor de oefeningen maakt het weinig verschil of deelnemers elkaar kennen: je krijgt uitleg
