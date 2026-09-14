@@ -92,17 +92,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
       { name: "twitter:title", content: "Yoga Zeeburg | Down-to-earth yoga in Amsterdam Oost" },
-      { property: "og:description", content: "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past." },
-      { name: "twitter:description", content: "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past." },
+      {
+        property: "og:description",
+        content:
+          "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Rustige, down-to-earth yoga in Amsterdam Oost. Begin met 14 dagen onbeperkt en bouw een weekritme dat bij je leven past.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      // Self-hosted fonts (see @font-face in src/styles.css). Only the latin
+      // subsets actually used above the fold are preloaded.
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/inter-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/fraunces-latin.woff2",
+        crossOrigin: "anonymous",
       },
     ],
   }),

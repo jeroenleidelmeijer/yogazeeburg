@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { listPublishedArticlesFn, resolveArticleBySlugFn } from "@/lib/kennisbank/data.functions";
+import { loadLegacyArticle } from "@/lib/kennisbank/article-bodies";
 import { related as relatedRefs } from "@/lib/kennisbank/compose";
 import type {
   ArticleRef,
@@ -36,6 +37,12 @@ export const Route = createFileRoute("/kennisbank/$slug")({
   loader: async ({ params }): Promise<LoaderData> => {
     const resolved = await resolveArticleBySlugFn({ data: { slug: params.slug } });
     if (!resolved) throw notFound();
+    // Legacy bodies are code-split per slug; load this one before render so
+    // both SSR and client render the full article synchronously.
+    if (resolved.kind === "legacy") {
+      const legacy = await loadLegacyArticle(resolved.slug);
+      if (!legacy) throw notFound();
+    }
     const all = await listPublishedArticlesFn();
     return { resolved, related: relatedRefs(all, params.slug, 2) };
   },
