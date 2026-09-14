@@ -707,7 +707,7 @@ function LandingFooter({ locale }: { locale: Locale }) {
         <div>
           <div className="font-display text-base text-foreground">Yoga Zeeburg</div>
           <address className="mt-1 not-italic">
-            Cruquiusweg 96F, 1019 AH Amsterdam · {copy.footerAbove}
+            Cruquiusweg 96F, 1019 AJ Amsterdam · {copy.footerAbove}
           </address>
         </div>
         <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-foreground">

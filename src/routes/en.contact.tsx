@@ -133,7 +133,7 @@ function ContactInfo() {
           <address className="mt-2 text-base not-italic leading-relaxed text-foreground">
             Yoga Zeeburg<br />
             Cruquiusweg 96F<br />
-            1019 AH Amsterdam
+            1019 AJ Amsterdam
           </address>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
             Above CrossFit Zeeburg, by the water in Amsterdam East.

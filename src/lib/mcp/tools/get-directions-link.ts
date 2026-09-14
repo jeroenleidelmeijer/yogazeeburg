@@ -20,7 +20,7 @@ export default defineTool({
       ? `${base}&origin=${encodeURIComponent(from)}&destination=${destination}`
       : `${base}&destination=${destination}`;
     const result = {
-      destination: "Yoga Zeeburg, Cruquiusweg 96F, 1019 AH Amsterdam",
+      destination: "Yoga Zeeburg, Cruquiusweg 96F, 1019 AJ Amsterdam",
       directions_url: url,
     };
     return {

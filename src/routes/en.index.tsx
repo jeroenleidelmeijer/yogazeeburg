@@ -39,7 +39,7 @@ export const Route = createFileRoute("/en/")({
             "@type": "PostalAddress",
             streetAddress: "Cruquiusweg 96F",
             addressLocality: "Amsterdam",
-            postalCode: "1019 AH",
+            postalCode: "1019 AJ",
             addressCountry: "NL",
           },
           areaServed: ["Amsterdam East", "Zeeburg", "Cruquius", "Eastern Docklands"],
@@ -463,7 +463,7 @@ function Location() {
               Yoga Zeeburg
             </div>
             <div className="mt-3 text-lg text-foreground/90">Cruquiusweg 96F</div>
-            <div className="text-lg text-foreground/90">1019 AH Amsterdam</div>
+            <div className="text-lg text-foreground/90">1019 AJ Amsterdam</div>
           </address>
           <div className="mt-6 space-y-1.5 text-[15px] text-muted-foreground">
             <div>Above CrossFit Zeeburg</div>

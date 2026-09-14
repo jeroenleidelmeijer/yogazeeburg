@@ -51,7 +51,7 @@ export const Route = createFileRoute("/trial")({
               "@type": "PostalAddress",
               streetAddress: "Cruquiusweg 96F",
               addressLocality: "Amsterdam",
-              postalCode: "1019 AH",
+              postalCode: "1019 AJ",
               addressCountry: "NL",
             },
             email: "hello@yogazeeburg.com",
