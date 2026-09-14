@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: actieve-yoga-voor-beginners-waar-begin-je
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import actieveHeroAsset from "@/assets/actieve-yoga-beginners-hero.webp.asset.json";

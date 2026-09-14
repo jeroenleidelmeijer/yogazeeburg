@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yoga-aan-het-water-in-amsterdam-oost-rust-midden-in-de-stad
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import waterHeroAsset from "@/assets/yoga-aan-het-water-hero.webp.asset.json";

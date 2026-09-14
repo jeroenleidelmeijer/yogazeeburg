@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yoga-in-amsterdam-oost-welke-yogastudio-past-bij-jou
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { type Article, CATEGORY_AMSTERDAM_OOST } from "../article-types";
 

@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { type Article, CATEGORY_AMSTERDAM_OOST } from "../article-types";
 
 export const article: Article = {

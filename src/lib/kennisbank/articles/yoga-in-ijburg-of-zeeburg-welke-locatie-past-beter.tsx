@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yoga-in-ijburg-of-zeeburg-welke-locatie-past-beter
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import ijburgHeroAsset from "@/assets/yoga-ijburg-of-zeeburg-hoofdbeeld.webp.asset.json";

@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: nederlandse-of-engelse-yogales-in-amsterdam-wat-past-bij-jou
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { type Article, CATEGORY_AMSTERDAM_OOST } from "../article-types";
 

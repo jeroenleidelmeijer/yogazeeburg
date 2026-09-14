@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: rustige-yoga-voor-beginners-welke-les-past-het-beste
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import rustigeHeroAsset from "@/assets/rustige-yoga-voor-beginners-hoofdbeeld.webp.asset.json";

@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yoga-proefles-of-introductiepas-wat-is-slimmer
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import proeflesPasHeroAsset from "@/assets/yoga-proefles-introductiepas-hoofdbeeld.webp.asset.json";

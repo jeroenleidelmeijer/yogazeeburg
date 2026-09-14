@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: hoe-herken-je-een-goede-yogastudio-kwaliteitskenmerken
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import goedeStudioHeroAsset from "@/assets/yoga-goede-yogastudio-hoofdbeeld.webp.asset.json";

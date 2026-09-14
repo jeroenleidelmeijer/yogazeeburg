@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: welke-vragen-stel-je-voor-je-eerste-yogales
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import vragenEersteLesHeroAsset from "@/assets/vragen-eerste-yogales-hero.webp.asset.json";

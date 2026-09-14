@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yoga-in-de-indische-buurt-en-omgeving-welke-opties-zijn-er
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import indischeHeroAsset from "@/assets/yoga-indische-buurt-hoofdbeeld.webp.asset.json";

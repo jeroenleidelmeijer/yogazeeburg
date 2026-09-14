@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: groepsles-yoga-of-priveles-wat-past-bij-jou
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import groepsPriveHeroAsset from "@/assets/groepsles-yoga-of-priveles-hero.webp.asset.json";

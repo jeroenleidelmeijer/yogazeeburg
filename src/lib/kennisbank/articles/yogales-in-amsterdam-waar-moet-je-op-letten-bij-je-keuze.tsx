@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yogales-in-amsterdam-waar-moet-je-op-letten-bij-je-keuze
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { type Article, CATEGORY_AMSTERDAM_OOST } from "../article-types";
 

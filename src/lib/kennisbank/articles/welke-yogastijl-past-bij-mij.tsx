@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: welke-yogastijl-past-bij-mij
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import yogastijlHeroAsset from "@/assets/welke-yogastijl-past-bij-mij-keuzehulp-hero.webp.asset.json";

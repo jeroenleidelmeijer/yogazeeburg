@@ -1,8 +1,6 @@
 // Legacy Yoga Gids article — lazily loaded per slug by `article-bodies.ts`.
 // Slug: yoga-voor-expats-in-amsterdam-east-what-to-expect
 
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArticleFigure, type ArticleImageRef } from "@/components/kennisbank/ArticleFigure";
 import expatsHeroAsset from "@/assets/yoga-expats-amsterdam-east-hoofdbeeld.webp.asset.json";
