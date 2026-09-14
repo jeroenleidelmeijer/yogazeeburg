@@ -171,7 +171,12 @@ describe("sitemap.xml — published-only URL emission", () => {
     expect(xml).not.toContain("/kennisbank/preview-only-fake");
     // Legacy 1–3 still present.
     expect(xml).toContain("/kennisbank/proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten");
-    // No category archive URLs (functional archives are noindex, not in sitemap).
-    expect(xml).not.toContain("/kennisbank/categorie/");
+    // Only categories that actually have published articles are indexable
+    // topical hubs and therefore in the sitemap. Legacy articles fill
+    // "yoga-amsterdam-oost" and "beginnen-met-yoga"; empty categories stay out.
+    expect(xml).toContain("/kennisbank/categorie/yoga-amsterdam-oost");
+    expect(xml).toContain("/kennisbank/categorie/beginnen-met-yoga");
+    expect(xml).not.toContain("/kennisbank/categorie/klachten-en-levensfasen");
+    expect(xml).not.toContain("/kennisbank/categorie/yogastijlen");
   });
 });

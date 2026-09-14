@@ -1,14 +1,23 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { getArticleBySlug, type ArticleTOCItem, type ArticleFAQ } from "@/lib/kennisbank/articles";
 import { listPublishedArticlesFn, resolveArticleBySlugFn } from "@/lib/kennisbank/data.functions";
 import { related as relatedRefs } from "@/lib/kennisbank/compose";
-import type { ArticleRef, ArticleResolvedRef, DbArticleViewModel } from "@/lib/kennisbank/types";
-import { ArticleCard } from "@/components/kennisbank/ArticleCard";
+import type {
+  ArticleRef,
+  ArticleResolvedRef,
+  DbArticleViewModel,
+  LegacyArticleSeo,
+} from "@/lib/kennisbank/types";
 import { SafeMarkdownBody } from "@/components/kennisbank/SafeMarkdownBody";
-import { ArticleFigure } from "@/components/kennisbank/ArticleFigure";
+import { LegacyArticleView } from "@/components/kennisbank/LegacyArticleView";
+import {
+  ArticleShell,
+  FaqList,
+  RelatedGrid,
+  SourcesList,
+  TocBlock,
+} from "@/components/kennisbank/ArticleShell";
 
 const BASE = "https://www.yogazeeburg.com";
 const INTRO_URL = "/trial";
@@ -139,38 +148,14 @@ export const Route = createFileRoute("/kennisbank/$slug")({
 });
 
 // -- SEO viewmodel bridge -------------------------------------------------
+//
+// Legacy SEO metadata arrives pre-computed and serialized from the server, so
+// this route's eager options never import the legacy article module.
 
-type SeoView = {
-  seoTitle: string;
-  title: string;
-  h1: string;
-  description: string;
-  publishedAt: string;
-  updatedAt: string;
-  categoryTitle: string;
-  categorySlug: string;
-  faqs: { question: string; answer: string }[];
-  /** Absolute production URL of the hero image, when the article has one. */
-  heroImageUrl: string | null;
-};
+type SeoView = LegacyArticleSeo;
 
 function seoFor(resolved: ArticleResolvedRef): SeoView | null {
-  if (resolved.kind === "legacy") {
-    const a = getArticleBySlug(resolved.slug);
-    if (!a) return null;
-    return {
-      seoTitle: a.seoTitle,
-      title: a.title,
-      h1: a.h1,
-      description: a.description,
-      publishedAt: a.publishedAt,
-      updatedAt: a.updatedAt,
-      categoryTitle: a.category.title,
-      categorySlug: a.category.slug,
-      faqs: a.template.showFAQ ? a.faqs : [],
-      heroImageUrl: a.heroImage ? `${BASE}${a.heroImage.url}` : null,
-    };
-  }
+  if (resolved.kind === "legacy") return resolved.seo;
   const v = resolved.view;
   return {
     seoTitle: v.seoTitle,
@@ -186,16 +171,6 @@ function seoFor(resolved: ArticleResolvedRef): SeoView | null {
   };
 }
 
-function formatDateNL(iso: string): string {
-  const d = new Date(iso + "T00:00:00Z");
-  return new Intl.DateTimeFormat("nl-NL", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(d);
-}
-
 function ArticlePage() {
   const { resolved, related } = Route.useLoaderData();
   if (resolved.kind === "legacy") {
@@ -204,313 +179,7 @@ function ArticlePage() {
   return <DbArticleView view={resolved.view} related={related} />;
 }
 
-// -- Layout shared shell ---------------------------------------------------
-
-function ArticleShell({
-  categoryTitle,
-  categorySlug,
-  title,
-  h1,
-  publishedAt,
-  updatedAt,
-  readingTimeMin,
-  intro,
-  hero,
-  children,
-}: {
-  categoryTitle: string;
-  categorySlug: string;
-  title: string;
-  h1: string;
-  publishedAt: string;
-  updatedAt: string;
-  readingTimeMin: number;
-  intro?: string;
-  hero?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <div lang="nl" className="flex min-h-screen flex-col bg-background">
-      <SiteHeader />
-      <main className="flex-1">
-        <article>
-          <header className="border-b border-border/60 bg-secondary/30">
-            <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
-              <nav aria-label="Kruimelpad" className="text-sm text-muted-foreground">
-                <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <li>
-                    <Link to="/kennisbank" className="hover:text-foreground">
-                      Yoga Gids
-                    </Link>
-                  </li>
-                  <li aria-hidden="true">›</li>
-                  <li>
-                    <Link
-                      to="/kennisbank/categorie/$slug"
-                      params={{ slug: categorySlug }}
-                      className="hover:text-foreground"
-                    >
-                      {categoryTitle}
-                    </Link>
-                  </li>
-                  <li aria-hidden="true">›</li>
-                  <li aria-current="page" className="text-foreground/80">
-                    {title}
-                  </li>
-                </ol>
-              </nav>
-              <p className="mt-6 font-sans text-sm font-medium uppercase tracking-widest text-primary">
-                {categoryTitle}
-              </p>
-              <h1 className="mt-2 font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                {h1}
-              </h1>
-              {intro && <p className="mt-5 text-lg text-muted-foreground">{intro}</p>}
-              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="text-foreground/70">Door</span>
-                  <span className="font-medium text-foreground">Yoga Zeeburg</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Calendar className="h-4 w-4" aria-hidden="true" />
-                  <span>
-                    Gepubliceerd <time dateTime={publishedAt}>{formatDateNL(publishedAt)}</time>
-                  </span>
-                </span>
-                {updatedAt !== publishedAt && (
-                  <span className="inline-flex items-center gap-1.5">
-                    <span>
-                      Bijgewerkt <time dateTime={updatedAt}>{formatDateNL(updatedAt)}</time>
-                    </span>
-                  </span>
-                )}
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="h-4 w-4" aria-hidden="true" />
-                  <span>{readingTimeMin} min lezen</span>
-                </span>
-              </div>
-            </div>
-          </header>
-          <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-            <div className="text-[17px] leading-relaxed text-foreground/90">
-              {hero}
-              {children}
-              <FinalCta />
-              <BackLink updatedAt={updatedAt} />
-            </div>
-          </div>
-        </article>
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
-
-function FinalCta() {
-  return (
-    <section aria-labelledby="artikel-cta-heading" className="mt-14">
-      <div className="rounded-3xl bg-primary p-8 text-primary-foreground shadow-lg sm:p-12">
-        <h2
-          id="artikel-cta-heading"
-          className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
-        >
-          Zelf ervaren wat yoga voor je doet?
-        </h2>
-        <p className="mt-4 max-w-2xl text-primary-foreground/90">
-          Probeer 14 dagen onbeperkt verschillende lessen, docenten en tijden bij Yoga Zeeburg in
-          Amsterdam Oost.
-        </p>
-        <a
-          href={INTRO_URL}
-          className="mt-7 inline-flex min-h-[44px] items-center rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
-        >
-          Bekijk de 14-daagse Intro Pass
-        </a>
-        <p className="mt-3 text-sm text-primary-foreground/75">
-          Voor nieuwe studenten. Stopt automatisch.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function BackLink({ updatedAt }: { updatedAt: string }) {
-  return (
-    <footer className="mt-14 border-t border-border/60 pt-6 text-sm text-muted-foreground">
-      <p>
-        Geschreven door <span className="font-medium text-foreground">Yoga Zeeburg</span> · Laatst
-        bijgewerkt <time dateTime={updatedAt}>{formatDateNL(updatedAt)}</time>
-      </p>
-      <div className="mt-4">
-        <Link
-          to="/kennisbank"
-          className="inline-flex items-center gap-2 text-primary hover:underline"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Terug naar Yoga Gids
-        </Link>
-      </div>
-    </footer>
-  );
-}
-
-function RelatedGrid({ related }: { related: ArticleRef[] }) {
-  if (related.length === 0) return null;
-  return (
-    <section aria-labelledby="gerelateerd-heading" className="mt-14">
-      <h2
-        id="gerelateerd-heading"
-        className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
-      >
-        Gerelateerde artikelen
-      </h2>
-      <ul className="mt-6 grid gap-5 sm:grid-cols-2">
-        {related.map((r) => (
-          <ArticleCard key={r.slug} article={r} />
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-function FaqList({ faqs }: { faqs: ArticleFAQ[] }) {
-  if (faqs.length === 0) return null;
-  return (
-    <section id="faq" aria-labelledby="faq-heading" className="mt-14">
-      <h2
-        id="faq-heading"
-        className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
-      >
-        Veelgestelde vragen
-      </h2>
-      <dl className="mt-6 divide-y divide-border rounded-2xl border border-border bg-card">
-        {faqs.map((f) => (
-          <div key={f.question} className="p-6">
-            <dt className="font-display text-lg font-medium text-foreground">{f.question}</dt>
-            <dd className="mt-2 text-foreground/85">{f.answer}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-  );
-}
-
-function TocBlock({ toc }: { toc: ArticleTOCItem[] }) {
-  if (toc.length === 0) return null;
-  return (
-    <nav
-      aria-labelledby="toc-heading"
-      className="mb-10 rounded-2xl border border-border bg-card p-6"
-    >
-      <h2
-        id="toc-heading"
-        className="font-display text-lg font-medium tracking-tight text-foreground"
-      >
-        Inhoud
-      </h2>
-      <ol className="mt-3 space-y-1.5 text-sm">
-        {toc.map((item, i) => (
-          <li key={item.id} className="flex gap-2">
-            <span aria-hidden="true" className="tabular-nums text-muted-foreground">
-              {String(i + 1).padStart(2, "0")}.
-            </span>
-            <a
-              href={`#${item.id}`}
-              className="text-foreground/85 underline-offset-4 hover:text-primary hover:underline"
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ol>
-    </nav>
-  );
-}
-
-// -- Legacy article rendering (unchanged behaviour) -----------------------
-
-function LegacyArticleView({ slug, related }: { slug: string; related: ArticleRef[] }) {
-  const a = getArticleBySlug(slug);
-  if (!a) throw notFound();
-  const Body = a.body;
-  return (
-    <ArticleShell
-      categoryTitle={a.category.title}
-      categorySlug={a.category.slug}
-      title={a.title}
-      h1={a.h1}
-      publishedAt={a.publishedAt}
-      updatedAt={a.updatedAt}
-      readingTimeMin={a.readingTimeMin}
-      intro={
-        a.intro ??
-        "Praktische, warme uitleg over hoe een eerste yogales in Amsterdam Oost werkt — zonder marketingtaal en zonder prestatiedruk."
-      }
-      hero={
-        a.heroImage ? <ArticleFigure image={a.heroImage} priority className="mb-10" /> : undefined
-      }
-    >
-      {a.template.showTOC && <TocBlock toc={a.toc} />}
-      <Body />
-      {a.template.showFAQ && <FaqList faqs={a.faqs} />}
-      {a.template.showRelated && <RelatedGrid related={related} />}
-      {a.template.showSources && a.sources && a.sources.length > 0 && (
-        <section aria-labelledby="bronnen-heading" className="mt-14">
-          <h2
-            id="bronnen-heading"
-            className="font-display text-xl font-medium tracking-tight text-foreground"
-          >
-            Bronnen
-          </h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            {a.sources.map((s) => (
-              <li key={s.url}>
-                <a
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:no-underline"
-                >
-                  {s.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </ArticleShell>
-  );
-}
-
 // -- DB article rendering (SafeMarkdownBody) -------------------------------
-
-function DbSourcesList({ sources }: { sources: { title: string; url: string }[] }) {
-  if (!sources || sources.length === 0) return null;
-  return (
-    <section aria-labelledby="bronnen-heading" className="mt-14">
-      <h2
-        id="bronnen-heading"
-        className="font-display text-xl font-medium tracking-tight text-foreground"
-      >
-        Bronnen
-      </h2>
-      <ul className="mt-3 space-y-2 text-sm">
-        {sources.map((s) => (
-          <li key={s.url}>
-            <a
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="text-primary underline underline-offset-4 hover:no-underline"
-            >
-              {s.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
 
 function DbArticleView({ view, related }: { view: DbArticleViewModel; related: ArticleRef[] }) {
   return (
@@ -527,13 +196,11 @@ function DbArticleView({ view, related }: { view: DbArticleViewModel; related: A
       {view.template.showTOC && <TocBlock toc={view.toc} />}
       <SafeMarkdownBody markdown={view.bodyMarkdown} />
       {view.template.showFAQ && <FaqList faqs={view.faqs} />}
-      {view.template.showSources && <DbSourcesList sources={view.sources} />}
+      {view.template.showSources && <SourcesList sources={view.sources} />}
       {view.template.showRelated && <RelatedGrid related={related} />}
     </ArticleShell>
   );
 }
-
-export { DbSourcesList };
 
 function ArticleNotFound() {
   return (

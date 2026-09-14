@@ -17,15 +17,10 @@ export type {
   DbArticleViewModel,
 } from "./types";
 
-// Category slug → human title + filter tokens. Mirrors the hub's CATEGORIES.
-export const CATEGORY_META: Record<string, { title: string; filters: string[] }> = {
-  "beginnen-met-yoga": { title: "Beginnen met yoga", filters: ["beginner"] },
-  yogastijlen: { title: "Yogastijlen uitgelegd", filters: ["yogastijlen"] },
-  "stress-ontspanning-slaap": { title: "Stress, ontspanning en slaap", filters: ["ontspanning"] },
-  "flexibiliteit-kracht-houding": { title: "Flexibiliteit, kracht en houding", filters: ["flexibiliteit"] },
-  "klachten-en-levensfasen": { title: "Yoga bij klachten en levensfasen", filters: [] },
-  "yoga-amsterdam-oost": { title: "Yoga in Amsterdam Oost", filters: ["beginner"] },
-};
+// Category slug → human title + filter tokens. Single-sourced from
+// `categories.ts` (light, article-free) and re-exported for existing callers.
+export { CATEGORY_META } from "./categories";
+import { CATEGORY_META } from "./categories";
 
 export function legacyArticleToRef(a: Article): ArticleRef {
   const meta = CATEGORY_META[a.category.slug];

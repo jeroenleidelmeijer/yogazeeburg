@@ -35,10 +35,25 @@ export const Route = createFileRoute("/sitemap.xml")({
         // placement_status='published'. Draft/preview rows are excluded.
         // Category pages remain intentionally absent (noindex archives).
         const { listPublishedRefs } = await import("@/lib/kennisbank/data.server");
+        const { CATEGORIES } = await import("@/lib/kennisbank/categories");
         const published = await listPublishedRefs();
         for (const a of published) {
           entries.push(
             `  <url>\n    <loc>${BASE_URL}/kennisbank/${a.slug}</loc>\n    <lastmod>${a.updatedAt}</lastmod>\n  </url>`,
+          );
+        }
+        // Only known categories that actually have published articles are
+        // indexable topical hubs, so only those enter the sitemap. Empty
+        // categories stay noindex and absent.
+        for (const c of CATEGORIES) {
+          const inCategory = published.filter((a) => a.category.slug === c.slug);
+          if (inCategory.length === 0) continue;
+          const lastmod = inCategory
+            .map((a) => a.updatedAt)
+            .sort()
+            .at(-1)!;
+          entries.push(
+            `  <url>\n    <loc>${BASE_URL}/kennisbank/categorie/${c.slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`,
           );
         }
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join("\n")}\n</urlset>\n`;

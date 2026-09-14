@@ -115,7 +115,11 @@ const ALLOWED_INTERNAL_PATH_PREFIXES = [
  *  spoofing like `www.yogazeeburg.com.evil.example` or `//evil.example`. */
 export function classifyLink(
   url: string,
-): { kind: "internal"; to: string } | { kind: "same-site"; href: string } | { kind: "intro"; href: string } | null {
+):
+  | { kind: "internal"; to: string }
+  | { kind: "same-site"; href: string }
+  | { kind: "intro"; href: string }
+  | null {
   if (typeof url !== "string" || url.length === 0) return null;
   // Protocol-relative URLs (`//host/...`) are never internal — reject.
   if (url.startsWith("//")) return null;
@@ -125,7 +129,8 @@ export function classifyLink(
     // Require an allowlisted prefix, followed by "/" or end-of-string, so
     // "/pricingx" cannot ride in on "/pricing".
     const matched = ALLOWED_INTERNAL_PATH_PREFIXES.some(
-      (p) => url === p || url.startsWith(p + "/") || url.startsWith(p + "?") || url.startsWith(p + "#"),
+      (p) =>
+        url === p || url.startsWith(p + "/") || url.startsWith(p + "?") || url.startsWith(p + "#"),
     );
     return matched ? { kind: "internal", to: url } : null;
   }

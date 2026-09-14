@@ -57,7 +57,26 @@ export interface DbArticleViewModel {
   template: { showTOC: boolean; showFAQ: boolean; showSources: boolean; showRelated: boolean };
 }
 
-/** Union used by the article route loader — legacy uses only `slug`. */
+/**
+ * Fully-serializable SEO metadata for a legacy article. Computed server-side
+ * so route `head()`/`loader` never need to import the (large) JSX article
+ * module on the client.
+ */
+export interface LegacyArticleSeo {
+  seoTitle: string;
+  title: string;
+  h1: string;
+  description: string;
+  publishedAt: string;
+  updatedAt: string;
+  categoryTitle: string;
+  categorySlug: string;
+  faqs: { question: string; answer: string }[];
+  /** Absolute production URL of the hero image, when the article has one. */
+  heroImageUrl: string | null;
+}
+
+/** Union used by the article route loader — legacy carries slug + SEO only. */
 export type ArticleResolvedRef =
-  | { kind: "legacy"; slug: string }
+  | { kind: "legacy"; slug: string; seo: LegacyArticleSeo }
   | { kind: "db"; view: DbArticleViewModel };

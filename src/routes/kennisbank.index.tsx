@@ -13,6 +13,7 @@ import {
   byCategory,
   type QuickFilter,
 } from "@/lib/kennisbank/compose";
+import { CATEGORIES as CATEGORY_LIST } from "@/lib/kennisbank/categories";
 
 const INTRO_URL = "/trial";
 const CANONICAL = "https://www.yogazeeburg.com/kennisbank";
@@ -26,9 +27,9 @@ const QUICK_CHOICES: QuickChoice[] = [
   { value: "yogastijlen", label: "Ik zoek een yogastijl" },
 ];
 
-// Category display data (icons/keywords) lives here — visual-only.
-// Filter tokens and titles are single-sourced from CATEGORY_META via the
-// registry; this mapping only adds icon + display keywords.
+// Category titles, copy, keywords and filter tokens are single-sourced from
+// `@/lib/kennisbank/categories` (a light, article-free module). Only the icon
+// mapping is visual and therefore stays here.
 type CategoryDisplay = {
   slug: string;
   title: string;
@@ -38,74 +39,23 @@ type CategoryDisplay = {
   filters: QuickFilter[];
 };
 
-const CATEGORIES: CategoryDisplay[] = [
-  {
-    slug: "beginnen-met-yoga",
-    title: "Beginnen met yoga",
-    description:
-      "Rustige uitleg voor wie net start: wat je nodig hebt, wat je kunt verwachten en hoe je zonder stress je eerste les kiest.",
-    icon: Sparkles,
-    keywords: ["beginner", "starten", "eerste les", "proefles", "basics"],
-    filters: ["beginner"],
-  },
-  {
-    slug: "yogastijlen",
-    title: "Yogastijlen uitgelegd",
-    description:
-      "Vinyasa, Hatha, Yin, restorative en meer. Ontdek welke stijl bij jouw energie, doel en week past.",
-    icon: Leaf,
-    keywords: ["stijlen", "vinyasa", "hatha", "yin", "restorative", "ashtanga"],
-    filters: ["yogastijlen"],
-  },
-  {
-    slug: "stress-ontspanning-slaap",
-    title: "Stress, ontspanning en slaap",
-    description:
-      "Praktische yoga en ademhaling om je zenuwstelsel te kalmeren, spanning los te laten en beter te slapen.",
-    icon: Moon,
-    keywords: ["stress", "ontspanning", "slaap", "ademhaling", "rust", "burn-out"],
-    filters: ["ontspanning"],
-  },
-  {
-    slug: "flexibiliteit-kracht-houding",
-    title: "Flexibiliteit, kracht en houding",
-    description:
-      "Soepeler worden, meer kracht opbouwen en je houding verbeteren — stap voor stap, zonder forceren.",
-    icon: Activity,
-    keywords: ["flexibiliteit", "soepel", "kracht", "houding", "mobiliteit", "rug"],
-    filters: ["flexibiliteit"],
-  },
-  {
-    slug: "klachten-en-levensfasen",
-    title: "Yoga bij klachten en levensfasen",
-    description:
-      "Voorzichtige informatie over yoga bij rugpijn, zwangerschap, menopauze en andere levensfasen.",
-    icon: HeartPulse,
-    keywords: ["klachten", "rugpijn", "nek", "zwangerschap", "menopauze", "ouder", "blessure"],
-    filters: [],
-  },
-  {
-    slug: "yoga-amsterdam-oost",
-    title: "Yoga in Amsterdam Oost",
-    description:
-      "Alles over yoga in de buurt: Zeeburg, Cruquius, IJburg en Indische Buurt — inclusief tips om vol te houden.",
-    icon: MapPin,
-    keywords: [
-      "amsterdam",
-      "oost",
-      "zeeburg",
-      "cruquius",
-      "ijburg",
-      "indische buurt",
-      "buurt",
-      "beginner",
-      "beginners",
-      "starten",
-      "eerste yogales",
-    ],
-    filters: ["beginner"],
-  },
-];
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  "beginnen-met-yoga": Sparkles,
+  yogastijlen: Leaf,
+  "stress-ontspanning-slaap": Moon,
+  "flexibiliteit-kracht-houding": Activity,
+  "klachten-en-levensfasen": HeartPulse,
+  "yoga-amsterdam-oost": MapPin,
+};
+
+const CATEGORIES: CategoryDisplay[] = CATEGORY_LIST.map((c) => ({
+  slug: c.slug,
+  title: c.title,
+  description: c.hubDescription,
+  icon: CATEGORY_ICONS[c.slug] ?? Sparkles,
+  keywords: c.keywords,
+  filters: c.filters as QuickFilter[],
+}));
 
 export const Route = createFileRoute("/kennisbank/")({
   loader: () => listPublishedArticlesFn(),

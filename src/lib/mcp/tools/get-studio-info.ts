@@ -14,7 +14,7 @@ export default defineTool({
       tagline: "Down-to-earth yoga in Amsterdam East",
       address: {
         street: "Cruquiusweg 96F",
-        postalCode: "1019 AH",
+        postalCode: "1019 AJ",
         city: "Amsterdam",
         country: "NL",
       },

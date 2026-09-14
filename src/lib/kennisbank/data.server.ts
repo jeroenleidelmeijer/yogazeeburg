@@ -16,10 +16,7 @@
 
 import { ARTICLES } from "./articles";
 import { CATEGORY_META, legacyArticleToRef, listLegacyRefs } from "./registry";
-import type {
-  ArticleRef,
-  DbArticleViewModel,
-} from "./types";
+import type { ArticleRef, DbArticleViewModel, LegacyArticleSeo } from "./types";
 
 export { CATEGORY_META, legacyArticleToRef, listLegacyRefs };
 
@@ -52,8 +49,7 @@ interface PlacementRowDb {
 
 const ARTICLE_SELECT =
   "id, project_id, category, cluster, primary_keyword, original_title, final_title";
-const ROW_SELECT =
-  `id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(${ARTICLE_SELECT})`;
+const ROW_SELECT = `id, article_id, slug, content_hash, placement_status, package, preview_url, preview_token, published_at, created_at, updated_at, publication_articles!inner(${ARTICLE_SELECT})`;
 
 /**
  * Read every published placement joined with its publication_articles row
@@ -169,8 +165,7 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
   const categorySlug =
     (row.publication_articles?.category && String(row.publication_articles.category)) ||
     "yoga-amsterdam-oost";
-  const categoryTitle =
-    CATEGORY_META[categorySlug]?.title ?? "Yoga in Amsterdam Oost";
+  const categoryTitle = CATEGORY_META[categorySlug]?.title ?? "Yoga in Amsterdam Oost";
 
   const faq = Array.isArray(pkg.faq) ? (pkg.faq as { question: string; answer: string }[]) : [];
   const internalLinks = Array.isArray(pkg.internalLinks)
@@ -192,8 +187,8 @@ export function dbRowToViewModel(row: PlacementRowDb): DbArticleViewModel {
     | { sources?: { title?: unknown; url?: unknown; type?: unknown }[] }
     | undefined;
   const sources: { title: string; url: string }[] = Array.isArray(sourcesPack?.sources)
-    ? sourcesPack!.sources!
-        .filter(
+    ? sourcesPack!
+        .sources!.filter(
           (s) =>
             typeof s?.title === "string" &&
             typeof s?.url === "string" &&
@@ -290,13 +285,30 @@ export async function listPublishedRefs(): Promise<ArticleRef[]> {
 export async function resolveArticleBySlug(
   slug: string,
 ): Promise<
-  | { kind: "legacy"; slug: string }
+  | { kind: "legacy"; slug: string; seo: LegacyArticleSeo }
   | { kind: "db"; view: DbArticleViewModel }
   | null
 > {
-  if (ARTICLES.some((a) => a.slug === slug)) return { kind: "legacy", slug };
+  const legacy = ARTICLES.find((a) => a.slug === slug);
+  if (legacy) return { kind: "legacy", slug, seo: legacyArticleSeo(legacy) };
   const rows = await fetchPublishedRows();
   const row = rows.find((r) => r.slug === slug);
   if (!row) return null;
   return { kind: "db", view: dbRowToViewModel(row) };
+}
+
+/** Serializable SEO projection of a legacy article (server-side only). */
+function legacyArticleSeo(a: (typeof ARTICLES)[number]): LegacyArticleSeo {
+  return {
+    seoTitle: a.seoTitle,
+    title: a.title,
+    h1: a.h1,
+    description: a.description,
+    publishedAt: a.publishedAt,
+    updatedAt: a.updatedAt,
+    categoryTitle: a.category.title,
+    categorySlug: a.category.slug,
+    faqs: a.template.showFAQ ? a.faqs.map((f) => ({ question: f.question, answer: f.answer })) : [],
+    heroImageUrl: a.heroImage ? `${CANONICAL_BASE}${a.heroImage.url}` : null,
+  };
 }

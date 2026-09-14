@@ -51,7 +51,7 @@ export function SiteFooter({ locale = "nl" }: { locale?: Locale }) {
           <address className="mt-4 text-sm not-italic text-muted-foreground">
             Cruquiusweg 96F
             <br />
-            1019 AH Amsterdam
+            1019 AJ Amsterdam
             <br />
             {copy.above}
           </address>
