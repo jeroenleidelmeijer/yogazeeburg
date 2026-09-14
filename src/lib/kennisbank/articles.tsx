@@ -39,6 +39,24 @@ import alleenHeroAsset from "@/assets/alleen-naar-yogales-hero.webp.asset.json";
 import alleenInlineAsset from "@/assets/eigen-plek-in-yogales.webp.asset.json";
 import onlineStudioHeroAsset from "@/assets/online-yoga-of-yogales-studio-hero.webp.asset.json";
 import onlineThuisAsset from "@/assets/online-yoga-thuisopstelling.webp.asset.json";
+import vragenEersteLesHeroAsset from "@/assets/vragen-eerste-yogales-hero.webp.asset.json";
+import vragenEersteLesInlineAsset from "@/assets/voorbereiding-eerste-yogales.webp.asset.json";
+
+const VRAGEN_EERSTE_LES_HERO_IMAGE: ArticleImageRef = {
+  url: vragenEersteLesHeroAsset.url,
+  alt: "Yogamat, blokken, deken, waterfles en leeg notitieboek in een rustige lichte yogaruimte.",
+  width: 1536,
+  height: 1024,
+};
+
+const VRAGEN_EERSTE_LES_INLINE_IMAGE: ArticleImageRef = {
+  url: vragenEersteLesInlineAsset.url,
+  alt: "Open notitieboek naast een yogamat, yogablokken, riem, deken en waterfles als voorbereiding op een eerste yogales.",
+  width: 1536,
+  height: 1024,
+};
+
+
 
 const GROEPS_PRIVE_HERO_IMAGE: ArticleImageRef = {
   url: groepsPriveHeroAsset.url,
