@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Suspense } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LegacyArticleView } from "@/components/kennisbank/LegacyArticleView";
