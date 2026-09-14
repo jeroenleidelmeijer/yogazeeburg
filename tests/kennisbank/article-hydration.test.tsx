@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { Suspense } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { LegacyArticleView } from "@/components/kennisbank/LegacyArticleView";
-import { loadLegacyArticle } from "@/lib/kennisbank/article-bodies";
+import { loadLegacyArticle, getLoadedLegacyArticle } from "@/lib/kennisbank/article-bodies";
 
 /**
  * Regression tests for the hydration path of the per-slug code split.
@@ -53,6 +53,8 @@ describe("legacy article hydration path", () => {
   it("renders the full article body without suspending once the body is loaded", async () => {
     // No module reset here: the view and the loader must share one cache.
     await loadLegacyArticle(SLUG);
+    // eslint-disable-next-line no-console
+    console.log("DEBUG cached:", getLoadedLegacyArticle(SLUG)?.slug);
     const html = renderToStaticMarkup(
       <Suspense fallback={<div data-testid="fallback" />}>
         <LegacyArticleView slug={SLUG} related={[]} />
