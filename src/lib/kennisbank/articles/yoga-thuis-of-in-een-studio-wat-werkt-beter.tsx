@@ -115,7 +115,8 @@ function ThuisOfStudioBody() {
       <p className="mt-4">
         In dit artikel betekent thuis oefenen dat je zelfstandig op je mat stapt, zonder livestream,
         opgenomen les of docent op een scherm. Je kiest zelf de houdingen, volgorde, duur en
-        intensiteit. Wil je juist begeleide online lessen vergelijken met lessen op locatie? Lees dan{" "}
+        intensiteit. Wil je juist begeleide online lessen vergelijken met lessen op locatie? Lees
+        dan{" "}
         <Link
           to="/kennisbank/$slug"
           params={{ slug: "online-yoga-of-yogales-in-de-studio-voor-en-nadelen" }}
@@ -228,14 +229,14 @@ function ThuisOfStudioBody() {
       <p className="mt-4">
         Voor beginners geeft dat vaak rust. Je leert basistermen kennen, ervaart verschillende
         stijlen en ontdekt welk tempo bij je past. Een docent kan geen medische diagnose stellen,
-        maar kan wel algemene opties geven en aangeven wanneer een oefening niet bij de les past. Heb
-        je een blessure, zwangerschap of andere relevante bijzonderheid, bespreek dan vooraf wat
+        maar kan wel algemene opties geven en aangeven wanneer een oefening niet bij de les past.
+        Heb je een blessure, zwangerschap of andere relevante bijzonderheid, bespreek dan vooraf wat
         verstandig is en vraag bij twijfel advies aan een passende zorgprofessional.
       </p>
       <p className="mt-4">
-        Ook de omgeving helpt. In een rustige zaal liggen telefoon, wasmand en werkmail niet naast je
-        mat. Een gereserveerd lesmoment maakt van een voornemen een concrete afspraak. Wil je weten
-        waar je op kunt letten bij die keuze? Bekijk dan{" "}
+        Ook de omgeving helpt. In een rustige zaal liggen telefoon, wasmand en werkmail niet naast
+        je mat. Een gereserveerd lesmoment maakt van een voornemen een concrete afspraak. Wil je
+        weten waar je op kunt letten bij die keuze? Bekijk dan{" "}
         <Link
           to="/kennisbank/$slug"
           params={{ slug: "hoe-herken-je-een-goede-yogastudio-kwaliteitskenmerken" }}
@@ -265,9 +266,9 @@ function ThuisOfStudioBody() {
         De combinatie die vaak het beste werkt
       </h2>
       <p className="mt-4">
-        Je hoeft niet definitief te kiezen. Een praktische combinatie is één vast studiomoment en één
-        of twee korte thuisoefeningen per week. De studio geeft richting en nieuwe input; thuis helpt
-        je om bekende elementen te herhalen en van yoga een gewone gewoonte te maken.
+        Je hoeft niet definitief te kiezen. Een praktische combinatie is één vast studiomoment en
+        één of twee korte thuisoefeningen per week. De studio geeft richting en nieuwe input; thuis
+        helpt je om bekende elementen te herhalen en van yoga een gewone gewoonte te maken.
       </p>
       <p className="mt-4">Maak die combinatie haalbaar:</p>
       <ol className="mt-3 list-decimal space-y-2 pl-6">
@@ -308,9 +309,9 @@ function ThuisOfStudioBody() {
         Yoga in Amsterdam Oost uitproberen
       </h2>
       <p className="mt-4">
-        Yoga Zeeburg biedt twaalf wekelijkse lessen in Amsterdam Oost, verspreid over zeven dagen. De
-        meeste lessen zijn beginnersvriendelijk en het aanbod loopt van rustige Yin en Yoga Nidra tot
-        actievere Vinyasa en strong flows. Op de{" "}
+        Yoga Zeeburg biedt twaalf wekelijkse lessen in Amsterdam Oost, verspreid over zeven dagen.
+        De meeste lessen zijn beginnersvriendelijk en het aanbod loopt van rustige Yin en Yoga Nidra
+        tot actievere Vinyasa en strong flows. Op de{" "}
         <Link to="/lessen" className={link}>
           lespagina
         </Link>{" "}
@@ -322,10 +323,10 @@ function ThuisOfStudioBody() {
         .
       </p>
       <p className="mt-4">
-        Met de 14-daagse Intro Pass van €30 kun je als nieuwe leerling verschillende lessen, docenten
-        en tijdstippen proberen. De pas loopt veertien aaneengesloten dagen, geeft onbeperkt toegang
-        en stopt automatisch. Zo kun je ervaren of een studioles je de structuur geeft die je thuis
-        mist.
+        Met de 14-daagse Intro Pass van €30 kun je als nieuwe leerling verschillende lessen,
+        docenten en tijdstippen proberen. De pas loopt veertien aaneengesloten dagen, geeft
+        onbeperkt toegang en stopt automatisch. Zo kun je ervaren of een studioles je de structuur
+        geeft die je thuis mist.
       </p>
 
       <h2 id="conclusie" className={h2}>
