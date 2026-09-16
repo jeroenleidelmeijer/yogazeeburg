@@ -63,6 +63,8 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
     import("./articles/online-yoga-of-yogales-in-de-studio-voor-en-nadelen"),
   "welke-vragen-stel-je-voor-je-eerste-yogales": () =>
     import("./articles/welke-vragen-stel-je-voor-je-eerste-yogales"),
+  "yoga-thuis-of-in-een-studio-wat-werkt-beter": () =>
+    import("./articles/yoga-thuis-of-in-een-studio-wat-werkt-beter"),
 };
 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);

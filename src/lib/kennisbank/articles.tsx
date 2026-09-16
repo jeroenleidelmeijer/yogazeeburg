@@ -39,6 +39,7 @@ import { article as a_groepslesYogaOfPrivelesWatPastBijJou } from "./articles/gr
 import { article as a_kanIkAlleenNaarEenYogalesKomen } from "./articles/kan-ik-alleen-naar-een-yogales-komen";
 import { article as a_onlineYogaOfYogalesInDeStudioVoorEnNadelen } from "./articles/online-yoga-of-yogales-in-de-studio-voor-en-nadelen";
 import { article as a_welkeVragenStelJeVoorJeEersteYogales } from "./articles/welke-vragen-stel-je-voor-je-eerste-yogales";
+import { article as a_yogaThuisOfInEenStudioWatWerktBeter } from "./articles/yoga-thuis-of-in-een-studio-wat-werkt-beter";
 
 export const ARTICLES: Article[] = [
   a_proeflesYogaInAmsterdamOostWatKunJeVerwachten,
@@ -68,6 +69,7 @@ export const ARTICLES: Article[] = [
   a_kanIkAlleenNaarEenYogalesKomen,
   a_onlineYogaOfYogalesInDeStudioVoorEnNadelen,
   a_welkeVragenStelJeVoorJeEersteYogales,
+  a_yogaThuisOfInEenStudioWatWerktBeter,
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
