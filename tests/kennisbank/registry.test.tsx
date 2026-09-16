@@ -63,6 +63,7 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
         "yoga-in-zeeburg-lessen-voor-beginners-en-gevorderden",
         "hoe-herken-je-een-goede-yogastudio-kwaliteitskenmerken",
         "yoga-proefles-of-introductiepas-wat-is-slimmer",
+        "yoga-thuis-of-in-een-studio-wat-werkt-beter",
         "rustige-yoga-voor-beginners-welke-les-past-het-beste",
         "welke-yogastijl-past-bij-mij",
         "hoe-ziet-een-eerste-yogales-eruit",
