@@ -85,7 +85,9 @@ describe("Yoga Gids — legacy regression (articles 1–14)", () => {
       expect(r.source).toBe("legacy");
       expect(r.searchText.length).toBeGreaterThan(20);
       expect(r.searchText).toBe(r.searchText.toLowerCase());
-      expect(["yoga-amsterdam-oost", "beginnen-met-yoga"]).toContain(r.category.slug);
+      expect(["yoga-amsterdam-oost", "beginnen-met-yoga", "stress-ontspanning-slaap"]).toContain(
+        r.category.slug,
+      );
     }
   });
 
@@ -115,7 +117,10 @@ describe("Yoga Gids — hub composition surfaces", () => {
   it("byCategory(): filters by category slug", () => {
     const inCat = byCategory(all, "yoga-amsterdam-oost");
     expect(inCat.length).toBeGreaterThanOrEqual(4);
-    for (const r of inCat) expect(["yoga-amsterdam-oost", "beginnen-met-yoga"]).toContain(r.category.slug);
+    for (const r of inCat)
+      expect(["yoga-amsterdam-oost", "beginnen-met-yoga", "stress-ontspanning-slaap"]).toContain(
+        r.category.slug,
+      );
   });
 
   it("searchAndFilter(): applies query + quick-filter tokens", () => {
