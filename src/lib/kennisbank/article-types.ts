@@ -45,6 +45,9 @@ export type Article = {
   /** Optional hero image, rendered after the header/meta and before the TOC.
    *  Also used for og:image, twitter:image and Article JSON-LD `image`. */
   heroImage?: ArticleImageRef;
+  /** Optional per-article final CTA override. When absent, the shared default
+   *  Intro Pass CTA renders unchanged. `href` is always the Intro Pass URL. */
+  cta?: { label: string; subtext?: string };
   body: () => ReactNode;
 };
 

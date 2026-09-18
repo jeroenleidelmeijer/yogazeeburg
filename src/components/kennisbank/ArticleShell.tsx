@@ -34,6 +34,7 @@ export function ArticleShell({
   readingTimeMin,
   intro,
   hero,
+  cta,
   children,
 }: {
   categoryTitle: string;
@@ -45,6 +46,7 @@ export function ArticleShell({
   readingTimeMin: number;
   intro?: string;
   hero?: React.ReactNode;
+  cta?: { label: string; subtext?: string };
   children: React.ReactNode;
 }) {
   return (
@@ -113,7 +115,7 @@ export function ArticleShell({
             <div className="text-[17px] leading-relaxed text-foreground/90">
               {hero}
               {children}
-              <FinalCta />
+              <FinalCta cta={cta} />
               <BackLink updatedAt={updatedAt} />
             </div>
           </div>
@@ -124,7 +126,7 @@ export function ArticleShell({
   );
 }
 
-function FinalCta() {
+function FinalCta({ cta }: { cta?: { label: string; subtext?: string } }) {
   return (
     <section aria-labelledby="artikel-cta-heading" className="mt-14">
       <div className="rounded-3xl bg-primary p-8 text-primary-foreground shadow-lg sm:p-12">
@@ -142,10 +144,10 @@ function FinalCta() {
           href={INTRO_URL}
           className="mt-7 inline-flex min-h-[44px] items-center rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-background/90"
         >
-          Bekijk de 14-daagse Intro Pass
+          {cta?.label ?? "Bekijk de 14-daagse Intro Pass"}
         </a>
         <p className="mt-3 text-sm text-primary-foreground/75">
-          Voor nieuwe studenten. Stopt automatisch.
+          {cta?.subtext ?? "Voor nieuwe studenten. Stopt automatisch."}
         </p>
       </div>
     </section>
