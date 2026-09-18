@@ -48,6 +48,7 @@ export function LegacyArticleView({ slug, related }: { slug: string; related: Ar
       hero={
         a.heroImage ? <ArticleFigure image={a.heroImage} priority className="mb-10" /> : undefined
       }
+      cta={a.cta}
     >
       {a.template.showTOC && <TocBlock toc={a.toc} />}
       <Body />
