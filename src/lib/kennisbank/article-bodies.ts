@@ -1,7 +1,7 @@
 // Per-slug lazy loader for legacy article bodies.
 //
 // Every legacy article body lives in its own module, so an article page only
-// downloads its own body code and its own image assets instead of all 27.
+// downloads its own body code and its own image assets instead of every article.
 // The map below is intentionally an explicit literal: Vite needs static
 // `import()` specifiers to emit one chunk per article, and the contract test
 // in `tests/kennisbank/article-splitting.test.ts` asserts that this map and
@@ -67,6 +67,7 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
     import("./articles/yoga-thuis-of-in-een-studio-wat-werkt-beter"),
   "yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste": () =>
     import("./articles/yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste"),
+  "wat-zijn-de-voordelen-van-yoga": () => import("./articles/wat-zijn-de-voordelen-van-yoga"),
 };
 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
