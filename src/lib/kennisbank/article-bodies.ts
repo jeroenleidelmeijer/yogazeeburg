@@ -67,8 +67,7 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
     import("./articles/yoga-thuis-of-in-een-studio-wat-werkt-beter"),
   "yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste": () =>
     import("./articles/yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste"),
-  "wat-zijn-de-voordelen-van-yoga": () =>
-    import("./articles/wat-zijn-de-voordelen-van-yoga"),
+  "wat-zijn-de-voordelen-van-yoga": () => import("./articles/wat-zijn-de-voordelen-van-yoga"),
 };
 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
