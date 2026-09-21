@@ -210,7 +210,8 @@ function VoordelenVanYogaBody() {
         werken. Zoek je bijna geen beweging, dan passen restorative yoga of Yoga Nidra
         waarschijnlijk beter. In de gids over{" "}
         <Link
-          to="/kennisbank/yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste"
+          to="/kennisbank/$slug"
+          params={{ slug: "yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste" }}
           className={link}
         >
           yoga voor ontspanning
@@ -384,12 +385,20 @@ function VoordelenVanYogaBody() {
       </div>
       <p className="mt-4">
         Weet je nog niet wat bij je past? De keuzehulp{" "}
-        <Link to="/kennisbank/welke-yogastijl-past-bij-mij" className={link}>
+        <Link
+          to="/kennisbank/$slug"
+          params={{ slug: "welke-yogastijl-past-bij-mij" }}
+          className={link}
+        >
           welke yogastijl past bij mij?
         </Link>{" "}
         helpt je kiezen op basis van tempo, doel en hoeveelheid stilte. Ben je helemaal nieuw, lees
         dan ook{" "}
-        <Link to="/kennisbank/beginnen-met-yoga-alles-wat-je-moet-weten" className={link}>
+        <Link
+          to="/kennisbank/$slug"
+          params={{ slug: "beginnen-met-yoga-alles-wat-je-moet-weten" }}
+          className={link}
+        >
           beginnen met yoga: alles wat je moet weten
         </Link>
         .
