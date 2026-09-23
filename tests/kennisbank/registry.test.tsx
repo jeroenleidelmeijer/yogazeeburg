@@ -76,6 +76,7 @@ describe("Yoga Gids — legacy regression", () => {
         "online-yoga-of-yogales-in-de-studio-voor-en-nadelen",
         "welke-vragen-stel-je-voor-je-eerste-yogales",
         "wat-zijn-de-voordelen-van-yoga",
+        "yoga-of-pilates-wat-past-beter-bij-jou",
       ].sort(),
     );
   });
