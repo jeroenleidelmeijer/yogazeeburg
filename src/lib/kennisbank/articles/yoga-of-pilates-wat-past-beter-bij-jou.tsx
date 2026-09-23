@@ -208,8 +208,8 @@ function YogaOfPilatesBody() {
       <p className="mt-4">
         Yoga is geen enkele vaste workout. Het is een brede familie van tradities en moderne
         lesvormen waarin houdingen, beweging, ademhaling en aandacht in verschillende verhoudingen
-        samenkomen. Daardoor kan een rustige Yin-les bijna tegenovergesteld voelen aan een dynamische
-        Vinyasa- of Powerles.
+        samenkomen. Daardoor kan een rustige Yin-les bijna tegenovergesteld voelen aan een
+        dynamische Vinyasa- of Powerles.
       </p>
       <p className="mt-4">
         In een actieve yogales draag je regelmatig je eigen lichaamsgewicht, beweeg je tussen
@@ -219,8 +219,8 @@ function YogaOfPilatesBody() {
       </p>
       <p className="mt-4">
         Juist die variatie is een belangrijke kracht van yoga, maar ook een mogelijke bron van
-        verwarring. Wie zegt dat yoga ‘te rustig’ of juist ‘te zwaar’ is, heeft vaak vooral één stijl
-        ervaren. De gids{" "}
+        verwarring. Wie zegt dat yoga ‘te rustig’ of juist ‘te zwaar’ is, heeft vaak vooral één
+        stijl ervaren. De gids{" "}
         <Link
           to="/kennisbank/$slug"
           params={{ slug: "welke-yogastijl-past-bij-mij" }}
@@ -234,8 +234,8 @@ function YogaOfPilatesBody() {
         Wat is pilates?
       </h2>
       <p className="mt-4">
-        Pilates is een oefenmethode die in de twintigste eeuw door Joseph Pilates werd ontwikkeld. De
-        methode legt veel nadruk op concentratie, gecontroleerde beweging, uitlijning en het
+        Pilates is een oefenmethode die in de twintigste eeuw door Joseph Pilates werd ontwikkeld.
+        De methode legt veel nadruk op concentratie, gecontroleerde beweging, uitlijning en het
         samenwerken van romp en ledematen. Oefeningen worden bewust en vaak in herhalingen
         uitgevoerd, waarbij kwaliteit belangrijker is dan snelheid.
       </p>
@@ -292,17 +292,17 @@ function YogaOfPilatesBody() {
       </p>
       <h3 className={h3}>5. De leservaring is anders</h3>
       <p className="mt-4">
-        Yoga kan een duidelijk rustmoment, aandachtsoefening of korte meditatie bevatten. Bij pilates
-        blijft de focus meestal bij de technische uitvoering van beweging. Beide kunnen concentratie
-        vragen en een kalm gevoel geven, maar bij yoga is ontspanning vaker een expliciet onderdeel
-        van de lesopbouw.
+        Yoga kan een duidelijk rustmoment, aandachtsoefening of korte meditatie bevatten. Bij
+        pilates blijft de focus meestal bij de technische uitvoering van beweging. Beide kunnen
+        concentratie vragen en een kalm gevoel geven, maar bij yoga is ontspanning vaker een
+        expliciet onderdeel van de lesopbouw.
       </p>
       <h3 className={h3}>6. De kwaliteit van de les telt zwaarder dan het label</h3>
       <p className="mt-4">
         Een sterke yogales kan meer kracht vragen dan een rustige pilatesles. Een technisch
-        opgebouwde pilatesles kan meer mobiliteit bevatten dan een actieve yogaflow. Het label alleen
-        vertelt dus niet hoe zwaar, snel of toegankelijk de les is. Niveau, docent, groepsgrootte en
-        opbouw maken veel verschil.
+        opgebouwde pilatesles kan meer mobiliteit bevatten dan een actieve yogaflow. Het label
+        alleen vertelt dus niet hoe zwaar, snel of toegankelijk de les is. Niveau, docent,
+        groepsgrootte en opbouw maken veel verschil.
       </p>
       <h2 id="kies-yoga-als-je-dit-zoekt" className={h2}>
         Kies yoga als je dit zoekt
@@ -356,10 +356,10 @@ function YogaOfPilatesBody() {
       <h3 className={h3}>Voor flexibiliteit en mobiliteit</h3>
       <p className="mt-4">
         Yoga bevat meestal meer expliciete houdingen waarin je bewegingsruimte verkent. Dat maakt
-        yoga een logische keuze wanneer mobiliteit belangrijk is. Toch is ‘dieper’ niet altijd beter:
-        controle binnen je beschikbare bewegingsruimte is waardevoller dan een houding forceren.
-        Pilates kan mobiliteit eveneens verbeteren, maar koppelt die vaak sterker aan stabiliteit en
-        precisie.
+        yoga een logische keuze wanneer mobiliteit belangrijk is. Toch is ‘dieper’ niet altijd
+        beter: controle binnen je beschikbare bewegingsruimte is waardevoller dan een houding
+        forceren. Pilates kan mobiliteit eveneens verbeteren, maar koppelt die vaak sterker aan
+        stabiliteit en precisie.
       </p>
       <h3 className={h3}>Voor ontspanning en stress</h3>
       <p className="mt-4">
@@ -380,23 +380,23 @@ function YogaOfPilatesBody() {
       <p className="mt-4">
         Geen van beide hoeft voldoende cardiovasculaire belasting te geven om wandelen, fietsen,
         hardlopen of andere duuractiviteit volledig te vervangen. De Wereldgezondheidsorganisatie
-        adviseert volwassenen een combinatie van aerobe beweging en spierversterkende activiteit. Zie
-        yoga of pilates daarom als een waardevol onderdeel van een bredere actieve leefstijl, niet
-        per definitie als het enige wat je doet.
+        adviseert volwassenen een combinatie van aerobe beweging en spierversterkende activiteit.
+        Zie yoga of pilates daarom als een waardevol onderdeel van een bredere actieve leefstijl,
+        niet per definitie als het enige wat je doet.
       </p>
       <h2 id="kun-je-yoga-en-pilates-combineren" className={h2}>
         Kun je yoga en pilates combineren?
       </h2>
       <p className="mt-4">
         Ja. De twee hoeven geen concurrenten te zijn. Pilates kan je meer bewust maken van
-        rompcontrole en precieze bewegingsorganisatie. Yoga kan daar variatie in bewegingsrichtingen,
-        balans, adem en ontspanning aan toevoegen. Voor veel mensen werkt één vaste les van elke vorm
-        beter dan eindeloos twijfelen welke ‘de beste’ is.
+        rompcontrole en precieze bewegingsorganisatie. Yoga kan daar variatie in
+        bewegingsrichtingen, balans, adem en ontspanning aan toevoegen. Voor veel mensen werkt één
+        vaste les van elke vorm beter dan eindeloos twijfelen welke ‘de beste’ is.
       </p>
       <p className="mt-4">
-        Combineren is vooral zinvol als je beide lessen werkelijk leuk genoeg vindt om vol te houden.
-        Heb je maar ruimte voor één les per week, kies dan eerst de vorm die het duidelijkst bij je
-        hoofddoel past. Na een paar weken kun je beter beoordelen of je iets mist.
+        Combineren is vooral zinvol als je beide lessen werkelijk leuk genoeg vindt om vol te
+        houden. Heb je maar ruimte voor één les per week, kies dan eerst de vorm die het duidelijkst
+        bij je hoofddoel past. Na een paar weken kun je beter beoordelen of je iets mist.
       </p>
       <h2 id="zo-maak-je-een-keuze-zonder-te-gokken" className={h2}>
         Zo maak je een keuze zonder te gokken
@@ -404,8 +404,8 @@ function YogaOfPilatesBody() {
       <p className="mt-4">Gebruik deze vier stappen:</p>
       <ol className="mt-4 list-decimal space-y-2 pl-6">
         <li>
-          <strong className="font-medium text-foreground">Kies je belangrijkste doel.</strong> Wil je
-          vooral ontspanning en mobiliteit, of vooral controle en gerichte spierbelasting?
+          <strong className="font-medium text-foreground">Kies je belangrijkste doel.</strong> Wil
+          je vooral ontspanning en mobiliteit, of vooral controle en gerichte spierbelasting?
         </li>
         <li>
           <strong className="font-medium text-foreground">Kijk naar de concrete les.</strong> Een
@@ -418,8 +418,8 @@ function YogaOfPilatesBody() {
           eerlijker beeld van tempo, begeleiding en sfeer.
         </li>
         <li>
-          <strong className="font-medium text-foreground">Beoordeel wat je wilt herhalen.</strong> De
-          beste methode op papier levert weinig op als je er met tegenzin naartoe gaat.
+          <strong className="font-medium text-foreground">Beoordeel wat je wilt herhalen.</strong>{" "}
+          De beste methode op papier levert weinig op als je er met tegenzin naartoe gaat.
         </li>
       </ol>
       <h3 className={h3}>Klaar om het zelf te proberen?</h3>
