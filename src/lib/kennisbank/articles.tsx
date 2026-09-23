@@ -42,6 +42,7 @@ import { article as a_welkeVragenStelJeVoorJeEersteYogales } from "./articles/we
 import { article as a_yogaThuisOfInEenStudioWatWerktBeter } from "./articles/yoga-thuis-of-in-een-studio-wat-werkt-beter";
 import { article as a_yogaVoorOntspanningWelkeYogastijlWerktHetBeste } from "./articles/yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste";
 import { article as a_watZijnDeVoordelenVanYoga } from "./articles/wat-zijn-de-voordelen-van-yoga";
+import { article as a_yogaOfPilatesWatPastBeterBijJou } from "./articles/yoga-of-pilates-wat-past-beter-bij-jou";
 
 export const ARTICLES: Article[] = [
   a_proeflesYogaInAmsterdamOostWatKunJeVerwachten,
@@ -74,6 +75,7 @@ export const ARTICLES: Article[] = [
   a_yogaThuisOfInEenStudioWatWerktBeter,
   a_yogaVoorOntspanningWelkeYogastijlWerktHetBeste,
   a_watZijnDeVoordelenVanYoga,
+  a_yogaOfPilatesWatPastBeterBijJou,
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {

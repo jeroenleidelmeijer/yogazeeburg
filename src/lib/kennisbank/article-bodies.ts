@@ -68,6 +68,8 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
   "yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste": () =>
     import("./articles/yoga-voor-ontspanning-welke-yogastijl-werkt-het-beste"),
   "wat-zijn-de-voordelen-van-yoga": () => import("./articles/wat-zijn-de-voordelen-van-yoga"),
+  "yoga-of-pilates-wat-past-beter-bij-jou": () =>
+    import("./articles/yoga-of-pilates-wat-past-beter-bij-jou"),
 };
 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
