@@ -31,9 +31,11 @@ const COPY = {
 export function SiteHeader({
   locale = "nl",
   page = "home",
+  desktopNavBreakpoint = "md",
 }: {
   locale?: Locale;
   page?: CommercialPage;
+  desktopNavBreakpoint?: "md" | "xl";
 }) {
   const [open, setOpen] = useState(false);
   const nav = NAV[locale];
@@ -53,7 +55,9 @@ export function SiteHeader({
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav
+          className={`hidden items-center gap-1 ${desktopNavBreakpoint === "xl" ? "xl:flex" : "md:flex"}`}
+        >
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -83,7 +87,7 @@ export function SiteHeader({
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-muted md:hidden"
+          className={`inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-muted ${desktopNavBreakpoint === "xl" ? "xl:hidden" : "md:hidden"}`}
           aria-label={copy.menu}
           aria-expanded={open}
         >
@@ -92,7 +96,9 @@ export function SiteHeader({
       </div>
 
       {open && (
-        <div className="border-t border-border/60 bg-background md:hidden">
+        <div
+          className={`border-t border-border/60 bg-background ${desktopNavBreakpoint === "xl" ? "xl:hidden" : "md:hidden"}`}
+        >
           <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">
             {nav.map((item) => (
               <Link
