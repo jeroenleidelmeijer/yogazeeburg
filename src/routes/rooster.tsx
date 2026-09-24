@@ -115,7 +115,7 @@ export const Route = createFileRoute("/rooster")({
 function SchedulePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader locale="nl" page="schedule" />
+      <SiteHeader locale="nl" page="schedule" desktopNavBreakpoint="xl" />
       <main>
         <Hero />
         <WeeklySchedule />
@@ -138,7 +138,7 @@ function Hero() {
         <h1 className="mt-4 font-display text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
           Vind een les die bij jouw week past.
         </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mt-5 max-w-4xl text-lg leading-relaxed text-muted-foreground">
           Yoga Zeeburg geeft zeven dagen per week les aan de Cruquiusweg 96F in Amsterdam Oost, van
           vroege ochtenden tot avonden. Hieronder vind je ons vaste weekrooster.
         </p>
@@ -191,7 +191,7 @@ function SportbitNotice() {
   return (
     <section className="border-b border-border/60 bg-secondary/50">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-12 lg:px-8">
-        <div className="max-w-2xl">
+        <div className="max-w-4xl">
           <h2 className="font-display text-xl text-foreground md:text-2xl">
             Check altijd Sportbit
           </h2>
@@ -215,7 +215,7 @@ function ClassesLink() {
         <h2 className="mt-3 font-display text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
           Nog niet zeker welke les bij je past?
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p className="mt-4 max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">
           Elke les heeft zijn eigen tempo en focus, van energieke Vinyasa tot rustgevende Yin en
           Nidra. Bekijk onze lessen en ontdek welke bij jou past.
         </p>
