@@ -19,8 +19,8 @@ const SCHEDULE: Day[] = [
   {
     day: "Dinsdag",
     lessons: [
-      { time: "18:45–20:00", name: "Strong Flow", teacher: "Csenge van der Heijden" },
-      { time: "20:15–21:30", name: "Restorative & Reiki & Aroma", teacher: "Csenge van der Heijden" },
+      { time: "18:45–20:00", name: "Pilates Fusion", teacher: "Mila Vasina" },
+      { time: "20:15–21:30", name: "Deep Stretch Yin & Breathwork", teacher: "Mila Vasina" },
     ],
   },
   {
@@ -54,7 +54,7 @@ const SCHEDULE: Day[] = [
     day: "Zondag",
     lessons: [
       { time: "09:30–10:45", name: "Vinyasa + Somatic Movement", teacher: "Mila Vasina" },
-      { time: "11:00–12:15", name: "Deep Stretch Yin & Breathwork", teacher: "Mila Vasina" },
+      { time: "11:00–12:15", name: "Kundalini Yoga", teacher: "Mila Vasina" },
     ],
   },
 ];
