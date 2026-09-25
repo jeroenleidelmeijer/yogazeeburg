@@ -301,6 +301,8 @@ export async function resolveArticleBySlug(
 function legacyArticleSeo(a: (typeof ARTICLES)[number]): LegacyArticleSeo {
   return {
     seoTitle: a.seoTitle,
+    ogTitle: a.ogTitle,
+    ogDescription: a.ogDescription,
     title: a.title,
     h1: a.h1,
     description: a.description,

@@ -29,6 +29,8 @@ export type Article = {
   slug: string;
   title: string;
   seoTitle: string;
+  ogTitle?: string;
+  ogDescription?: string;
   h1: string;
   description: string;
   intro?: string;
@@ -45,6 +47,7 @@ export type Article = {
   /** Optional hero image, rendered after the header/meta and before the TOC.
    *  Also used for og:image, twitter:image and Article JSON-LD `image`. */
   heroImage?: ArticleImageRef;
+  heroCaption?: string;
   /** Optional per-article final CTA override. When absent, the shared default
    *  Intro Pass CTA renders unchanged. `href` is always the Intro Pass URL. */
   cta?: { label: string; subtext?: string };

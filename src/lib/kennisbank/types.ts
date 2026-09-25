@@ -35,6 +35,8 @@ export interface DbArticleViewModel {
   title: string;
   h1: string;
   seoTitle: string;
+  ogTitle?: string;
+  ogDescription?: string;
   description: string;
   category: ArticleCategoryRef;
   type: "explainer" | "how-to" | "local-guide";
