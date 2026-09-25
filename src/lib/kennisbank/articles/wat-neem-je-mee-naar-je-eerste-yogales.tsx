@@ -40,6 +40,8 @@ export const article: Article = {
   updatedAt: "2026-09-25",
   readingTimeMin: 6,
   cta: {
+    heading: "Klaar voor je eerste les?",
+    text: "Met de 14-daagse introductiepas kun je verschillende lessen, docenten en tijden bij Yoga Zeeburg in Amsterdam Oost proberen.",
     label: "Start je 14 dagen onbeperkt",
     subtext: "Voor nieuwe studenten. Stopt automatisch.",
   },

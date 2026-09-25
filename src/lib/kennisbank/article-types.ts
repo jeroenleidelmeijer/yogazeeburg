@@ -50,7 +50,7 @@ export type Article = {
   heroCaption?: string;
   /** Optional per-article final CTA override. When absent, the shared default
    *  Intro Pass CTA renders unchanged. `href` is always the Intro Pass URL. */
-  cta?: { label: string; subtext?: string };
+  cta?: { heading?: string; text?: string; label: string; subtext?: string };
   body: () => ReactNode;
 };
 
