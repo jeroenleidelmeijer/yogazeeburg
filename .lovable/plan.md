@@ -1,16 +1,13 @@
-# Artikel 26 atomisch publiceren
+# Artikel 32 gesloten publiceren
 
 ## Uitvoering
-- Controleer vlak vóór plaatsing opnieuw dat artikel 26 het laagste geplande artikel is en geen actieve lock/run heeft.
-- Sla de drie definitieve bestanden onder exact de pakketnamen op als publieke CDN-assets.
-- Voeg uitsluitend artikel 26 mechanisch toe aan de bestaande kennisbankregistratie, met letterlijke tekst, metadata, FAQ, bronnen, CTA en beeldplaatsing uit het pakket.
-- Werk alleen de noodzakelijke tellingverwachtingen bij; artikel 27 en eerdere artikelen blijven inhoudelijk ongewijzigd.
+- Plaats uitsluitend de aangeleverde tekst en drie beelden onder de opgegeven namen.
+- Voeg artikel 32 toe aan de bestaande artikelregistratie en lazy-loader; werk alleen noodzakelijke tellingtests bij.
+- Houd artikel 32 in de database op `planned` tot na geslaagde productiepublicatie en volledige live-QA.
+- Voer alle tests, typecontrole en productiebuild uit, publiceer, en controleer live metadata, schema’s, overzichten, links, beelden, alt-teksten en mobiele weergave.
+- Rond alleen bij volledig succes de registratie af naar `published`, zonder lock of actieve run; artikel 33 blijft onaangeraakt.
 
-## Validatie en vrijgave
-- Draai de volledige testset, typecheck en productiebuild.
-- Publiceer pas na groene lokale validatie.
-- Controleer live de artikelpagina, het overzicht, indexeerbaarheid, canonical, metadata, schema's, beide zichtbare beelden, alt-teksten en responsieve weergave.
-- Zet artikel 26 pas daarna in de database op `published`, met hash, live-URL, deploymentgegevens en vrijgegeven lock/run; bevestig artikel 27 als `planned`.
-
-## Fail-closed
-- Bij een fout stopt de run vóór databasepublicatie; artikel 26 blijft `planned` en eventuele lock/run wordt opgeruimd.
+## Technische details
+- Bestaand gedeeld artikeltemplate en route blijven ongewijzigd.
+- Hero wordt zichtbaar gebruikt en tevens gekoppeld aan Open Graph, Twitter en Article-schema; inhoudsbeeld komt exact na de korte paklijst; socialvisual wordt alleen opgeslagen.
+- Bij iedere fout stopt de run vóór de databasefinalisatie en blijft artikel 32 het eerstvolgende geplande artikel.
