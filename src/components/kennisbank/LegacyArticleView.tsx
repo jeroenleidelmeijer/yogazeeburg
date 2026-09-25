@@ -47,12 +47,7 @@ export function LegacyArticleView({ slug, related }: { slug: string; related: Ar
       }
       hero={
         a.heroImage ? (
-          <ArticleFigure
-            image={a.heroImage}
-            priority
-            caption={a.heroCaption}
-            className="mb-10"
-          />
+          <ArticleFigure image={a.heroImage} priority caption={a.heroCaption} className="mb-10" />
         ) : undefined
       }
       cta={a.cta}

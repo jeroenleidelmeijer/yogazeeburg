@@ -132,14 +132,43 @@ function WatNeemJeMeeBody() {
         de les houden.
       </p>
 
-      <h2 id="de-korte-paklijst" className={h2}>De korte paklijst</h2>
+      <h2 id="de-korte-paklijst" className={h2}>
+        De korte paklijst
+      </h2>
       <p className="mt-4">Begin met deze vijf punten:</p>
       <ol className="mt-4 list-decimal space-y-2 pl-6">
-        <li><strong className="font-medium text-foreground">Comfortabele kleding waarin je vrij kunt bewegen.</strong> Kies iets dat niet knelt en dat op zijn plaats blijft wanneer je vooroverbuigt of je armen optilt. Het volgende artikel in de Yoga Gids gaat uitgebreider in op kleding; voor nu is bewegingsvrijheid de hoofdregel.</li>
-        <li><strong className="font-medium text-foreground">Een afsluitbare waterfles.</strong> Je hoeft tijdens een rustige les niet voortdurend te drinken, maar het is prettig om water bij je te hebben voor voor of na de les. Zet de fles zo neer dat hij niet kan omvallen.</li>
-        <li><strong className="font-medium text-foreground">Een kleine handdoek als je snel zweet.</strong> Vooral bij een actievere Flow kan die handig zijn voor je gezicht of handen. Een grote sporthanddoek is meestal niet nodig.</li>
-        <li><strong className="font-medium text-foreground">Eventueel een eigen mat.</strong> Alleen wanneer de studio daarom vraagt, je om hygiënische of persoonlijke redenen je eigen mat verkiest, of je thuis al een mat hebt waar je prettig op oefent.</li>
-        <li><strong className="font-medium text-foreground">Kleine persoonlijke benodigdheden.</strong> Denk aan een elastiekje, een brillenkoker, noodzakelijke medicatie of warme sokken voor de eindontspanning.</li>
+        <li>
+          <strong className="font-medium text-foreground">
+            Comfortabele kleding waarin je vrij kunt bewegen.
+          </strong>{" "}
+          Kies iets dat niet knelt en dat op zijn plaats blijft wanneer je vooroverbuigt of je armen
+          optilt. Het volgende artikel in de Yoga Gids gaat uitgebreider in op kleding; voor nu is
+          bewegingsvrijheid de hoofdregel.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">Een afsluitbare waterfles.</strong> Je
+          hoeft tijdens een rustige les niet voortdurend te drinken, maar het is prettig om water
+          bij je te hebben voor voor of na de les. Zet de fles zo neer dat hij niet kan omvallen.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">
+            Een kleine handdoek als je snel zweet.
+          </strong>{" "}
+          Vooral bij een actievere Flow kan die handig zijn voor je gezicht of handen. Een grote
+          sporthanddoek is meestal niet nodig.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">Eventueel een eigen mat.</strong> Alleen
+          wanneer de studio daarom vraagt, je om hygiënische of persoonlijke redenen je eigen mat
+          verkiest, of je thuis al een mat hebt waar je prettig op oefent.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">
+            Kleine persoonlijke benodigdheden.
+          </strong>{" "}
+          Denk aan een elastiekje, een brillenkoker, noodzakelijke medicatie of warme sokken voor de
+          eindontspanning.
+        </li>
       </ol>
       <p className="mt-4">
         Dat is in de meeste gevallen genoeg. Blokken, riemen, dekens en bolsters zijn nuttige
@@ -153,7 +182,9 @@ function WatNeemJeMeeBody() {
         className="mt-10"
       />
 
-      <h2 id="heb-je-een-eigen-yogamat-nodig" className={h2}>Heb je een eigen yogamat nodig?</h2>
+      <h2 id="heb-je-een-eigen-yogamat-nodig" className={h2}>
+        Heb je een eigen yogamat nodig?
+      </h2>
       <p className="mt-4">
         Dat verschilt per studio. Sommige studio’s hebben matten klaarstaan, andere vragen
         deelnemers om zelf een mat mee te nemen of bieden huurmatten aan. Kijk daarom in de
@@ -163,17 +194,22 @@ function WatNeemJeMeeBody() {
       </p>
       <p className="mt-4">
         Een eigen mat kan prettig zijn als je regelmatig yoga wilt doen: je kent de grip, dikte en
-        hygiëne. Voor één eerste les hoef je echter niet meteen materiaal te kopen. Probeer eerst een
-        paar lessen en ontdek welke ondergrond je fijn vindt. Een heel dikke fitnessmat voelt zacht,
-        maar kan bij staande balansoefeningen minder stabiel zijn; een specifieke yogamat geeft
-        meestal meer contact met de vloer.
+        hygiëne. Voor één eerste les hoef je echter niet meteen materiaal te kopen. Probeer eerst
+        een paar lessen en ontdek welke ondergrond je fijn vindt. Een heel dikke fitnessmat voelt
+        zacht, maar kan bij staande balansoefeningen minder stabiel zijn; een specifieke yogamat
+        geeft meestal meer contact met de vloer.
       </p>
 
-      <h2 id="wat-neem-je-mee-voor-rustige-en-actieve-lessen" className={h2}>Wat neem je mee voor rustige en actieve lessen?</h2>
+      <h2 id="wat-neem-je-mee-voor-rustige-en-actieve-lessen" className={h2}>
+        Wat neem je mee voor rustige en actieve lessen?
+      </h2>
       <p className="mt-4">
         De lesvorm bepaalt welke extra’s nuttig zijn. Bekijk vooraf de lesbeschrijving op de pagina
-        met <Link to="/lessen" className={link}>yogalessen bij Yoga Zeeburg</Link> en kies iets dat
-        bij je ervaring en energie past.
+        met{" "}
+        <Link to="/lessen" className={link}>
+          yogalessen bij Yoga Zeeburg
+        </Link>{" "}
+        en kies iets dat bij je ervaring en energie past.
       </p>
       <h3 className={h3}>Voor Yin, Nidra of een herstellende les</h3>
       <p className="mt-4">
@@ -198,18 +234,52 @@ function WatNeemJeMeeBody() {
         vervangt geen medische beoordeling of behandeling.
       </p>
 
-      <h2 id="wat-kun-je-beter-thuislaten" className={h2}>Wat kun je beter thuislaten?</h2>
-      <p className="mt-4">Een rustige studio werkt het prettigst wanneer iedereen weinig ruimte en aandacht opeist. Laat daarom thuis wat je niet nodig hebt:</p>
+      <h2 id="wat-kun-je-beter-thuislaten" className={h2}>
+        Wat kun je beter thuislaten?
+      </h2>
+      <p className="mt-4">
+        Een rustige studio werkt het prettigst wanneer iedereen weinig ruimte en aandacht opeist.
+        Laat daarom thuis wat je niet nodig hebt:
+      </p>
       <ul className="mt-4 list-disc space-y-2 pl-6">
-        <li><strong className="font-medium text-foreground">Een grote tas of veel losse spullen.</strong> Een compacte tas is makkelijker veilig weg te zetten.</li>
-        <li><strong className="font-medium text-foreground">Waardevolle spullen.</strong> Neem zo min mogelijk mee en vraag waar je telefoon en sleutels veilig kunt bewaren.</li>
-        <li><strong className="font-medium text-foreground">Sterke parfum of geparfumeerde sprays.</strong> Geuren kunnen in een gedeelde ruimte intens zijn en sommige deelnemers zijn er gevoelig voor.</li>
-        <li><strong className="font-medium text-foreground">Eten voor in de zaal.</strong> Eet liever niet zwaar vlak vóór de les. Als je iets nodig hebt rond je training, gebruik dan de daarvoor bestemde ruimte en volg je eigen medische of voedingsadvies.</li>
-        <li><strong className="font-medium text-foreground">Een telefoon die geluid maakt.</strong> Zet hem vóór binnenkomst op stil, zonder trillende meldingen. Bij voorkeur blijft hij buiten de oefenruimte.</li>
-        <li><strong className="font-medium text-foreground">De verwachting dat alles meteen moet lukken.</strong> Je hoeft geen houding te bewijzen en mag altijd een pauze nemen.</li>
+        <li>
+          <strong className="font-medium text-foreground">
+            Een grote tas of veel losse spullen.
+          </strong>{" "}
+          Een compacte tas is makkelijker veilig weg te zetten.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">Waardevolle spullen.</strong> Neem zo min
+          mogelijk mee en vraag waar je telefoon en sleutels veilig kunt bewaren.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">
+            Sterke parfum of geparfumeerde sprays.
+          </strong>{" "}
+          Geuren kunnen in een gedeelde ruimte intens zijn en sommige deelnemers zijn er gevoelig
+          voor.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">Eten voor in de zaal.</strong> Eet liever
+          niet zwaar vlak vóór de les. Als je iets nodig hebt rond je training, gebruik dan de
+          daarvoor bestemde ruimte en volg je eigen medische of voedingsadvies.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">Een telefoon die geluid maakt.</strong>{" "}
+          Zet hem vóór binnenkomst op stil, zonder trillende meldingen. Bij voorkeur blijft hij
+          buiten de oefenruimte.
+        </li>
+        <li>
+          <strong className="font-medium text-foreground">
+            De verwachting dat alles meteen moet lukken.
+          </strong>{" "}
+          Je hoeft geen houding te bewijzen en mag altijd een pauze nemen.
+        </li>
       </ul>
 
-      <h2 id="wat-als-je-een-blessure-aandoening-of-zwangerschap-wilt-melden" className={h2}>Wat als je een blessure, aandoening of zwangerschap wilt melden?</h2>
+      <h2 id="wat-als-je-een-blessure-aandoening-of-zwangerschap-wilt-melden" className={h2}>
+        Wat als je een blessure, aandoening of zwangerschap wilt melden?
+      </h2>
       <p className="mt-4">
         Vertel dit rustig vóór de les aan de docent, liefst enkele minuten voordat de groep begint.
         Benoem wat relevant is: waar je last van hebt, welke bewegingen je volgens een bevoegde
@@ -223,7 +293,9 @@ function WatNeemJeMeeBody() {
         houdingen of geforceerde ademhaling niet op eigen houtje te proberen.
       </p>
 
-      <h2 id="voor-vertrek-een-checklist-van-een-minuut" className={h2}>Voor vertrek: een checklist van één minuut</h2>
+      <h2 id="voor-vertrek-een-checklist-van-een-minuut" className={h2}>
+        Voor vertrek: een checklist van één minuut
+      </h2>
       <p className="mt-4">Controleer vlak voordat je van huis gaat:</p>
       <ul className="mt-4 list-disc space-y-2 pl-6">
         <li>Is mijn reservering bevestigd en weet ik hoe laat de les begint?</li>
@@ -235,11 +307,20 @@ function WatNeemJeMeeBody() {
         <li>Vertrek ik op tijd om zonder haast aan te komen?</li>
       </ul>
       <p className="mt-4">
-        Bekijk voor actuele tijden altijd het <Link to="/rooster" className={link}>lesrooster</Link>.
-        Ben je nog niet ingeschreven, dan kun je met de <Link to="/trial" className={link}>14-daagse introductiepas</Link> verschillende lessen, docenten en tijden proberen voordat je kiest wat bij je past.
+        Bekijk voor actuele tijden altijd het{" "}
+        <Link to="/rooster" className={link}>
+          lesrooster
+        </Link>
+        . Ben je nog niet ingeschreven, dan kun je met de{" "}
+        <Link to="/trial" className={link}>
+          14-daagse introductiepas
+        </Link>{" "}
+        verschillende lessen, docenten en tijden proberen voordat je kiest wat bij je past.
       </p>
 
-      <h2 id="conclusie" className={h2}>Conclusie</h2>
+      <h2 id="conclusie" className={h2}>
+        Conclusie
+      </h2>
       <p className="mt-4">
         Voor je eerste yogales is een kleine tas meestal voldoende. Neem comfortabele kleding, water
         en eventueel een handdoek mee; controleer vooraf of je een eigen mat nodig hebt. Voeg alleen
@@ -248,7 +329,23 @@ function WatNeemJeMeeBody() {
         binnenkomt en aandacht hebt voor de les zelf.
       </p>
       <p className="mt-4">
-        Wil je ook weten hoe zo’n eerste les verloopt? Lees dan <Link to="/kennisbank/$slug" params={{ slug: "hoe-ziet-een-eerste-yogales-eruit" }} className={link}>Eerste yogales stap voor stap: zo ziet de les eruit</Link>. Twijfel je welke les rustig genoeg is om mee te beginnen, bekijk dan <Link to="/kennisbank/$slug" params={{ slug: "rustige-yoga-voor-beginners-welke-les-past-het-beste" }} className={link}>Rustige yoga voor beginners: welke les past het beste?</Link>.
+        Wil je ook weten hoe zo’n eerste les verloopt? Lees dan{" "}
+        <Link
+          to="/kennisbank/$slug"
+          params={{ slug: "hoe-ziet-een-eerste-yogales-eruit" }}
+          className={link}
+        >
+          Eerste yogales stap voor stap: zo ziet de les eruit
+        </Link>
+        . Twijfel je welke les rustig genoeg is om mee te beginnen, bekijk dan{" "}
+        <Link
+          to="/kennisbank/$slug"
+          params={{ slug: "rustige-yoga-voor-beginners-welke-les-past-het-beste" }}
+          className={link}
+        >
+          Rustige yoga voor beginners: welke les past het beste?
+        </Link>
+        .
       </p>
     </>
   );
