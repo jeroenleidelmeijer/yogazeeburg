@@ -66,6 +66,8 @@ export interface DbArticleViewModel {
  */
 export interface LegacyArticleSeo {
   seoTitle: string;
+  ogTitle?: string;
+  ogDescription?: string;
   title: string;
   h1: string;
   description: string;
