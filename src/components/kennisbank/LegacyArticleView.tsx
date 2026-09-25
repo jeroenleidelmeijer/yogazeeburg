@@ -46,7 +46,9 @@ export function LegacyArticleView({ slug, related }: { slug: string; related: Ar
         "Praktische, warme uitleg over hoe een eerste yogales in Amsterdam Oost werkt — zonder marketingtaal en zonder prestatiedruk."
       }
       hero={
-        a.heroImage ? <ArticleFigure image={a.heroImage} priority className="mb-10" /> : undefined
+        a.heroImage ? (
+          <ArticleFigure image={a.heroImage} priority caption={a.heroCaption} className="mb-10" />
+        ) : undefined
       }
       cta={a.cta}
     >

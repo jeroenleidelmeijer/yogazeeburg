@@ -46,7 +46,7 @@ export function ArticleShell({
   readingTimeMin: number;
   intro?: string;
   hero?: React.ReactNode;
-  cta?: { label: string; subtext?: string };
+  cta?: { heading?: string; text?: string; label: string; subtext?: string };
   children: React.ReactNode;
 }) {
   return (
@@ -126,7 +126,11 @@ export function ArticleShell({
   );
 }
 
-function FinalCta({ cta }: { cta?: { label: string; subtext?: string } }) {
+function FinalCta({
+  cta,
+}: {
+  cta?: { heading?: string; text?: string; label: string; subtext?: string };
+}) {
   return (
     <section aria-labelledby="artikel-cta-heading" className="mt-14">
       <div className="rounded-3xl bg-primary p-8 text-primary-foreground shadow-lg sm:p-12">
@@ -134,11 +138,11 @@ function FinalCta({ cta }: { cta?: { label: string; subtext?: string } }) {
           id="artikel-cta-heading"
           className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
         >
-          Zelf ervaren wat yoga voor je doet?
+          {cta?.heading ?? "Zelf ervaren wat yoga voor je doet?"}
         </h2>
         <p className="mt-4 max-w-2xl text-primary-foreground/90">
-          Probeer 14 dagen onbeperkt verschillende lessen, docenten en tijden bij Yoga Zeeburg in
-          Amsterdam Oost.
+          {cta?.text ??
+            "Probeer 14 dagen onbeperkt verschillende lessen, docenten en tijden bij Yoga Zeeburg in Amsterdam Oost."}
         </p>
         <a
           href={INTRO_URL}
