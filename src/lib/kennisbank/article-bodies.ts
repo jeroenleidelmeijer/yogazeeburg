@@ -72,6 +72,8 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
     import("./articles/yoga-of-pilates-wat-past-beter-bij-jou"),
   "wat-neem-je-mee-naar-je-eerste-yogales": () =>
     import("./articles/wat-neem-je-mee-naar-je-eerste-yogales"),
+  "wat-trek-je-aan-naar-een-yogales": () =>
+    import("./articles/wat-trek-je-aan-naar-een-yogales"),
 };
 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
