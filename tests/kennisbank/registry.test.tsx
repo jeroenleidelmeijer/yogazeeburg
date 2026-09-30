@@ -41,8 +41,8 @@ function fakeDbRef(overrides: Partial<ArticleRef> = {}): ArticleRef {
 describe("Yoga Gids — legacy regression", () => {
   const legacy = listLegacyRefs();
 
-  it("exposes exactly the thirty-three published legacy articles", () => {
-    expect(legacy).toHaveLength(33);
+  it("exposes exactly the thirty-four published legacy articles", () => {
+    expect(legacy).toHaveLength(34);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -79,6 +79,7 @@ describe("Yoga Gids — legacy regression", () => {
         "yoga-of-pilates-wat-past-beter-bij-jou",
         "wat-neem-je-mee-naar-je-eerste-yogales",
         "wat-trek-je-aan-naar-een-yogales",
+        "hatha-yoga-wat-is-het-en-voor-wie-is-het-geschikt",
       ].sort(),
     );
   });
@@ -88,9 +89,12 @@ describe("Yoga Gids — legacy regression", () => {
       expect(r.source).toBe("legacy");
       expect(r.searchText.length).toBeGreaterThan(20);
       expect(r.searchText).toBe(r.searchText.toLowerCase());
-      expect(["yoga-amsterdam-oost", "beginnen-met-yoga", "stress-ontspanning-slaap"]).toContain(
-        r.category.slug,
-      );
+      expect([
+        "yoga-amsterdam-oost",
+        "beginnen-met-yoga",
+        "stress-ontspanning-slaap",
+        "yogastijlen",
+      ]).toContain(r.category.slug);
     }
   });
 

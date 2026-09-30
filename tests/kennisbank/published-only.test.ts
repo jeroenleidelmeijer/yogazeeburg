@@ -142,7 +142,7 @@ describe("listPublishedRefs — published-only merge", () => {
   it("preserves legacy articles when the DB has zero rows", async () => {
     const { listPublishedRefs } = await withRows([]);
     const refs = await listPublishedRefs();
-    expect(refs).toHaveLength(33);
+    expect(refs).toHaveLength(34);
     for (const r of refs) expect(r.source).toBe("legacy");
   });
 });
@@ -173,10 +173,11 @@ describe("sitemap.xml — published-only URL emission", () => {
     expect(xml).toContain("/kennisbank/proefles-yoga-in-amsterdam-oost-wat-kun-je-verwachten");
     // Only categories that actually have published articles are indexable
     // topical hubs and therefore in the sitemap. Legacy articles fill
-    // "yoga-amsterdam-oost" and "beginnen-met-yoga"; empty categories stay out.
+    // "yoga-amsterdam-oost", "beginnen-met-yoga" and "yogastijlen";
+    // empty categories stay out.
     expect(xml).toContain("/kennisbank/categorie/yoga-amsterdam-oost");
     expect(xml).toContain("/kennisbank/categorie/beginnen-met-yoga");
+    expect(xml).toContain("/kennisbank/categorie/yogastijlen");
     expect(xml).not.toContain("/kennisbank/categorie/klachten-en-levensfasen");
-    expect(xml).not.toContain("/kennisbank/categorie/yogastijlen");
   });
 });

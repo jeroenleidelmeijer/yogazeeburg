@@ -45,6 +45,7 @@ import { article as a_watZijnDeVoordelenVanYoga } from "./articles/wat-zijn-de-v
 import { article as a_yogaOfPilatesWatPastBeterBijJou } from "./articles/yoga-of-pilates-wat-past-beter-bij-jou";
 import { article as a_watNeemJeMeeNaarJeEersteYogales } from "./articles/wat-neem-je-mee-naar-je-eerste-yogales";
 import { article as a_watTrekJeAanNaarEenYogales } from "./articles/wat-trek-je-aan-naar-een-yogales";
+import { article as a_hathaYogaWatIsHetEnVoorWieIsHetGeschikt } from "./articles/hatha-yoga-wat-is-het-en-voor-wie-is-het-geschikt";
 
 export const ARTICLES: Article[] = [
   a_proeflesYogaInAmsterdamOostWatKunJeVerwachten,
@@ -80,6 +81,7 @@ export const ARTICLES: Article[] = [
   a_yogaOfPilatesWatPastBeterBijJou,
   a_watNeemJeMeeNaarJeEersteYogales,
   a_watTrekJeAanNaarEenYogales,
+  a_hathaYogaWatIsHetEnVoorWieIsHetGeschikt,
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
