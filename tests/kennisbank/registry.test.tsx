@@ -42,7 +42,7 @@ describe("Yoga Gids — legacy regression", () => {
   const legacy = listLegacyRefs();
 
   it("exposes exactly the thirty-three published legacy articles", () => {
-    expect(legacy).toHaveLength(33);
+    expect(legacy).toHaveLength(34);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
