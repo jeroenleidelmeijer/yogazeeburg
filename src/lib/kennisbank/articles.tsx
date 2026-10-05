@@ -47,6 +47,7 @@ import { article as a_watNeemJeMeeNaarJeEersteYogales } from "./articles/wat-nee
 import { article as a_watTrekJeAanNaarEenYogales } from "./articles/wat-trek-je-aan-naar-een-yogales";
 import { article as a_hathaYogaWatIsHetEnVoorWieIsHetGeschikt } from "./articles/hatha-yoga-wat-is-het-en-voor-wie-is-het-geschikt";
 import { article as a_vinyasaYogaWatIsHetEnVoorWieIsHetGeschikt } from "./articles/vinyasa-yoga-wat-is-het-en-voor-wie-is-het-geschikt";
+import { article as a_watIsHetVerschilTussenHathaYogaEnVinyasaYoga } from "./articles/wat-is-het-verschil-tussen-hatha-yoga-en-vinyasa-yoga";
 
 export const ARTICLES: Article[] = [
   a_proeflesYogaInAmsterdamOostWatKunJeVerwachten,
@@ -84,6 +85,7 @@ export const ARTICLES: Article[] = [
   a_watTrekJeAanNaarEenYogales,
   a_hathaYogaWatIsHetEnVoorWieIsHetGeschikt,
   a_vinyasaYogaWatIsHetEnVoorWieIsHetGeschikt,
+  a_watIsHetVerschilTussenHathaYogaEnVinyasaYoga,
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
