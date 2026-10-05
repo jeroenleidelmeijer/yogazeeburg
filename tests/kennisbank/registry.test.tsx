@@ -41,8 +41,8 @@ function fakeDbRef(overrides: Partial<ArticleRef> = {}): ArticleRef {
 describe("Yoga Gids — legacy regression", () => {
   const legacy = listLegacyRefs();
 
-  it("exposes exactly the thirty-five published legacy articles", () => {
-    expect(legacy).toHaveLength(35);
+  it("exposes exactly the thirty-six published legacy articles", () => {
+    expect(legacy).toHaveLength(36);
     const slugs = legacy.map((r) => r.slug).sort();
     expect(slugs).toEqual(
       [
@@ -81,6 +81,7 @@ describe("Yoga Gids — legacy regression", () => {
         "wat-trek-je-aan-naar-een-yogales",
         "hatha-yoga-wat-is-het-en-voor-wie-is-het-geschikt",
         "vinyasa-yoga-wat-is-het-en-voor-wie-is-het-geschikt",
+        "wat-is-het-verschil-tussen-hatha-yoga-en-vinyasa-yoga",
       ].sort(),
     );
   });
