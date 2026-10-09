@@ -80,6 +80,8 @@ export const ARTICLE_BODY_LOADERS: Record<string, () => Promise<ArticleModule>> 
     import("./articles/vinyasa-yoga-wat-is-het-en-voor-wie-is-het-geschikt"),
   "wat-is-het-verschil-tussen-hatha-yoga-en-vinyasa-yoga": () =>
     import("./articles/wat-is-het-verschil-tussen-hatha-yoga-en-vinyasa-yoga"),
+  "wat-is-het-verschil-tussen-yin-yoga-en-vinyasa-yoga": () =>
+    import("./articles/wat-is-het-verschil-tussen-yin-yoga-en-vinyasa-yoga"),
 };
 
 export const LEGACY_ARTICLE_SLUGS = Object.keys(ARTICLE_BODY_LOADERS);
